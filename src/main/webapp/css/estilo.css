@@ -1,0 +1,88 @@
+ body {  font-family: verdana, helvetica, sans-serif; 
+		margin: 12px; 
+		padding: 0; }
+h1 { font-weight: bold; 
+	font-size: 24px; 
+	border-bottom-style: solid; 
+	border-bottom-width: 2px; 
+	margin-top: 0px; 
+	padding-bottom: 0.5ex; 
+	color: #fff; 
+}
+ h2 { font-size: 16px; 
+	 padding-bottom: 0.5ex; 
+	 color: #009ACE; 
+	 border-bottom-style: solid; 
+	 border-bottom-width: 2px; 
+ }
+ h3 { font-size: 110%; 
+	 padding-bottom: 0.5ex; 
+	 color: #000000; 
+ }
+ th { text-align: left; 
+	 background-color: #009ACE; 
+	 color: #eeeeee; 
+ }
+#ReportHeader { padding: 12px; 
+				background-color: #009ACE; 
+				color: #0000; 
+				border-bottom-style: solid; 
+				border-bottom-width: 2px;
+				 border-color: #999999; 
+ }
+#ReportHeader th {
+				white-space: nowrap; 
+				vertical-align: top; 
+}
+#ReportHeader td { vertical-align: top; 
+					color: #eeeeee; 
+}
+#ReportNotes { padding: 12px; 
+				background-color: #eeeeee; 
+				font-size: 100%; border-bottom-style: solid; 
+				border-bottom-width: 2px; 
+				border-color: #999999;
+ }
+.ReportSQL { margin-bottom: 10px; 
+				padding: 10px; display: block; 
+				background-color: #eeeeee; 
+				font-family: monospace;
+ }
+#ReportDetails { margin-left: 15px; 
+				margin-right: 15px; 
+				margin-bottom: 15px;
+ }
+#ReportDetails td, th { 
+				font-size: 12px; 
+				margin-left: 15px;
+				 margin-right: 15px; 
+ }
+#ReportDetails th { border-bottom-color: #777777; border-bottom-style: solid; border-bottom-width: 2px; }
+.ReportDetailsOddDataRow { background-color: #dddddd; }
+.ReportDetailsEvenDataRow { background-color: #eeeeee; }
+.ReportTableHeaderCell { background-color: #dddddd; color: #009ACE; vertical-align: top; font-size: 13px; white-space: nowrap; }
+.ReportTableValueCell { vertical-align: top; font-size: 100%; white-space: nowrap; }
+.ReportTableInfo { font-size: 100%; font-style: italic; }
+#ReportFooter { font-weight: bold; font-size: 80%; text-align: right; background-color: #009ACE; color: #eeeeee; margin-top: 10px; padding: 2px; border-bottom-style: solid; border-bottom-width: 2px; border-top-style: solid; border-top-width: 2px; border-color: #999999; }
+#ReportFooter a { color: #ffffff; text-decoration: none; }
+
+
+
+/** menu javascript */
+
+ul.menu {font-size:11px;list-style:none; margin:0; padding:0; }
+ul.menu * {margin:0; padding:0}
+ul.menu a {display:block; color:#000; text-decoration:none}
+ul.menu li {position:relative; float:left; margin-right:2px}
+ul.menu ul {position:absolute; top:26px; left:0; background:#6495ED; display:none; opacity:0; list-style:none}
+ul.menu ul li {position:relative; border:1px solid #aaa; border-top:none; width:148px; margin:0}
+ul.menu ul li a {display:block; padding:3px 7px 5px; background-color:#fff}
+ul.menu ul li a:hover {background-color:#6495ED}
+ul.menu ul ul {left:148px; top:-1px}
+ul.menu .menulink {border:1px solid #6495ED; padding:5px 7px 7px; font-weight:bold; background:url(../images/header.gif); width:134px}
+ul.menu .menulink:hover, ul.menu .menuhover {background:url(../images/header_over.gif)}
+ul.menu .sub {background:#6495ED url(../images/arrow.gif) 136px 8px no-repeat}
+ul.menu .topline {border-top:1px solid #aaa}
+div.menu {
+	margin-top:5px;
+}
