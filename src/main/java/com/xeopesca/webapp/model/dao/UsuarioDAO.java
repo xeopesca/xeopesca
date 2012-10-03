@@ -2,62 +2,74 @@ package com.xeopesca.webapp.model.dao;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
-import com.xeopesca.util.HibernateUtil;
+import com.xeopesca.tutorial.util.JPAUtil;
 import com.xeopesca.webapp.model.vos.Usuario;
 
-public class UsuarioDAO {
+public class UsuarioDAO
+{
 
-	@SuppressWarnings("unchecked")
-	public void listUsuarios() {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		Transaction transaction = null;
-		try {
-			transaction = session.beginTransaction();
-			List<Usuario> usuarios = session.createQuery("from Usuario").list();
+	public List listUsuarios()
+	{
 
-			for (Usuario usuario : usuarios) {
-				System.out.println(usuario.getLogin());
-			}
+		EntityManager em = JPAUtil.createEntityManager();
+		em.getTransaction().begin();
+		Query query = em.createQuery("from Event ", Usuario.class);
+		List <? extends Usuario> salida = query.getResultList();
+		return query.getResultList();
 
-			transaction.commit();
-		} catch (HibernateException e) {
-			transaction.rollback();
-			e.printStackTrace();
-		} finally {
-			session.close();
+	}
+
+	public void Store(String nome, String login)
+	{
+		if (login.length() == 0)
+		{
+			throw new RuntimeException("Login is empty ");
+		}
+		if (findById(login) == null)
+		{
+
+			EntityManager em = JPAUtil.createEntityManager();
+			em.getTransaction().begin();
+			Usuario user = new Usuario();
+			user.setLogin(login);
+			user.setNome(nome);
+			em.persist(user);
+			em.getTransaction().commit();
+			em.close();
 		}
 	}
-	
-	public void updateUsuario(Usuario user) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		Transaction transaction = null;
-		try {
-			transaction = session.beginTransaction();
-			List<Usuario> usuarios = session.createQuery("from Usuario").list();
 
-			for (Usuario usuario : usuarios) {
-				System.out.println(usuario.getLogin());
-			}
-
-			transaction.commit();
-		} catch (HibernateException e) {
-			transaction.rollback();
-			e.printStackTrace();
-		} finally {
-			session.close();
+	public Usuario findById(String login)
+	{
+		if (login.trim().length() == 0)
+		{
+			throw new RuntimeException("Login is empty ");
 		}
-	}
-	
+		EntityManager em = JPAUtil.createEntityManager();
+		em.getTransaction().begin();
 
-	public static void main(String[] args) {
+		Query query = em.createQuery(" select u from Usuario u "
+				+ " where (u.login = :login) ", Usuario.class);
+		query.setParameter("filter", login);
 
-		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		List<Usuario> listaUsuarios = ((Query) query).getResultList();
 
-		usuarioDAO.listUsuarios();
+		/***/
+		// TODO
+		if (listaUsuarios.isEmpty())
+		{
+			return null;
+		}
+
+		return listaUsuarios.get(0);
+
 	}
 
 }
+
