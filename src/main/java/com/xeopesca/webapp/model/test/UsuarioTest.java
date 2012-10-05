@@ -5,13 +5,14 @@ import java.util.List;
 
 import com.xeopesca.webapp.model.dao.UsuarioDAO;
 import com.xeopesca.webapp.model.vos.Usuario;
+import com.xeopesca.webapp.model.vos.Usuario2;
 
 public class UsuarioTest
 {
 	private static final String separador = "*********************************************************************";
 
 	public static void main(String[] args) {
-		
+	/*	
 		System.out.println(separador);
 		System.out.println("Listado de Usuarios");
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
@@ -23,14 +24,15 @@ public class UsuarioTest
 			Usuario user = (Usuario) listaUsuarios.get(i);
 			System.out.println("Usuario: \t"+user.getLogin()+"\t nome: \t"+user.getNome());
 		
-		}
+		}*/
 		
+		UsuarioDAO userDao  = new UsuarioDAO();
 		System.out.println(separador);
 		System.out.println("Update Usuario");
-		Usuario usuario = new Usuario();
-		//usuario.setLogin("loginTest");
-		//usuario.setNome("nomeTest");
-		usuarioDAO.Store("loginTest", "nomeTest");
+		Usuario2 usuario = new Usuario2();
+		usuario.setLogin("loginTest");
+		usuario.setNome("nomeTest");
+		userDao.Store("loginTest", "nomeTest");
 		
 		System.out.println(separador);
 		

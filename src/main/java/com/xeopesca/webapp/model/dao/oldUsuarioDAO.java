@@ -6,21 +6,21 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.xeopesca.util.HibernateUtil;
-import com.xeopesca.webapp.model.vos.Usuario;
+import com.xeopesca.util.HibernateUtilSessionFactory;
+import com.xeopesca.webapp.model.vos.Usuario2;
 
 public class oldUsuarioDAO {
 
 	@SuppressWarnings("unchecked")
 	public void listUsuarios() {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtilSessionFactory.getSessionFactory().openSession();
 		Transaction transaction = null;
 		try {
 			transaction = session.beginTransaction();
-			List<Usuario> usuarios = session.createQuery("from Usuario").list();
+			List<Usuario2> usuario2s = session.createQuery("from Usuario").list();
 
-			for (Usuario usuario : usuarios) {
-				System.out.println(usuario.getLogin());
+			for (Usuario2 usuario2 : usuario2s) {
+				System.out.println(usuario2.getLogin());
 			}
 
 			transaction.commit();
@@ -32,15 +32,15 @@ public class oldUsuarioDAO {
 		}
 	}
 	
-	public void updateUsuario(Usuario user) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+	public void updateUsuario(Usuario2 user) {
+		Session session = HibernateUtilSessionFactory.getSessionFactory().openSession();
 		Transaction transaction = null;
 		try {
 			transaction = session.beginTransaction();
-			List<Usuario> usuarios = session.createQuery("from Usuario").list();
+			List<Usuario2> usuario2s = session.createQuery("from Usuario").list();
 
-			for (Usuario usuario : usuarios) {
-				System.out.println(usuario.getLogin());
+			for (Usuario2 usuario2 : usuario2s) {
+				System.out.println(usuario2.getLogin());
 			}
 
 			transaction.commit();

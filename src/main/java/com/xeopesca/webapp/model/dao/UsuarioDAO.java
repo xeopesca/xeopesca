@@ -8,10 +8,12 @@ import javax.persistence.Query;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import com.xeopesca.tutorial.util.JPAUtil;
-import com.xeopesca.webapp.model.vos.Usuario;
 
-public class UsuarioDAO
+import com.xeopesca.util.JPAUtil;
+import com.xeopesca.webapp.model.vos.Usuario;
+import com.xeopesca.webapp.model.vos.Usuario2;
+
+public class UsuarioDAO 
 {
 
 	public List listUsuarios()
@@ -31,21 +33,21 @@ public class UsuarioDAO
 		{
 			throw new RuntimeException("Login is empty ");
 		}
-		if (findById(login) == null)
-		{
+	//	if (findById(login) == null)
+		//{
 
 			EntityManager em = JPAUtil.createEntityManager();
 			em.getTransaction().begin();
-			Usuario user = new Usuario();
+			Usuario2 user = new Usuario2();
 			user.setLogin(login);
 			user.setNome(nome);
 			em.persist(user);
 			em.getTransaction().commit();
 			em.close();
-		}
+		//}
 	}
 
-	public Usuario findById(String login)
+	public Usuario2 findById(String login)
 	{
 		if (login.trim().length() == 0)
 		{
@@ -55,10 +57,10 @@ public class UsuarioDAO
 		em.getTransaction().begin();
 
 		Query query = em.createQuery(" select u from Usuario u "
-				+ " where (u.login = :login) ", Usuario.class);
+				+ " where (u.login = :login) ", Usuario2.class);
 		query.setParameter("filter", login);
 
-		List<Usuario> listaUsuarios = ((Query) query).getResultList();
+		List<Usuario2> listaUsuarios = ((Query) query).getResultList();
 
 		/***/
 		// TODO

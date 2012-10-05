@@ -3,9 +3,9 @@ package com.xeopesca.webapp.model.test;
 import java.util.Date;
 import java.util.List;
 
-import com.xeopesca.tutorial.event.Event;
-import com.xeopesca.tutorial.event.EventManager;
-import com.xeopesca.tutorial.util.JPAUtil;
+import com.xeopesca.util.JPAUtil;
+import com.xeopesca.webapp.model.dao.EventManager;
+import com.xeopesca.webapp.model.vos.Event;
 
 public class EventTest {
 	
