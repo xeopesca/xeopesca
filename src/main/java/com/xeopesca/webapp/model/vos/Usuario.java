@@ -27,7 +27,7 @@ public class Usuario implements java.io.Serializable {
 	private long id;
 	
 	//@Type(type = "com.xeopesca.webapp.model.vos.Barco")
-	private Barco barco;
+	//private Barco barco;
 	private String login;
 	private String nome;
 	private String apelidos;
@@ -41,7 +41,7 @@ public class Usuario implements java.io.Serializable {
 	public Usuario(long id, Barco barco, String login, String nome,
 			String apelidos, String contrasinal, String tipousuario) {
 		this.id = id;
-		this.barco = barco;
+	//	this.barco = barco;
 		this.login = login;
 		this.nome = nome;
 		this.apelidos = apelidos;
@@ -52,7 +52,7 @@ public class Usuario implements java.io.Serializable {
 	public Usuario(long id, Barco barco, String login, String nome,
 			String apelidos, String contrasinal, String tipousuario, Set barcos) {
 		this.id = id;
-		this.barco = barco;
+//		this.barco = barco;
 		this.login = login;
 		this.nome = nome;
 		this.apelidos = apelidos;
@@ -69,14 +69,14 @@ public class Usuario implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public Barco getBarco() {
+	/*public Barco getBarco() {
 		return this.barco;
 	}
 
 	public void setBarco(Barco barco) {
 		this.barco = barco;
 	}
-
+*/
 	public String getLogin() {
 		return this.login;
 	}
