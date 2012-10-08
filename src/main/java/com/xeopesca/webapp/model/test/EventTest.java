@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.xeopesca.util.JPAUtil;
-import com.xeopesca.webapp.model.dao.EventManager;
+import com.xeopesca.webapp.model.dao.EventDAO;
 import com.xeopesca.webapp.model.vos.Event;
 
 public class EventTest {
@@ -12,7 +12,7 @@ public class EventTest {
 	
 	public static void main(String[] args) {
 		
-		newEvent (args);
+		newEvent ();
 		System.out.println("********************");
 		listEvents();
 		System.out.println("********************");
@@ -22,10 +22,10 @@ public class EventTest {
 	/**
 	 * Agrega un novo evento a base de datos
 	 * */
-	private static void newEvent(String[] args){
-		EventManager mgr = new EventManager();
+	private static void newEvent(){
+		EventDAO mgr = new EventDAO();
 
-		args = "store POINT(10 56)".split(" ");
+		String[] args = "store POINT(10 56)".split(" ");
 
 		// args =
 		// "find POLYGON((1\\ 1,20\\ 1,20\\ 20,1\\ 20,1\\ 1)) ".split(" ");
@@ -51,7 +51,7 @@ public class EventTest {
 	 * Lista todolos eventos da base de datos
 	 * */
 	private static void listEvents(){
-		EventManager mgr = new EventManager();
+		EventDAO mgr = new EventDAO();
 
 		List events = mgr.findAll();
 		for (int i = 0; i < events.size(); i++) {
