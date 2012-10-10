@@ -19,7 +19,10 @@ public class UsuarioTest
 		Usuario usuario = new Usuario();
 		usuario.setLogin("loginTest");
 		usuario.setNome("nomeTest");
-		userDao.Save(usuario);
+		usuario.setApelidos("apelidos");
+		usuario.setTipousuario("probas");
+		
+		userDao.create(usuario);
 		
 		System.out.println(separador);
 		
