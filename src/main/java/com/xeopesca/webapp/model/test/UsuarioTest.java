@@ -17,10 +17,11 @@ public class UsuarioTest
 		System.out.println(separador);
 		System.out.println("Create Usuario");
 		Usuario usuario = new Usuario();
-		usuario.setLogin("loginTest");
+		usuario.setLogin("pableras");
 		usuario.setNome("nomeTest");
 		usuario.setApelidos("apelidos");
 		usuario.setTipousuario("probas");
+		usuario.setContrasinal("xxxx");
 		
 		userDao.create(usuario);
 		
