@@ -9,7 +9,7 @@ public class NovoUsuarioController {
 
     @RequestMapping("/novoUsuario")
     public String helloWorld(Model model) {
-        model.addAttribute("message", "Hello World!");
+        model.addAttribute("message", "novousuario xxx funciona!!!");
         return "novoUsuario"; 
     }
 }
