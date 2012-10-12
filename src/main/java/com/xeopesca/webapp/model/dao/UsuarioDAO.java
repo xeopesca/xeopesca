@@ -11,12 +11,31 @@ import org.hibernate.Transaction;
 
 import com.xeopesca.util.JPAUtil;
 import com.xeopesca.util.dao.GenericDaoHibernate;
+import com.xeopesca.webapp.model.vos.Evento;
 import com.xeopesca.webapp.model.vos.Usuario;
 import com.xeopesca.webapp.model.vos.Usuario;
 
 public class UsuarioDAO  extends GenericDaoHibernate<Usuario>
 {
 
+	
+	public Usuario finByLogin(String login) {
+		EntityManager em = JPAUtil.createEntityManager();
+		em.getTransaction().begin();
+		String queryStri=" FROM Usuario u  " +
+						" WHERE (u.login like :login)";
+		
+		List<Usuario> saida = em.createQuery(queryStri).setParameter("login", login).getResultList();
+		
+		
+		if (saida.isEmpty()){
+			return null;
+		}else{
+		   return (Usuario) saida.get(0);
+		}
+		
+	}
+	
 	/*
 	public void Save(String nome, String login)
 	{
