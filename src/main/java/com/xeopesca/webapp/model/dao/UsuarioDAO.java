@@ -36,6 +36,17 @@ public class UsuarioDAO  extends GenericDaoHibernate<Usuario>
 		
 	}
 	
+	
+public List<Usuario> lista (){
+	EntityManager em = JPAUtil.createEntityManager();
+	em.getTransaction().begin();
+	String queryStri=" FROM Usuario u " +
+			         " ORDER by u.login ASC" ;
+
+	List<Usuario> saida = em.createQuery(queryStri).getResultList();
+	
+		return saida;
+}	
 	/*
 	public void Save(String nome, String login)
 	{

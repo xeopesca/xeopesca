@@ -1,5 +1,6 @@
 package com.xeopesca.util.dao;
 
+import java.util.List;
 import java.util.Map;
 
 public interface GenericDao<T> {
@@ -20,4 +21,6 @@ public interface GenericDao<T> {
 	T find(Object id);
 
 	T update(T t);
+	
+
 }

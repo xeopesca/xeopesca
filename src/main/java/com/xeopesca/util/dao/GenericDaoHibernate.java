@@ -11,7 +11,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.hibernate.Criteria;
+
 import com.xeopesca.util.JPAUtil;
+import com.xeopesca.webapp.model.vos.Evento;
+import com.xeopesca.webapp.model.vos.Usuario;
 
 //TODO
 public abstract class GenericDaoHibernate<T> implements GenericDao<T> {
@@ -73,4 +77,11 @@ public abstract class GenericDaoHibernate<T> implements GenericDao<T> {
     	return this.em.merge(t);
         
     }
+    
+    
+    
+   
+    
+    
+    
 }

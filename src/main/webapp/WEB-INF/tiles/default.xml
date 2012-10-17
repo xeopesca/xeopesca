@@ -16,7 +16,11 @@
    <put-attribute name="body" value="/WEB-INF/views/helloWorld.jsp" />
  </definition>
 
-  <definition name="novoUsuario" extends="mainTemplate">
-   <put-attribute name="body" value="/WEB-INF/views/novoUsuario.jsp" />
+  <definition name="listaUsuarios" extends="mainTemplate">
+   <put-attribute name="body" value="/WEB-INF/views/UsuarioLista.jsp" />
  </definition>
+  <definition name="usuarioNovo" extends="mainTemplate">
+   <put-attribute name="body" value="/WEB-INF/views/UsuarioNovo.jsp" />
+ </definition>
+ 
 </tiles-definitions>
