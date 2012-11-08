@@ -4,23 +4,103 @@
       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
 
- <definition name="mainTemplate" template="/WEB-INF/layouts/classic.jsp">
-   <put-attribute name="header" value="" />
-   <put-attribute name="menu" value="" />
-   <put-attribute name="body" value="" />
-   <put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
- </definition>
+	<definition name="mainTemplate" template="/WEB-INF/layouts/classic.jsp">
+		<put-attribute name="header" value="" />
+		<put-attribute name="menu" value="/WEB-INF/layouts/menu.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
+	</definition>
+	
+	<definition name="armadorTemplate" template="/WEB-INF/layouts/classic.jsp">
+		<put-attribute name="header" value="" />
+		<put-attribute name="menu" value="/WEB-INF/layouts/armador/menu.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
+	</definition>
 
+	<definition name="loginTemplate" template="/WEB-INF/layouts/login/templateLogin.jsp">
+		<put-attribute name="header" value="" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
+	</definition>
 
- <definition name="helloWorld" extends="mainTemplate">
-   <put-attribute name="body" value="/WEB-INF/views/helloWorld.jsp" />
- </definition>
+	<!-- -->
+	<definition name="login" extends="loginTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/login.jsp" />
+	</definition>
 
-  <definition name="listaUsuarios" extends="mainTemplate">
-   <put-attribute name="body" value="/WEB-INF/views/UsuarioLista.jsp" />
- </definition>
-  <definition name="usuarioNovo" extends="mainTemplate">
-   <put-attribute name="body" value="/WEB-INF/views/UsuarioNovo.jsp" />
- </definition>
- 
+	<definition name="helloWorld" extends="mainTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/helloWorld.jsp" />
+	</definition>
+	<!-- ********************* Administrador *************************** -->
+	<!-- Usuario -->
+	<definition name="novoUsuario" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/usuario/novoUsuario.jsp" />
+	</definition>
+	<definition name="listaUsuarios" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/usuario/listaUsuarios.jsp" />
+	</definition>
+
+	<definition name="buscadorUsuario" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/usuario/buscadorUsuario.jsp" />
+	</definition>
+
+	<definition name="editarUsuario" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/usuario/editarUsuario.jsp" />
+	</definition>
+
+	<!-- Especie -->
+	<definition name="novaEspecie" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/especie/novaEspecie.jsp" />
+	</definition>
+
+	<definition name="listaEspecies" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/especie/listaEspecies.jsp" />
+	</definition>
+	
+	<definition name="editarEspecie" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/especie/editarEspecie.jsp" />
+	</definition>
+
+	<definition name="buscadorEspecie" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/especie/buscadorEspecie.jsp" />
+	</definition>
+	
+	<!-- Arte  -->
+		<definition name="novoArte" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/arte/novaArte.jsp" />
+	</definition>
+
+	<definition name="listaArte" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/arte/listaArte.jsp" />
+	</definition>
+	
+	<definition name="editarArte" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/arte/editarArte.jsp" />
+	</definition>
+	<definition name="buscadorArte" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/arte/buscadorArte.jsp" />
+	</definition>
+	<!-- ********************* Armador *************************** -->
+	<definition name="indexArmador" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/armador/index.jsp" />
+	</definition>
+	
+	
+	
+
 </tiles-definitions>
+

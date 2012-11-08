@@ -6,7 +6,6 @@ import java.util.Random;
 
 import com.xeopesca.util.JPAUtil;
 import com.xeopesca.webapp.model.dao.EventoDAO;
-import com.xeopesca.webapp.model.vos.Event;
 import com.xeopesca.webapp.model.vos.Evento;
 
 public class EventoTest {

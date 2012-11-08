@@ -2,20 +2,14 @@ package com.xeopesca.util.dao;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
-import org.hibernate.Criteria;
 
 import com.xeopesca.util.JPAUtil;
-import com.xeopesca.webapp.model.vos.Evento;
-import com.xeopesca.webapp.model.vos.Usuario;
 
 //TODO
 public abstract class GenericDaoHibernate<T> implements GenericDao<T> {
@@ -72,16 +66,14 @@ public abstract class GenericDaoHibernate<T> implements GenericDao<T> {
     }
 
     public T update(final T t) {
-        
     	
-    	return this.em.merge(t);
-        
+    	this.em = JPAUtil.createEntityManager();
+    	this.em.getTransaction().begin();
+    	T obxecto = this.em.merge(t);
+    	
+    	//this.em.refresh(obxecto);
+    	this.em.getTransaction().commit();
+      	this.em.close();
+    	return obxecto ;
     }
-    
-    
-    
-   
-    
-    
-    
 }
