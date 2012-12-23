@@ -13,6 +13,12 @@
 			<li><a href="/spring/novaEspecie">Nova Especie</a></li>
 			<li><a href="/spring/buscadorEspecie">Buscar Especies	</a></li>
 			<li><a href="/spring/listaEspecies">Lista Especies</a></li>
+			<li><a href="/spring/novoNomePopular">Novo nome popular</a></li>
+			<li><a href="/spring/listaNomePopular">Lista nome popular</a></li>
+			<li><a href="/spring/buscadorNomePopular">Buscar nome popular</a></li>
+			
+			
+			
 		</ul>
 	</li>
 	<li><a href="#" class="menulink">Xestionar Artes</a>

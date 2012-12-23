@@ -7,9 +7,8 @@
 
 
 <div id="ReportDetails">
-	<h2>Buscar especie</h2>
+	<h2>Buscar arte</h2>
     
-    <c:out value="${mensaxe}" />
 
 	<form:form action="buscadorArte" commandName="arte">
 

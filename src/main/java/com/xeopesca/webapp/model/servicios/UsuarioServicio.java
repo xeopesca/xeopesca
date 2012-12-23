@@ -38,6 +38,19 @@ public class UsuarioServicio {
 		return false;
 
 	}
+	
+	public static Usuario getUsuario(String  login) {
+		UsuarioDAO userDao = new UsuarioDAO();
+		Usuario userRecuperado;
+
+		userRecuperado = userDao.finByLogin(login);
+		if (null == userRecuperado) {
+			return null;
+		}
+		
+		return userRecuperado;
+
+	}
 
 	public static void removeUser(Usuario usuario) {
 		UsuarioDAO userDao = new UsuarioDAO();

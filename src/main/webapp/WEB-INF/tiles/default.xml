@@ -10,8 +10,8 @@
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
 	</definition>
-	
-	<definition name="armadorTemplate" template="/WEB-INF/layouts/classic.jsp">
+
+	<definition name="armadorTemplate" template="/WEB-INF/layouts/armador/plantilla.jsp">
 		<put-attribute name="header" value="" />
 		<put-attribute name="menu" value="/WEB-INF/layouts/armador/menu.jsp" />
 		<put-attribute name="body" value="" />
@@ -63,7 +63,7 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/especie/listaEspecies.jsp" />
 	</definition>
-	
+
 	<definition name="editarEspecie" extends="mainTemplate">
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/especie/editarEspecie.jsp" />
@@ -73,9 +73,9 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/especie/buscadorEspecie.jsp" />
 	</definition>
-	
-	<!-- Arte  -->
-		<definition name="novoArte" extends="mainTemplate">
+
+	<!-- Arte -->
+	<definition name="novoArte" extends="mainTemplate">
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/arte/novaArte.jsp" />
 	</definition>
@@ -84,7 +84,7 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/arte/listaArte.jsp" />
 	</definition>
-	
+
 	<definition name="editarArte" extends="mainTemplate">
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/arte/editarArte.jsp" />
@@ -93,14 +93,52 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/arte/buscadorArte.jsp" />
 	</definition>
-	<!-- ********************* Armador *************************** -->
-	<definition name="indexArmador" extends="mainTemplate">
+
+	<!-- NomePopular -->
+	<definition name="novoNomePopular" extends="mainTemplate">
 		<put-attribute name="body"
-			value="/WEB-INF/views/armador/index.jsp" />
+			value="/WEB-INF/views/admin/nomepopular/novoNomePopular.jsp" />
+	</definition>
+
+	<definition name="listaNomePopular" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/nomepopular/listaNomePopular.jsp" />
+	</definition>
+
+	<definition name="editarNomePopular" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/nomepopular/editarNomePopular.jsp" />
+	</definition>
+	<definition name="buscadorNomePopular" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/nomepopular/buscadorNomePopular.jsp" />
 	</definition>
 	
+
+	<!-- ********************* Armador *************************** -->
+	<definition name="indexArmador" extends="armadorTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/armador/portada.jsp" />
+	</definition>
 	
-	
+	<!-- Barco  -->
+	<definition name="novoBarco" extends="armadorTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/armador/barco/novoBarco.jsp" />
+	</definition>
+
+	<definition name="listaBarco" extends="armadorTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/armador/barco/listaBarco.jsp" />
+	</definition>
+
+	<definition name="editarBarco" extends="armadorTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/armador/barco/editarBarco.jsp" />
+	</definition>
+	<definition name="buscadorBarco" extends="armadorTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/armador/barco/buscadorBarco.jsp" />
+	</definition>
 
 </tiles-definitions>
 

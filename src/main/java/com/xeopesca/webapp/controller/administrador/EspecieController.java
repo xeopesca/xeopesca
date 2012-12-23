@@ -61,7 +61,7 @@ public class EspecieController {
 		return "listaEspecies";
 	}
 
-	// SAIDA FORMULARIO -- eleminar
+	// SAIDA FORMULARIO -- eliminar especie
 	@RequestMapping("/deleteEspecie/{id}")
 	public String borrarUsuario(@PathVariable("id") Long id) {
 

@@ -7,7 +7,7 @@
 
 
 <div id="ReportDetails">
-	<h2>Nova Especie</h2>
+	<h2>Editar arte</h2>
 
 	<form:form action="/spring/updateEspecie" commandName="arte">
 	    <input id="id" name="id" type="hidden" value="${arte.id}"/>

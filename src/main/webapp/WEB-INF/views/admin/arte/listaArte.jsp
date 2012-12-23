@@ -7,7 +7,7 @@
 
 
 <div id="ReportDetails">
-	<h2>Listado especies</h2>
+	<h2>Listado de artes</h2>
 
 	<table>
 		<tr>

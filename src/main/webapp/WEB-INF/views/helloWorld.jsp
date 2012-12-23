@@ -7,7 +7,7 @@
 
 
 <div id="ReportDetails">
-	<h2>Listado usuarios</h2>
+	<h2>Listado usuariosxxx</h2>
 	<table>
 		<tr>
 			<th class="ReportTableHeaderCell">Tipo</th>

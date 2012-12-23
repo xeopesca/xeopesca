@@ -7,8 +7,7 @@
 
 
 <div id="ReportDetails">
-	<h2>Nova Especie</h2>
-	<!--<c:out value="${message}" /> -->
+	<h2>Nova arte</h2>
 
 	<form:form action="novoArte" commandName="arte">
 

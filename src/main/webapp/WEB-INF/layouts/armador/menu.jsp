@@ -21,9 +21,6 @@
 </ul>
 </div> <br> <br> 
 
-
-
-    
 <script type="text/javascript">
 	var menu=new menu.dd("menu");
 	menu.init("menu","menuhover");
