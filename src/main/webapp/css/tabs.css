@@ -1,0 +1,71 @@
+/* tamaño y forma del panel principal */
+#panel {
+	position: relative;
+	width:300px;
+	height: 300px;
+	margin: 0px 0px 0px 30px;
+}
+
+/* configuracion de las pestañas */
+#tabs {
+	position:absolute;
+	left: 0px;
+	top: 0px;
+	margin:0;
+	padding:0;
+	width: 100%;
+	overflow: hidden;
+	z-index: 20;
+}
+	#tabs li {
+		float:left;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-khtml-user-select: none;
+		user-select: none;
+		list-style: none;
+		margin: 1px 1px 0px 0px;
+		display: block;
+		height: 21px;
+		line-height: 21px;
+		padding: 0px 8px;
+		outline: 0px none;
+		font-family: arial;
+		font-size: 14px;
+		text-decoration: none;
+		color: #000;
+		border: 1px solid #91A7B4;
+		border-bottom-width: 0px;
+		background: #fff;
+		border-radius: 4px 4px 0px 0px;
+		cursor: pointer;
+	}
+	#tabs li.active {
+		margin-top: 0px;
+		height: 21px;
+		line-height: 19px;
+		border-top: 3px solid #324A62;
+		cursor: default;	
+	}
+
+/* Configuración de los paneles */
+#panel #paneles {
+	position:absolute;
+	left: 0px;
+	top: 23px;
+	width: 800px; 
+	height: 500px;
+	border: 1px solid #91a7b4;
+	border-radius: 0px 4px 4px 4px;
+	background: #fff;
+	overflow: hidden;
+}
+	#panel #paneles > div{
+		margin:10px;
+	
+		font-family: arial;
+		font-size: 12px;
+		text-decoration: none;
+		color: #000;
+		overflow: auto;
+	}
