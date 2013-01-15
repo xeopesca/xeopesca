@@ -12,16 +12,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.validation.Valid;
 
-import com.xeopesca.webapp.model.servicios.ArteServicio;
+import com.xeopesca.util.ConstantesUtil;
 import com.xeopesca.webapp.model.servicios.EspecieServicio;
 import com.xeopesca.webapp.model.servicios.NomepopularServicio;
-import com.xeopesca.webapp.model.servicios.UsuarioServicio;
-import com.xeopesca.webapp.model.vos.Arte;
 import com.xeopesca.webapp.model.vos.Especie;
 import com.xeopesca.webapp.model.vos.Nomepopular;
-import com.xeopesca.webapp.model.vos.Usuario;
 
 @Controller
 public class NomePopularController {
@@ -45,7 +41,7 @@ public class NomePopularController {
 	// -------------------------- NOVO NomePopular
 	// -------------------------------------
 	// ENTRADA FORMULARIO -- NomePopular
-	@RequestMapping(value = "/novoNomePopular", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/novoNomePopular", method = RequestMethod.GET)
 	public String novaArte(Model model, Nomepopular nomePopular) {
 
 		List<Especie> listaEspecie = EspecieServicio.listaDeEspecies();
@@ -57,18 +53,18 @@ public class NomePopularController {
 	}
 
 	// SAIDA FORMULARIO
-	@RequestMapping(value = "/novoNomePopular", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/novoNomePopular", method = RequestMethod.POST)
 	public String novaArte(Nomepopular nomePopular, BindingResult result) {
 
 		NomepopularServicio.saveNomePopular(nomePopular);
 
-		return "redirect:/spring/listaNomePopular";
+		return "redirect:/xeopesca/admin/listaNomePopular";
 	}
 
 	// -------------------------- LISTADO de NOMES POPULARES
 	// --------------------------------
 	// ENTRADA LISTA DE NOMES POPULARES
-	@RequestMapping("/listaNomePopular")
+	@RequestMapping("/admin/listaNomePopular")
 	public String listaUsuarios(Model model) {
 
 		List<Nomepopular> nomes = new ArrayList<Nomepopular>();
@@ -79,16 +75,16 @@ public class NomePopularController {
 	}
 
 	// -------------------------- ELIMINAR NOME POPULAR
-	@RequestMapping("/deleteNomepopular/{id}")
+	@RequestMapping("/admin/deleteNomepopular/{id}")
 	public String borrarUsuario(@PathVariable("id") Long id) {
 
 		NomepopularServicio.removeNomePopular(id);
 
-		return "redirect:/spring/listaNomePopular";
+		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/admin/listaNomePopular";
 	}
 
 	// -------------------------- EDITAR NOME POPULAR
-	@RequestMapping("/editarNomePopular/{id}")
+	@RequestMapping("/admin/editarNomePopular/{id}")
 	public String editarEspecie(@PathVariable("id") Long id, Model model) {
 		Nomepopular nome = NomepopularServicio.buscarNomepopular(id);
 		List<Especie> listaEspecie = EspecieServicio.listaDeEspecies();
@@ -99,19 +95,19 @@ public class NomePopularController {
 	}
 
 	// SAIDA FORMULARIO editar Especie
-	@RequestMapping(value = "/editarNomePopular", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/editarNomePopular", method = RequestMethod.POST)
 	public String editarEspecie(Nomepopular nomepopular, BindingResult result) {
 
 		NomepopularServicio.updateNomepopularDao(nomepopular);
 
-		return "redirect:/spring/listaNomePopular";
+		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/admin/listaNomePopular";
 	}
 
 	
 	//------------------------ BUSCADOR ESPECIE
 	
 		// BUSCADOR buscadorEspecie - Entrada
-			@RequestMapping(value = "/buscadorNomePopular", method = RequestMethod.GET)
+			@RequestMapping(value = "/admin/buscadorNomePopular", method = RequestMethod.GET)
 			public String buscadorEspecie(Model model, Nomepopular nome) {
 				model.addAttribute("nome", nome);
 				return "buscadorNomePopular";
@@ -119,7 +115,7 @@ public class NomePopularController {
 			
 			
 			// SAIDA FORMULARIO BUSCADOR 
-			@RequestMapping(value = "/buscadorNomePopular", method = RequestMethod.POST)
+			@RequestMapping(value = "/admin/buscadorNomePopular", method = RequestMethod.POST)
 			public String buscadorUsuario(Nomepopular nome,Model model) {
 				List<Nomepopular> lista = NomepopularServicio.buscarNomePopular(nome.getNome());
 

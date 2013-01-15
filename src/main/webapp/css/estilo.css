@@ -34,6 +34,7 @@ th {
 	color: #eeeeee;
 }
 
+
 #ReportHeader {
 	padding: 12px;
 	background-color: #009ACE;
@@ -135,6 +136,13 @@ th {
 	text-decoration: none;
 }
 
+.iconheader{
+	position: absolute;
+	top: 25px;
+	right: 30px;
+	float: right;
+} 
+	
 /** menu javascript */
 ul.menu {
 	font-size: 11px;

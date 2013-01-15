@@ -10,7 +10,7 @@
 	<h2>Buscar especie</h2>
     
 
-	<form:form action="buscadorNomePopular" commandName="nome">
+	<form:form action="/xeopesca/armador/buscadorNomePopular" commandName="nome">
 
 		<div style="color: #FF0000;">
 			<form:errors path="nome" />

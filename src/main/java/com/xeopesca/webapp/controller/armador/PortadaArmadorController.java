@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PortadaArmadorController {
    
     
-    @RequestMapping("/indexArmador")
+    @RequestMapping("/armador")
     public String helloWorld(Model model) {
         model.addAttribute("message", "Hello World!");
         return "indexArmador"; 

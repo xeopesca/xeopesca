@@ -8,7 +8,7 @@
 
 <div id="ReportDetails">
 	<h2>Novo barcor</h2>
-	<form:form method="POST" action="novoBarco"
+	<form:form method="POST" action="/xeopesca/armador/novoBarco"
 		commandName="barco">
 
 		<div style="color: #FF0000;"></div>

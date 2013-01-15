@@ -19,7 +19,10 @@
 
 
 <div id="ReportHeader">
-	<h1>xeoPesca </h1>	
+	<h1>xeoPesca 
+	
+	</h1>	
+
 	<tiles:insertAttribute name="menu" />
 
 

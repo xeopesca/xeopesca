@@ -14,6 +14,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.xeopesca.util.ConstantesUtil;
 import com.xeopesca.webapp.model.servicios.BarcoServicio;
 import com.xeopesca.webapp.model.servicios.EspecieServicio;
 import com.xeopesca.webapp.model.vos.Barco;
@@ -33,24 +34,24 @@ public class BarcoController {
 	// -------------------------- NOVO BARCO
 	// -------------------------------------
 	// ENTRADA FORMULARIO -- novoBarco
-	@RequestMapping(value = "/novoBarco", method = RequestMethod.GET)
+	@RequestMapping(value = "/armador/novoBarco", method = RequestMethod.GET)
 	public String novoEspecie(Model model, Barco barco) {
 		model.addAttribute("barco", barco);
 		return "novoBarco";
 	}
 
 	// SAIDA FORMULARIO
-	@RequestMapping(value = "/novoBarco", method = RequestMethod.POST)
+	@RequestMapping(value = "/armador/novoBarco", method = RequestMethod.POST)
 	public String novaEspecie(Barco barco, BindingResult result) {
 		BarcoServicio.saveBarco(barco);
 
-		return "redirect:/spring/listaBarco";
+		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaBarco";
 	}
 
 	// -------------------------- LISTADO BARCOS
 	// --------------------------------
 	// ENTRADA LISTA BARCOS
-	@RequestMapping("/listaBarco")
+	@RequestMapping("/armador/listaBarco")
 	public String listaUsuarios(Model model) {
 
 		List<Barco> barcos = new ArrayList<Barco>();
@@ -62,18 +63,18 @@ public class BarcoController {
 	}
 
 	// SAIDA FORMULARIO -- eliminar barco
-	@RequestMapping("/deleteBarco/{id}")
+	@RequestMapping("/armador/deleteBarco/{id}")
 	public String borrarUsuario(@PathVariable("id") String folio) {
 		
 		BarcoServicio.removeBarco(folio);
 
-		return "redirect:/spring/listaBarco";
+		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaBarco";
 	}
 
 	// -------------------------- Editar BARCO
 
 	// Entrada Formulario editarEspecie
-	@RequestMapping("/editarBarco/{id}")
+	@RequestMapping("/armador/editarBarco/{id}")
 	public String editarEspecie(@PathVariable("id") String folio, Model model) {
 		 Barco barco;
 		 List<Barco> lista = BarcoServicio.buscarBarco(folio);
@@ -84,23 +85,23 @@ public class BarcoController {
 			 barco = lista.get(0);
 		 }
 		model.addAttribute("barco", barco);
-		return "editarEspecie";
+		return "editarBarco";
 	}
 
 	// SAIDA FORMULARIO editar Especie
-	@RequestMapping(value = "/editarBarco", method = RequestMethod.POST)
+	@RequestMapping(value = "/armador/editarBarco", method = RequestMethod.POST)
 	public String editarEspecie(@Valid Barco barco, BindingResult result) {
 		if (result.hasErrors()) {
 			return "editarBarco";
 		}
 		BarcoServicio.updateBarco(barco);
-		return "redirect:/spring/listaEspecies";
+		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaEspecies";
 	}
 	
 	//------------------------ BUSCADOR ESPECIE
 	
 	// BUSCADOR buscadorEspecie - Entrada
-		@RequestMapping(value = "/buscadorBarco", method = RequestMethod.GET)
+		@RequestMapping(value = "/armador/buscadorBarco", method = RequestMethod.GET)
 		public String buscadorEspecie(Model model, Especie especie) {
 			model.addAttribute("mensaxe", "inicio");
 			model.addAttribute("especie", especie);
@@ -109,7 +110,7 @@ public class BarcoController {
 		
 		
 		// SAIDA FORMULARIO BUSCADOR 
-		@RequestMapping(value = "/buscadorBarco", method = RequestMethod.POST)
+		@RequestMapping(value = "/armador/buscadorBarco", method = RequestMethod.POST)
 		public String buscadorUsuario(Especie especie,Model model) {
 			List<Especie> lista  = EspecieServicio.buscarEspecie(especie.getnomecientifico()) ;
 
@@ -122,7 +123,6 @@ public class BarcoController {
 			
 			return "buscadorBarco";
 		}
-		//--------------------------------------------------------------
 		
 	
 }

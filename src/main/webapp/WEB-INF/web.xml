@@ -8,13 +8,13 @@ version="2.5">
   <display-name>Archetype Created Web Application</display-name>
   <!-- Provides core MVC application controller -->
   <servlet>
-    <servlet-name>spring</servlet-name>
+    <servlet-name>xeopesca</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
-    <servlet-name>spring</servlet-name>
-    <url-pattern>/spring/*</url-pattern>
+    <servlet-name>xeopesca</servlet-name>
+    <url-pattern>/xeopesca/*</url-pattern>
   </servlet-mapping>
   
   <!-- ** Security   /WEB-INF/applicationContext-security.xml-->

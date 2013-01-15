@@ -9,17 +9,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.validation.Valid;
 
+import com.xeopesca.util.ConstantesUtil;
 import com.xeopesca.webapp.model.servicios.ArteServicio;
-import com.xeopesca.webapp.model.servicios.EspecieServicio;
-import com.xeopesca.webapp.model.servicios.UsuarioServicio;
 import com.xeopesca.webapp.model.vos.Arte;
 import com.xeopesca.webapp.model.vos.Especie;
-import com.xeopesca.webapp.model.vos.Usuario;
 
 @Controller
 public class ArteController {
@@ -35,14 +33,14 @@ public class ArteController {
 	// -------------------------- NOVA ARTE
 	// -------------------------------------
 	// ENTRADA FORMULARIO -- novaArte
-	@RequestMapping(value = "/novoArte", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/novoArte", method = RequestMethod.GET)
 	public String novaArte(Model model, Arte arte) {
 		model.addAttribute("arte", arte);
 		return "novoArte";
 	}
 
 	// SAIDA FORMULARIO
-	@RequestMapping(value = "/novoArte", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/novoArte", method = RequestMethod.POST)
 	public String novaArte(Arte arte, BindingResult result) {
 
 		ArteServicio.saveArte(arte);
@@ -51,22 +49,22 @@ public class ArteController {
 	}
 
 	// ENTRADA LISTA ARTES
-	@RequestMapping("/listaArte")
+	@RequestMapping("/admin/listaArte")
 	public String listaUsuarios(Model model) {
 		model.addAttribute("artes", ArteServicio.listaDeArtes());
 		return "listaArte";
 	}
 
 	// SAIDA Eliminar Arte
-	@RequestMapping("/deleteArte/{id}")
+	@RequestMapping("/admin/deleteArte/{id}")
 	public String borrarUsuario(@PathVariable("id") Long id) {
 		ArteServicio.removeArte(id);
 
-		return "redirect:/spring/listaArte";
+		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/admin/listaArte";
 	}
 
 	// BUSCADOR USUARIO - Entrada
-	@RequestMapping(value = "/buscadorArte", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/buscadorArte", method = RequestMethod.GET)
 	public String buscadorUsuario(Model model, Arte arte) {
 		model.addAttribute("mensaxe", "inicio");
 		model.addAttribute("arte", arte);
@@ -74,7 +72,7 @@ public class ArteController {
 	}
 
 	// SAIDA FORMULARIO BUSCADOR
-	@RequestMapping(value = "/buscadorArte", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/buscadorArte", method = RequestMethod.POST)
 	public String buscadorUsuario(Arte arte, Model model) {
 		List<Arte> lista = ArteServicio.buscarArte(arte.getNome());
 
@@ -90,7 +88,7 @@ public class ArteController {
 
 	// EditarArte
 
-	@RequestMapping("/editarArte/{id}")
+	@RequestMapping("/admin/editarArte/{id}")
 	public String editarUsuario(@PathVariable("id") Long id, Model model) {
 
 		Arte arte = ArteServicio.buscarArte(id);
@@ -99,14 +97,14 @@ public class ArteController {
 	}
 
 	// SAIDA FORMULARIO
-	@RequestMapping(value = "/editarArte", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/editarArte", method = RequestMethod.POST)
 	public String updateUsuario(@Valid Arte arte, BindingResult result) {
 		if (result.hasErrors()) {
 			return "editarArte";
 		}
 
 		ArteServicio.updateArte(arte);
-		return "redirect:/spring/listaArte";
+		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/admin/listaArte";
 	}
 
 }

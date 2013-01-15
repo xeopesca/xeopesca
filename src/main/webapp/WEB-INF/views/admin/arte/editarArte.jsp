@@ -9,7 +9,7 @@
 <div id="ReportDetails">
 	<h2>Editar arte</h2>
 
-	<form:form action="/spring/updateEspecie" commandName="arte">
+	<form:form action="/xeopesca/admin/updateEspecie" commandName="arte">
 	    <input id="id" name="id" type="hidden" value="${arte.id}"/>
 
 		<div style="color: #FF0000;">

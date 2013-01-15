@@ -24,9 +24,14 @@
 		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
 	</definition>
 
-	<!-- -->
+	<!-- Login -->
 	<definition name="login" extends="loginTemplate">
 		<put-attribute name="body" value="/WEB-INF/views/login.jsp" />
+	</definition>
+
+	<definition name="editarConta" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/comun/editarConta.jsp" />
 	</definition>
 
 	<definition name="helloWorld" extends="mainTemplate">

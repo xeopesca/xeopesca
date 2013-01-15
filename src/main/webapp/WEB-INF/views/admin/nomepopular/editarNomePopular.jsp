@@ -10,7 +10,7 @@
 	<h2>Editar nome popular</h2>
 	
 
-	<form:form method="POST" action="/spring/editarNomePopular"
+	<form:form method="POST" action="/xeopesca/admin/editarNomePopular"
 		commandName="nome">
 
 		<div style="color: #FF0000;"></div>

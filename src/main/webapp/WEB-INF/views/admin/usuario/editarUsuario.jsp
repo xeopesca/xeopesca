@@ -1,15 +1,14 @@
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-
 <div id="ReportDetails">
 	<h2>Editar usuario</h2>
 
-	<form:form action="/spring/updateUsuario" commandName="usuario">
+	<form:form action="/xeopesca/admin/updateUsuario" commandName="usuario">
 
 		<div style="color: #FF0000;">
 			<form:errors path="login" />
@@ -29,10 +28,10 @@
 			<tr>
 				<td>Perfil:</td>
 				<td><form:select path="tipousuario" >
-						<form:option value="Admin" label="Admin" />
-						<form:option value="Armador" label="Armador" />
-						<form:option value="Patron" label="Patrón" />
-						<form:option value="Administracion" label="Administración" />
+						<form:option value="ROLE_ADMIN" label="Admin" />
+						<form:option value="ROLE_ARMADOR" label="Armador" />
+						<form:option value="ROLE_PATRON" label="PatrÃ³n" />
+						<form:option value="ROLE_ADMINISTRACION" label="AdministraciÃ³n" />
 
 					</form:select></td>
 			</tr>

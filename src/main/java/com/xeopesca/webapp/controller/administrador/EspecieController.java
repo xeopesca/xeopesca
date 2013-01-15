@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import com.xeopesca.util.ConstantesUtil;
 import com.xeopesca.webapp.model.servicios.EspecieServicio;
 import com.xeopesca.webapp.model.vos.Especie;
 
@@ -23,6 +25,7 @@ public class EspecieController {
 
 	@Autowired
 	private Validator validator;
+	private @Autowired HttpServletRequest request;
 
 	public void setValidator(Validator validator) {
 		this.validator = validator;
@@ -31,26 +34,26 @@ public class EspecieController {
 	// -------------------------- NOVA ESPECIE
 	// -------------------------------------
 	// ENTRADA FORMULARIO -- novaEspecie
-	@RequestMapping(value = "/novaEspecie", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/novaEspecie", method = RequestMethod.GET)
 	public String novoEspecie(Model model, Especie especie) {
 		model.addAttribute("especie", especie);
 		return "novaEspecie";
 	}
 
 	// SAIDA FORMULARIO
-	@RequestMapping(value = "/novaEspecie", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/novaEspecie", method = RequestMethod.POST)
 	public String novaEspecie(Especie especie, BindingResult result) {
-
+		
+		request.getSession().getServletContext().getRealPath("/");
 		EspecieServicio.saveEspecie(especie);
 
-		// UsuarioServicio.saveUsuario(usuario);
-		return "redirect:/spring/listaEspecies";
+		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/admin/listaEspecies";
 	}
 
 	// -------------------------- LISTADO ESPECIE
 	// --------------------------------
 	// ENTRADA LISTA USUARIOS
-	@RequestMapping("/listaEspecies")
+	@RequestMapping("/admin/listaEspecies")
 	public String listaUsuarios(Model model) {
 
 		List<Especie> especies = new ArrayList<Especie>();
@@ -62,18 +65,18 @@ public class EspecieController {
 	}
 
 	// SAIDA FORMULARIO -- eliminar especie
-	@RequestMapping("/deleteEspecie/{id}")
+	@RequestMapping("/admin/deleteEspecie/{id}")
 	public String borrarUsuario(@PathVariable("id") Long id) {
 
 		EspecieServicio.removeEspecie(id);
 
-		return "redirect:/spring/listaEspecies";
+		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/admin/listaEspecies";
 	}
 
 	// -------------------------- Editar ESPECIE
 
 	// Entrada Formulario editarEspecie
-	@RequestMapping("/editarEspecie/{id}")
+	@RequestMapping("/admin/editarEspecie/{id}")
 	public String editarEspecie(@PathVariable("id") Long id, Model model) {
 		Especie especie = EspecieServicio.buscarEspecie(id);
 		model.addAttribute("especie", especie);
@@ -81,20 +84,20 @@ public class EspecieController {
 	}
 
 	// SAIDA FORMULARIO editar Especie
-	@RequestMapping(value = "/updateEspecie", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/updateEspecie", method = RequestMethod.POST)
 	public String editarEspecie(@Valid Especie especie, BindingResult result) {
 		if (result.hasErrors()) {
 			return "editarEspecie";
 		}
 
 		EspecieServicio.updateUsuario(especie);
-		return "redirect:/spring/listaEspecies";
+		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/admin/listaEspecies";
 	}
 	
 	//------------------------ BUSCADOR ESPECIE
 	
 	// BUSCADOR buscadorEspecie - Entrada
-		@RequestMapping(value = "/buscadorEspecie", method = RequestMethod.GET)
+		@RequestMapping(value = "/admin/buscadorEspecie", method = RequestMethod.GET)
 		public String buscadorEspecie(Model model, Especie especie) {
 			model.addAttribute("mensaxe", "inicio");
 			model.addAttribute("especie", especie);
@@ -103,7 +106,7 @@ public class EspecieController {
 		
 		
 		// SAIDA FORMULARIO BUSCADOR 
-		@RequestMapping(value = "/buscadorEspecie", method = RequestMethod.POST)
+		@RequestMapping(value = "/admin/buscadorEspecie", method = RequestMethod.POST)
 		public String buscadorUsuario(Especie especie,Model model) {
 			List<Especie> lista  = EspecieServicio.buscarEspecie(especie.getnomecientifico()) ;
 

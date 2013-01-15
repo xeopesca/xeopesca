@@ -10,7 +10,7 @@
 	<h2>Editar barco</h2>
 	
 
-	<form:form method="POST" action="/spring/editarBarco"
+	<form:form method="POST" action="/xeopesca/armador/editarBarco"
 		commandName="barco">
 
 		<div style="color: #FF0000;"></div>

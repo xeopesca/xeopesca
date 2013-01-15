@@ -10,7 +10,7 @@
 
 
 
-   <http pattern = "/spring/login" security = "none"/>
+   <http pattern = "/xeopesca/login" security = "none"/>
    <http pattern = "/css/**" security = "none"/>
    <http pattern = "/images/**" security = "none"/>
    
@@ -18,8 +18,10 @@
     <http>
     		<!-- <intercept-url pattern="/**" access="permitAll" /> -->  
             
-            <intercept-url pattern="/spring/**" access="ROLE_ADMIN" /> 
-            <form-login login-page='/spring/login' default-target-url='/spring/loginProcess'
+            <intercept-url pattern="/xeopesca/admin/**" access="ROLE_ADMIN" /> 
+            <intercept-url pattern="/xeopesca/armador/**" access="ROLE_ARMADOR" /> 
+            
+            <form-login login-page='/xeopesca/login' default-target-url='/xeopesca/loginProcess'
             always-use-default-target='true' />
             <anonymous />
             <http-basic />
