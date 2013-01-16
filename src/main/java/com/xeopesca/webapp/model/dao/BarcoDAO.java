@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import com.xeopesca.util.JPAUtil;
 import com.xeopesca.util.dao.GenericDaoHibernate;
 import com.xeopesca.webapp.model.vos.Barco;
-import com.xeopesca.webapp.model.vos.Especie;
 
 public class BarcoDAO  extends GenericDaoHibernate<Barco>
 {

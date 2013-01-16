@@ -28,6 +28,7 @@ public class ArteDAO extends GenericDaoHibernate<Arte>{
 		String queryStri=" FROM Arte a  " +
 						" WHERE (a.nome like :nome)";
 		
+		@SuppressWarnings("unchecked")
 		List<Arte> saida = em.createQuery(queryStri).setParameter("nome", nome).getResultList();
 		
 		if (null==saida || saida.isEmpty()){

@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.xeopesca.webapp.model.dao.ArteDAO;
-import com.xeopesca.webapp.model.dao.ArteDAO;
-import com.xeopesca.webapp.model.vos.Arte;
 import com.xeopesca.webapp.model.vos.Arte;
 
 /**

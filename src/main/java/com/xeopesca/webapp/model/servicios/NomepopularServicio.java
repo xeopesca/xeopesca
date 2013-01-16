@@ -3,9 +3,7 @@ package com.xeopesca.webapp.model.servicios;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.xeopesca.webapp.model.dao.EspecieDAO;
 import com.xeopesca.webapp.model.dao.NomepopularDAO;
-import com.xeopesca.webapp.model.vos.Especie;
 import com.xeopesca.webapp.model.vos.Nomepopular;
 
 /**

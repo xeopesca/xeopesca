@@ -1,7 +1,5 @@
 package com.xeopesca.util.dao;
 
-import java.util.Map;
-
 public interface GenericDao<T> {
 	/**
 	 * Method that returns the number of entries from a table that meet some

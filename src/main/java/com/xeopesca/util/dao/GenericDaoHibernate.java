@@ -19,7 +19,8 @@ public abstract class GenericDaoHibernate<T> implements GenericDao<T> {
 
     private Class<T> type;
 
-    public GenericDaoHibernate() {
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+	public GenericDaoHibernate() {
         Type t = getClass().getGenericSuperclass();
         ParameterizedType pt = (ParameterizedType) t;
         type = (Class) pt.getActualTypeArguments()[0];

@@ -6,6 +6,7 @@ import org.hibernate.cfg.AnnotationConfiguration;
 
 import com.xeopesca.webapp.model.vos.Usuario2;
 
+@SuppressWarnings("deprecation")
 public class HibernateUtilSessionFactory {
 
 	private static final SessionFactory sessionFactory;
@@ -24,6 +25,7 @@ public class HibernateUtilSessionFactory {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	public static SessionFactory getSessionFactory() {
 		Session session = sessionFactory.openSession();
 		return sessionFactory;

@@ -18,6 +18,7 @@ public class UsuarioDAO  extends GenericDaoHibernate<Usuario>
 		String queryStri=" FROM Usuario u  " +
 						" WHERE (u.login like :login)";
 		
+		@SuppressWarnings("unchecked")
 		List<Usuario> saida = em.createQuery(queryStri).setParameter("login", login).getResultList();
 		
 		
@@ -37,6 +38,7 @@ public class UsuarioDAO  extends GenericDaoHibernate<Usuario>
 		String queryStri=" FROM Usuario u  " +
 						" WHERE (u.login like :login)";
 		
+		@SuppressWarnings("unchecked")
 		List<Usuario> saida = em.createQuery(queryStri).setParameter("login", login).getResultList();
 		
 		
@@ -50,6 +52,7 @@ public class UsuarioDAO  extends GenericDaoHibernate<Usuario>
 	
 	
 
+	@SuppressWarnings("unchecked")
 	public List<Usuario> lista (){
 		EntityManager em = JPAUtil.createEntityManager();
 		em.getTransaction().begin();
