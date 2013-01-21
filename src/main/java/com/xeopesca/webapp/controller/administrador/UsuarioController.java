@@ -32,15 +32,16 @@ public class UsuarioController {
 	
 	
 	// ENTRADA FORMULARIO  -- NovoUsuario
-	@RequestMapping(value = "/admin/novoUsuario", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/novoUsuario", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
 	public String novoUsuario(Model model, Usuario usuario) {
 		model.addAttribute("usuario", usuario);
 		return "novoUsuario";
 	}
 
 	// SAIDA FORMULARIO
-	@RequestMapping(value = "/admin/novoUsuario2", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/novoUsuario2", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	public String novoUsuario(@Valid Usuario usuario, BindingResult result) {
+		
 		if (result.hasErrors()) {
 			return "novoUsuario";
 		}
@@ -105,7 +106,7 @@ public class UsuarioController {
 	}
 	
 	// SAIDA FORMULARIO
-		@RequestMapping(value = "/admin/updateUsuario", method = RequestMethod.POST)
+		@RequestMapping(value = "/admin/updateUsuario", method = RequestMethod.POST )
 		public String updateUsuario(@Valid Usuario usuario, BindingResult result) {
 			if (result.hasErrors()) {
 				return "editarUsuario";

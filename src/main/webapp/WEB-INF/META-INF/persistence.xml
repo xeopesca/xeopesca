@@ -19,6 +19,8 @@
            <property name="hibernate.max_fetch_depth" value="5"/>
 
         <property name="hibernate.hbm2ddl.auto" value="update"/> 
+        <property name="defaultEncoding" value="UTF-8"/>
+        
 
        </properties>
     </persistence-unit>

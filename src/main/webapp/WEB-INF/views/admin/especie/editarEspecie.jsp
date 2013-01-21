@@ -9,7 +9,7 @@
 <div id="ReportDetails">
 	<h2>Editar Especie</h2>
 
-	<form:form action="/xeopesca/admin/updateEspecie" commandName="especie">
+	<form:form action="/xeopesca/admin/updateEspecie" commandName="especie" enctype="multipart/form-data">
 	    <input id="id" name="id" type="hidden" value="${especie.id}"/>
 
 		<div style="color: #FF0000;">
@@ -23,8 +23,19 @@
 			</tr>
 			<tr>
 				<td>Imaxen :</td>
-				<td><form:input path="path" /></td>
+				<td><form:input path="path" />
+				
+				</td>
+				
 			</tr>
+			<tr>
+				<td>uploader :</td>
+				<td>   <input type="file" name="file"/></td>
+				
+			</tr>
+
+
+         
 
 			<tr>
 				<td></td>
