@@ -28,6 +28,7 @@
 		</table>
 
 	</form:form>
+	
 	<table>
 		<tr>
 			<th class="ReportTableHeaderCell">Id</th>

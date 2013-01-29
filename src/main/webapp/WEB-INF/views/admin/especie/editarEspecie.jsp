@@ -20,22 +20,28 @@
 			<tr>
 				<td>Nome :</td>
 				<td><form:input path="nomecientifico" /></td>
+				
 			</tr>
 			<tr>
 				<td>Imaxen :</td>
-				<td><form:input path="path" />
-				
+				<td>
+			
+					<c:if test="${especie.path ==''}">
+						<form:input path="path" /> 
+ 						<input type="file" name="file"/>
+ 					</c:if>
+				    		
 				</td>
 				
 			</tr>
 			<tr>
-				<td>uploader :</td>
-				<td>   <input type="file" name="file"/></td>
-				
-			</tr>
-
-
-         
+			
+				<td> </td>
+				<td> <c:if test="${especie.path !=''}">
+ 						<img src= ${especie.path}>
+ 					</c:if>		
+ 				</td>
+         	</tr>
 
 			<tr>
 				<td></td>

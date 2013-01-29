@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.xeopesca.util.ConstantesUtil;
+import com.xeopesca.util.UploaderFileUtil;
 import com.xeopesca.webapp.model.servicios.EspecieServicio;
 import com.xeopesca.webapp.model.vos.Especie;
 
@@ -49,12 +50,23 @@ public class EspecieController {
 	}
 
 	// SAIDA FORMULARIO
+	/**
+	 * 
+	 * */
 	@RequestMapping(value = "/admin/novaEspecie", method = RequestMethod.POST)
-	public String novaEspecie(Especie especie, BindingResult result) {
+	public String novaEspecie(Especie especie, BindingResult result,
+			@RequestParam("file") MultipartFile file) {
 
-		request.getSession().getServletContext().getRealPath("/");
+		String direcotrio = request.getSession().getServletContext().getRealPath("/");
 		EspecieServicio.saveEspecie(especie);
 
+		if (UploaderFileUtil.uploadFile(file, especie, "./src/main/webapp/images/especie/")){
+			especie.setPath("/images/especie/"+especie.getId()+".jpg");
+			EspecieServicio.updateUsuario(especie);
+			return "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
+					+ "/admin/listaEspecies";
+		} 
+		
 		return "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
 				+ "/admin/listaEspecies";
 	}
@@ -93,49 +105,41 @@ public class EspecieController {
 		return "editarEspecie";
 	}
 
-	// SAIDA FORMULARIO editar Especie
+	/***
+	 * SAIDA FORMULARIO editar Especie
+	 * @param Especie
+	 * @param BindingResult
+	 * @param MultipartFile
+	 * @return String
+	 * */
 	@RequestMapping(value = "/admin/updateEspecie", method = RequestMethod.POST)
 	public String editarEspecie(@Valid Especie especie, BindingResult result,
 			@RequestParam("file") MultipartFile file) {
+		//Declaracion de variables
+		String nomeFicheiro ="";
+		
+		//Validacion erros
 		if (result.hasErrors()) {
 
 			for (ObjectError error : result.getAllErrors()) {
 				System.err.println("Error!!: " + error.getCode() + " - "
 						+ error.getDefaultMessage());
 			}
-
+			return "editarEspecie";
+		}
+		
+		if (UploaderFileUtil.uploadFile(file, especie, "./src/main/webapp/images/especie/")){
+			especie.setPath("/images/especie/"+especie.getId()+".jpg");
+			EspecieServicio.updateUsuario(especie);
+			return "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
+					+ "/admin/listaEspecies";
+		} 
+		else {
+			result.addError(new ObjectError("Especie", "Seleccione una imagen."));
 			return "editarEspecie";
 		}
 
-		try {
-			if (!file.isEmpty()) {
-
-				byte[] data = file.getBytes();
-				
-				OutputStream out = null;
-				File dir = new File ("probas.jpg");
-	           
-				FileOutputStream fo = new FileOutputStream(dir) ;
-				out = fo;
-				out.write(data);
-
-				
-
-				// store the bytes somewhere
-				return "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
-						+ "/admin/listaEspecies";
-			} else {
-				return "redirect:uploadFailure";
-			}
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		EspecieServicio.updateUsuario(especie);
-		return "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
-				+ "/admin/listaEspecies";
+		
 	}
 
 	// ------------------------ BUSCADOR ESPECIE

@@ -10,7 +10,7 @@
 	<h2>Nova Especie</h2>
 	<!--<c:out value="${message}" /> -->
 
-	<form:form action="novaEspecie" commandName="especie">
+	<form:form action="novaEspecie" commandName="especie" enctype="multipart/form-data">
 
 		<div style="color: #FF0000;">
 			<form:errors path="nomecientifico" />
@@ -23,7 +23,10 @@
 			</tr>
 			<tr>
 				<td>Imaxen :</td>
-				<td><form:input path="path" /></td>
+				<td><form:input path="path" />  <input type="file" name="file"/>
+				
+				</td>
+				
 			</tr>
 
 			<tr>
