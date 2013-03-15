@@ -7,27 +7,41 @@
 
 
 <div id="ReportDetails">
-	<h2>Buscar especie</h2>
+	<h2>Buscar barco</h2>
     
 
-	<form:form action="/xeopesca/armador/buscadorNomePopular" commandName="nome">
+	<form:form method="POST" action="/xeopesca/armador/editarBarco"
+		commandName="barco">
 
-		<div style="color: #FF0000;">
-			<form:errors path="nome" />
-		</div>
+		<div style="color: #FF0000;"></div>
 		<table>
+			<tr>
+				<td>Folio :</td>
+				<td><form:input path="folio" /></td>
+			</tr>
 			<tr>
 				<td>Nome :</td>
 				<td><form:input path="nome" /></td>
+				
+			</tr>
+			<tr>
+				<td>Eslora :</td>
+				<td><form:input path="eslora" /></td>
+				
+			</tr>
+			<tr>
+				<td>Porto :</td>
+				<td><form:input path="porto" /></td>
+				
 			</tr>
 
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Buscar" /></td>
+				<td><input type="submit" value="Enviar" /></td>
 			</tr>
 
 		</table>
-
+		
 	</form:form>
 	
 	<table>

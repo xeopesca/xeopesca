@@ -6,7 +6,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.FileFileFilter;
+import org.springframework.beans.propertyeditors.FileEditor;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.xeopesca.webapp.model.vos.Especie;
@@ -22,19 +24,33 @@ public class UploaderFileUtil {
 	public static boolean uploadFile(MultipartFile file,Especie especie, String path)
 	{
 		String  nomeFicheiro;
+		
 		try {
 			if (!file.isEmpty()) {
 
 				byte[] data = file.getBytes();
 				
 				OutputStream out = null;
-				//src\main\webapp\images
 				nomeFicheiro = String.valueOf(especie.getId())+".jpg";
 				
-				//File dir = new File ("./src/main/webapp/images/especie/"+nomeFicheiro);
+				//Validamos
 				File dir = new File (path+nomeFicheiro);
-			    dir.delete();
-			    dir.setWritable(true);
+			    if (dir.exists()) {
+			    	if (dir.length() == file.getSize())
+			    	{
+			    		return true;
+			    	}else {
+			    		//dir.renameTo(new File (path+nomeFicheiro+"borrar"));
+			    		if (!dir.delete())
+			    			{
+			    				//return false;
+			    			}
+			    		//return true;
+			    	}
+			    }
+			    	
+			    	
+			    	
 				
 				dir.deleteOnExit();
 
@@ -44,14 +60,9 @@ public class UploaderFileUtil {
 				out.flush();
 				out.write(data);
 
-				
-
-				// store the bytes somewhere
-			//	return "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
-			//			+ "/admin/listaEspecies";
+		
 				return true;
 			} else {
-				//return "redirect:uploadFailure";
 				return false;
 
 			}

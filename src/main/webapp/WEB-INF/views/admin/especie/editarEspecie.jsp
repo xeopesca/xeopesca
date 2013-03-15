@@ -39,6 +39,8 @@
 				<td> </td>
 				<td> <c:if test="${especie.path !=''}">
  						<img src= ${especie.path}>
+ 						 <input type="file" name="file"/>
+ 						
  					</c:if>		
  				</td>
          	</tr>

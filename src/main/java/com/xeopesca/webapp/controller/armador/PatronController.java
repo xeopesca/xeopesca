@@ -15,14 +15,13 @@ import java.util.List;
 import javax.validation.Valid;
 
 import com.xeopesca.util.ConstantesUtil;
-import com.xeopesca.webapp.model.servicios.BarcoServicio;
-import com.xeopesca.webapp.model.servicios.EspecieServicio;
-import com.xeopesca.webapp.model.vos.Barco;
-import com.xeopesca.webapp.model.vos.Especie;
+
+import com.xeopesca.webapp.model.servicios.UsuarioServicio;
+import com.xeopesca.webapp.model.vos.Usuario;
 
 @Controller
-public class BarcoController {
-	List<Barco> barcos;
+public class PatronController {
+	List<Usuario> patrons;
 
 	@Autowired
 	private Validator validator;
@@ -31,19 +30,20 @@ public class BarcoController {
 		this.validator = validator;
 	}
 
-	// -------------------------- NOVO BARCO
+	// -------------------------- NOVO Patron
 	// -------------------------------------
-	// ENTRADA FORMULARIO -- novoBarco
-	@RequestMapping(value = "/armador/novoBarco", method = RequestMethod.GET)
-	public String novoEspecie(Model model, Barco barco) {
-		model.addAttribute("barco", barco);
-		return "novoBarco";
+	// ENTRADA FORMULARIO -- novoPatron
+	@RequestMapping(value = "/armador/novoPatron", method = RequestMethod.GET)
+	public String novoEspecie(Model model, Usuario usuario) {
+		model.addAttribute("usuario", usuario);
+		return "";
 	}
-
+/*
 	// SAIDA FORMULARIO
-	@RequestMapping(value = "/armador/novoBarco", method = RequestMethod.POST)
-	public String novaEspecie(Barco barco, BindingResult result) {
-		BarcoServicio.saveBarco(barco);
+	@RequestMapping(value = "/armador/novoPatron", method = RequestMethod.POST)
+	public String novaEspecie(Usuario patron, BindingResult result) {
+		
+		UsuarioServicio.saveUsuario(patron);
 
 		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaBarco";
 	}
@@ -54,48 +54,43 @@ public class BarcoController {
 	@RequestMapping("/armador/listaBarco")
 	public String listaUsuarios(Model model) {
 
-		List<Barco> barcos = new ArrayList<Barco>();
-		barcos = BarcoServicio.listaDeBarcos();
+		List<Usuario> patrons = new ArrayList<Usuario>();
+		patrons = BarcoServicio.listaDeBarcos();
 
-		model.addAttribute("barcos", barcos);
+		model.addAttribute("barcos", patrons);
 
 		return "listaBarco";
 	}
 
 	// SAIDA FORMULARIO -- eliminar barco
-	@RequestMapping("/armador/deleteBarco/{id}")
-	public String borrarUsuario(@PathVariable("id") String folio) {
+	@RequestMapping("/armador/deletePatron/{id}")
+	public String borrarUsuario(@PathVariable("id") Long id) {
 		
-		BarcoServicio.removeBarco(folio);
+		UsuarioServicio.removeUser(id);
 
 		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaBarco";
 	}
 
 	// -------------------------- Editar BARCO
 
-	// Entrada Formulario editarBarco
-	@RequestMapping("/armador/editarBarco/{id}")
-	public String editarEspecie(@PathVariable("id") String folio, Model model) {
-		 Barco barco;
-		 List<Barco> lista = BarcoServicio.buscarBarco(folio);
-		 if (lista.isEmpty()){
-			 barco = new Barco();
-		 }
-		 else{
-			 barco = lista.get(0);
-		 }
-		model.addAttribute("barco", barco);
-		return "editarBarco";
+	// Entrada Formulario editarEspecie
+	@RequestMapping("/armador/editarPatron/{id}")
+	public String editarEspecie(@PathVariable("id") Long id, Model model) {
+		 Usuario usuario;
+		 usuario =  UsuarioServicio.buscarUsuario(id);
+		
+		model.addAttribute("usuario", usuario);
+		return "editarUsuario";
 	}
 
-	// SAIDA FORMULARIO editar Barco
-	@RequestMapping(value = "/armador/editarBarco", method = RequestMethod.POST)
-	public String editarEspecie(@Valid Barco barco, BindingResult result) {
+	// SAIDA FORMULARIO editar Especie
+	@RequestMapping(value = "/armador/editarPatron", method = RequestMethod.POST)
+	public String editarEspecie(@Valid Usuario usuario, BindingResult result) {
 		if (result.hasErrors()) {
 			return "editarBarco";
 		}
 		BarcoServicio.updateBarco(barco);
-		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaBarco";
+		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaEspecies";
 	}
 	
 	//------------------------ BUSCADOR ESPECIE
@@ -123,6 +118,6 @@ public class BarcoController {
 			
 			return "buscadorBarco";
 		}
-		
+	*/	
 	
 }

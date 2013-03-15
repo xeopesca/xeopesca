@@ -135,7 +135,6 @@ public class EspecieController {
 					+ "/admin/listaEspecies";
 		} 
 		else {
-			result.addError(new ObjectError("Especie", "Seleccione una imagen."));
 			return "editarEspecie";
 		}
 
