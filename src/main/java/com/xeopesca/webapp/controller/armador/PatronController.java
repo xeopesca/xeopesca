@@ -36,18 +36,20 @@ public class PatronController {
 	@RequestMapping(value = "/armador/novoPatron", method = RequestMethod.GET)
 	public String novoEspecie(Model model, Usuario usuario) {
 		model.addAttribute("usuario", usuario);
-		return "";
+
+		return "novoPatron";
 	}
-/*
+
 	// SAIDA FORMULARIO
 	@RequestMapping(value = "/armador/novoPatron", method = RequestMethod.POST)
 	public String novaEspecie(Usuario patron, BindingResult result) {
+		patron.setTipousuario("ROLE_PATRON");
 		
 		UsuarioServicio.saveUsuario(patron);
 
-		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaBarco";
+		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaPatron";
 	}
-
+/*
 	// -------------------------- LISTADO BARCOS
 	// --------------------------------
 	// ENTRADA LISTA BARCOS

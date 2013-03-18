@@ -102,22 +102,22 @@ public class BarcoController {
 	
 	// BUSCADOR buscadorEspecie - Entrada
 		@RequestMapping(value = "/armador/buscadorBarco", method = RequestMethod.GET)
-		public String buscadorEspecie(Model model, Especie especie) {
+		public String buscadorEspecie(Model model, Barco barco) {
 			model.addAttribute("mensaxe", "inicio");
-			model.addAttribute("especie", especie);
+			model.addAttribute("barco", barco);
 			return "buscadorBarco";
 		}
 		
 		
 		// SAIDA FORMULARIO BUSCADOR 
 		@RequestMapping(value = "/armador/buscadorBarco", method = RequestMethod.POST)
-		public String buscadorUsuario(Especie especie,Model model) {
-			List<Especie> lista  = EspecieServicio.buscarEspecie(especie.getnomecientifico()) ;
+		public String buscadorUsuario(Barco barco,Model model) {
+			List<Barco> lista  = BarcoServicio.buscarBarco(barco.getNome());
 
 			if (lista.isEmpty()){
 				model.addAttribute("mensaxe", "lista vacia");
 			}else{
-				model.addAttribute("especies", lista);
+				model.addAttribute("barcos", lista);
 				model.addAttribute("mensaxe", "lista chea");
 			}	
 			

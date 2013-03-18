@@ -54,6 +54,15 @@ th {
 	color: #eeeeee;
 }
 
+#ReportHeader h1 {
+	font-weight: bold;
+	font-size: 24px;
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
+	margin-top: 0px;
+	padding-bottom: 0.5ex;
+	color: #fff;
+}
 #ReportNotes {
 	padding: 12px;
 	background-color: #eeeeee;

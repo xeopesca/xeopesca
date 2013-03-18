@@ -7,31 +7,8 @@
 
 
 <div id="ReportDetails">
-	<h2>Buscar barco</h2>
-    
+	<h2>Listado de barcos</h2>
 
-	<form:form method="POST" action="/xeopesca/armador/buscadorBarco"
-		commandName="barco">
-
-		<div style="color: #FF0000;"></div>
-		<table>
-			
-			<tr>
-				<td>Nome :</td>
-				<td><form:input path="nome" /></td>
-				
-			</tr>
-			
-
-			<tr>
-				<td></td>
-				<td><input type="submit" value="Enviar" /></td>
-			</tr>
-
-		</table>
-		
-	</form:form>
-	
 	<table>
 		<tr>
 			<th class="ReportTableHeaderCell">Folio</th>
@@ -68,6 +45,7 @@
 
 	</table>
 </div>
+
 
 
 

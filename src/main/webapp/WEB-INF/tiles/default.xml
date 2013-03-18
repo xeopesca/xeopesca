@@ -144,6 +144,28 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/armador/barco/buscadorBarco.jsp" />
 	</definition>
+	
+	<!-- Patrón -->
+	<definition name="novoPatron" extends="armadorTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/armador/patron/novoPatron.jsp" />
+	</definition>
+
+	<definition name="listaPatron" extends="armadorTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/armador/patron/listaPatron.jsp" />
+	</definition>
+
+	<definition name="editarPatron" extends="armadorTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/armador/patron/editarPatron.jsp" />
+	</definition>
+	<definition name="buscadorPatron" extends="armadorTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/armador/patron/buscadorPatron.jsp" />
+	</definition>
+
+<!-- ********************* Patrón *************************** -->
 
 </tiles-definitions>
 

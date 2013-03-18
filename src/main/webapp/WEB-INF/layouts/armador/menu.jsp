@@ -14,12 +14,14 @@
 	<ul>
 			<li><a href="/xeopesca/armador/novoBarco">Novo barco</a></li>
 			<li><a href="/xeopesca/armador/listaBarco">Lista de barcos</a></li>
+			<li><a href="/xeopesca/armador/buscadorBarco">Buscador de barcos</a></li>
 		</ul>
 	</li>
 	<li><a href="#" class="menulink">Xestionar patrón</a>
 	<ul>
-			<li><a href="#">Novo patrón</a></li>
-			<li><a href="#">Lista de patróns</a></li>
+			<li><a href="/xeopesca/armador/novoPatron">Novo patrón</a></li>
+			<li><a href="/xeopesca/armador/listaPatron">Lista de patróns</a></li>
+			<li><a href="/xeopesca/armador/listaPatron">Buscar  patróns</a></li>
 		</ul>
 	</li>
 	
