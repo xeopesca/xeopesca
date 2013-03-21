@@ -48,6 +48,8 @@ public class Usuario implements java.io.Serializable {
 	
 	@NotBlank ( message = "Ten que seleccionar un tipo de usuario")
 	private String tipousuario;
+	
+	private long patron_autoriza;
 	//private Set barcos = new HashSet(0);
 
 	public Usuario() {
@@ -139,5 +141,13 @@ public class Usuario implements java.io.Serializable {
 	public void setBarcos(Set barcos) {
 		this.barcos = barcos;
 	}*/
+
+	public long getPatron_autoriza() {
+		return patron_autoriza;
+	}
+
+	public void setPatron_autoriza(long patron_autoriza) {
+		this.patron_autoriza = patron_autoriza;
+	}
 
 }

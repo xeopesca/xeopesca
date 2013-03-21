@@ -63,6 +63,27 @@ public class UsuarioDAO  extends GenericDaoHibernate<Usuario>
 		
 		return saida;
 	}
+
+	public List<Usuario> findPatronsDunArmador(long idArmador) {
+		
+		EntityManager em = JPAUtil.createEntityManager();
+		
+		em.getTransaction().begin();
+		String queryStri=" FROM Usuario u  " +
+						 " WHERE (u.patron_autoriza = :patron_autoriza)";
+		
+		@SuppressWarnings("unchecked")
+		List<Usuario> saida = em.createQuery(queryStri).setParameter("patron_autoriza", idArmador).getResultList();
+		
+		
+		if (null == saida ||saida.isEmpty() ){
+			return null;
+		}else{
+		   return saida;
+		}
+		
+		
+	}
 	
 	
 	

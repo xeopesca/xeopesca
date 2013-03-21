@@ -23,17 +23,7 @@
 				<td>Login :</td>
 				<td><form:input path="login" /></td>
 			</tr>
-			<tr>
-				<td>Perfil:</td>
-				<td><form:select path="tipousuario">
-						<form:option value="" label="--- Select ---" />
-						<form:option value="ROLE_ADMIN" label="Admin" />
-						<form:option value="ROLE_ARMADOR" label="Armador" />
-						<form:option value="ROLE_PATRON" label="Patrón" />
-						<form:option value="ROLE_ADMINISTRACION" label="Administración" />
-						
-					</form:select></td>
-			</tr>
+		
 
 			<tr>
 				<td>Nome :</td>

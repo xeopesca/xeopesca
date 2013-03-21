@@ -7,45 +7,42 @@
 
 
 <div id="ReportDetails">
-	<h2>Listado de barcos</h2>
+	<h2>Listado de patróns de un armador</h2>
 
 	<table>
 		<tr>
-			<th class="ReportTableHeaderCell">Folio</th>
-			<th class="ReportTableHeaderCell">nome </th>
-			<th class="ReportTableHeaderCell">eslora </th>
-			<th class="ReportTableHeaderCell">porto </th>
-			
-			<th class="ReportTableHeaderCell">Detalle</th>
+			<th class="ReportTableHeaderCell">Login</th>
+			<th class="ReportTableHeaderCell">Nome</th>
+			<th class="ReportTableHeaderCell">Apelidos</th>
+			<th class="ReportTableHeaderCell">Perfil</th>
 			<th class="ReportTableHeaderCell">Borrar</th>
-			
 		</tr>
-		<c:forEach var="barcos" items="${barcos}" varStatus="status">
-		
+		<c:forEach var="patrons" items="${patrons}" varStatus="status">
+			<c:set var="idUsuario" value="${patrons.id}" />
+
+			<c:url var="urlDeleteUser" value="/borrarUsuario">
+				<c:param name="id" value="${patrons.id}" />
+			</c:url>
+
+
 			<tr class="ReportDetailsEvenDataRow">
-				<td class="ReportTableValueCell">${barcos.folio}</td>
-				<td class="ReportTableValueCell">${barcos.nome}</td>
-			    <td class="ReportTableValueCell">${barcos.eslora}</td>
-			   	<td class="ReportTableValueCell">${barcos.porto}</td>
-			   
+				<td class="ReportTableValueCell">${patrons.login}</td>
+				<td class="ReportTableValueCell">${patrons.nome}</td>
+				<td class="ReportTableValueCell">${patrons.apelidos}</td>
+				<td class="ReportTableValueCell">${patrons.tipousuario}</td>
 				
 				<td class="ReportTableValueCell">
 					<center>
-						<a href="/xeopesca/armador/editarBarco/${barcos.folio}"> <img src="/images/detalle.gif" /></a>
+						<a href="deletePatron/${patrons.id}"> <img src="/images/papelera.gif" /></a>
 					</center>
 				</td>
-				<td class="ReportTableValueCell">
-					<center>
-						<a href="/xeopesca/armador/deleteBarco/${barcos.folio}"> <img src="/images/papelera.gif" /></a>
-					</center>
-				</td>
-				
 			</tr>
+
+
 		</c:forEach>
 
 	</table>
 </div>
-
 
 
 

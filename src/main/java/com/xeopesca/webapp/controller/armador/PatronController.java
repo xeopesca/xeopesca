@@ -1,6 +1,8 @@
 package com.xeopesca.webapp.controller.armador;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -45,26 +47,39 @@ public class PatronController {
 	public String novaEspecie(Usuario patron, BindingResult result) {
 		patron.setTipousuario("ROLE_PATRON");
 		
+		//Recuperamos os datos do Armador
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String loginArmador = auth.getName();
+		Usuario armador = UsuarioServicio.getUsuario(loginArmador);
+		
+		//Actualizamos os datos ao patrón
+		patron.setPatron_autoriza(armador.getId());
 		UsuarioServicio.saveUsuario(patron);
 
 		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaPatron";
 	}
-/*
-	// -------------------------- LISTADO BARCOS
+
+	// -------------------------- LISTADO PATRONS ASOCIADOS A UN ARMADOR
 	// --------------------------------
 	// ENTRADA LISTA BARCOS
-	@RequestMapping("/armador/listaBarco")
+	@RequestMapping("/armador/listaPatron")
 	public String listaUsuarios(Model model) {
-
+		
+		//Recuperamos os datos do Armador
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String loginArmador = auth.getName();
+		Usuario armador = UsuarioServicio.getUsuario(loginArmador);
+		
+		//Damos de alta o patrón
 		List<Usuario> patrons = new ArrayList<Usuario>();
-		patrons = BarcoServicio.listaDeBarcos();
+		patrons = UsuarioServicio.buscarPatronsDunArmador(armador.getId());
 
-		model.addAttribute("barcos", patrons);
+		model.addAttribute("patrons", patrons);
 
-		return "listaBarco";
+		return "listaPatron";
 	}
-
-	// SAIDA FORMULARIO -- eliminar barco
+	
+	// SAIDA FORMULARIO -- eliminar patron
 	@RequestMapping("/armador/deletePatron/{id}")
 	public String borrarUsuario(@PathVariable("id") Long id) {
 		
@@ -82,29 +97,10 @@ public class PatronController {
 		 usuario =  UsuarioServicio.buscarUsuario(id);
 		
 		model.addAttribute("usuario", usuario);
-		return "editarUsuario";
+		return "editarPatron";
 	}
 
-	// SAIDA FORMULARIO editar Especie
-	@RequestMapping(value = "/armador/editarPatron", method = RequestMethod.POST)
-	public String editarEspecie(@Valid Usuario usuario, BindingResult result) {
-		if (result.hasErrors()) {
-			return "editarBarco";
-		}
-		BarcoServicio.updateBarco(barco);
-		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaEspecies";
-	}
-	
-	//------------------------ BUSCADOR ESPECIE
-	
-	// BUSCADOR buscadorEspecie - Entrada
-		@RequestMapping(value = "/armador/buscadorBarco", method = RequestMethod.GET)
-		public String buscadorEspecie(Model model, Especie especie) {
-			model.addAttribute("mensaxe", "inicio");
-			model.addAttribute("especie", especie);
-			return "buscadorBarco";
-		}
-		
+	/*
 		
 		// SAIDA FORMULARIO BUSCADOR 
 		@RequestMapping(value = "/armador/buscadorBarco", method = RequestMethod.POST)

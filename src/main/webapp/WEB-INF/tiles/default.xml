@@ -166,6 +166,8 @@
 	</definition>
 
 <!-- ********************* Patrón *************************** -->
-
+<definition name="indexPatron" extends="armadorTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/armador/portada.jsp" />
+</definition>
 </tiles-definitions>
 

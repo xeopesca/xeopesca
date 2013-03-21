@@ -1,6 +1,8 @@
 package com.xeopesca.webapp.controller.armador;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,8 +19,10 @@ import javax.validation.Valid;
 import com.xeopesca.util.ConstantesUtil;
 import com.xeopesca.webapp.model.servicios.BarcoServicio;
 import com.xeopesca.webapp.model.servicios.EspecieServicio;
+import com.xeopesca.webapp.model.servicios.UsuarioServicio;
 import com.xeopesca.webapp.model.vos.Barco;
 import com.xeopesca.webapp.model.vos.Especie;
+import com.xeopesca.webapp.model.vos.Usuario;
 
 @Controller
 public class BarcoController {
@@ -36,6 +40,16 @@ public class BarcoController {
 	// ENTRADA FORMULARIO -- novoBarco
 	@RequestMapping(value = "/armador/novoBarco", method = RequestMethod.GET)
 	public String novoEspecie(Model model, Barco barco) {
+		
+		//Recuperamos os datos do Armador
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String loginArmador = auth.getName();
+		Usuario armador = UsuarioServicio.getUsuario(loginArmador);
+				
+		//Damos de alta o patrón
+		List<Usuario> patrons = new ArrayList<Usuario>();
+		patrons = UsuarioServicio.buscarPatronsDunArmador(armador.getId());
+		model.addAttribute("patrons", patrons);
 		model.addAttribute("barco", barco);
 		return "novoBarco";
 	}

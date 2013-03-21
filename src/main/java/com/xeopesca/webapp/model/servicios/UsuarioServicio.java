@@ -75,6 +75,14 @@ public class UsuarioServicio {
 		return lista;
 	}
 	
+	public static List<Usuario>  buscarPatronsDunArmador(long  idArmador) {
+		List<Usuario> lista = new ArrayList<Usuario>();
+		UsuarioDAO userDao = new UsuarioDAO();
+		lista = userDao.findPatronsDunArmador(idArmador);
+		
+		return lista;
+	}
+	
 	
 	public static Usuario  buscarUsuario(Long id) {
 		UsuarioDAO userDao = new UsuarioDAO();
