@@ -88,7 +88,7 @@ public class PatronController {
 		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaBarco";
 	}
 
-	// -------------------------- Editar BARCO
+	// -------------------------- Editar PATRON
 
 	// Entrada Formulario editarEspecie
 	@RequestMapping("/armador/editarPatron/{id}")
@@ -100,22 +100,37 @@ public class PatronController {
 		return "editarPatron";
 	}
 
-	/*
-		
+	
+	// BUSCADOR PATRON - Entrada
+		@RequestMapping(value = "/armador/buscadorPatron", method = RequestMethod.GET)
+		public String buscadorUsuario(Model model, Usuario usuario) {
+			model.addAttribute("mensaxe", "inicio");
+			model.addAttribute("usuario", usuario);
+			return "buscadorPatron";
+		}	
+	
+	
 		// SAIDA FORMULARIO BUSCADOR 
-		@RequestMapping(value = "/armador/buscadorBarco", method = RequestMethod.POST)
-		public String buscadorUsuario(Especie especie,Model model) {
-			List<Especie> lista  = EspecieServicio.buscarEspecie(especie.getnomecientifico()) ;
+		@RequestMapping(value = "/armador/buscadorPatron", method = RequestMethod.POST)
+		public String buscadorUsuario(Usuario patron,Model model) {
+			//Recuperamos os datos do Armador
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			String loginArmador = auth.getName();
+			Usuario armador = UsuarioServicio.getUsuario(loginArmador);
+			
+			
+			List<Usuario> lista  = UsuarioServicio.buscarPatronsDunArmador(armador.getId(), patron.getLogin()) ;
+					
 
 			if (lista.isEmpty()){
 				model.addAttribute("mensaxe", "lista vacia");
 			}else{
-				model.addAttribute("especies", lista);
+				model.addAttribute("patrons", lista);
 				model.addAttribute("mensaxe", "lista chea");
 			}	
 			
-			return "buscadorBarco";
+			return "buscadorPatron";
 		}
-	*/	
+	
 	
 }

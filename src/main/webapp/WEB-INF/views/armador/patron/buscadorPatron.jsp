@@ -10,15 +10,15 @@
 	<h2>Buscar barco</h2>
     
 
-	<form:form method="POST" action="/xeopesca/armador/buscadorBarco"
-		commandName="barco">
+	<form:form method="POST" action="/xeopesca/armador/buscadorPatron"
+		commandName="usuario">
 
 		<div style="color: #FF0000;"></div>
 		<table>
 			
 			<tr>
-				<td>Nome :</td>
-				<td><form:input path="nome" /></td>
+				<td>Login :</td>
+				<td><form:input path="login" /></td>
 				
 			</tr>
 			
@@ -32,38 +32,41 @@
 		
 	</form:form>
 	
-	<table>
+	
+<table>
 		<tr>
-			<th class="ReportTableHeaderCell">Folio</th>
-			<th class="ReportTableHeaderCell">nome </th>
-			<th class="ReportTableHeaderCell">eslora </th>
-			<th class="ReportTableHeaderCell">porto </th>
-			
+			<th class="ReportTableHeaderCell">Login</th>
+			<th class="ReportTableHeaderCell">Nome</th>
+			<th class="ReportTableHeaderCell">Apelidos</th>
+			<th class="ReportTableHeaderCell">Perfil</th>
 			<th class="ReportTableHeaderCell">Detalle</th>
-			<th class="ReportTableHeaderCell">Borrar</th>
-			
-		</tr>
-		<c:forEach var="barcos" items="${barcos}" varStatus="status">
-		
+			<th class="ReportTableHeaderCell">Borrar</th>		</tr>
+		<c:forEach var="users" items="${patrons}" varStatus="status">
+			<c:set var="idUsuario" value="${users.id}" />
+
+			<c:url var="urlDeleteUser" value="/borrarUsuario">
+				<c:param name="id" value="${users.id}" />
+			</c:url>
+
+
 			<tr class="ReportDetailsEvenDataRow">
-				<td class="ReportTableValueCell">${barcos.folio}</td>
-				<td class="ReportTableValueCell">${barcos.nome}</td>
-			    <td class="ReportTableValueCell">${barcos.eslora}</td>
-			   	<td class="ReportTableValueCell">${barcos.porto}</td>
-			   
-				
+				<td class="ReportTableValueCell">${users.login}</td>
+				<td class="ReportTableValueCell">${users.nome}</td>
+				<td class="ReportTableValueCell">${users.apelidos}</td>
+				<td class="ReportTableValueCell">${users.tipousuario}</td>
 				<td class="ReportTableValueCell">
 					<center>
-						<a href="/xeopesca/armador/editarBarco/${barcos.folio}"> <img src="/images/detalle.gif" /></a>
+						<a href="usuario/edit/${users.id}"> <img src="/images/detalle.gif" /></a>
 					</center>
 				</td>
 				<td class="ReportTableValueCell">
 					<center>
-						<a href="/xeopesca/armador/deleteBarco/${barcos.folio}"> <img src="/images/papelera.gif" /></a>
+						<a href="delete/${users.id}"> <img src="/images/papelera.gif" /></a>
 					</center>
 				</td>
-				
 			</tr>
+
+
 		</c:forEach>
 
 	</table>

@@ -7,7 +7,7 @@
 
 
 <div id="ReportDetails">
-	<!--  <h2>Portada armador</h2>-->
+	 <h2>Portada patron</h2>
 	<br>
 	
 <div id="panel">

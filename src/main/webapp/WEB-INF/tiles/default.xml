@@ -17,6 +17,13 @@
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
 	</definition>
+	
+	<definition name="patronTemplate" template="/WEB-INF/layouts/patron/plantilla.jsp">
+		<put-attribute name="header" value="" />
+		<put-attribute name="menu" value="/WEB-INF/layouts/patron/menu.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
+	</definition>
 
 	<definition name="loginTemplate" template="/WEB-INF/layouts/login/templateLogin.jsp">
 		<put-attribute name="header" value="" />
@@ -166,7 +173,7 @@
 	</definition>
 
 <!-- ********************* Patrón *************************** -->
-<definition name="indexPatron" extends="armadorTemplate">
+<definition name="indexPatron" extends="patronTemplate">
 		<put-attribute name="body" value="/WEB-INF/views/armador/portada.jsp" />
 </definition>
 </tiles-definitions>

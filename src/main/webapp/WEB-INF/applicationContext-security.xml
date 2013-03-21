@@ -18,8 +18,10 @@
     <http>
     		<!-- <intercept-url pattern="/**" access="permitAll" /> -->  
             
-            <intercept-url pattern="/xeopesca/admin/**" access="ROLE_ADMIN" /> 
+            <intercept-url pattern="/xeopesca/admin/**"   access="ROLE_ADMIN" /> 
             <intercept-url pattern="/xeopesca/armador/**" access="ROLE_ARMADOR" /> 
+            <intercept-url pattern="/xeopesca/patron/**"  access="ROLE_PATRON" /> 
+            
             
             <form-login login-page='/xeopesca/login' default-target-url='/xeopesca/loginProcess'
             always-use-default-target='true' />

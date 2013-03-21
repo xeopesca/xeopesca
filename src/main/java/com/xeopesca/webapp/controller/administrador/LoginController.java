@@ -52,7 +52,7 @@ public class LoginController {
 					+ "/armador";
 		} else if (user.getTipousuario().equals("ROLE_PATRON")) {
 			saida = "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
-					+ "/indexPatron";
+					+ "/patron";
 		} else if (user.getTipousuario().equals("ROLE_ADMNISTRACION")) {
 			saida = "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
 					+ "/indexAdministracion";
