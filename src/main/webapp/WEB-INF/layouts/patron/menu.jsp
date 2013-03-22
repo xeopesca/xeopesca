@@ -10,12 +10,9 @@
 	<li><a href="#" class="menulink">Buscar faenas</a>
 	</li>
 	<!-- -->
-	<li><a href="#" class="menulink">Xestionar 2</a>
+	<li><a href="#" class="menulink">Nova faena</a>
 
-	</li>
-	<li><a href="#" class="menulink">Xestionar </a>
 	
-	</li>
 	
 </ul>
 </div> <br> <br> 
