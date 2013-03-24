@@ -23,7 +23,7 @@
             <intercept-url pattern="/xeopesca/patron/**"  access="ROLE_PATRON" /> 
             
             
-            <form-login login-page='/xeopesca/login' default-target-url='/xeopesca/loginProcess'
+            <form-login login-page='/xeopesca/login' default-target-url='/xeopesca/loginProcess' authentication-failure-url='/xeopesca/login?error=true'
             always-use-default-target='true' />
             <anonymous />
             <http-basic />

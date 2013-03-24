@@ -29,6 +29,7 @@ public class LoginController {
 	// ENTRADA FORMULARIO
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String novoUsuario(Model model, Usuario usuario) {
+	
 		model.addAttribute("usuario", usuario);
 
 		return "login";

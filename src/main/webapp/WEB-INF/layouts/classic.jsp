@@ -12,7 +12,6 @@
 
 <title>Administrador</title>
 <link rel="stylesheet" href="/css/estilo.css" type="text/css" />
-
 <script type="text/javascript" src="/js/script.js"></script>
 </head>
 <body>

@@ -174,7 +174,17 @@
 
 <!-- ********************* Patrón *************************** -->
 <definition name="indexPatron" extends="patronTemplate">
-		<put-attribute name="body" value="/WEB-INF/views/armador/portada.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/patron/portada.jsp" />
 </definition>
+
+<definition name="novaFaena" extends="patronTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/patron/faena/novaFaena.jsp" />
+</definition>
+
+<definition name="buscadorFaena" extends="patronTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/patron/faena/buscadorFaena.jsp" />
+</definition>
+
+
 </tiles-definitions>
 

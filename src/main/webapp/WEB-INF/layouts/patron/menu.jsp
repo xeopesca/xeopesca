@@ -7,10 +7,10 @@
 
 <div class="menu">
 <ul class="menu" id="menu">
-	<li><a href="#" class="menulink">Buscar faenas</a>
+	<li><a href="/xeopesca/patron/buscadorFaena" class="menulink">Buscar faenas</a>
 	</li>
-	<!-- -->
-	<li><a href="#" class="menulink">Nova faena</a>
+
+	<li><a href="/xeopesca/patron/novaFaena" class="menulink">Nova faena</a>
 
 	
 	
