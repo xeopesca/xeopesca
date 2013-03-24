@@ -8,8 +8,8 @@
 
 <div id="ReportDetails">
 	<h2>Buscar Usuario</h2>
-    
-    <c:out value="${mensaxe}" />
+  <!-- 
+    <c:out value="${mensaxe}" /> -->  
 
 	<form:form action="buscadorUsuario" commandName="usuario">
 
@@ -33,6 +33,7 @@
 
 	</form:form>
 
+<c:if test="${!empty users}">
 <table>
 		<tr>
 			<th class="ReportTableHeaderCell">Login</th>
@@ -70,6 +71,10 @@
 		</c:forEach>
 
 	</table>
+
+
+</c:if>
+
 
 </div>
 

@@ -31,8 +31,9 @@
 		</table>
 		
 	</form:form>
-	
-	
+
+<c:if test="${!empty patrons}">
+
 <table>
 		<tr>
 			<th class="ReportTableHeaderCell">Login</th>
@@ -70,6 +71,12 @@
 		</c:forEach>
 
 	</table>
+
+
+
+</c:if>	
+	
+
 </div>
 
 

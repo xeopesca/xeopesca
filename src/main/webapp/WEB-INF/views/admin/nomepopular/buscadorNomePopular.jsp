@@ -30,7 +30,9 @@
 
 	</form:form>
 	
-	<table>
+	
+	<c:if test="${!empty nomes}">
+		<table>
 		<tr>
 			<th class="ReportTableHeaderCell">Id</th>
 			<th class="ReportTableHeaderCell">Nome popular </th>
@@ -60,6 +62,10 @@
 		</c:forEach>
 
 	</table>
+	
+	</c:if>
+	
+	
 
 </div>
 

@@ -29,7 +29,9 @@
 
 	</form:form>
 	
-	<table>
+	<c:if test="${!empty especies}">
+	
+		<table>
 		<tr>
 			<th class="ReportTableHeaderCell">Id</th>
 			<th class="ReportTableHeaderCell">Nome científico</th>
@@ -57,6 +59,11 @@
 		</c:forEach>
 
 	</table>
+	
+	</c:if>
+	
+	
+	
 
 </div>
 

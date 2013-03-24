@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +47,15 @@ public class PatronController {
 	@RequestMapping(value = "/armador/novoPatron", method = RequestMethod.POST)
 	public String novaEspecie(Usuario patron, BindingResult result) {
 		patron.setTipousuario("ROLE_PATRON");
-		
+		//
+		byte ap[] =patron.getApelidos().getBytes();
+
+		try {
+			patron.setApelidos(new String(ap,"UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		//Recuperamos os datos do Armador
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String loginArmador = auth.getName();
@@ -102,17 +111,16 @@ public class PatronController {
 
 	
 	// BUSCADOR PATRON - Entrada
-		@RequestMapping(value = "/armador/buscadorPatron", method = RequestMethod.GET)
-		public String buscadorUsuario(Model model, Usuario usuario) {
-			model.addAttribute("mensaxe", "inicio");
+	@RequestMapping(value = "/armador/buscadorPatron", method = RequestMethod.GET)
+	public String buscadorUsuario(Model model, Usuario usuario) {
 			model.addAttribute("usuario", usuario);
 			return "buscadorPatron";
-		}	
+	}	
 	
 	
-		// SAIDA FORMULARIO BUSCADOR 
-		@RequestMapping(value = "/armador/buscadorPatron", method = RequestMethod.POST)
-		public String buscadorUsuario(Usuario patron,Model model) {
+	// SAIDA FORMULARIO BUSCADOR 
+	@RequestMapping(value = "/armador/buscadorPatron", method = RequestMethod.POST)
+	public String buscadorUsuario(Usuario patron,Model model) {
 			//Recuperamos os datos do Armador
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 			String loginArmador = auth.getName();

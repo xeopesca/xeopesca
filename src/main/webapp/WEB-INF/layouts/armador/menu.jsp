@@ -21,7 +21,7 @@
 	<ul>
 			<li><a href="/xeopesca/armador/novoPatron">Novo patrón</a></li>
 			<li><a href="/xeopesca/armador/listaPatron">Lista de patróns</a></li>
-			<li><a href="/xeopesca/armador/listaPatron">Buscar  patróns</a></li>
+			<li><a href="/xeopesca/armador/buscadorPatron">Buscar  patróns</a></li>
 		</ul>
 	</li>
 	

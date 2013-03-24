@@ -30,7 +30,9 @@
 
 	</form:form>
 	
-	<table>
+	
+<c:if test="${!empty artes}">
+<table>
 		<tr>
 			<th class="ReportTableHeaderCell">Id</th>
 			<th class="ReportTableHeaderCell">Categoria </th>
@@ -60,6 +62,10 @@
 		</c:forEach>
 
 	</table>
+
+</c:if>
+	
+	
 
 </div>
 

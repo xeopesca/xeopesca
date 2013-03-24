@@ -32,7 +32,9 @@
 		
 	</form:form>
 	
-	<table>
+	
+	<c:if test="${!empty barcos}">
+		<table>
 		<tr>
 			<th class="ReportTableHeaderCell">Folio</th>
 			<th class="ReportTableHeaderCell">nome </th>
@@ -67,6 +69,11 @@
 		</c:forEach>
 
 	</table>
+	
+	</c:if>
+	
+	
+	
 </div>
 
 
