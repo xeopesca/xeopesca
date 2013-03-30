@@ -14,13 +14,16 @@
 		<table>
 		
 			<tr>
-				<td>Favourite Languages :</td>
+				<td>Arte:</td>
 				<td>
-                                       <form:checkbox path="estadoMar" value="Java" />Java 
-                                       <form:checkbox path="estadoMar" value="C++" />C++ 
-                                       <form:checkbox path="estadoMar" value=".Net" />.Net
+                                     
                                 </td>
 				<td><form:errors path="estadoMar" cssClass="error" />
+				<c:forEach var="artes" items="${artes}" varStatus="status">
+					 <form:checkbox path="estadoMar" value="${artes.id}"   label="${artes.nome}"/> 
+					 <br>
+				</c:forEach>
+				
 				</td>
 			</tr>
 			<tr>

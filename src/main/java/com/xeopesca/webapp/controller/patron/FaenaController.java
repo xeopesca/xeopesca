@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.xeopesca.util.ConstantesUtil;
+import com.xeopesca.webapp.model.servicios.ArteServicio;
 import com.xeopesca.webapp.model.servicios.BarcoServicio;
 import com.xeopesca.webapp.model.vos.Barco;
 import com.xeopesca.webapp.model.vos.Faena;
@@ -20,6 +21,7 @@ public class FaenaController {
     public String novaFaena(Model model) {
     	Faena faena = new Faena();
     	model.addAttribute("faena",faena);
+    	model.addAttribute("artes", ArteServicio.listaDeArtes());
         return "novaFaena"; 
     }
     
@@ -28,7 +30,7 @@ public class FaenaController {
  	public String novaEspecie(Faena faena, BindingResult result) {
  		//
  		//BarcoServicio.saveBarco(barco);
-
+ 		
  		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaBarco";
  	}
     
