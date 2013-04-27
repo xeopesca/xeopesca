@@ -7,141 +7,58 @@
 
 
 <div id="ReportDetails">
-	 <h2>Buscador faena</h2>
+	<h2>Buscador faena</h2>
 	<br>
-	
-<div id="panel">
-	<ul id="tabs">
-    	<li>Mapa</li>
-        <li>Tabla</li>
-      
-    </ul>
-	<div id="paneles" style="height:650px">
-		<div>
-		<div id="Map" style="height:650px"></div>
-			<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
-			<script>
-				var lat            = 43.35387;
-				var lon            = -8.43609;
-				var zoom           = 7;
-			 
-				var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
-				var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-				var position       = new OpenLayers.LonLat(lon, lat).transform( fromProjection, toProjection);
-			 
-				map = new OpenLayers.Map("Map");
-				var mapnik         = new OpenLayers.Layer.OSM();
-				map.addLayer(mapnik);
-			 
-				var markers = new OpenLayers.Layer.Markers( "Markers" );
-				map.addLayer(markers);
-				markers.addMarker(new OpenLayers.Marker(position));
-			 
-				map.setCenter(position, zoom);
-			</script>
-		
-		</div>
-		
-		<div>
-			<p>Aqui vai a tabla </p>
-			<table>
-		<tr>
-			<th class="ReportTableHeaderCell">Tipo</th>
-			<th class="ReportTableHeaderCell">Login</th>
-			<th class="ReportTableHeaderCell">Nome</th>
-			<th class="ReportTableHeaderCell">Apelidos</th>
-			<th class="ReportTableHeaderCell"></th>
-		</tr>
-		<tr class="ReportDetailsEvenDataRow">
-			<td class="ReportTableValueCell">Admin</td>
-			<td class="ReportTableValueCell">admin</td>
-			<td class="ReportTableValueCell">Pablo</td>
-			<td class="ReportTableValueCell">Belay Fernández</td>
-			<td class="ReportTableValueCell">(borrar)</td>
 
-		</tr>
-		<tr class="ReportDetailsEvenDataRow">
-			<td class="ReportTableValueCell">Administración Pública</td>
-			<td class="ReportTableValueCell">xose.carballido</td>
-			<td class="ReportTableValueCell">Xose Manuel</td>
-			<td class="ReportTableValueCell">Carballido Gonzalez</td>
-			<td class="ReportTableValueCell">(borrar)</td>
-
-		</tr>
-		</tr>
-		<tr class="ReportDetailsEvenDataRow">
-			<td class="ReportTableValueCell">Administración Pública</td>
-			<td class="ReportTableValueCell">cons.pesca</td>
-			<td class="ReportTableValueCell">Xunta de Galicia</td>
-			<td class="ReportTableValueCell">Consellería de Pesca</td>
-			<td class="ReportTableValueCell">(borrar)</td>
-
-		</tr>
-		</tr>
-		<tr class="ReportDetailsEvenDataRow">
-			<td class="ReportTableValueCell">Armador</td>
-			<td class="ReportTableValueCell">benitosl</td>
-			<td class="ReportTableValueCell">Benito</td>
-			<td class="ReportTableValueCell">Hidalgo Sánchez</td>
-			<td class="ReportTableValueCell">(borrar)</td>
-
-		</tr>
-		<tr class="ReportDetailsEvenDataRow">
-					<td class="ReportTableValueCell">Admin</td>
-					<td class="ReportTableValueCell">admin</td>
-					<td class="ReportTableValueCell">Pablo</td>
-					<td class="ReportTableValueCell">Belay Fernández</td>
-					<td class="ReportTableValueCell">(borrar)</td>
+	<form:form action="/xeopesca/patron/novaFaena" method="POST"
+					commandName="faena">
+					
+		<table>
+			<tr valign="top">
+				<td><b>Data de inicio:</b></td>
+				<td><form:input path="dataInicio" /></td>
 		
-		</tr>
-		<tr class="ReportDetailsEvenDataRow">
-					<td class="ReportTableValueCell">Administración Pública</td>
-					<td class="ReportTableValueCell">xose.carballido</td>
-					<td class="ReportTableValueCell">Xose Manuel</td>
-					<td class="ReportTableValueCell">Carballido Gonzalez</td>
-					<td class="ReportTableValueCell">(borrar)</td>
+				<td><b>Data de fin :</b></td>
+				<td><form:input path="dataFin" /></td>
+			</tr>
 		
-		</tr>
-				<tr class="ReportDetailsEvenDataRow">
-					<td class="ReportTableValueCell">Admin</td>
-					<td class="ReportTableValueCell">admin</td>
-					<td class="ReportTableValueCell">Pablo</td>
-					<td class="ReportTableValueCell">Belay Fernández</td>
-					<td class="ReportTableValueCell">(borrar)</td>
 		
-		</tr>
-		<tr class="ReportDetailsEvenDataRow">
-					<td class="ReportTableValueCell">Administración Pública</td>
-					<td class="ReportTableValueCell">xose.carballido</td>
-					<td class="ReportTableValueCell">Xose Manuel</td>
-					<td class="ReportTableValueCell">Carballido Gonzalez</td>
-					<td class="ReportTableValueCell">(borrar)</td>
+			<tr valign="top">
+				<td><b>Arte</b>:</td>
+				
+				<td>
+				<c:forEach var="artes" items="${artes}" varStatus="status">
+					 <form:checkbox path="arte" value="${artes.id}"   label="${artes.nome}"/> 
+					 <br>
+				</c:forEach>
 		
-		</tr>
-				<tr class="ReportDetailsEvenDataRow">
-					<td class="ReportTableValueCell">Admin</td>
-					<td class="ReportTableValueCell">admin</td>
-					<td class="ReportTableValueCell">Pablo</td>
-					<td class="ReportTableValueCell">Belay Fernández</td>
-					<td class="ReportTableValueCell">(borrar)</td>
+				</td>
 		
-		</tr>
-		<tr class="ReportDetailsEvenDataRow">
-					<td class="ReportTableValueCell">Administración Pública</td>
-					<td class="ReportTableValueCell">xose.carballido</td>
-					<td class="ReportTableValueCell">Xose Manuel</td>
-					<td class="ReportTableValueCell">Carballido Gonzalez</td>
-					<td class="ReportTableValueCell">(borrar)</td>
+				<td><b>Especies:</b></td>
+				
+				<td>
+				<c:forEach var="especies" items="${especies}" varStatus="status">
+					 <form:checkbox path="estadoMar" value="${especies.id}"   label="${especies.nomecientifico}"/> 
+					 <br>
+				</c:forEach>
 		
-		</tr>
-	</table>
-
-		</div>
-	</div>
-</div>
-<script type="text/javascript">
-	cm_tabs({tab : 'tabs', container : 'paneles', active : 1});
-</script>
+				</td>
+			</tr>
+			
+			
+			
+			
+			
+			
+			<tr>
+				<td><input type="submit" value="Enviar" /></td>
+			</tr>
+		</table>
+					
+					
+					
+					
+	</form:form>
 
 </div>
 
