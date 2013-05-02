@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="iconheader">
-	<a href="/xeopesca/listaUsuarios" > <img src="/images/home.png" /></a>
+	<a href="/xeopesca/admin/listaUsuarios" > <img src="/images/home.png" /></a>
 	<a href="/xeopesca/editarConta">    <img src="/images/perfil.png" /></a>
 	<a href="<c:url value="j_spring_security_logout"/>" > <img src="/images/on_off.png" /></a>
 	

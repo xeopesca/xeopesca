@@ -12,7 +12,11 @@
 
 	<form:form method="POST" action="/xeopesca/armador/editarBarco"
 		commandName="barco">
-
+		<input id="id" name="id" type="hidden" value="${barco.id}"/>
+		<input id="idarmador" name="idarmador" type="hidden" value="${barco.idarmador}"/>
+		<input id="idpatron" name="idpatron" type="hidden" value="${barco.idpatron}"/>
+		
+		
 		<div style="color: #FF0000;"></div>
 		<table>
 			<tr>

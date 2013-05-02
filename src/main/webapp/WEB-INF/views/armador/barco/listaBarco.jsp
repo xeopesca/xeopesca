@@ -31,12 +31,12 @@
 				
 				<td class="ReportTableValueCell">
 					<center>
-						<a href="/xeopesca/armador/editarBarco/${barcos.folio}"> <img src="/images/detalle.gif" /></a>
+						<a href="/xeopesca/armador/editarBarco/${barcos.id}"> <img src="/images/detalle.gif" /></a>
 					</center>
 				</td>
 				<td class="ReportTableValueCell">
 					<center>
-						<a href="/xeopesca/armador/deleteBarco/${barcos.folio}"> <img src="/images/papelera.gif" /></a>
+						<a href="/xeopesca/armador/deleteBarco/${barcos.id}"> <img src="/images/papelera.gif" /></a>
 					</center>
 				</td>
 				

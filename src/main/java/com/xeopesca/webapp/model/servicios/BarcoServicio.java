@@ -32,15 +32,17 @@ public class BarcoServicio {
 		barcoDao.delete(barco.getFolio());
 	}
 
-	public static void removeBarco(String folio) {
+	public static void removeBarco(long id) {
 		BarcoDAO especieDao = new BarcoDAO();
-		especieDao.delete(folio);
+		especieDao.delete(id);
 	}
 	
-	public static List<Barco>  buscarBarco(String folio) {
+	public static List<Barco>  buscarBarco(String folio, long id) {
 		List<Barco> lista = new ArrayList<Barco>();
 		BarcoDAO barcoDao = new BarcoDAO();
-		lista = barcoDao.fingByFolio("%"+folio+"%");
+		
+		
+		lista = barcoDao.fingByFolio("%"+folio+"%", id);
 	
 		if (null == lista || lista.isEmpty() ){
 			lista = new ArrayList<Barco>();
@@ -49,11 +51,37 @@ public class BarcoServicio {
 		return lista;
 	}
 	
-
+	public static List<Barco>  buscarBarcoArmador(long idBarco, long idArmador) {
+		List<Barco> lista = new ArrayList<Barco>();
+		BarcoDAO barcoDao = new BarcoDAO();
+		
+		
+		lista = barcoDao.buscarBarcoArmador(idBarco, idArmador);
+				
+				
+	
+		if (null == lista || lista.isEmpty() ){
+			lista = new ArrayList<Barco>();
+		}
+		
+		return lista;
+	}
 	
 	public static void updateBarco(Barco barco){
 		BarcoDAO barcoDao = new BarcoDAO();
 		barcoDao.update(barco);
+	}
+
+	public static List<Barco> listaDeBarcos(long id) {
+		List<Barco> lista = new ArrayList<Barco>();
+		BarcoDAO barcoDao = new BarcoDAO();
+		lista = barcoDao.fingByIdArmador(id);
+	
+		if (null == lista || lista.isEmpty() ){
+			lista = new ArrayList<Barco>();
+		}
+		
+		return lista;
 	}
 
 }

@@ -1,6 +1,6 @@
 <div class="iconheader">
 	<a href="/xeopesca/patron" > <img src="/images/home.png" /></a>
-	<a href="/xeopesca/editarConta">    <img src="/images/perfil.png" /></a>
+	<a href="/xeopesca/patron/editarConta">    <img src="/images/perfil.png" /></a>
 	<a href="j_spring_security_logout" > <img src="/images/on_off.png" /></a>
 	
 </div>

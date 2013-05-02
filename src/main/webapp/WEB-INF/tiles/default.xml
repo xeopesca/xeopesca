@@ -40,6 +40,8 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/comun/editarConta.jsp" />
 	</definition>
+	
+	
 
 	<definition name="helloWorld" extends="mainTemplate">
 		<put-attribute name="body" value="/WEB-INF/views/helloWorld.jsp" />
@@ -132,6 +134,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/armador/portada.jsp" />
 	</definition>
 	
+	<definition name="editarContaArmador" extends="armadorTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/armador/editarConta.jsp" />
+	</definition>
+	
 	<!-- Barco  -->
 	<definition name="novoBarco" extends="armadorTemplate">
 		<put-attribute name="body"
@@ -176,6 +183,11 @@
 <definition name="indexPatron" extends="patronTemplate">
 		<put-attribute name="body" value="/WEB-INF/views/patron/portada.jsp" />
 </definition>
+
+<definition name="editarContaPatron" extends="patronTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/patron/editarConta.jsp" />
+	</definition>
 
 <definition name="novaFaena" extends="patronTemplate">
 		<put-attribute name="body" value="/WEB-INF/views/patron/faena/novaFaena.jsp" />

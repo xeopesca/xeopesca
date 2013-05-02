@@ -46,8 +46,55 @@
 			</tr>
 			
 			
+			<tr >
+				<td><b>Lua:</b></td>
+				
+				
+				<td>
+					<form:select path="lua">
+						<form:options items="${lua}" itemValue="id" itemLabel="literal" />
+						
+					</form:select>
+	
+				</td>
+				
+				
+		
+				<td><b>Estado mar :</b></td>
+				<td>
+					<form:select path="estadoMar" >
+						<form:options items="${mar}" itemValue="id" itemLabel="literal" />				
+					</form:select>	
+				
+				
+				</td>
+			</tr>
+			<tr >
+				<td><b>Estado ceo :</b></td>
+				<td>
+					<form:select path="estadoMar" >
+						<form:options items="${ceo}" itemValue="id" itemLabel="literal" />
+
+										
+					</form:select>	
+				
+				
 			
-			
+				
+				<td><b>Direccion vento :</b></td>
+				<td><form:input path="estadoMar" /></td>
+			</tr>	
+			<tr >
+				<td><b>Temperatura aire  :</b></td>
+				<td><form:input path="estadoMar" /></td>
+				
+				<td><b>Temperatura superficie  :</b></td>
+				<td><form:input path="estadoMar" /></td>
+			</tr>	
+			<tr >
+				<td><b>Temperatura fondo  :</b></td>
+				<td><form:input path="estadoMar" /></td>
+			</tr>
 			
 			
 			<tr>
@@ -55,13 +102,15 @@
 			</tr>
 		</table>
 					
-					
+	
+		
+	
+			
 					
 					
 	</form:form>
 
 </div>
-
 
 
 

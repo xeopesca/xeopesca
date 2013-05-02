@@ -80,19 +80,39 @@ public class LoginController {
 	@RequestMapping(value = "/editarConta", method = RequestMethod.POST)
 	public String updateUsuario(@Valid Usuario usuario, BindingResult result) {
 		String saida = "";
-		if (result.hasErrors()) {
-			return "editarConta";
-		}
+		
 
-		UsuarioServicio.updateUsuario(usuario);
+		
 		
 		if (usuario.getTipousuario().equals(ConstantesUtil.ROLE_ADMIN)){
+			
+			if (result.hasErrors()) {
+				return "editarConta";
+			}
+			UsuarioServicio.updateUsuario(usuario);
 			saida = "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
-					+ "/listaUsuarios";
+					+ "/admin/listaUsuarios";
+			
 		}else if (ConstantesUtil.ROLE_ARMADOR.equals(usuario.getTipousuario())){
+			
+			if (result.hasErrors()) {
+				return "editarContaArmador";
+			}
+			UsuarioServicio.updateUsuario(usuario);
+			
 			saida = "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
-					+ "/indexArmador";
+					+ "/armador";
+		} else if(ConstantesUtil.ROLE_PATRON.equals(usuario.getTipousuario())){
+			if (result.hasErrors()) {
+				return "editarContaPatron";
+			}
+			UsuarioServicio.updateUsuario(usuario);
+			
+			saida = "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
+					+ "/patron";
+			
 		}
+		
 		return saida;
 	}
 

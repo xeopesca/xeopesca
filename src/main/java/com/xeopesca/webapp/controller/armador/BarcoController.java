@@ -57,6 +57,13 @@ public class BarcoController {
 	// SAIDA FORMULARIO
 	@RequestMapping(value = "/armador/novoBarco", method = RequestMethod.POST)
 	public String novaEspecie(Barco barco, BindingResult result) {
+		//Recuperamos os datos do Armador
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String loginArmador = auth.getName();
+		Usuario armador = UsuarioServicio.getUsuario(loginArmador);
+		
+		//Actualizamos os datos do barco
+		barco.setIdarmador(armador.getId());
 		BarcoServicio.saveBarco(barco);
 
 		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaBarco";
@@ -67,9 +74,15 @@ public class BarcoController {
 	// ENTRADA LISTA BARCOS
 	@RequestMapping("/armador/listaBarco")
 	public String listaUsuarios(Model model) {
-
+		
+		//Recuperamos os datos do Armador
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String loginArmador = auth.getName();
+		Usuario armador = UsuarioServicio.getUsuario(loginArmador);
+		
+		
 		List<Barco> barcos = new ArrayList<Barco>();
-		barcos = BarcoServicio.listaDeBarcos();
+		barcos = BarcoServicio.listaDeBarcos(armador.getId());
 
 		model.addAttribute("barcos", barcos);
 
@@ -78,10 +91,21 @@ public class BarcoController {
 
 	// SAIDA FORMULARIO -- eliminar barco
 	@RequestMapping("/armador/deleteBarco/{id}")
-	public String borrarUsuario(@PathVariable("id") String folio) {
+	public String borrarUsuario(@PathVariable("id") Long id) {
 		
-		BarcoServicio.removeBarco(folio);
-
+		//Recuperamos os datos do Armador
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String loginArmador = auth.getName();
+		Usuario armador = UsuarioServicio.getUsuario(loginArmador);
+		
+		List<Barco> lista = BarcoServicio.buscarBarcoArmador(id,armador.getId());
+		if (lista.size()==0){
+			return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaBarco";
+		}
+		else {
+			BarcoServicio.removeBarco(id);
+		}
+		
 		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaBarco";
 	}
 
@@ -89,11 +113,17 @@ public class BarcoController {
 
 	// Entrada Formulario editarBarco
 	@RequestMapping("/armador/editarBarco/{id}")
-	public String editarEspecie(@PathVariable("id") String folio, Model model) {
+	public String editarBarco(@PathVariable("id") Long idBarco, Model model) {
 		 Barco barco;
-		 List<Barco> lista = BarcoServicio.buscarBarco(folio);
+		//Recuperamos os datos do Armador
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String loginArmador = auth.getName();
+		Usuario armador = UsuarioServicio.getUsuario(loginArmador);
+		
+		 
+		 List<Barco> lista = BarcoServicio.buscarBarcoArmador(idBarco,armador.getId());
 		 if (lista.isEmpty()){
-			 barco = new Barco();
+			 return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaBarco";
 		 }
 		 else{
 			 barco = lista.get(0);
@@ -104,7 +134,7 @@ public class BarcoController {
 
 	// SAIDA FORMULARIO editar Barco
 	@RequestMapping(value = "/armador/editarBarco", method = RequestMethod.POST)
-	public String editarEspecie(@Valid Barco barco, BindingResult result) {
+	public String editarBarco(@Valid Barco barco, BindingResult result) {
 		if (result.hasErrors()) {
 			return "editarBarco";
 		}
@@ -125,8 +155,13 @@ public class BarcoController {
 		
 		// SAIDA FORMULARIO BUSCADOR 
 		@RequestMapping(value = "/armador/buscadorBarco", method = RequestMethod.POST)
-		public String buscadorUsuario(Barco barco,Model model) {
-			List<Barco> lista  = BarcoServicio.buscarBarco(barco.getNome());
+		public String buscadorBarco(Barco barco,Model model) {
+			//Recuperamos os datos do Armador
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			String loginArmador = auth.getName();
+			Usuario armador = UsuarioServicio.getUsuario(loginArmador);
+			
+			List<Barco> lista  = BarcoServicio.buscarBarco(barco.getNome(),armador.getId());
 
 			if (lista.isEmpty()){
 				model.addAttribute("mensaxe", "lista vacia");

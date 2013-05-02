@@ -51,15 +51,25 @@ public class UsuarioServicio {
 		return userRecuperado;
 
 	}
-
+	
+	public static void removeUser(Long id) {
+		UsuarioDAO userDao = new UsuarioDAO();
+		userDao.delete(id);
+	}
+	
 	public static void removeUser(Usuario usuario) {
 		UsuarioDAO userDao = new UsuarioDAO();
 		userDao.delete(usuario.getId());
 	}
 
-	public static void removeUser(Long id) {
+	public static void removePatron(Long id, Long idArmador) {
 		UsuarioDAO userDao = new UsuarioDAO();
-		userDao.delete(id);
+		Usuario usuarioBorrar = userDao.find(id);
+
+		if (usuarioBorrar.getPatron_autoriza()== idArmador ){
+			userDao.delete(id);
+		}
+		
 	}
 	
 	public static List<Usuario>  buscarUsuario(String login) {

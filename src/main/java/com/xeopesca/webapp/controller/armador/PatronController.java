@@ -37,7 +37,15 @@ public class PatronController {
 	// -------------------------------------
 	// ENTRADA FORMULARIO -- novoPatron
 	@RequestMapping(value = "/armador/novoPatron", method = RequestMethod.GET)
-	public String novoEspecie(Model model, Usuario usuario) {
+	public String novoPatron(Model model, Usuario usuario) {
+		//Recuperamos os datos do Armador
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String loginArmador = auth.getName();
+		Usuario armador = UsuarioServicio.getUsuario(loginArmador);
+		
+		
+		
+		
 		model.addAttribute("usuario", usuario);
 
 		return "novoPatron";
@@ -45,7 +53,7 @@ public class PatronController {
 
 	// SAIDA FORMULARIO
 	@RequestMapping(value = "/armador/novoPatron", method = RequestMethod.POST)
-	public String novaEspecie(Usuario patron, BindingResult result) {
+	public String novoPatron(Usuario patron, BindingResult result) {
 		patron.setTipousuario("ROLE_PATRON");
 		//
 		byte ap[] =patron.getApelidos().getBytes();
@@ -91,15 +99,19 @@ public class PatronController {
 	// SAIDA FORMULARIO -- eliminar patron
 	@RequestMapping("/armador/deletePatron/{id}")
 	public String borrarUsuario(@PathVariable("id") Long id) {
-		
-		UsuarioServicio.removeUser(id);
+		//Recuperamos os datos do Armador
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String loginArmador = auth.getName();
+		Usuario armador = UsuarioServicio.getUsuario(loginArmador);
 
-		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaBarco";
+		UsuarioServicio.removePatron(id, armador.getId());
+
+		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaPatron";
 	}
 
 	// -------------------------- Editar PATRON
 
-	// Entrada Formulario editarEspecie
+	// Entrada 
 	@RequestMapping("/armador/editarPatron/{id}")
 	public String editarEspecie(@PathVariable("id") Long id, Model model) {
 		 Usuario usuario;

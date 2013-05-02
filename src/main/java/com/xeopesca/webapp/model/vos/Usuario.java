@@ -3,13 +3,18 @@ package com.xeopesca.webapp.model.vos;
 // Generated 05-oct-2012 22:49:11 by Hibernate Tools 3.2.1.GA
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
@@ -51,6 +56,13 @@ public class Usuario implements java.io.Serializable {
 	
 	private long patron_autoriza;
 	//private Set barcos = new HashSet(0);
+	
+	@Transient
+	@OneToMany (fetch = FetchType.LAZY, targetEntity=Barco.class)
+	@JoinColumn(name="id", referencedColumnName="idarmador")
+	private List<Barco> barcosArmador;
+	
+
 
 	public Usuario() {
 	}
@@ -150,4 +162,12 @@ public class Usuario implements java.io.Serializable {
 		this.patron_autoriza = patron_autoriza;
 	}
 
+	
+	public List<Barco> getBarcosArmador() {
+		return barcosArmador;
+	}
+
+	public void setBarcosArmador(List<Barco> barcosArmador) {
+		this.barcosArmador = barcosArmador;
+	}
 }
