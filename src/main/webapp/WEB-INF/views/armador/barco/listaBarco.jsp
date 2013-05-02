@@ -15,6 +15,7 @@
 			<th class="ReportTableHeaderCell">nome </th>
 			<th class="ReportTableHeaderCell">eslora </th>
 			<th class="ReportTableHeaderCell">porto </th>
+			<th class="ReportTableHeaderCell">nome patron </th>
 			
 			<th class="ReportTableHeaderCell">Detalle</th>
 			<th class="ReportTableHeaderCell">Borrar</th>
@@ -27,7 +28,7 @@
 				<td class="ReportTableValueCell">${barcos.nome}</td>
 			    <td class="ReportTableValueCell">${barcos.eslora}</td>
 			   	<td class="ReportTableValueCell">${barcos.porto}</td>
-			   
+			   <td class="ReportTableValueCell">${barcos.patron.nome}  ${barcos.patron.apelidos}</td>
 				
 				<td class="ReportTableValueCell">
 					<center>

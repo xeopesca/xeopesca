@@ -35,8 +35,8 @@ public class Usuario implements java.io.Serializable {
 	@GenericGenerator(name = "increment", strategy = "increment")
 	private long id;
 	
-	@Type(type = "com.xeopesca.webapp.model.vos.Barco")
-	private Barco barco;
+	// @ Type(type = "com.xeopesca.webapp.model.vos.Barco")
+   //private Barco barco;
 	
 	@NotBlank ( message = "O login non pode estar valeiro")
     @Length(min=4,max = 10, message = "O login ten que estar entre 4 e 10 caracteres") 
@@ -54,8 +54,9 @@ public class Usuario implements java.io.Serializable {
 	@NotBlank ( message = "Ten que seleccionar un tipo de usuario")
 	private String tipousuario;
 	
-	private long patron_autoriza;
-	//private Set barcos = new HashSet(0);
+	private Long patron_autoriza;
+	
+	private Long idbarco; 
 	
 	@Transient
 	@OneToMany (fetch = FetchType.LAZY, targetEntity=Barco.class)
@@ -70,7 +71,6 @@ public class Usuario implements java.io.Serializable {
 	public Usuario(long id, Barco barco, String login, String nome,
 			String apelidos, String contrasinal, String tipousuario) {
 		this.id = id;
-		this.barco = barco;
 		this.login = login;
 		this.nome = nome;
 		this.apelidos = apelidos;
@@ -78,17 +78,7 @@ public class Usuario implements java.io.Serializable {
 		this.tipousuario = tipousuario;
 	}
 
-	public Usuario(long id, Barco barco, String login, String nome,
-			String apelidos, String contrasinal, String tipousuario, Set barcos) {
-		this.id = id;
-		this.barco = barco;
-		this.login = login;
-		this.nome = nome;
-		this.apelidos = apelidos;
-		this.contrasinal = contrasinal;
-		this.tipousuario = tipousuario;
-		//this.barcos = barcos;
-	}
+	
 
 	public long getId() {
 		return this.id;
@@ -98,14 +88,7 @@ public class Usuario implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public Barco getBarco() {
-		return this.barco;
-	}
-
-	public void setBarco(Barco barco) {
-		this.barco = barco;
-	}
-
+	
 	public String getLogin() {
 		return this.login;
 	}
@@ -145,24 +128,23 @@ public class Usuario implements java.io.Serializable {
 	public void setTipousuario(String tipousuario) {
 		this.tipousuario = tipousuario;
 	}
-/*
-	public Set getBarcos() {
-		return this.barcos;
-	}
 
-	public void setBarcos(Set barcos) {
-		this.barcos = barcos;
-	}*/
-
-	public long getPatron_autoriza() {
+	public Long getPatron_autoriza() {
 		return patron_autoriza;
 	}
 
-	public void setPatron_autoriza(long patron_autoriza) {
+	public void setPatron_autoriza(Long patron_autoriza) {
 		this.patron_autoriza = patron_autoriza;
 	}
 
-	
+	public Long getIdbarco() {
+		return idbarco;
+	}
+
+	public void setIdbarco(Long idbarco) {
+		this.idbarco = idbarco;
+	}
+
 	public List<Barco> getBarcosArmador() {
 		return barcosArmador;
 	}
@@ -170,4 +152,10 @@ public class Usuario implements java.io.Serializable {
 	public void setBarcosArmador(List<Barco> barcosArmador) {
 		this.barcosArmador = barcosArmador;
 	}
+
+
+	
+
+	
+
 }

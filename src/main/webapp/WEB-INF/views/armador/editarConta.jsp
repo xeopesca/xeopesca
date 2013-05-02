@@ -7,7 +7,7 @@
 
 
 <div id="ReportDetails">
-	<h2>Editar usuario</h2>
+	<h2>Editar usuario armador</h2>
 
 	<form:form action="/xeopesca/editarConta" commandName="usuario">
 
@@ -21,7 +21,7 @@
 
 	    <input id="id" name="id" type="hidden" value="${usuario.id}"/>
 		<input id="patron_autoriza" name="patron_autoriza" type="hidden" value="${usuario.patron_autoriza}"/>
-		 armador
+		<input id="idbarco" name="idbarco" type="hidden" value="${usuario.idbarco}"/>
 		
 		<table>
 			<tr>

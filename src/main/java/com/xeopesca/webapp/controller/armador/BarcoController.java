@@ -119,7 +119,9 @@ public class BarcoController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String loginArmador = auth.getName();
 		Usuario armador = UsuarioServicio.getUsuario(loginArmador);
-		
+		//buscamos os patrons 
+		List<Usuario> patrons = new ArrayList<Usuario>();
+		patrons = UsuarioServicio.buscarPatronsDunArmador(armador.getId());
 		 
 		 List<Barco> lista = BarcoServicio.buscarBarcoArmador(idBarco,armador.getId());
 		 if (lista.isEmpty()){
@@ -129,6 +131,7 @@ public class BarcoController {
 			 barco = lista.get(0);
 		 }
 		model.addAttribute("barco", barco);
+		model.addAttribute("patrons", patrons);
 		return "editarBarco";
 	}
 
@@ -138,6 +141,31 @@ public class BarcoController {
 		if (result.hasErrors()) {
 			return "editarBarco";
 		}
+		
+		/*
+		 * Actualizamos os datos
+		 * */
+		
+		//Comprobamos que o barco teña un patron seleccionado
+		if (barco.getIdpatron() != null){
+			Usuario patron = UsuarioServicio.buscarUsuario(barco.getIdpatron());
+			if (patron.getIdbarco() == null){ //O Patron non ten asignado un barco
+				patron.setIdbarco(barco.getId());
+				UsuarioServicio.updateUsuario(patron);
+			}
+			else{ //O patrón xa ten asigando un barco, debemos desmarcar
+				List<Barco> barcoRel = BarcoServicio.buscarBarcoArmador(barco.getId(), patron.getPatron_autoriza());
+				if(!barcoRel.isEmpty()){
+					Barco barcoRelacionado = barcoRel.get(0);
+					barcoRelacionado.setIdpatron(null);
+					BarcoServicio.updateBarco(barcoRelacionado);
+				}
+				//
+				patron.setIdbarco(barco.getId());
+				UsuarioServicio.updateUsuario(patron);
+			}
+		}//IF (1)
+		
 		BarcoServicio.updateBarco(barco);
 		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaBarco";
 	}

@@ -14,7 +14,6 @@
 		commandName="barco">
 		<input id="id" name="id" type="hidden" value="${barco.id}"/>
 		<input id="idarmador" name="idarmador" type="hidden" value="${barco.idarmador}"/>
-		<input id="idpatron" name="idpatron" type="hidden" value="${barco.idpatron}"/>
 		
 		
 		<div style="color: #FF0000;"></div>
@@ -38,6 +37,18 @@
 				<td><form:input path="porto" /></td>
 				
 			</tr>
+			<tr>
+				<td>Patrón asignado :</td>
+				<td>
+					<form:select path="idpatron" >
+							<form:option value="" label="" />
+							<form:options items="${patrons}" itemValue="id" itemLabel="login"  />				
+					</form:select>	 
+						 <br>
+					
+				</td>
+			</tr>
+			
 
 			<tr>
 				<td></td>

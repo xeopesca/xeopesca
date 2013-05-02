@@ -5,8 +5,12 @@ package com.xeopesca.webapp.model.vos;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -28,9 +32,41 @@ public class Barco  implements java.io.Serializable {
 	private String porto;
 	private Long idarmador;
 	private Long idpatron;
+	
+	//-----
+	 @JoinColumn(name = "idarmador",insertable=false, updatable=false)
+     @OneToOne(optional = false, fetch = FetchType.LAZY)
+     private Usuario armador;
+	 
+	 @JoinColumn(name = "idpatron",insertable=false, updatable=false)
+     @OneToOne(optional = false, fetch = FetchType.LAZY)
+     private Usuario patron;
+	 
+	
+	//---
 	 
     
-    public Barco() {
+    public Usuario getPatron() {
+		return patron;
+	}
+
+
+	public void setPatron(Usuario patron) {
+		this.patron = patron;
+	}
+
+
+	public Usuario getArmador() {
+		return armador;
+	}
+
+
+	public void setArmador(Usuario armador) {
+		this.armador = armador;
+	}
+
+
+	public Barco() {
     }
 
 	

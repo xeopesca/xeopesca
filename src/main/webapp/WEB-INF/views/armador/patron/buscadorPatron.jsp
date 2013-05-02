@@ -7,7 +7,7 @@
 
 
 <div id="ReportDetails">
-	<h2>Buscar barco</h2>
+	<h2>Buscar patrón</h2>
     
 
 	<form:form method="POST" action="/xeopesca/armador/buscadorPatron"
