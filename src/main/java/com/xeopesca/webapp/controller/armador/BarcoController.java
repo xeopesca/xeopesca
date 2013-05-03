@@ -134,39 +134,63 @@ public class BarcoController {
 		model.addAttribute("patrons", patrons);
 		return "editarBarco";
 	}
+	
+	
+	
+	private void porNuloBarcoPatronRelacionPaso1(Barco b1){
+		if (b1 != null){
+			
+			
+			if(b1.getIdpatron()!=null){
+				Usuario p1 = UsuarioServicio.buscarUsuario(b1.getIdpatron());
+				p1.setIdbarco(null);	
+				UsuarioServicio.updateUsuario(p1);
+			}
+			b1.setIdpatron(null);
+			BarcoServicio.updateBarco(b1);
+		}
+		
+		
+		
+	}
+	
+	
+	private void porNuloBarcoPatronRelacionPaso2(Usuario p1){
+		if (p1 != null){
+			
+			
+			if (p1.getIdbarco()!=null){
+				Barco b1 = BarcoServicio.findByID(p1.getIdbarco());
+				b1.setIdpatron(null);
+				BarcoServicio.updateBarco(b1);
+			}
+			
+			p1.setIdbarco(null);	
+			UsuarioServicio.updateUsuario(p1);
+		}
+		
+	}
 
 	// SAIDA FORMULARIO editar Barco
 	@RequestMapping(value = "/armador/editarBarco", method = RequestMethod.POST)
-	public String editarBarco(@Valid Barco barco, BindingResult result) {
+	public String editarBarco(@Valid Barco barcoNew, BindingResult result) {
 		if (result.hasErrors()) {
 			return "editarBarco";
 		}
 		
-		/*
-		 * Actualizamos os datos
-		 * */
+		porNuloBarcoPatronRelacionPaso1( BarcoServicio.findByID(barcoNew.getId()));
+		porNuloBarcoPatronRelacionPaso2 (UsuarioServicio.buscarUsuario(barcoNew.getIdpatron()));
 		
-		//Comprobamos que o barco teña un patron seleccionado
-		if (barco.getIdpatron() != null){
-			Usuario patron = UsuarioServicio.buscarUsuario(barco.getIdpatron());
-			if (patron.getIdbarco() == null){ //O Patron non ten asignado un barco
-				patron.setIdbarco(barco.getId());
-				UsuarioServicio.updateUsuario(patron);
-			}
-			else{ //O patrón xa ten asigando un barco, debemos desmarcar
-				List<Barco> barcoRel = BarcoServicio.buscarBarcoArmador(barco.getId(), patron.getPatron_autoriza());
-				if(!barcoRel.isEmpty()){
-					Barco barcoRelacionado = barcoRel.get(0);
-					barcoRelacionado.setIdpatron(null);
-					BarcoServicio.updateBarco(barcoRelacionado);
-				}
-				//
-				patron.setIdbarco(barco.getId());
-				UsuarioServicio.updateUsuario(patron);
-			}
-		}//IF (1)
+		//Asignacion
+		Usuario patronNew = UsuarioServicio.buscarUsuario(barcoNew.getIdpatron());
 		
-		BarcoServicio.updateBarco(barco);
+		if (barcoNew.getIdpatron()!=null){
+			patronNew.setIdbarco(barcoNew.getId());
+			UsuarioServicio.updateUsuario(patronNew);
+		}
+		
+		BarcoServicio.updateBarco(barcoNew);
+		
 		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaBarco";
 	}
 	

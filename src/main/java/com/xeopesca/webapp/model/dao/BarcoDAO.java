@@ -76,6 +76,19 @@ public class BarcoDAO  extends GenericDaoHibernate<Barco>
 			
 	}
 	
+	public List<Barco> fingById(long id) {
+		EntityManager em = JPAUtil.createEntityManager();
+		em.getTransaction().begin();
+		String queryStri=" FROM Barco e " +
+						 " WHERE e.id = :id " +
+				         " ORDER by e.folio  ASC" ;
+
+		@SuppressWarnings("unchecked")
+		List<Barco> saida = em.createQuery(queryStri).setParameter("id", id).getResultList();
+		
+			return saida;
+	}
+	
 	
 	
 

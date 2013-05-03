@@ -83,5 +83,22 @@ public class BarcoServicio {
 		
 		return lista;
 	}
+	
+	public static Barco findByID(long id) {
+		List<Barco> lista = new ArrayList<Barco>();
+		BarcoDAO barcoDao = new BarcoDAO();
+		lista = barcoDao.fingById(id);
+		Barco saida = null;
+	
+		if (null == lista || lista.isEmpty() ){
+			lista = new ArrayList<Barco>();
+			saida = null;
+		}
+		else{
+			saida = lista.get(0);
+		}
+		
+		return saida;
+	}
 
 }

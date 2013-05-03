@@ -12,7 +12,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Min;
@@ -63,7 +65,13 @@ public class Usuario implements java.io.Serializable {
 	@JoinColumn(name="id", referencedColumnName="idarmador")
 	private List<Barco> barcosArmador;
 	
+	 @Transient
+	 @JoinColumn(name = "idbarco",insertable=false, updatable=false)
+     @OneToOne(optional = false, fetch = FetchType.LAZY)
+     private Barco barcoPatron;
 
+
+	
 
 	public Usuario() {
 	}
@@ -153,7 +161,13 @@ public class Usuario implements java.io.Serializable {
 		this.barcosArmador = barcosArmador;
 	}
 
+	public Barco getBarcoPatron() {
+		return barcoPatron;
+	}
 
+	public void setBarcoPatron(Barco barcoPatron) {
+		this.barcoPatron = barcoPatron;
+	}
 	
 
 	

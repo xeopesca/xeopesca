@@ -12,10 +12,10 @@
 	<table>
 		<tr>
 			<th class="ReportTableHeaderCell">Folio</th>
-			<th class="ReportTableHeaderCell">nome </th>
-			<th class="ReportTableHeaderCell">eslora </th>
-			<th class="ReportTableHeaderCell">porto </th>
-			<th class="ReportTableHeaderCell">nome patron </th>
+			<th class="ReportTableHeaderCell">Nome </th>
+			<th class="ReportTableHeaderCell">Eslora </th>
+			<th class="ReportTableHeaderCell">Porto </th>
+			<th class="ReportTableHeaderCell">Patron asignado </th>
 			
 			<th class="ReportTableHeaderCell">Detalle</th>
 			<th class="ReportTableHeaderCell">Borrar</th>

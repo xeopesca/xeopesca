@@ -103,6 +103,9 @@ public class UsuarioServicio {
 	
 	
 	public static Usuario  buscarUsuario(Long id) {
+		
+		if (id== null) return null;
+		
 		UsuarioDAO userDao = new UsuarioDAO();
 		Usuario userRecuperado = userDao.find(id);
 		

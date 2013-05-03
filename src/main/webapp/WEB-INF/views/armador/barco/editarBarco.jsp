@@ -42,15 +42,21 @@
 				<td>
 					<form:select path="idpatron" >
 							<form:option value="" label="" />
-							<form:options items="${patrons}" itemValue="id" itemLabel="login"  />				
+							<form:options items="${patrons}" itemValue="id" itemLabel= 'login'  />				
 					</form:select>	 
-						 <br>
+					<br>
+					
+					
+					
 					
 				</td>
 			</tr>
-			
+			 
+			 
 
 			<tr>
+			
+			
 				<td></td>
 				<td><input type="submit" value="Enviar" /></td>
 			</tr>
