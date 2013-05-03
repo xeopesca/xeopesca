@@ -11,6 +11,7 @@ import com.xeopesca.webapp.view.FaenaBuscador;
 import com.xeopesca.webapp.model.servicios.ArteServicio;
 import com.xeopesca.webapp.model.servicios.BarcoServicio;
 import com.xeopesca.webapp.model.servicios.EspecieServicio;
+import com.xeopesca.webapp.model.servicios.FaenaServicio;
 import com.xeopesca.webapp.model.servicios.ParametriaServicio;
 import com.xeopesca.webapp.model.vos.Barco;
 import com.xeopesca.webapp.model.vos.Faena;
@@ -47,7 +48,8 @@ public class FaenaController {
  		Faena f = new Faena();
  		
  		
- 		f.setArte(1);
+ 		
+ 		FaenaServicio.saveFaena(f);
  		
  		
  		
