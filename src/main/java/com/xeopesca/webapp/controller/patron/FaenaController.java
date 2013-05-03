@@ -46,6 +46,16 @@ public class FaenaController {
  	public String novaEspecie(FaenaBuscador faena, BindingResult result) {
  		 		
  		Faena f = new Faena();
+ 		f.setIdarte(new Long (faena.getArte()));
+ 		//datainicio
+ 		//horainicio
+ 		//datafin
+ 		//horafin
+ 		f.setLua(faena.getLua());
+ 		f.setTemp_aire(faena.getTempAire());
+ 		f.setTemp_superficie(faena.getTempSuperficie());
+ 		f.setTemp_fondo(faena.getTempFondo());
+ 		f.setEstado_mar(faena.getEstadoMar().toString()); //REVISAR
  		
  		
  		
@@ -57,7 +67,7 @@ public class FaenaController {
  		x=0;
  		//BarcoServicio.saveBarco(barco);
  		
- 		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaBarco";
+ 		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/patron/";
  	}
     
     
