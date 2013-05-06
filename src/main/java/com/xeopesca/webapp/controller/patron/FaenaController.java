@@ -1,5 +1,7 @@
 package com.xeopesca.webapp.controller.patron;
 
+import java.util.Date;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.xeopesca.util.ConstantesUtil;
+import com.xeopesca.util.HelperDateUtil;
 import com.xeopesca.webapp.view.FaenaBuscador;
 import com.xeopesca.webapp.model.servicios.ArteServicio;
 import com.xeopesca.webapp.model.servicios.BarcoServicio;
@@ -46,11 +49,22 @@ public class FaenaController {
  	public String novaEspecie(FaenaBuscador faena, BindingResult result) {
  		 		
  		Faena f = new Faena();
+ 		f.setIdbarco(9999);
  		f.setIdarte(new Long (faena.getArte()));
- 		//datainicio
- 		//horainicio
- 		//datafin
- 		//horafin
+ 		
+ 		Date data = null;
+ 		
+ 		//datainicio//datainicio
+ 		data = HelperDateUtil.StringToDate("10-05-2013");
+ 		if (data != null){
+ 	 		f.setData_inicio(data);
+ 		}
+ 		
+ 		//Data fin
+ 		f.setData_fin(data);
+ 		f.setHora_inicio(data);
+ 		f.setHora_fin(data);
+ 		
  		f.setLua(faena.getLua());
  		f.setTemp_aire(faena.getTempAire());
  		f.setTemp_superficie(faena.getTempSuperficie());
@@ -63,8 +77,7 @@ public class FaenaController {
  		
  		
  		
- 		int x;
- 		x=0;
+ 		
  		//BarcoServicio.saveBarco(barco);
  		
  		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/patron/";

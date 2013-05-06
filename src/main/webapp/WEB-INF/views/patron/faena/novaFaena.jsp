@@ -21,7 +21,7 @@
 							<form:options items="${artes}" itemValue="id" itemLabel="nome" />
 					</form:select>
 				</td>
-				<td>Data inicio:</td>
+			<td>Data inicio:</td>
 				<td><form:input path="dataInicio" /></td>
 				<td>Hora inicio:</td>
 				<td><form:input path="horaInicio" /> </td>
