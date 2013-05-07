@@ -5,6 +5,25 @@
 
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
+<script type="text/javascript">
+	window.onload = function(){
+		new JsDatePick({
+			useMode:2,
+			target:"dfin",
+			dateFormat:"%d-%m-%Y"
+		});
+		
+		new JsDatePick({
+			useMode:2,
+			target:"dinicio",
+			dateFormat:"%d-%m-%Y"
+		});
+	};
+</script>
+
+
+
+
 
 <div id="ReportDetails">
 	 <h2>Nova faena </h2>
@@ -22,7 +41,7 @@
 					</form:select>
 				</td>
 			<td>Data inicio:</td>
-				<td><form:input path="dataInicio" /></td>
+				<td><form:input path="dataInicio" readonly="true" id="dinicio" /></td>
 				<td>Hora inicio:</td>
 				<td><form:input path="horaInicio" /> </td>
 				
@@ -35,10 +54,11 @@
 					</form:select></td>
 				
 				<td>Data fin:</td>
-				<td><form:input path="dataFin" /></td>
+				<td><form:input  path="dataFin" readonly="true" id="dfin"/></td>
 				
 				<td>Hora fin:</td>
-				<td><form:input path="horaFin" /></td>
+				<td><form:input path="horaFin"  /></td>
+				
 			
 			</tr>
 			<tr>

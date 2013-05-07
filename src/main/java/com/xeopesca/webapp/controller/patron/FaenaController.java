@@ -1,5 +1,6 @@
 package com.xeopesca.webapp.controller.patron;
 
+import java.security.Timestamp;
 import java.util.Date;
 
 import org.springframework.stereotype.Controller;
@@ -35,11 +36,19 @@ public class FaenaController {
     	model.addAttribute("mar", ParametriaServicio.recuperarParametro("mar") );
     	model.addAttribute("ceo", ParametriaServicio.recuperarParametro("ceo") );
     	model.addAttribute("dir.vento", ParametriaServicio.recuperarParametro("dir.vento") );
-
-    	
-    	model.addAttribute("faena",faena);
     	model.addAttribute("artes", ArteServicio.listaDeArtes());
     	model.addAttribute("especies", EspecieServicio.listaDeEspecies());
+    	
+    	/*
+    	 * Obxecto a parsear
+    	 * */
+
+    	faena.setHoraFin(HelperDateUtil.TimeToString(new Date()));
+    	faena.setHoraInicio("00:00");
+    	faena.setDataInicio(HelperDateUtil.DateToString(new Date()));
+    	faena.setDataFin(HelperDateUtil.DateToString(new Date()));
+    	model.addAttribute("faena",faena);
+    	
     	
         return "novaFaena"; 
     }

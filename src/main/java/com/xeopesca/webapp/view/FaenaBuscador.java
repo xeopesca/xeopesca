@@ -1,13 +1,11 @@
 package com.xeopesca.webapp.view;
 
-// Generated 05-oct-2012 22:49:11 by Hibernate Tools 3.2.1.GA
 
-import java.util.Date;
-import java.util.Set;
 
 /**
  * Faena Buscador
  */
+@SuppressWarnings("serial")
 public class FaenaBuscador implements java.io.Serializable {
 
 	private long id;
@@ -27,8 +25,8 @@ public class FaenaBuscador implements java.io.Serializable {
 	private Float velocidadeVento;
 	private Float tempFondo;
 
-	private Date horaFin;
-	private Date horaInicio;
+	private String horaFin;
+	private String horaInicio;
 
 	public FaenaBuscador() {
 	}
@@ -79,11 +77,11 @@ public class FaenaBuscador implements java.io.Serializable {
 		this.dataInicio = dataInicio;
 	}
 
-	public Date getHoraInicio() {
+	public String getHoraInicio() {
 		return this.horaInicio;
 	}
 
-	public void setHoraInicio(Date horaInicio) {
+	public void setHoraInicio(String horaInicio) {
 		this.horaInicio = horaInicio;
 	}
 
@@ -95,11 +93,11 @@ public class FaenaBuscador implements java.io.Serializable {
 		this.dataFin = dataFin;
 	}
 
-	public Date getHoraFin() {
+	public String getHoraFin() {
 		return this.horaFin;
 	}
 
-	public void setHoraFin(Date horaFin) {
+	public void setHoraFin(String horaFin) {
 		this.horaFin = horaFin;
 	}
 

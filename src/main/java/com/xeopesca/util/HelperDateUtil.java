@@ -29,7 +29,7 @@ public class HelperDateUtil {
 	public static Date StringToTime (String fechaCadena){
 		///String strFecha = "2007-12-25";
 
-		SimpleDateFormat formatoDelTexto = new SimpleDateFormat("hh:mm:ss");
+		SimpleDateFormat formatoDelTexto = new SimpleDateFormat("hh:mm");
 		Date fecha = null;
 		try {
 
@@ -51,7 +51,7 @@ public class HelperDateUtil {
 	}
 
 	public static String TimeToString (Date fecha){
-		SimpleDateFormat formatoDeFecha = new SimpleDateFormat("hh:mm:ss");
+		SimpleDateFormat formatoDeFecha = new SimpleDateFormat("HH:mm");
 		
 		return formatoDeFecha.format(fecha);
 	}

@@ -11,6 +11,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 
 <title>Patrón</title>
+<link rel="stylesheet" type="text/css" media="all" href="/js/calendar/jsDatePick_ltr.min.css" />
+
 <link rel="stylesheet" href="/css/estilo.css" type="text/css" />
 <link rel="stylesheet" href="/css/tabs.css" type="text/css" />
 
@@ -72,7 +74,10 @@ function init() {
 	
 	
 }
-	</script>
+</script>
+
+<script type="text/javascript" src="/js/calendar/jsDatePick.min.1.3.js"></script>
+
 
 
 </head>
