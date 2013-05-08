@@ -20,8 +20,8 @@
 		</div>
 
 	    <input id="id" name="id" type="hidden" value="${usuario.id}"/>
-		 <input id="patron_autoriza" name="patron_autoriza" type="hidden" value="${usuario.patron_autoriza}"/>
-		 <input id="idbarco" name="idbarco" type="hidden" value="${usuario.idbarco}"/>
+		<input id="patron_autoriza" name="patron_autoriza" type="hidden" value="${usuario.patron_autoriza}"/>
+		<input id="idbarco" name="idbarco" type="hidden" value="${usuario.idbarco}"/>
 		<table>
 			<tr>
 				<td>Login :</td>

@@ -1,5 +1,11 @@
 package com.xeopesca.webapp.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.xeopesca.util.HelperDateUtil;
+import com.xeopesca.webapp.model.vos.Faena;
+
 
 
 /**
@@ -9,7 +15,8 @@ package com.xeopesca.webapp.view;
 public class FaenaBuscador implements java.io.Serializable {
 
 	private long id;
-
+	
+	private Long   idbarco;
 	private String dataInicio;
 	private String dataFin;
 	private String barco;
@@ -30,7 +37,84 @@ public class FaenaBuscador implements java.io.Serializable {
 
 	public FaenaBuscador() {
 	}
+	
+	public static Faena convertFaenaBuscardorToFaena(FaenaBuscador faena){
+		
+		Faena f = new Faena();
+ 		f.setIdarte(new Long (faena.getArte()));
+ 		//datainicio
+ 	 	f.setData_inicio(HelperDateUtil.StringToDate(faena.getDataInicio()));
+ 		//Data fin
+ 	 	f.setData_fin(HelperDateUtil.StringToDate(faena.getDataFin()));
+ 	 	//hora inicio
+ 		f.setHora_inicio(HelperDateUtil.StringToTime(faena.getHoraInicio()));
+ 		//hora fin
+ 		f.setHora_fin(HelperDateUtil.StringToTime(faena.getHoraFin()));
+ 		f.setLua(faena.getLua());
+ 		f.setTemp_aire(faena.getTempAire());
+ 		f.setTemp_superficie(faena.getTempSuperficie());
+ 		f.setTemp_fondo(faena.getTempFondo());
+ 		f.setEstado_mar(faena.getEstadoMar()); 
+		f.setVelocidade_vento(faena.getVelocidadeVento());
+		f.setDireccion_vento(faena.getDireccionVento());
+		f.setIdbarco(faena.getIdbarco());
+		
+		return f;
+	}
+	
+	public static FaenaBuscador convertFaenaToFaenaBuscardor(Faena faena){
+		
+		
+		FaenaBuscador fb = new FaenaBuscador();
+		
+		fb.setArte( Long.toString(faena.getIdarte()));
+ 		//datainicio
+		fb.setDataInicio(HelperDateUtil.DateToString(faena.getData_inicio()));
+		
+ 		//Data fin
+		fb.setDataFin(HelperDateUtil.DateToString(faena.getData_fin()));
+ 	 	//hora inicio
+		fb.setHoraInicio(HelperDateUtil.TimeToString(faena.getHora_inicio()));
+ 		//hora fin
+		fb.setHoraFin(HelperDateUtil.TimeToString(faena.getHora_fin()));
+		//lua
+		fb.setLua(faena.getLua());
+		//Aire
+		fb.setTempAire(faena.getTemp_aire());
+		//Temp superficie
+		fb.setTempSuperficie(faena.getTemp_superficie());
+		//Temp fonde
+		fb.setTempFondo(faena.getTemp_fondo());
+		//Estado mar
+		fb.setEstadoMar(faena.getEstado_mar());
+		//Velocidade vento
+		fb.setVelocidadeVento(faena.getVelocidade_vento());
+		//Dir Vento
+		fb.setDireccionVento(faena.getDireccion_vento());
+		//Id Barco
+		fb.setIdbarco(faena.getIdbarco());
+		//ID
+		fb.setId(faena.getId());
 
+		return fb;
+	}
+	
+	public static List<FaenaBuscador> convertFaenaToListFaenaBuscardor (List<Faena> lista){
+		List<FaenaBuscador>saida =  new  ArrayList<FaenaBuscador>();
+		if (lista != null){
+			for (int i= 0; i < lista.size(); i++)
+			{
+				saida.add(FaenaBuscador.convertFaenaToFaenaBuscardor(lista.get(i)));
+			}
+			
+		}
+		
+		
+		return saida;
+	}
+	
+	
+	
 	public Integer getEstadoMar() {
 		return estadoMar;
 	}
@@ -163,6 +247,14 @@ public class FaenaBuscador implements java.io.Serializable {
 
 	public void setEspecies(String especies) {
 		this.especies = especies;
+	}
+
+	public Long getIdbarco() {
+		return idbarco;
+	}
+
+	public void setIdbarco(Long idbarco) {
+		this.idbarco = idbarco;
 	}
 
 }

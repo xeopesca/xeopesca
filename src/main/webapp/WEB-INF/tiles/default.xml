@@ -193,8 +193,16 @@
 		<put-attribute name="body" value="/WEB-INF/views/patron/faena/novaFaena.jsp" />
 </definition>
 
+<definition name="editarFaena" extends="patronTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/patron/faena/editarFaena.jsp" />
+</definition>
+
+
 <definition name="buscadorFaena" extends="patronTemplate">
 		<put-attribute name="body" value="/WEB-INF/views/patron/faena/buscadorFaena.jsp" />
+</definition>
+<definition name="listaFaena" extends="patronTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/patron/faena/listaFaena.jsp" />
 </definition>
 
 

@@ -26,7 +26,7 @@
 
 
 <div id="ReportDetails">
-	 <h2>Nova faena </h2>
+	 <h2>Editar faena </h2>
 	<br>
 	<form:form  action="/xeopesca/patron/novaFaena" method="POST" commandName="faena">
 		<input id="idbarco" name="idbarco" type="hidden" value="${faena.idbarco}"/>

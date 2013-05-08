@@ -29,9 +29,9 @@ public class Faena  implements java.io.Serializable {
      private Date data_fin;
      private Date hora_fin;
      private Float temp_aire;
-     private String estado_mar;
+     private Integer estado_mar;
      private Float temp_superficie;
-     private Float direccion_vento;
+     private Integer direccion_vento;
      private Float velocidade_vento;
      private Float temp_fondo;
      private Integer lua;
@@ -104,11 +104,11 @@ public class Faena  implements java.io.Serializable {
 		this.temp_aire = temp_aire;
 	}
 
-	public String getEstado_mar() {
+	public Integer getEstado_mar() {
 		return estado_mar;
 	}
 
-	public void setEstado_mar(String estado_mar) {
+	public void setEstado_mar(Integer estado_mar) {
 		this.estado_mar = estado_mar;
 	}
 
@@ -120,11 +120,11 @@ public class Faena  implements java.io.Serializable {
 		this.temp_superficie = temp_superficie;
 	}
 
-	public Float getDireccion_vento() {
+	public Integer getDireccion_vento() {
 		return direccion_vento;
 	}
 
-	public void setDireccion_vento(Float direccion_vento) {
+	public void setDireccion_vento(Integer direccion_vento) {
 		this.direccion_vento = direccion_vento;
 	}
 

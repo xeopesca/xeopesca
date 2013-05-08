@@ -1,11 +1,15 @@
 package com.xeopesca.webapp.controller.patron;
 
-import java.security.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -17,8 +21,10 @@ import com.xeopesca.webapp.model.servicios.BarcoServicio;
 import com.xeopesca.webapp.model.servicios.EspecieServicio;
 import com.xeopesca.webapp.model.servicios.FaenaServicio;
 import com.xeopesca.webapp.model.servicios.ParametriaServicio;
+import com.xeopesca.webapp.model.servicios.UsuarioServicio;
 import com.xeopesca.webapp.model.vos.Barco;
 import com.xeopesca.webapp.model.vos.Faena;
+import com.xeopesca.webapp.model.vos.Usuario;
 
 
 @Controller
@@ -35,18 +41,25 @@ public class FaenaController {
     	model.addAttribute("lua", ParametriaServicio.recuperarParametro("lua") );
     	model.addAttribute("mar", ParametriaServicio.recuperarParametro("mar") );
     	model.addAttribute("ceo", ParametriaServicio.recuperarParametro("ceo") );
-    	model.addAttribute("dir.vento", ParametriaServicio.recuperarParametro("dir.vento") );
+    	model.addAttribute("dirvento", ParametriaServicio.recuperarParametro("dir.vento") );
     	model.addAttribute("artes", ArteServicio.listaDeArtes());
     	model.addAttribute("especies", EspecieServicio.listaDeEspecies());
     	
     	/*
     	 * Obxecto a parsear
     	 * */
-
+    	
+    	//Recuperamos os datos do Armador
+    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    	String patronLogin = auth.getName();
+    	Usuario patron = UsuarioServicio.getUsuario(patronLogin);
+    	
     	faena.setHoraFin(HelperDateUtil.TimeToString(new Date()));
     	faena.setHoraInicio("00:00");
     	faena.setDataInicio(HelperDateUtil.DateToString(new Date()));
     	faena.setDataFin(HelperDateUtil.DateToString(new Date()));
+    	
+		faena.setIdbarco(patron.getIdbarco());
     	model.addAttribute("faena",faena);
     	
     	
@@ -58,37 +71,28 @@ public class FaenaController {
  	public String novaEspecie(FaenaBuscador faena, BindingResult result) {
  		 		
  		Faena f = new Faena();
- 		f.setIdbarco(9999);
  		f.setIdarte(new Long (faena.getArte()));
  		
- 		Date data = null;
  		
- 		//datainicio//datainicio
- 		data = HelperDateUtil.StringToDate("10-05-2013");
- 		if (data != null){
- 	 		f.setData_inicio(data);
- 		}
- 		
+ 		//datainicio
+ 	 	f.setData_inicio(HelperDateUtil.StringToDate(faena.getDataInicio()));
  		//Data fin
- 		f.setData_fin(data);
- 		f.setHora_inicio(data);
- 		f.setHora_fin(data);
- 		
+ 	 	f.setData_fin(HelperDateUtil.StringToDate(faena.getDataFin()));
+ 	 	//hora inicio
+ 		f.setHora_inicio(HelperDateUtil.StringToTime(faena.getHoraInicio()));
+ 		//hora fin
+ 		f.setHora_fin(HelperDateUtil.StringToTime(faena.getHoraFin()));
  		f.setLua(faena.getLua());
  		f.setTemp_aire(faena.getTempAire());
  		f.setTemp_superficie(faena.getTempSuperficie());
  		f.setTemp_fondo(faena.getTempFondo());
- 		f.setEstado_mar(faena.getEstadoMar().toString()); //REVISAR
- 		
- 		
- 		
+ 		f.setEstado_mar(faena.getEstadoMar()); 
+		f.setVelocidade_vento(faena.getVelocidadeVento());
+		f.setDireccion_vento(faena.getDireccionVento());
+		f.setIdbarco(faena.getIdbarco());
  		FaenaServicio.saveFaena(f);
- 		
- 		
- 		
- 		
- 		//BarcoServicio.saveBarco(barco);
- 		
+
+ 		 		
  		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/patron/";
  	}
     
@@ -115,8 +119,83 @@ public class FaenaController {
     	model.addAttribute("artes", ArteServicio.listaDeArtes());
     	model.addAttribute("especies", EspecieServicio.listaDeEspecies());
     	
-    	
 
         return "buscadorFaena"; 
     }
+    
+    /**
+     * 	lista de faenas
+     * 
+     * */
+    // ENTRADA de faenas
+ 	@RequestMapping("/patron/listaFaena")
+ 	public String listaFaenas(Model model) {
+ 		
+		//Recuperamos os datos do patron
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String patronLogin = auth.getName();
+		Usuario patron = UsuarioServicio.getUsuario(patronLogin);
+ 		//
+		List<Faena> faenasLista = FaenaServicio.faenasDunBarco(patron.getIdbarco());
+		List<FaenaBuscador> faenas = FaenaBuscador.convertFaenaToListFaenaBuscardor(faenasLista);
+ 		//model.addAttribute("faenas", faenas);
+ 		model.addAttribute("faenas", faenasLista);
+ 		return "listaFaena";
+ 	}
+ 	
+
+	// Entrada Formulario editarBarco
+	@RequestMapping("/patron/editarFaena/{id}")
+	public String editarFaena(@PathVariable("id") Long idFaena, Model model) {
+		
+		//Recuperamos os datos do Patron
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String loginPatron = auth.getName();
+		Usuario patron = UsuarioServicio.getUsuario(loginPatron);
+		/*
+    	 *  PARAMETRIA
+    	 */
+    	model.addAttribute("lua", ParametriaServicio.recuperarParametro("lua") );
+    	model.addAttribute("mar", ParametriaServicio.recuperarParametro("mar") );
+    	model.addAttribute("ceo", ParametriaServicio.recuperarParametro("ceo") );
+    	model.addAttribute("dir.vento", ParametriaServicio.recuperarParametro("dir.vento") );
+
+    	 
+    	/*
+    	 * VALORES
+    	 * */
+    	model.addAttribute("artes", ArteServicio.listaDeArtes());
+    	model.addAttribute("especies", EspecieServicio.listaDeEspecies());
+    	
+		
+		
+		
+		Faena fae = FaenaServicio.findById(idFaena);
+		FaenaBuscador faena = FaenaBuscador.convertFaenaToFaenaBuscardor(fae);
+		
+		if (fae.getIdbarco() == patron.getIdbarco()){
+	 		model.addAttribute("faena", faena);
+			return "editarFaena";
+		}else{
+			return "listaFaena";
+		}
+		
+	}
+	
+	@RequestMapping("/patron/deleteFaena/{id}")
+	public String borrarFaena(@PathVariable("id") Long idFaena, Model model) {
+		//Recuperamos os datos do Patron
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String loginPatron = auth.getName();
+		Usuario patron = UsuarioServicio.getUsuario(loginPatron);
+		
+		Faena fae = FaenaServicio.findById(idFaena);
+
+		if (fae.getIdbarco() == patron.getIdbarco()){
+	 		FaenaServicio.removeFaena(fae.getId());
+			
+		}
+		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/patron/listaFaena";
+	}
+    
 }

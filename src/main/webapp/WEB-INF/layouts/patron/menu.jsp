@@ -11,6 +11,7 @@
 	</li>
 
 	<li><a href="/xeopesca/patron/novaFaena" class="menulink">Nova faena</a>
+    <li><a href="/xeopesca/patron/listaFaena" class="menulink">Lista de faenas</a>
 
 	
 	
