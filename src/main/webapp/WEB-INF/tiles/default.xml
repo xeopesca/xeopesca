@@ -188,7 +188,7 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/patron/editarConta.jsp" />
 	</definition>
-
+<!-- Faena  -->
 <definition name="novaFaena" extends="patronTemplate">
 		<put-attribute name="body" value="/WEB-INF/views/patron/faena/novaFaena.jsp" />
 </definition>
@@ -197,12 +197,16 @@
 		<put-attribute name="body" value="/WEB-INF/views/patron/faena/editarFaena.jsp" />
 </definition>
 
-
 <definition name="buscadorFaena" extends="patronTemplate">
 		<put-attribute name="body" value="/WEB-INF/views/patron/faena/buscadorFaena.jsp" />
 </definition>
 <definition name="listaFaena" extends="patronTemplate">
 		<put-attribute name="body" value="/WEB-INF/views/patron/faena/listaFaena.jsp" />
+</definition>
+
+<!-- Lance  -->
+<definition name="novoLance" extends="patronTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/patron/lance/novoLance.jsp" />
 </definition>
 
 

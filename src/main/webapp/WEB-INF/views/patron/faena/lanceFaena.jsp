@@ -5,21 +5,6 @@
 
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<script type="text/javascript">
-	window.onload = function(){
-		new JsDatePick({
-			useMode:2,
-			target:"dfin",
-			dateFormat:"%d-%m-%Y"
-		});
-		
-		new JsDatePick({
-			useMode:2,
-			target:"dinicio",
-			dateFormat:"%d-%m-%Y"
-		});
-	};
-</script>
 
 
 
@@ -28,7 +13,7 @@
 <div id="ReportDetails">
 	 <h2>Editar faena </h2>
 	<br>
-	<form:form  action="/xeopesca/patron/editarFaena" method="POST" commandName="faena">
+	<form:form  action="/xeopesca/patron/novaFaena" method="POST" commandName="faena">
 		<input id="idbarco" name="idbarco" type="hidden" value="${faena.idbarco}"/>
 		<input id="id" name="id" type="hidden" value="${faena.id}"/>
 		<table>
@@ -38,45 +23,45 @@
 				
 				<td>
 					<form:select path="arte">
-							<form:options items="${artes}" itemValue="id" itemLabel="nome" />
+							<form:options disabled="true" items="${artes}" itemValue="id" itemLabel="nome" />
 					</form:select>
 				</td>
 			<td>Data inicio:</td>
-				<td><form:input path="dataInicio" readonly="true" id="dinicio" /></td>
+				<td><form:input disabled="true" path="dataInicio" readonly="true" id="dinicio" /></td>
 				<td>Hora inicio:</td>
-				<td><form:input path="horaInicio" /> </td>
+				<td><form:input disabled="true" path="horaInicio" /> </td>
 				
 			</tr>
 			<tr>
 				<td>Lua:</td>
-				<td><form:select path="lua">
+				<td><form:select disabled="true" path="lua">
 						<form:options items="${lua}" itemValue="id" itemLabel="literal" />
 						
 					</form:select></td>
 				
 				<td>Data fin:</td>
-				<td><form:input  path="dataFin" readonly="true" id="dfin"/></td>
+				<td><form:input disabled="true"  path="dataFin" readonly="true" id="dfin"/></td>
 				
 				<td>Hora fin:</td>
-				<td><form:input path="horaFin"  /></td>
+				<td><form:input disabled="true" path="horaFin"  /></td>
 				
 			
 			</tr>
 			<tr>
 				<td>Temp. Aire:</td>
-				<td><form:input path="tempAire" /></td>
+				<td><form:input disabled="true" path="tempAire" /></td>
 				
 				<td>Temp. Superficie:</td>
-				<td><form:input path="tempSuperficie" /></td>
+				<td><form:input disabled="true" path="tempSuperficie" /></td>
 				
 				<td>Temp. Fondo:</td>
-				<td><form:input path="tempFondo" /></td>
+				<td><form:input disabled="true" path="tempFondo" /></td>
 			
 			</tr>
 			<tr>
 				<td>Estado mar:</td>
 				<td>
-					<form:select path="estadoMar" >
+					<form:select disabled="true" path="estadoMar" >
 						<form:options items="${mar}" itemValue="id" itemLabel="literal" />				
 					</form:select>		
 				</td>
@@ -84,14 +69,14 @@
 				<td>Estado ceo:</td>
 				<td>
 					<form:select path="estadoCeo" >
-						<form:options items="${ceo}" itemValue="id" itemLabel="literal" />
+						<form:options disabled="true" items="${ceo}" itemValue="id" itemLabel="literal" />
 					</form:select>	
 				</td>
 			</tr>
 			<tr>
 				<td>Dirección vento:</td>
 				<td>
-					<form:select path="direccionVento" >
+					<form:select disabled="true" path="direccionVento" >
 						<form:options items="${dirvento}" itemValue="id" itemLabel="literal" />
 					</form:select>	
 					
@@ -99,7 +84,7 @@
 				
 				<td>Velocidade vento:</td>
 				<td>
-					<form:input path="velocidadeVento" />
+					<form:input disabled="true"  path="velocidadeVento" />
 				</td>
 			</tr>
 			
@@ -107,7 +92,7 @@
 			
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Enviar" /></td>
+				<td><input  type="submit" value="Enviar" /></td>
 			</tr>
 		</table>
 		

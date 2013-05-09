@@ -58,6 +58,7 @@ public class FaenaBuscador implements java.io.Serializable {
 		f.setVelocidade_vento(faena.getVelocidadeVento());
 		f.setDireccion_vento(faena.getDireccionVento());
 		f.setIdbarco(faena.getIdbarco());
+		f.setEstado_ceo(faena.getEstadoCeo());
 		
 		return f;
 	}
@@ -93,6 +94,8 @@ public class FaenaBuscador implements java.io.Serializable {
 		fb.setDireccionVento(faena.getDireccion_vento());
 		//Id Barco
 		fb.setIdbarco(faena.getIdbarco());
+		//Estado ceo
+		fb.setEstadoCeo(faena.getEstado_ceo());
 		//ID
 		fb.setId(faena.getId());
 

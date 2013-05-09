@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -24,6 +26,7 @@ import com.xeopesca.webapp.model.servicios.ParametriaServicio;
 import com.xeopesca.webapp.model.servicios.UsuarioServicio;
 import com.xeopesca.webapp.model.vos.Barco;
 import com.xeopesca.webapp.model.vos.Faena;
+import com.xeopesca.webapp.model.vos.Parametria;
 import com.xeopesca.webapp.model.vos.Usuario;
 
 
@@ -90,13 +93,14 @@ public class FaenaController {
 		f.setVelocidade_vento(faena.getVelocidadeVento());
 		f.setDireccion_vento(faena.getDireccionVento());
 		f.setIdbarco(faena.getIdbarco());
+		f.setEstado_ceo(faena.getEstadoCeo());
  		FaenaServicio.saveFaena(f);
 
  		 		
  		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/patron/";
  	}
     
-    
+ 	
     
     @RequestMapping("/patron/buscadorFaena")
     public String buscadorFaena(Model model) {
@@ -158,17 +162,13 @@ public class FaenaController {
     	model.addAttribute("lua", ParametriaServicio.recuperarParametro("lua") );
     	model.addAttribute("mar", ParametriaServicio.recuperarParametro("mar") );
     	model.addAttribute("ceo", ParametriaServicio.recuperarParametro("ceo") );
-    	model.addAttribute("dir.vento", ParametriaServicio.recuperarParametro("dir.vento") );
-
-    	 
+    	model.addAttribute("dirvento", ParametriaServicio.recuperarParametro("dir.vento") );
+    	
     	/*
     	 * VALORES
     	 * */
     	model.addAttribute("artes", ArteServicio.listaDeArtes());
     	model.addAttribute("especies", EspecieServicio.listaDeEspecies());
-    	
-		
-		
 		
 		Faena fae = FaenaServicio.findById(idFaena);
 		FaenaBuscador faena = FaenaBuscador.convertFaenaToFaenaBuscardor(fae);
@@ -177,9 +177,31 @@ public class FaenaController {
 	 		model.addAttribute("faena", faena);
 			return "editarFaena";
 		}else{
-			return "listaFaena";
+
+			return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/patron/listaFaena";
+		}
+	}
+	
+	@RequestMapping(value = "/patron/editarFaena", method = RequestMethod.POST)
+	public String editarBarco(@Valid FaenaBuscador faena, BindingResult result) {
+		Faena faenaVO = new Faena();
+		
+		if (result.hasErrors()) {
+			return "editarFaena";
+		}
+		//Recuperamos os datos do patron
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String patronLogin = auth.getName();
+		Usuario patron = UsuarioServicio.getUsuario(patronLogin);
+		if (patron.getIdbarco()==faena.getIdbarco()){
+			faenaVO  =  FaenaBuscador.convertFaenaBuscardorToFaena(faena);
+			FaenaServicio.saveFaena(faenaVO);
+			
 		}
 		
+		
+		
+		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/patron/listaFaena";
 	}
 	
 	@RequestMapping("/patron/deleteFaena/{id}")
@@ -197,5 +219,8 @@ public class FaenaController {
 		}
 		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/patron/listaFaena";
 	}
+	
+	
+	
     
 }

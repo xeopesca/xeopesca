@@ -5,8 +5,11 @@ package com.xeopesca.webapp.model.vos;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -22,7 +25,14 @@ public class Faena  implements java.io.Serializable {
 	 @GeneratedValue(generator = "increment")
 	 @GenericGenerator(name = "increment", strategy = "increment")
      private long id;
-     private long idarte;
+
+
+	 
+	 @JoinColumn(name = "idarte",insertable=false, updatable=false)
+     @ManyToOne(optional = false, fetch = FetchType.LAZY)
+     private Arte arte;
+	 private Long idarte;
+	 
      private long idbarco;
      private Date data_inicio;
      private Date hora_inicio;
@@ -35,6 +45,7 @@ public class Faena  implements java.io.Serializable {
      private Float velocidade_vento;
      private Float temp_fondo;
      private Integer lua;
+     private Integer estado_ceo;
 
     public Faena() {
     }
@@ -47,11 +58,11 @@ public class Faena  implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public long getIdarte() {
+	public Long getIdarte() {
 		return idarte;
 	}
 
-	public void setIdarte(long idarte) {
+	public void setIdarte(Long idarte) {
 		this.idarte = idarte;
 	}
 
@@ -70,6 +81,14 @@ public class Faena  implements java.io.Serializable {
 
 	public void setData_inicio(Date data_inicio) {
 		this.data_inicio = data_inicio;
+	}
+	
+	public Arte getArte() {
+		return arte;
+	}
+
+	public void setArte(Arte arte) {
+		this.arte = arte;
 	}
 
 	public Date getHora_inicio() {
@@ -150,6 +169,14 @@ public class Faena  implements java.io.Serializable {
 
 	public void setLua(Integer lua) {
 		this.lua = lua;
+	}
+
+	public Integer getEstado_ceo() {
+		return estado_ceo;
+	}
+
+	public void setEstado_ceo(Integer estado_ceo) {
+		this.estado_ceo = estado_ceo;
 	}
 
 	

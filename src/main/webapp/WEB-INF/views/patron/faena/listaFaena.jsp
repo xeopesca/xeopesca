@@ -14,7 +14,7 @@
 		<tr>
 			<th class="ReportTableHeaderCell">Id</th>
 			<th class="ReportTableHeaderCell">Data de Inicio</th>
-			<th class="ReportTableHeaderCell">Data de Fin</th>
+			<th class="ReportTableHeaderCell">Arte empregada</th>
 			<th class="ReportTableHeaderCell">Agregar Lance</th>
 			<th class="ReportTableHeaderCell">Editar</th>
 			<th class="ReportTableHeaderCell">Borrar</th>
@@ -26,7 +26,7 @@
 			<tr class="ReportDetailsEvenDataRow">
 				<td class="ReportTableValueCell">${faenas.id}</td>
 				<td class="ReportTableValueCell">${faenas.data_inicio}</td>
-				<td class="ReportTableValueCell">${faenas.data_fin}</td>
+				<td class="ReportTableValueCell">${faenas.arte.nome}</td>
 				<td class="ReportTableValueCell">
 					<center> +
 						<a href="editarFaena/${faenas.id}"> <img src="/images/detalle.gif" /></a>
