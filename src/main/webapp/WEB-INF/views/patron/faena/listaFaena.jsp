@@ -28,8 +28,8 @@
 				<td class="ReportTableValueCell">${faenas.data_inicio}</td>
 				<td class="ReportTableValueCell">${faenas.arte.nome}</td>
 				<td class="ReportTableValueCell">
-					<center> +
-						<a href="editarFaena/${faenas.id}"> <img src="/images/detalle.gif" /></a>
+					<center> 
+						<a href="novoLance/${faenas.id}"> +</a>
 					</center>
 				</td>
 				<td class="ReportTableValueCell">

@@ -1,17 +1,16 @@
 package com.xeopesca.webapp.model.vos;
-// Generated 05-oct-2012 22:49:11 by Hibernate Tools 3.2.1.GA
 
 
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -30,13 +29,7 @@ public class Lance  implements java.io.Serializable {
 	 @GeneratedValue(generator = "increment")
 	 @GenericGenerator(name = "increment", strategy = "increment")
      private long id;
-     private Long idespecie;
-     private Long idfaena;
-     private Float peso;
-     private Integer unidades;
-     private Float peso_descarte;
-     private Integer ud_descarte;
-     
+     private Long idfaena;   
      @Type(type = "org.hibernate.spatial.GeometryType")
  	 private Point punto_inicio;
      
@@ -46,6 +39,10 @@ public class Lance  implements java.io.Serializable {
      @JoinColumn(name = "idfaena",insertable=false, updatable=false)
      @ManyToOne(optional = false, fetch = FetchType.LAZY)
      private Faena faena;
+     
+     @OneToMany(cascade={CascadeType.ALL})
+     @JoinColumn(name="idlance")
+     private List<Pesca> listaPesca;
 
      
      //getters and setters
@@ -57,13 +54,8 @@ public class Lance  implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public Long getIdespecie() {
-		return idespecie;
-	}
 
-	public void setIdespecie(Long idespecie) {
-		this.idespecie = idespecie;
-	}
+
 
 	public Long getIdfaena() {
 		return idfaena;
@@ -73,37 +65,6 @@ public class Lance  implements java.io.Serializable {
 		this.idfaena = idfaena;
 	}
 
-	public Float getPeso() {
-		return peso;
-	}
-
-	public void setPeso(Float peso) {
-		this.peso = peso;
-	}
-
-	public Integer getUnidades() {
-		return unidades;
-	}
-
-	public void setUnidades(Integer unidades) {
-		this.unidades = unidades;
-	}
-
-	public Float getPeso_descarte() {
-		return peso_descarte;
-	}
-
-	public void setPeso_descarte(Float peso_descarte) {
-		this.peso_descarte = peso_descarte;
-	}
-
-	public Integer getUd_descarte() {
-		return ud_descarte;
-	}
-
-	public void setUd_descarte(Integer ud_descarte) {
-		this.ud_descarte = ud_descarte;
-	}
 
 	public Point getPunto_inicio() {
 		return punto_inicio;

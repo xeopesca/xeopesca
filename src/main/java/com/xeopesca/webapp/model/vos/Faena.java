@@ -3,13 +3,16 @@ package com.xeopesca.webapp.model.vos;
 
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -46,6 +49,13 @@ public class Faena  implements java.io.Serializable {
      private Float temp_fondo;
      private Integer lua;
      private Integer estado_ceo;
+     
+    
+     @OneToMany(cascade={CascadeType.ALL})
+     @JoinColumn(name="idfaena")
+     private List<Lance> listaLances;
+     
+    
 
     public Faena() {
     }
@@ -177,6 +187,14 @@ public class Faena  implements java.io.Serializable {
 
 	public void setEstado_ceo(Integer estado_ceo) {
 		this.estado_ceo = estado_ceo;
+	}
+
+	public List<Lance> getListaLances() {
+		return listaLances;
+	}
+
+	public void setListaLances(List<Lance> listaLances) {
+		this.listaLances = listaLances;
 	}
 
 	

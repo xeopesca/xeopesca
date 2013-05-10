@@ -96,12 +96,35 @@
 			</tr>
 		</table>
 		 <h2>Lances </h2>
-		 + Agregar lance
+		
+	
 	</form:form>
-	<form:form  action="/xeopesca/patron/novaFaena" method="POST" commandName="faena">
+
+	<table>
+		<tr>
+			<th class="ReportTableHeaderCell">Id</th>
+			<th class="ReportTableHeaderCell">Coordenadas</th>
+			
+		</tr>
+
+		<c:forEach var="lances" items="${lances}" varStatus="status">
+			<tr class="ReportDetailsEvenDataRow">
+				<td class="ReportTableValueCell">${lances.id}</td>
+				<td class="ReportTableValueCell"></td>
+			</tr>
+		</c:forEach>
+		
+	</table>
+
+
+	 <a href="<c:url value="/xeopesca/patron/addLance/${faena.id}"/>">+ Agregar lance</a>
+</div>
+
+<form:form  action="/xeopesca/patron/novaFaena" method="POST" commandName="faena">
 	<td><input  type="submit" value="Enviar" /></td>
 	</form:form>
-</div>
+
+
 
 
 

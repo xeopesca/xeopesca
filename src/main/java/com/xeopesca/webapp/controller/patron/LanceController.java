@@ -22,6 +22,7 @@ import com.xeopesca.webapp.model.servicios.ArteServicio;
 import com.xeopesca.webapp.model.servicios.BarcoServicio;
 import com.xeopesca.webapp.model.servicios.EspecieServicio;
 import com.xeopesca.webapp.model.servicios.FaenaServicio;
+import com.xeopesca.webapp.model.servicios.LanceServicio;
 import com.xeopesca.webapp.model.servicios.ParametriaServicio;
 import com.xeopesca.webapp.model.servicios.UsuarioServicio;
 import com.xeopesca.webapp.model.vos.Barco;
@@ -38,7 +39,7 @@ public class LanceController {
     
 	// Entrada Formulario editarBarco
 	@RequestMapping("/patron/novoLance/{id}")
-	public String editarFaena(@PathVariable("id") Long idFaena, Model model) {
+	public String novoLance(@PathVariable("id") Long idFaena, Model model) {
 		
 		//Recuperamos os datos do Patron
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -63,6 +64,7 @@ public class LanceController {
 		Lance lance = new  Lance();
 		if (fae.getIdbarco() == patron.getIdbarco()){
 	 		model.addAttribute("faena", faena);
+	 		model.addAttribute("lances", fae.getListaLances());
 	 		lance.setIdfaena(fae.getIdarte());
 	 		
 			return "novoLance";
@@ -72,6 +74,38 @@ public class LanceController {
 		}
 	}
 	
+	// Entrada Formulario editarBarco
+		@RequestMapping("/patron/addLance/{id}")
+		public String addLance(@PathVariable("id") Long idFaena, Model model) {
+			
+			//Recuperamos os datos do Patron
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			String loginPatron = auth.getName();
+			Usuario patron = UsuarioServicio.getUsuario(loginPatron);
+		
+			Faena fae = FaenaServicio.findById(idFaena);
+			FaenaBuscador faena = FaenaBuscador.convertFaenaToFaenaBuscardor(fae);
+			Lance lance = new  Lance();
+			if (fae.getIdbarco() == patron.getIdbarco()){
+		 		model.addAttribute("faena", faena);
+		 		lance.setIdfaena(fae.getId());
+		 	    model.addAttribute("id", fae.getId());
+				return "addLance";
+			}else{
+
+				return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/patron/listaFaena";
+			}
+		}
+	
+		@RequestMapping(value = "/patron/addLance", method = RequestMethod.POST)
+	 	public String novaEspecie(Lance lance, BindingResult result) {
+			
+			
+		LanceServicio.createLance(lance);
+			return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/patron/novoLance/"+lance.getIdfaena();
+
+			
+		}
 	
 	
 	
