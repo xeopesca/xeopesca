@@ -29,12 +29,12 @@
 				<td class="ReportTableValueCell">${faenas.arte.nome}</td>
 				<td class="ReportTableValueCell">
 					<center> 
-						<a href="novoLance/${faenas.id}"> +</a>
+						<a href="novoLance/${faenas.id}">  <img src="/images/add.png"/></a>
 					</center>
 				</td>
 				<td class="ReportTableValueCell">
 					<center>
-						<a href="editarFaena/${faenas.id}"> <img src="/images/detalle.gif" /></a>
+						<a href="editarFaena/${faenas.id}"> <img src="/images/detalle.gif"/> </a>
 					</center>
 				</td>
 				

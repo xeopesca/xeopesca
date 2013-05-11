@@ -103,27 +103,57 @@
 	<table>
 		<tr>
 			<th class="ReportTableHeaderCell">Id</th>
-			<th class="ReportTableHeaderCell">Coordenadas</th>
 			
+			<th class="ReportTableHeaderCell">Coordenadas</th>
+			<th class="ReportTableHeaderCell">Especie</th>
+			<th class="ReportTableHeaderCell">Peso</th>
+			<th class="ReportTableHeaderCell">Peso descarte</th>
+			<th class="ReportTableHeaderCell">Ud </th>
+			<th class="ReportTableHeaderCell">Ud descarte</th>
+			<th class="ReportTableHeaderCell"></th>
+			<th class="ReportTableHeaderCell"></th>
 		</tr>
 
 		<c:forEach var="lances" items="${lances}" varStatus="status">
 			<tr class="ReportDetailsEvenDataRow">
 				<td class="ReportTableValueCell">${lances.id}</td>
+				<td class="ReportTableValueCell">${lances.descripcion}</td>
 				<td class="ReportTableValueCell"></td>
+				<td class="ReportTableValueCell"></td>
+				<td class="ReportTableValueCell"></td>
+				<td class="ReportTableValueCell"></td>
+				<td class="ReportTableValueCell"></td>
+				<td class="ReportTableValueCell"><center> <img src="/images/add.png"/></center></td>
+				<c:forEach var="pesca" items="${lances.listaPesca}" varStatus="status">
+					<tr class="ReportDetailsEvenDataRow">
+							<td class="ReportTableValueCell"></td>
+							<td class="ReportTableValueCell"></td>
+							
+							<td class="ReportTableValueCell">${pesca.especie.nomecientifico}</td>
+							<td class="ReportTableValueCell">${pesca.peso}</td>
+							<td class="ReportTableValueCell">${pesca.pesodescarte}</td>
+							<td class="ReportTableValueCell">${pesca.ud}</td>
+							<td class="ReportTableValueCell">${pesca.uddescarte}</td>
+							<td class="ReportTableValueCell"><img src="/images/detalle.gif"/></td>
+							<td class="ReportTableValueCell"><img src="/images/papelera.gif"/></td>
+							
+					</tr>
+					
+					
+					
+				</c:forEach>
 			</tr>
 		</c:forEach>
-		
+		<tr>
+			<td> </td>
+		 	<td>	 
+		 		<a href="<c:url value="/xeopesca/patron/addLance/${faena.id}"/>">+ Agregar lance</a>
+		 	</td>
+		</tr>
 	</table>
 
 
-	 <a href="<c:url value="/xeopesca/patron/addLance/${faena.id}"/>">+ Agregar lance</a>
 </div>
-
-<form:form  action="/xeopesca/patron/novaFaena" method="POST" commandName="faena">
-	<td><input  type="submit" value="Enviar" /></td>
-	</form:form>
-
 
 
 

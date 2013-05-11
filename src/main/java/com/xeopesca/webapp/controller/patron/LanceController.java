@@ -98,12 +98,20 @@ public class LanceController {
 		}
 	
 		@RequestMapping(value = "/patron/addLance", method = RequestMethod.POST)
-	 	public String novaEspecie(Lance lance, BindingResult result) {
+	 	public String addLance(Lance lance, BindingResult result) {
 			
 			
 		LanceServicio.createLance(lance);
 			return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/patron/novoLance/"+lance.getIdfaena();
-
+			
+		}
+		
+		@RequestMapping(value = "/patron/deleteLance", method = RequestMethod.POST)
+	 	public String deleteLance(Lance lance, BindingResult result) {
+			
+			
+		LanceServicio.removeLance(lance);
+			return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/patron/novoLance/"+lance.getIdfaena();
 			
 		}
 	

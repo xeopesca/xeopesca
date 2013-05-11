@@ -14,12 +14,11 @@
 		<input id="idfaena" name="idfaena" type="hidden" value="${lance.idfaena}"/>
 		<table>
 		<tr>
-			<td>Arte:</td>
-			<td></td>
-			<td>Data inicio:</td>
-			<td></td>
-			<td>Hora inicio:</td>
-			<td></td>	
+			<td>Coordenadas:</td>
+			<td><form:input path="punto_inicio" /></td>
+			<td>Descripcion:</td>
+			<td><form:input path="descripcion" /></td>
+			
 		</tr>
 		<tr>
 				<td></td>

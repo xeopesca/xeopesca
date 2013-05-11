@@ -29,7 +29,9 @@ public class Lance  implements java.io.Serializable {
 	 @GeneratedValue(generator = "increment")
 	 @GenericGenerator(name = "increment", strategy = "increment")
      private long id;
-     private Long idfaena;   
+     private Long idfaena;  
+     private String descripcion;
+     
      @Type(type = "org.hibernate.spatial.GeometryType")
  	 private Point punto_inicio;
      
@@ -45,7 +47,15 @@ public class Lance  implements java.io.Serializable {
      private List<Pesca> listaPesca;
 
      
-     //getters and setters
+     public List<Pesca> getListaPesca() {
+		return listaPesca;
+	}
+
+	public void setListaPesca(List<Pesca> listaPesca) {
+		this.listaPesca = listaPesca;
+	}
+
+	//getters and setters
 	public long getId() {
 		return id;
 	}
@@ -88,6 +98,20 @@ public class Lance  implements java.io.Serializable {
 
 	public void setFaena(Faena faena) {
 		this.faena = faena;
+	}
+
+	/**
+	 * @return the descripcion
+	 */
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	/**
+	 * @param descripcion the descripcion to set
+	 */
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 
