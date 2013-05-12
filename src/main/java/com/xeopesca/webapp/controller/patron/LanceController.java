@@ -109,15 +109,10 @@ public class LanceController {
 		
 		@RequestMapping(value = "/patron/deleteLance", method = RequestMethod.POST)
 	 	public String deleteLance(Lance lance, BindingResult result) {
-			
-			
 		LanceServicio.removeLance(lance);
 			return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/patron/novoLance/"+lance.getIdfaena();
 			
 		}
-	
-	
-	
-	
-    
+		
+		   
 }
