@@ -12,12 +12,20 @@
 	
 	<form:form  action="/xeopesca/patron/addLance"  commandName="lance">
 		<input id="idfaena" name="idfaena" type="hidden" value="${lance.idfaena}"/>
+		
+		
+	
 		<table>
 		<tr>
 			<td>Coordenadas:</td>
-			<td><form:input path="punto_inicio" /></td>
+			<td>
+			    <form:input  path="punto_inicio" />
+			</td>
 			<td>Descripcion:</td>
-			<td><form:input path="descripcion" /></td>
+			<td>
+				<form:input  path="descripcion" />
+				
+			</td>
 			
 		</tr>
 		<tr>

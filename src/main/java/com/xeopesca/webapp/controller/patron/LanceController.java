@@ -90,6 +90,7 @@ public class LanceController {
 		 		model.addAttribute("faena", faena);
 		 		lance.setIdfaena(fae.getId());
 		 	    model.addAttribute("id", fae.getId());
+		 	    model.addAttribute("lance", lance);
 				return "addLance";
 			}else{
 

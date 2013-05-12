@@ -6,10 +6,6 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
-
-
-
-
 <div id="ReportDetails">
 	 <h2>Lances dunha faena </h2>
 	
@@ -104,7 +100,7 @@
 		<tr>
 			<th class="ReportTableHeaderCell">Id</th>
 			
-			<th class="ReportTableHeaderCell">Coordenadas</th>
+			<th class="ReportTableHeaderCell">Lugar del lance</th>
 			<th class="ReportTableHeaderCell">Especie</th>
 			<th class="ReportTableHeaderCell">Peso</th>
 			<th class="ReportTableHeaderCell">Peso descarte</th>
@@ -112,18 +108,34 @@
 			<th class="ReportTableHeaderCell">Ud descarte</th>
 			<th class="ReportTableHeaderCell"></th>
 			<th class="ReportTableHeaderCell"></th>
+			<th class="ReportTableHeaderCell"></th>
 		</tr>
 
 		<c:forEach var="lances" items="${lances}" varStatus="status">
 			<tr class="ReportDetailsEvenDataRow">
 				<td class="ReportTableValueCell">${lances.id}</td>
-				<td class="ReportTableValueCell">${lances.descripcion}</td>
+				<td class="ReportTableValueCell"><b>${lances.descripcion}</b></td>
 				<td class="ReportTableValueCell"></td>
 				<td class="ReportTableValueCell"></td>
 				<td class="ReportTableValueCell"></td>
 				<td class="ReportTableValueCell"></td>
 				<td class="ReportTableValueCell"></td>
 				<td class="ReportTableValueCell"><center> <img src="/images/add.png"/></center></td>
+				<td class="ReportTableValueCell">
+								<img src="/images/detalle.gif"/>
+				</td>
+				
+				<td class="ReportTableValueCell">
+					<!-- Borrar lance por post -->
+					<form:form  action="/xeopesca/patron/deleteLance"  commandName="lance">
+						<input id="id" name="id" type="hidden" value="${lances.id}"/>
+						<input id="idfaena" name="idfaena" type="hidden" value="${lances.idfaena}"/>
+						
+						<input type="image" src="/images/papelera.gif" alt="borrar">	
+					</form:form>
+				</td>
+				
+				
 				<c:forEach var="pesca" items="${lances.listaPesca}" varStatus="status">
 					<tr class="ReportDetailsEvenDataRow">
 							<td class="ReportTableValueCell"></td>
@@ -134,8 +146,21 @@
 							<td class="ReportTableValueCell">${pesca.pesodescarte}</td>
 							<td class="ReportTableValueCell">${pesca.ud}</td>
 							<td class="ReportTableValueCell">${pesca.uddescarte}</td>
-							<td class="ReportTableValueCell"><img src="/images/detalle.gif"/></td>
-							<td class="ReportTableValueCell"><img src="/images/papelera.gif"/></td>
+							<td class="ReportTableValueCell"> </td>
+							
+							<td class="ReportTableValueCell">
+								<img src="/images/detalle.gif"/>
+							</td>
+							<td class="ReportTableValueCell">
+								<!-- Borrar Pesca  -->
+									<form:form  action="/xeopesca/patron/deletePesca"  commandName="pesca">
+										<input id="id" name="id" type="hidden" value="${pesca.id}"/>
+										
+										<input type="image" src="/images/papelera.gif" alt="borrar">	
+									</form:form>
+								
+								
+							</td>
 							
 					</tr>
 					
