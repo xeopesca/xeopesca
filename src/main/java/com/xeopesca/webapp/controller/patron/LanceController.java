@@ -140,7 +140,7 @@ public class LanceController {
 			
 		}
 		
-		@RequestMapping(value = "/patron/updatePesca", method = RequestMethod.POST)
+		@RequestMapping(value = "/patron/editarLance", method = RequestMethod.POST)
 		public String editarLanceSaida(Lance lance, BindingResult result) {
 			Lance lanceBd = LanceServicio.findById(lance.getId());
 			lance.setListaPesca(lanceBd.getListaPesca());

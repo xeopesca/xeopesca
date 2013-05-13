@@ -34,7 +34,7 @@ public class PescaController {
    
     
 		@RequestMapping("/patron/addPesca/{id}")
-		public String novoLance(@PathVariable("id") Long idLance, Model model) {
+		public String novaPesca(@PathVariable("id") Long idLance, Model model) {
 			//Recuperamos os datos do Patron
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 			String loginPatron = auth.getName();
@@ -79,7 +79,7 @@ public class PescaController {
 	}
 	
 	@RequestMapping("/patron/editarPesca/{id}")
-	public String editarLance(@PathVariable("id") Long id, Model model){
+	public String editarPesca(@PathVariable("id") Long id, Model model){
 		//Recuperamos os datos do Patron
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String loginPatron = auth.getName();

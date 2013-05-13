@@ -104,8 +104,8 @@ public class FaenaController {
     
     @RequestMapping("/patron/buscadorFaena")
     public String buscadorFaena(Model model) {
-    	Faena faena = new Faena();
-
+    	//Faena faena = new Faena();
+    	FaenaBuscador faena = new FaenaBuscador();
     	model.addAttribute("faena",faena);
     	
     	/*
@@ -114,7 +114,7 @@ public class FaenaController {
     	model.addAttribute("lua", ParametriaServicio.recuperarParametro("lua") );
     	model.addAttribute("mar", ParametriaServicio.recuperarParametro("mar") );
     	model.addAttribute("ceo", ParametriaServicio.recuperarParametro("ceo") );
-    	model.addAttribute("dir.vento", ParametriaServicio.recuperarParametro("dir.vento") );
+    	model.addAttribute("dirvento", ParametriaServicio.recuperarParametro("dir.vento") );
 
     	 
     	/*

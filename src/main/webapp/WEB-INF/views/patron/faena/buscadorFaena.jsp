@@ -8,108 +8,71 @@
 
 <div id="ReportDetails">
 	<h2>Buscador faena</h2>
-	<br>
-
-	<form:form action="/xeopesca/patron/novaFaena" method="POST"
-					commandName="faena">
-					
+	<form:form  action="/xeopesca/patron/novaFaena" method="POST" commandName="faena">
+		<input id="idbarco" name="idbarco" type="hidden" value="${faena.idbarco}"/>
+		
 		<table>
-			<tr valign="top">
-				<td><b>Data de inicio:</b></td>
-				<td><form:input path="dataInicio" /></td>
 		
-				<td><b>Data de fin :</b></td>
-				<td><form:input path="dataFin" /></td>
-			</tr>
-		
-		
-			<tr valign="top">
-				<td><b>Arte</b>:</td>
+			<tr>
+				<td>Arte:</td>
 				
 				<td>
-				<c:forEach var="artes" items="${artes}" varStatus="status">
-					 <form:checkbox path="arte" value="${artes.id}"   label="${artes.nome}"/> 
-					 <br>
-				</c:forEach>
-		
+					<form:select path="arte">
+							<form:options items="${artes}" itemValue="id" itemLabel="nome" />
+					</form:select>
 				</td>
-		
-				<td><b>Especies:</b></td>
+			<td>Data inicio:</td>
+				<td><form:input path="dataInicio"  id="dinicio" /></td>
 				
-				<td>
-				<c:forEach var="especies" items="${especies}" varStatus="status">
-					 <form:checkbox path="estadoMar" value="${especies.id}"   label="${especies.nomecientifico}"/> 
-					 <br>
-				</c:forEach>
-		
-				</td>
+				
 			</tr>
-			
-			
-			<tr >
-				<td><b>Lua:</b></td>
-				
-				
-				<td>
-					<form:select path="lua">
+			<tr>
+				<td>Lua:</td>
+				<td><form:select path="lua">
 						<form:options items="${lua}" itemValue="id" itemLabel="literal" />
 						
-					</form:select>
-	
-				</td>
+					</form:select></td>
 				
+				<td>Data fin:</td>
+				<td><form:input  path="dataFin" id="dfin"/></td>
 				
-		
-				<td><b>Estado mar :</b></td>
+			</tr>
+			
+			<tr>
+				<td>Estado mar:</td>
 				<td>
 					<form:select path="estadoMar" >
 						<form:options items="${mar}" itemValue="id" itemLabel="literal" />				
+					</form:select>		
+				</td>
+				
+				<td>Estado ceo:</td>
+				<td>
+					<form:select path="estadoCeo" >
+						<form:options items="${ceo}" itemValue="id" itemLabel="literal" />
 					</form:select>	
-				
-				
 				</td>
 			</tr>
-			<tr >
-				<td><b>Estado ceo :</b></td>
+			<tr>
+				<td>Dirección vento:</td>
 				<td>
-					<form:select path="estadoMar" >
-						<form:options items="${ceo}" itemValue="id" itemLabel="literal" />
-
-										
+					<form:select path="direccionVento" >
+						<form:options items="${dirvento}" itemValue="id" itemLabel="literal" />
 					</form:select>	
+					
+				</td>
 				
-				
-			
-				
-				<td><b>Direccion vento :</b></td>
-				<td><form:input path="estadoMar" /></td>
-			</tr>	
-			<tr >
-				<td><b>Temperatura aire  :</b></td>
-				<td><form:input path="estadoMar" /></td>
-				
-				<td><b>Temperatura superficie  :</b></td>
-				<td><form:input path="estadoMar" /></td>
-			</tr>	
-			<tr >
-				<td><b>Temperatura fondo  :</b></td>
-				<td><form:input path="estadoMar" /></td>
 			</tr>
+			
 			
 			
 			<tr>
+				<td></td>
 				<td><input type="submit" value="Enviar" /></td>
 			</tr>
 		</table>
-					
-	
 		
-	
-			
-					
-					
 	</form:form>
-
 </div>
 
 
