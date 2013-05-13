@@ -211,6 +211,19 @@
 <definition name="addLance" extends="patronTemplate">
 		<put-attribute name="body" value="/WEB-INF/views/patron/lance/addLance.jsp" />
 </definition>
+<definition name="editarLance" extends="patronTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/patron/lance/editarLance.jsp" />
+</definition>
+
+<!-- Pesca  -->
+
+<definition name="addPesca" extends="patronTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/patron/pesca/addPesca.jsp" />
+</definition>
+<definition name="editarPesca" extends="patronTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/patron/pesca/editarPesca.jsp" />
+</definition>
+
 
 </tiles-definitions>
 

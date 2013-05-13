@@ -1,5 +1,6 @@
 package com.xeopesca.webapp.controller.patron;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,7 +26,6 @@ import com.xeopesca.webapp.model.servicios.FaenaServicio;
 import com.xeopesca.webapp.model.servicios.LanceServicio;
 import com.xeopesca.webapp.model.servicios.ParametriaServicio;
 import com.xeopesca.webapp.model.servicios.UsuarioServicio;
-import com.xeopesca.webapp.model.vos.Barco;
 import com.xeopesca.webapp.model.vos.Faena;
 import com.xeopesca.webapp.model.vos.Lance;
 import com.xeopesca.webapp.model.vos.Parametria;
@@ -60,8 +60,14 @@ public class LanceController {
     	model.addAttribute("especies", EspecieServicio.listaDeEspecies());
 		
 		Faena fae = FaenaServicio.findById(idFaena);
+		
+		//Está intentando acceder a unha faena que non existe
+		if (fae == null){
+			return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/patron/listaFaena";
+		}
 		FaenaBuscador faena = FaenaBuscador.convertFaenaToFaenaBuscardor(fae);
 		Lance lance = new  Lance();
+		//Está intentando acceder a unha faena que non lle pertence
 		if (fae.getIdbarco() == patron.getIdbarco()){
 	 		model.addAttribute("faena", faena);
 	 		model.addAttribute("lances", fae.getListaLances());
@@ -112,6 +118,36 @@ public class LanceController {
 		LanceServicio.removeLance(lance);
 			return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/patron/novoLance/"+lance.getIdfaena();
 			
+		}
+		
+		@RequestMapping("/patron/editarLance/{id}")
+		public String editarLance(@PathVariable("id") Long id, Model model){
+			//Recuperamos os datos do Patron
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			String loginPatron = auth.getName();
+			Usuario patron = UsuarioServicio.getUsuario(loginPatron);
+			//Loxica
+			Lance lance = LanceServicio.findById(id);
+			if (lance !=null &&lance.getFaena().getIdbarco() == patron.getIdbarco()){
+				model.addAttribute("lance", lance);
+
+				return "editarLance";
+			}
+			else{
+				return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/patron/listaFaena";
+			}
+			
+			
+		}
+		
+		@RequestMapping(value = "/patron/updatePesca", method = RequestMethod.POST)
+		public String editarLanceSaida(Lance lance, BindingResult result) {
+			Lance lanceBd = LanceServicio.findById(lance.getId());
+			lance.setListaPesca(lanceBd.getListaPesca());
+			Lance lanceResposta = LanceServicio.updateLance(lance);
+			long id = lanceResposta.getIdfaena();
+			return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/patron/novoLance/"+id;
+
 		}
 		
 		   

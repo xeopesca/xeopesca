@@ -17,17 +17,57 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.xeopesca.util.ConstantesUtil;
 
+import com.xeopesca.webapp.model.servicios.EspecieServicio;
+import com.xeopesca.webapp.model.servicios.FaenaServicio;
+import com.xeopesca.webapp.model.servicios.LanceServicio;
 import com.xeopesca.webapp.model.servicios.PescaServicio;
+import com.xeopesca.webapp.model.servicios.UsuarioServicio;
 
+import com.xeopesca.webapp.model.vos.Faena;
+import com.xeopesca.webapp.model.vos.Lance;
 import com.xeopesca.webapp.model.vos.Pesca;
+import com.xeopesca.webapp.model.vos.Usuario;
 
 
 @Controller
 public class PescaController {
    
     
-    
+		@RequestMapping("/patron/addPesca/{id}")
+		public String novoLance(@PathVariable("id") Long idLance, Model model) {
+			//Recuperamos os datos do Patron
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			String loginPatron = auth.getName();
+			Usuario patron = UsuarioServicio.getUsuario(loginPatron);
+			//Recuperamos o lance asociado
+			Lance lan = LanceServicio.findById(idLance);
+			
+			
+			
+			//Comprobamos que sexa correcto o acceso
+			if (lan!=null && patron.getIdbarco() == lan.getFaena().getIdbarco()){
+				Pesca pesca = new Pesca();
+				pesca.setIdlance(lan.getId());
+				model.addAttribute("pesca", pesca);
+				model.addAttribute("especies", EspecieServicio.listaDeEspecies());
+				return "addPesca";
+			}
+			else{
+				return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/patron/listaFaena";
+			}
+			
+		}
 		
+	@RequestMapping(value = "/patron/addPesca", method = RequestMethod.POST)
+	public String engadirPesca(Pesca pesca, BindingResult result) {
+		PescaServicio.createPesca(pesca);
+		Pesca pescabd =PescaServicio.findById(pesca.getId());
+		
+		return "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
+				+ "/patron/novoLance/" + pescabd.getLance().getIdfaena();
+
+	}
+	
 	@RequestMapping(value = "/patron/deletePesca", method = RequestMethod.POST)
 	public String deletePesca(Pesca pesca, BindingResult result) {
 		Pesca pescaBD = PescaServicio.findById(pesca);
@@ -38,7 +78,35 @@ public class PescaController {
 
 	}
 	
+	@RequestMapping("/patron/editarPesca/{id}")
+	public String editarLance(@PathVariable("id") Long id, Model model){
+		//Recuperamos os datos do Patron
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String loginPatron = auth.getName();
+		Usuario patron = UsuarioServicio.getUsuario(loginPatron);
+		//Recuperamos os datos da pesca
+		Pesca pesca = PescaServicio.findById(id);
+		//Loxica
+		if (pesca.getLance().getFaena().getIdbarco() == patron.getIdbarco()){
+			model.addAttribute("pesca", pesca);
+			model.addAttribute("especies", EspecieServicio.listaDeEspecies());
+
+			return "editarPesca";
+		}
+		else{
+			return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/patron/listaFaena";
+		}
 	
+	}
 	
-    
+	@RequestMapping(value = "/patron/updatePesca", method = RequestMethod.POST)
+	public String updatePesca(Pesca pesca, BindingResult result) {
+		
+		PescaServicio.updatePesca(pesca);
+		Pesca pescaBd = PescaServicio.findById(pesca.getId());
+		
+		return "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
+				+ "/patron/novoLance/" + pescaBd.getLance().getIdfaena();
+
+	}
 }

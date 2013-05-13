@@ -18,6 +18,19 @@ public class LanceServicio {
 		LanceDAO lanceDao = new LanceDAO();
 		lanceDao.delete(lance.getId());
 	}
+
+	public static Lance findById(Long id) {
+		LanceDAO lanceDao = new LanceDAO();
+		Lance lance= lanceDao.find(id);
+		return lance;
+	}
+
+	public static Lance updateLance(Lance lance) {
+		LanceDAO lanceDao = new LanceDAO();
+		Lance lanceResposta = lanceDao.update(lance);
+		
+		return lanceResposta;
+	}
 	
 	
 }

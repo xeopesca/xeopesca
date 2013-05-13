@@ -26,5 +26,22 @@ public class PescaServicio {
 		return saida;
 	}
 	
+	public static Pesca findById(Long id){
+		Pesca saida = null;
+		PescaDAO pescaDao = new PescaDAO();
+		
+		if (id != null){
+			saida = pescaDao.find(id);
+		}
+		
+		return saida;
+	}
+
+	public static Pesca updatePesca(Pesca pesca) {
+		PescaDAO pescaDao = new PescaDAO();
+		Pesca saida = pescaDao.update(pesca);
+		return saida;
+	}
+	
 	
 }

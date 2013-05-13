@@ -120,9 +120,17 @@
 				<td class="ReportTableValueCell"></td>
 				<td class="ReportTableValueCell"></td>
 				<td class="ReportTableValueCell"></td>
-				<td class="ReportTableValueCell"><center> <img src="/images/add.png"/></center></td>
 				<td class="ReportTableValueCell">
-								<img src="/images/detalle.gif"/>
+					<center> 
+						<a href="/xeopesca/patron/addPesca/${lances.id}"> 
+							<img src="/images/addPeixe.png"/>
+						</a>
+					</center>
+				</td>
+				<td class="ReportTableValueCell">
+					<a href="/xeopesca/patron/editarLance/${lances.id}"> 
+						<img src="/images/detalle.gif"/>
+					</a>
 				</td>
 				
 				<td class="ReportTableValueCell">
@@ -149,7 +157,10 @@
 							<td class="ReportTableValueCell"> </td>
 							
 							<td class="ReportTableValueCell">
-								<img src="/images/detalle.gif"/>
+								
+								<a href="/xeopesca/patron/editarPesca/${pesca.id}"> 
+									<img src="/images/detalle.gif"/>
+								</a>
 							</td>
 							<td class="ReportTableValueCell">
 								<!-- Borrar Pesca  -->

@@ -4,6 +4,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
+import com.lowagie.text.pdf.codec.postscript.ParseException;
+import com.vividsolutions.jts.geom.Geometry;
+import com.vividsolutions.jts.geom.Point;
+import com.vividsolutions.jts.io.WKTReader;
 import com.xeopesca.util.JPAUtil;
 import com.xeopesca.webapp.model.dao.EventoDAO;
 import com.xeopesca.webapp.model.vos.Evento;
@@ -42,16 +46,26 @@ public class EventoTest {
 	private static void newEvento(){
 		EventoDAO mgr = new EventoDAO();
 
-		String[] args = "store POINT(10 56)".split(" ");
+		String[] args = "store POINT(10 5)".split(" ");
 
 		Evento evento = new Evento();
 		evento.setDate(new Date());
-		evento.setTitle("titulo do evento probas");
+		evento.setTitle("Mar coruña");
+		//Posicion
+		try {
+			Geometry geom = wktToGeometry("POINT(10 5)");
+		} catch (com.vividsolutions.jts.io.ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		//mgr.save(evento);
 		mgr.create(evento);
 		System.out.println("Borramos : "+evento.getId());
-		mgr.delete(evento.getId());
+		//mgr.delete(evento.getId());
 		
 		
 	}
@@ -93,6 +107,7 @@ public class EventoTest {
 
 	/**
 	 * Utility method to assemble all arguments save the first into a String
+	 * @throws com.vividsolutions.jts.io.ParseException 
 	 */
 	/*private static String assemble(String[] args) {
 		StringBuilder builder = new StringBuilder();
@@ -101,5 +116,10 @@ public class EventoTest {
 		}
 		return builder.toString();
 	}*/
-
+	   private static Geometry wktToGeometry(String wktPoint) throws com.vividsolutions.jts.io.ParseException, ParseException {
+	        WKTReader fromText = new WKTReader();
+	        Geometry geom = null;
+	        geom = fromText.read(wktPoint);
+	        return geom;
+	    }
 }
