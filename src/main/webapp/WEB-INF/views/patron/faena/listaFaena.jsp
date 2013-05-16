@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
@@ -25,7 +26,11 @@
 
 			<tr class="ReportDetailsEvenDataRow">
 				<td class="ReportTableValueCell">${faenas.id}</td>
-				<td class="ReportTableValueCell">${faenas.data_inicio}</td>
+				<td class="ReportTableValueCell">
+				
+				<fmt:formatDate type="Date" pattern="yyyy-MM-dd"  value="${faenas.data_inicio}"/>  
+				
+				</td>
 				<td class="ReportTableValueCell">${faenas.arte.nome}</td>
 				<td class="ReportTableValueCell">
 					<center> 
