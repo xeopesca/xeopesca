@@ -14,6 +14,32 @@
     </style>
     <script src="http://openlayers.org/api/OpenLayers.js"></script>
    <script>
+    var map, drawControls, selectControl, selectedFeature;
+        function onPopupClose(evt) {
+			
+            selectControl.unselect(selectedFeature);
+        }
+        function onFeatureSelect(feature) {
+					
+
+            selectedFeature = feature;
+            popup = new OpenLayers.Popup.FramedCloud("chicken", 
+                                     feature.geometry.getBounds().getCenterLonLat(),
+                                     null,
+                                     "<div style='font-size:.8em'>Feature: " + feature.id +"<br>Faena: " +feature.idfaena +"</div>",
+                                     null, true, onPopupClose);
+            feature.popup = popup;
+            map.addPopup(popup);
+        }
+        function onFeatureUnselect(feature) {
+					
+
+            map.removePopup(feature.popup);
+            feature.popup.destroy();
+            feature.popup = null;
+        }    
+   
+   
 function init() {
 	var bounds = new OpenLayers.Bounds(308780.2375,4472890.525,833068.2375,4997178.525);
 	var initialbbox = new OpenLayers.Bounds(398396.573996919,4606383.09616855,743451.90103171,4863685.95423634);
@@ -28,7 +54,7 @@ function init() {
 	var zoom           = 7;
 	
 	
-	var map = new OpenLayers.Map('Map', {
+	map = new OpenLayers.Map('Map', {
 		units: 'm',
 		controls: [
 			new OpenLayers.Control.Navigation(),
@@ -54,11 +80,11 @@ function init() {
 		readFormat: new OpenLayers.Format.GeoJSON()
 	}); 
 
-	var autopistas = new OpenLayers.Layer.Vector("Estaci&oacutens", { 
+	var lances = new OpenLayers.Layer.Vector("Estaci&oacutens", { 
 		strategies: [new OpenLayers.Strategy.Fixed()], 
 		protocol: protocol, 
 	});	
-	map.addLayer(autopistas);
+	map.addLayer(lances);
  
 	var markers = new OpenLayers.Layer.Markers( "Markers" );
 	map.addLayer(markers);
@@ -68,7 +94,23 @@ function init() {
 	
 	//alert(map.getProjection());
 	
-}
+	//Configuracion popup onclick
+	 selectControl = new OpenLayers.Control.SelectFeature(lances,
+                {onSelect: onFeatureSelect, onUnselect: onFeatureUnselect});
+
+	drawControls = {
+                polygon: new OpenLayers.Control.DrawFeature(lances,
+                            OpenLayers.Handler.Polygon),
+                select: selectControl
+            };
+	 for(var key in drawControls) {
+                map.addControl(drawControls[key]);
+				drawControls[key].activate();
+            }
+		
+    //  selectControl.active();
+	
+} //Fin funcion init
 	</script>
    
    
