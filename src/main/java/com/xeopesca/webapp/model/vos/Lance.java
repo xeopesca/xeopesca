@@ -25,7 +25,11 @@ import com.vividsolutions.jts.geom.Point;
 @Table(name = "lance")
 public class Lance  implements java.io.Serializable {
 
-	 @Id
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
 	 @GeneratedValue(generator = "increment")
 	 @GenericGenerator(name = "increment", strategy = "increment")
      private long id;

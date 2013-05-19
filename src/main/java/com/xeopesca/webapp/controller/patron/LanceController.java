@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.xeopesca.util.ConstantesUtil;
 import com.xeopesca.util.HelperDateUtil;
 import com.xeopesca.webapp.view.FaenaBuscador;
+import com.xeopesca.webapp.view.LanceView;
 import com.xeopesca.webapp.model.servicios.ArteServicio;
 import com.xeopesca.webapp.model.servicios.BarcoServicio;
 import com.xeopesca.webapp.model.servicios.EspecieServicio;
@@ -91,7 +92,9 @@ public class LanceController {
 		
 			Faena fae = FaenaServicio.findById(idFaena);
 			FaenaBuscador faena = FaenaBuscador.convertFaenaToFaenaBuscardor(fae);
-			Lance lance = new  Lance();
+			//Lance lance = new  Lance();
+			LanceView lance = new  LanceView();
+
 			if (fae.getIdbarco() == patron.getIdbarco()){
 		 		model.addAttribute("faena", faena);
 		 		lance.setIdfaena(fae.getId());
@@ -105,10 +108,11 @@ public class LanceController {
 		}
 	
 		@RequestMapping(value = "/patron/addLance", method = RequestMethod.POST)
-	 	public String addLance(Lance lance, BindingResult result) {
+	 	public String addLance(LanceView lance, BindingResult result) {
+		
+			Lance lanceBd = lance.convertToLance();
 			
-			
-		LanceServicio.createLance(lance);
+		LanceServicio.createLance(lanceBd);
 			return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/patron/novoLance/"+lance.getIdfaena();
 			
 		}

@@ -65,21 +65,30 @@
 	                }, 
 
 	                trigger: function(e) {
-	                    var lonlat = map.getLonLatFromPixel(e.xy);
-	                    alert("You clicked near " + lonlat.lat + " N, " +
-	                                              + lonlat.lon + " E");
-	                   
+	        			var markers = new OpenLayers.Layer.Markers( "Markers" );
+	             	    var lonlat = map.getLonLatFromPixel(e.xy);
+	             	    var tesxtoPunto = document.getElementById('punto');
+	                    //alert("Posicion: " + lonlat.lat + " N, " + lonlat.lon + " E");
+	                    
 	                    //Gardamos o punto no campo de texto
-	                    var myTextField = document.getElementById('punto');
-	                    myTextField.value = '';
-	                    myTextField.value =lonlat.lat+' , '+lonlat.lon;
-	                    
-	                    
-	                    //Engadimos o marker
-	                    var markers = new OpenLayers.Layer.Markers( "Markers" );
+	                    tesxtoPunto.value = '';
+	                    tesxtoPunto.value =lonlat.lon+' '+lonlat.lat;
+
+	                    //Engadimos o markers
 	    				map.addLayer(markers);
-		    				markers.addMarker(new OpenLayers.Marker(lonlat));
+		    			markers.addMarker(new OpenLayers.Marker(lonlat));
+
+		    			//PROBAS
+		    			//var rM = map.getLayersByName("Markers");
+		    			//alert(''+map.name);
+		    			
 	                    
+		    			
+		    			//alert(markers.name);
+		    			//Borrar layer mapa
+	                   // map.removeLayer(markers);
+		    			//markers[0].erase();
+		    			
 	                }
 
 	            });

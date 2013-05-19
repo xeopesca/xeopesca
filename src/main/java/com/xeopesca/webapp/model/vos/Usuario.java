@@ -59,17 +59,17 @@ public class Usuario implements java.io.Serializable {
 	private Long patron_autoriza;
 	
 	private Long idbarco; 
-	
+	/*
 	@Transient
 	@OneToMany (fetch = FetchType.LAZY, targetEntity=Barco.class)
 	@JoinColumn(name="id", referencedColumnName="idarmador")
 	private List<Barco> barcosArmador;
-	
-	 @Transient
+	*/
+	/* @Transient
 	 @JoinColumn(name = "idbarco",insertable=false, updatable=false)
      @OneToOne(optional = false, fetch = FetchType.LAZY)
      private Barco barcoPatron;
-
+*/
 
 	
 
@@ -152,7 +152,7 @@ public class Usuario implements java.io.Serializable {
 	public void setIdbarco(Long idbarco) {
 		this.idbarco = idbarco;
 	}
-
+/*
 	public List<Barco> getBarcosArmador() {
 		return barcosArmador;
 	}
@@ -160,7 +160,8 @@ public class Usuario implements java.io.Serializable {
 	public void setBarcosArmador(List<Barco> barcosArmador) {
 		this.barcosArmador = barcosArmador;
 	}
-
+*/
+	/*
 	public Barco getBarcoPatron() {
 		return barcoPatron;
 	}
@@ -168,7 +169,7 @@ public class Usuario implements java.io.Serializable {
 	public void setBarcoPatron(Barco barcoPatron) {
 		this.barcoPatron = barcoPatron;
 	}
-	
+	*/
 
 	
 
