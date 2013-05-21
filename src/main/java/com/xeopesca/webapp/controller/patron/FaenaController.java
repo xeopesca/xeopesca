@@ -71,7 +71,7 @@ public class FaenaController {
     
  // SAIDA FORMULARIO
  	@RequestMapping(value = "/patron/novaFaena", method = RequestMethod.POST)
- 	public String novaEspecie(FaenaBuscador faena, BindingResult result) {
+ 	public String novaFaena(FaenaBuscador faena, BindingResult result) {
  		 		
  		Faena f = new Faena();
  		f.setIdarte(new Long (faena.getArte()));
@@ -105,8 +105,8 @@ public class FaenaController {
     @RequestMapping("/patron/buscadorFaena")
     public String buscadorFaena(Model model) {
     	//Faena faena = new Faena();
-    	FaenaBuscador faena = new FaenaBuscador();
-    	model.addAttribute("faena",faena);
+    	FaenaBuscador faenaB = new FaenaBuscador();
+    	model.addAttribute("faena",faenaB);
     	
     	/*
     	 *  PARAMETRIA
@@ -126,6 +126,38 @@ public class FaenaController {
 
         return "buscadorFaena"; 
     }
+    
+  
+	
+    @RequestMapping(value = "/patron/buscadorFaena", method = RequestMethod.POST)
+ 	public String buscadorFaena(FaenaBuscador faenaB, Model model) {
+ 		 		
+ 		Faena faena = new Faena();
+ 		faena= FaenaBuscador.convertFaenaBuscardorToFaena(faenaB);
+ 		//Chamamos ao servicio para recuperar o resultado da busqueda
+		List<Faena>  resultado = FaenaServicio.findBuscadorFaena(faena);
+		
+		//PREPARAMOS OS ELEMENTOS DE SAIDA
+		model.addAttribute("resultado",resultado);
+    	model.addAttribute("faena",faenaB);
+    	
+    	/*
+    	 *  PARAMETRIA e combos
+    	 */
+    	model.addAttribute("lua", ParametriaServicio.recuperarParametro("lua") );
+    	model.addAttribute("mar", ParametriaServicio.recuperarParametro("mar") );
+    	model.addAttribute("ceo", ParametriaServicio.recuperarParametro("ceo") );
+    	model.addAttribute("dirvento", ParametriaServicio.recuperarParametro("dir.vento") );
+    	model.addAttribute("artes", ArteServicio.listaDeArtes());
+    	model.addAttribute("especies", EspecieServicio.listaDeEspecies());
+    	
+		
+		
+        return "buscadorFaena"; 
+ 	}
+    
+    
+    
     
     /**
      * 	lista de faenas
@@ -148,7 +180,7 @@ public class FaenaController {
  	}
  	
 
-	// Entrada Formulario editarBarco
+	// Entrada Formulario editarFaena
 	@RequestMapping("/patron/editarFaena/{id}")
 	public String editarFaena(@PathVariable("id") Long idFaena, Model model) {
 		
@@ -183,7 +215,7 @@ public class FaenaController {
 	}
 	
 	@RequestMapping(value = "/patron/editarFaena", method = RequestMethod.POST)
-	public String editarBarco(@Valid FaenaBuscador faena, BindingResult result) {
+	public String editarFaena(@Valid FaenaBuscador faena, BindingResult result) {
 		Faena faenaVO = new Faena();
 		
 		if (result.hasErrors()) {

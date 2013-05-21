@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.xeopesca.webapp.model.dao.FaenaDAO;
 import com.xeopesca.webapp.model.vos.Faena;
+import com.xeopesca.webapp.view.FaenaBuscador;
 
 /**
  * @author belay
@@ -46,6 +47,17 @@ public class FaenaServicio {
 		if (listaFaenas == null) listaFaenas = new ArrayList<Faena>();
 		
 		return listaFaenas;
+	}
+
+	public static List<Faena> findBuscadorFaena(Faena faena) {
+		FaenaDAO faenaDAO = new FaenaDAO();
+		List<Faena> listaFaenas = faenaDAO.faenasBuscador(faena);
+		
+		if (listaFaenas == null) listaFaenas = new ArrayList<Faena>();
+		
+		return listaFaenas;
+		
+		
 	}
 	
 	

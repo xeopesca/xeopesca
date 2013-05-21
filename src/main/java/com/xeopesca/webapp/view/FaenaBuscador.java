@@ -38,27 +38,53 @@ public class FaenaBuscador implements java.io.Serializable {
 	public FaenaBuscador() {
 	}
 	
-	public static Faena convertFaenaBuscardorToFaena(FaenaBuscador faena){
+	public static Faena convertFaenaBuscardorToFaena(FaenaBuscador faenaB){
 		
 		Faena f = new Faena();
- 		f.setIdarte(new Long (faena.getArte()));
+ 		f.setIdarte(new Long (faenaB.getArte()));
  		//datainicio
- 	 	f.setData_inicio(HelperDateUtil.StringToDate(faena.getDataInicio()));
+ 		if (faenaB.getDataInicio()!= null && faenaB.getDataInicio().length()>0){
+ 	 	 	f.setData_inicio(HelperDateUtil.StringToDate(faenaB.getDataInicio()));
+ 		}
+ 		else{
+ 			f.setData_inicio(null);
+ 		}
  		//Data fin
- 	 	f.setData_fin(HelperDateUtil.StringToDate(faena.getDataFin()));
+ 		if (faenaB.getDataFin()!= null && faenaB.getDataFin().length()>0){
+ 	 	 	f.setData_fin(HelperDateUtil.StringToDate(faenaB.getDataFin()));
+ 		}
+ 		else{
+ 			f.setData_fin(null);
+ 		}
  	 	//hora inicio
- 		f.setHora_inicio(HelperDateUtil.StringToTime(faena.getHoraInicio()));
+ 		if (faenaB.getHoraInicio()!=null && faenaB.getHoraInicio().length()>0){
+ 	 		f.setHora_inicio(HelperDateUtil.StringToTime(faenaB.getHoraInicio()));
+ 		}else{
+ 			f.setHora_inicio(null);
+ 		}
+ 		
+ 			
  		//hora fin
- 		f.setHora_fin(HelperDateUtil.StringToTime(faena.getHoraFin()));
- 		f.setLua(faena.getLua());
- 		f.setTemp_aire(faena.getTempAire());
- 		f.setTemp_superficie(faena.getTempSuperficie());
- 		f.setTemp_fondo(faena.getTempFondo());
- 		f.setEstado_mar(faena.getEstadoMar()); 
-		f.setVelocidade_vento(faena.getVelocidadeVento());
-		f.setDireccion_vento(faena.getDireccionVento());
-		f.setIdbarco(faena.getIdbarco());
-		f.setEstado_ceo(faena.getEstadoCeo());
+ 		if (faenaB.getHoraFin()!=null && faenaB.getHoraFin().length()>0){
+ 	 		f.setHora_fin(HelperDateUtil.StringToTime(faenaB.getHoraFin()));
+ 		}else{
+ 			f.setHora_fin(null);
+ 		}
+ 		
+ 		f.setLua(faenaB.getLua());
+ 		f.setTemp_aire(faenaB.getTempAire());
+ 		f.setTemp_superficie(faenaB.getTempSuperficie());
+ 		f.setTemp_fondo(faenaB.getTempFondo());
+ 		f.setEstado_mar(faenaB.getEstadoMar()); 
+		f.setVelocidade_vento(faenaB.getVelocidadeVento());
+		f.setDireccion_vento(faenaB.getDireccionVento());
+		if (faenaB.getIdbarco() != null){
+			f.setIdbarco(faenaB.getIdbarco());
+		}else{
+			//f.setIdbarco(null);
+		}
+		
+		f.setEstado_ceo(faenaB.getEstadoCeo());
 		
 		return f;
 	}
