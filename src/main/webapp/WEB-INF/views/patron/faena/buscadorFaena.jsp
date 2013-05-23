@@ -26,7 +26,7 @@
 
 <div id="ReportDetails">
 	 <h2>Buscador faena </h2>
-	<br>
+	
 	<form:form  action="/xeopesca/patron/buscadorFaena" method="POST" commandName="faena">
 		<input id="idbarco" name="idbarco" type="hidden" value="${faena.idbarco}"/>
 		<input id="id" name="id" type="hidden" value="${faena.id}"/>
@@ -59,17 +59,7 @@
 				<td><form:input  path="dataFin" readonly="true" id="dfin"/></td>
 			
 			</tr>
-			<tr>
-				<td>Temp. Aire:</td>
-				<td><form:input path="tempAire" /></td>
-				
-				<td>Temp. Superficie:</td>
-				<td><form:input path="tempSuperficie" /></td>
-				
-				<td>Temp. Fondo:</td>
-				<td><form:input path="tempFondo" /></td>
 			
-			</tr>
 			<tr>
 				<td>Estado mar:</td>
 				<td>

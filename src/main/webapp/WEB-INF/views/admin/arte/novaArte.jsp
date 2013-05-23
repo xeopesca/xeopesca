@@ -32,7 +32,7 @@
 					<form:select path="categoria">
 						<form:option value="" label="--- Select ---" />
 						<form:option value="Nasas" label="Nasas" />
-						<form:option value="Embarcación ou vara" label="Embarcación ou vara" />
+						<form:option value="Embarcaciï¿½n ou vara" label="Embarcaciï¿½n ou vara" />
 						<form:option value="Rastros" label="Rastros" />
 						<form:option value="Anzol" label="Anzol" />
 						<form:option value="En malle" label="En malle" />
@@ -48,11 +48,11 @@
 				<td><form:input path="nome" /></td>
 			</tr>
 			<tr>
-				<td>Imaxen: :</td>
+				<td>Imaxen :</td>
 				<td><form:input path="path" /></td>
 			</tr>
 			<tr>
-				<td>Descripcion: :</td>
+				<td>Descripci&#243n:</td>
 				<td><form:textarea path="descripcion" /></td>
 				</td>
 			</tr>

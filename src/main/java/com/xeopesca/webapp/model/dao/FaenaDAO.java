@@ -91,16 +91,20 @@ public class FaenaDAO extends GenericDaoHibernate<Faena>{
     	   conjunction.getExpressions().add(cb.equal(faenaER.get("direccion_vento").as(Integer.class), faena.getDireccion_vento()));
        }
        //Entre estas datas de incio
-       /*if (faena.getData_inicio()!=null){
-    	   conjunction.getExpressions().add(cb.gt(faenaER.get("data_inicio").as(java.sql.Date.class), new java.sql.Date(faena.getData_inicio().getTime())));
-       }
        if (faena.getData_inicio()!=null){
+    	 //  conjunction.getExpressions().add(cb.gt(faenaER.get("data_inicio").as(java.sql.Date.class), new java.sql.Date(faena.getData_inicio().getTime())));
+    	//  conjunction.getExpressions().add(cb.greaterThanOrEqualTo(faenaER.get("data_inicio").as(java.util.Date.class), new Date()));
+
+       }
+       /*if (faena.getData_inicio()!=null){
     	   conjunction.getExpressions().add(cb.gt(faenaER.get("data_inicio").as(Integer.class), faena.getDireccion_vento()));
        }
        */
        
 	   
        // si el conjunction posee mas de cero expresiones, entonces las agregamos al query con el metodo where
+     //  SpatialRestrictions.
+       
        if (conjunction.getExpressions().size() > 0) {
            criteriaQuery.where(conjunction);
        }
