@@ -60,6 +60,17 @@ public class FaenaServicio {
 		
 	}
 	
+	public static List<Faena> findBuscadorFaena(Faena faena,String barcos) {
+		FaenaDAO faenaDAO = new FaenaDAO();
+		List<Faena> listaFaenas = faenaDAO.faenasBuscador(faena);
+		
+		if (listaFaenas == null) listaFaenas = new ArrayList<Faena>();
+		
+		return listaFaenas;
+		
+		
+	}
+	
 	
 
 }

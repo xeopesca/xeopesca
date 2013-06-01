@@ -69,7 +69,7 @@ public class PatronController {
 		String loginArmador = auth.getName();
 		Usuario armador = UsuarioServicio.getUsuario(loginArmador);
 		
-		//Actualizamos os datos ao patrón
+		//Actualizamos os datos ao patrï¿½n
 		patron.setPatron_autoriza(armador.getId());
 		UsuarioServicio.saveUsuario(patron);
 
@@ -87,7 +87,7 @@ public class PatronController {
 		String loginArmador = auth.getName();
 		Usuario armador = UsuarioServicio.getUsuario(loginArmador);
 		
-		//Damos de alta o patrón
+		//Damos de alta o patrÃ³n
 		List<Usuario> patrons = new ArrayList<Usuario>();
 		patrons = UsuarioServicio.buscarPatronsDunArmador(armador.getId());
 

@@ -178,6 +178,11 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/armador/patron/buscadorPatron.jsp" />
 	</definition>
+	
+	<definition name="buscadorArmador" extends="armadorTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/armador/buscador/buscador.jsp" />
+	</definition>
 
 <!-- ********************* Patrón *************************** -->
 <definition name="indexPatron" extends="patronTemplate">

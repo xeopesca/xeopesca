@@ -13,10 +13,17 @@
 <title>Administrador</title>
 <link rel="stylesheet" href="/css/estilo.css" type="text/css" />
 <link rel="stylesheet" href="/css/tabs.css" type="text/css" />
+<link rel="stylesheet" type="text/css" media="all" href="/js/calendar/jsDatePick_ltr.min.css" />
 
 
 <script type="text/javascript" src="/js/script.js"></script>
 <script type="text/javascript" src="/js/tab.js"></script>
+
+
+<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+<script type="text/javascript" src="/js/calendar/jsDatePick.min.1.3.js"></script>
+<script src="http://maps.google.com/maps/api/js?v=3.3&sensor=false"></script>
+
 
 </head>
 <body>

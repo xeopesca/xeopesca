@@ -7,7 +7,7 @@
 
 <div class="menu">
 <ul class="menu" id="menu">
-	<li><a href="#" class="menulink">Buscar faenas</a>
+	<li><a href="/xeopesca/armador/buscador" class="menulink">Buscar faenas</a>
 	</li>
 	<!-- -->
 	<li><a href="#" class="menulink">Xestionar barco</a>
@@ -17,11 +17,11 @@
 			<li><a href="/xeopesca/armador/buscadorBarco">Buscador de barcos</a></li>
 		</ul>
 	</li>
-	<li><a href="#" class="menulink">Xestionar patrón</a>
+	<li><a href="#" class="menulink">Xestionar patr&#243n</a>
 	<ul>
-			<li><a href="/xeopesca/armador/novoPatron">Novo patrón</a></li>
-			<li><a href="/xeopesca/armador/listaPatron">Lista de patróns</a></li>
-			<li><a href="/xeopesca/armador/buscadorPatron">Buscar  patróns</a></li>
+			<li><a href="/xeopesca/armador/novoPatron">Novo patr&#243n</a></li>
+			<li><a href="/xeopesca/armador/listaPatron">Lista de patr&#243ns</a></li>
+			<li><a href="/xeopesca/armador/buscadorPatron">Buscar  patr&#243ns</a></li>
 		</ul>
 	</li>
 	

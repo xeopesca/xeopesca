@@ -12,26 +12,22 @@
 
 <title>Patrón</title>
 <link rel="stylesheet" type="text/css" media="all" href="/js/calendar/jsDatePick_ltr.min.css" />
-
 <link rel="stylesheet" href="/css/estilo.css" type="text/css" />
 <link rel="stylesheet" href="/css/tabs.css" type="text/css" />
 
 
 
 <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
-
 <script type="text/javascript" src="/js/calendar/jsDatePick.min.1.3.js"></script>
-	<script src="http://maps.google.com/maps/api/js?v=3.3&sensor=false"></script>
-
+<script src="http://maps.google.com/maps/api/js?v=3.3&sensor=false"></script>
 
 
 </head>
-  <body onload="init()">
+  <body>
 
 <div id="ReportHeader">
 	<h1>xeoPesca </h1>	
 	<tiles:insertAttribute name="menu" />
-
 
 </div>
 

@@ -46,7 +46,7 @@ public class BarcoController {
 		String loginArmador = auth.getName();
 		Usuario armador = UsuarioServicio.getUsuario(loginArmador);
 				
-		//Damos de alta o patrón
+		//Damos de alta o patrï¿½n
 		List<Usuario> patrons = new ArrayList<Usuario>();
 		patrons = UsuarioServicio.buscarPatronsDunArmador(armador.getId());
 		model.addAttribute("patrons", patrons);
@@ -85,7 +85,7 @@ public class BarcoController {
 		barcos = BarcoServicio.listaDeBarcos(armador.getId());
 
 		model.addAttribute("barcos", barcos);
-
+	
 		return "listaBarco";
 	}
 
@@ -161,8 +161,11 @@ public class BarcoController {
 			
 			if (p1.getIdbarco()!=null){
 				Barco b1 = BarcoServicio.findByID(p1.getIdbarco());
-				b1.setIdpatron(null);
-				BarcoServicio.updateBarco(b1);
+				if (b1!=null){
+					b1.setIdpatron(null);
+					BarcoServicio.updateBarco(b1);
+				}
+				
 			}
 			
 			p1.setIdbarco(null);	

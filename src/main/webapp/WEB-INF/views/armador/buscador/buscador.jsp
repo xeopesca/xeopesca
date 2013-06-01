@@ -27,8 +27,7 @@
 <div id="ReportDetails">
 	 <h2>Buscador faena </h2>
 	
-	<form:form  action="/xeopesca/patron/buscadorFaena" method="POST" commandName="faena">
-		<input id="idbarco" name="idbarco" type="hidden" value="${faena.idbarco}"/>
+	<form:form  action="/xeopesca/armador/buscador" method="POST" commandName="faena">
 		<input id="id" name="id" type="hidden" value="${faena.id}"/>
 		
 		<table>
@@ -38,14 +37,14 @@
 				
 				<td>
 					<form:select path="arte">
-    						<form:option value="" label="Todas" />
-						
+					    	<form:option value="" label="Todas" />
+					
 							<form:options items="${artes}" itemValue="id" itemLabel="nome" />
 					</form:select>
 				</td>
-			<td>Per&#237odo inicio:</td>
+			<td>Periodio inicio:</td>
 				<td><form:input path="dataInicio" readonly="true" id="dinicio" /></td>
-			<td>Per&#237odo fin:</td>
+			<td>Periodo fin:</td>
 				<td><form:input  path="dataFin" readonly="true" id="dfin"/></td>
 			
 				
@@ -58,7 +57,7 @@
 						<form:options items="${lua}" itemValue="id" itemLabel="literal" />
 						
 					</form:select></td>
-			<td>Estado mar:</td>
+				<td>Estado mar:</td>
 				<td>
 					<form:select path="estadoMar" >
 						<form:option value="" label="Todos" />
@@ -66,19 +65,19 @@
 					</form:select>		
 				</td>
 				
-			<td>Estado ceo:</td>
+				<td>Estado ceo:</td>
 				<td>
 					<form:select path="estadoCeo" >
 						<form:option value="" label="Todos" />
 						<form:options items="${ceo}" itemValue="id" itemLabel="literal" />
 					</form:select>	
-				</td>	
+				</td>
 				
 			</tr>
 			
 			
 			<tr>
-				<td>Direcci&#243n vento:</td>
+				<td>Direccion do vento:</td>
 				<td>
 					<form:select path="direccionVento" >
 						<form:option value="" label="Todas" />
@@ -86,8 +85,13 @@
 					</form:select>	
 					
 				</td>
-				
-				
+				<td>Barco:</td>
+				<td>
+					
+					<form:select path="idbarco" >
+						<form:options items="${barcos}" itemValue="id" itemLabel="folio" />
+					</form:select>	
+				</td>	
 				
 			</tr>
 			
@@ -109,49 +113,62 @@
 
 <div id="ReportDetails">
 	 <h2>Lista de faenas </h2>
-	<table>
+		<c:forEach var="faenas" items="${resultado2}" varStatus="status">
+		<h4> Faena do 						<fmt:formatDate type="Date" pattern="yyyy-MM-dd"  value="${faenas.data_inicio}"/>  
+		 - Arte: ${faenas.arte.nome}   </h4>
+						
+						
+						
+		
+		
+		
+			<li>Arte: ${faenas.arte.nome}  </li>
+		<c:forEach var="lances" items="${faenas.listaLances}" varStatus="status">
+		
+		<ul>
+			<li>Lugar: ${lances.descripcion} </li>
+		
+			<!-- aa -->
+		<table>
 		<tr>
-			<th class="ReportTableHeaderCell">Id</th>
-			<th class="ReportTableHeaderCell">Data de Inicio</th>
-			<th class="ReportTableHeaderCell">Arte empregada</th>
-			<th class="ReportTableHeaderCell">Agregar Lance</th>
-			<th class="ReportTableHeaderCell">Editar</th>
-			<th class="ReportTableHeaderCell">Borrar</th>
+			<th class="ReportTableHeaderCell">Id pesca</th>
+			<th class="ReportTableHeaderCell">Nome cientifico</th>
+			<th class="ReportTableHeaderCell">Pesp</th>
+			<th class="ReportTableHeaderCell">Peso descarte</th>
+			<th class="ReportTableHeaderCell">Ud.</th>
+			<th class="ReportTableHeaderCell">Ud. descarte</th>
 		</tr>
-		<c:forEach var="faenas" items="${resultado}" varStatus="status">
+		<c:forEach var="pesca" items="${lances.listaPesca}" varStatus="status">
 	
 			<tr class="ReportDetailsEvenDataRow">
-				<td class="ReportTableValueCell">${faenas.id}</td>
+				<td class="ReportTableValueCell">${pesca.id}</td>
+				<td class="ReportTableValueCell">${pesca.especie.nomecientifico} </td>
+				<td class="ReportTableValueCell">${pesca.peso}</td>
 				<td class="ReportTableValueCell">
-				
-				<fmt:formatDate type="Date" pattern="yyyy-MM-dd"  value="${faenas.data_inicio}"/>  
-				
-				</td>
-				<td class="ReportTableValueCell">${faenas.arte.nome}</td>
-				<td class="ReportTableValueCell">
-					<center> 
-						<a href="novoLance/${faenas.id}">  <img src="/images/add.png"/></a>
-					</center>
+					${pesca.pesodescarte}
 				</td>
 				<td class="ReportTableValueCell">
-					<center>
-						<a href="editarFaena/${faenas.id}"> <img src="/images/detalle.gif"/> </a>
-					</center>
+					${pesca.ud}
 				</td>
 				
 				<td class="ReportTableValueCell">
-					<center>
-						<a href="deleteFaena/${faenas.id}"> <img src="/images/papelera.gif" /></a>
-					</center>
+					${pesca.uddescarte}
 				</td>
 			</tr>
 
 
 		</c:forEach>
-	
-	
-	</table>
-	
-</div>
+		</table>	
+		</ul>
+			<!-- bb -->
+		
+		</c:forEach>
+		
+		
+		
+</c:forEach>
+	 
+	 
+</div>	
 
 </c:if>
