@@ -32,14 +32,14 @@
                                      feature.geometry.getBounds().getCenterLonLat(),
                                      null,
                                      "<div style='font-size:.8em'>"+
-									 "Faena: <a href='"+"patron/editarFaena/"+feature.attributes.id+"'>" + feature.attributes.id+"</a>"+ 
-									 "<br>Lance: <a href='"+"patron/novoLance/"+feature.attributes.id+"'>" + feature.attributes.idlance+"</a>"+ 
-									 
-									 
+									 "<br>Barco: " + feature.attributes.idbarco +
+									 "<br>Data: " + feature.attributes.data_fin +
 									 "<br>Lugar: " + feature.attributes.descripcion +
-									 
-									 
-									 "<br>Fecha: " + feature.attributes.data_inicio.value +
+									 "<br>Hora inicio: " + feature.attributes.hora_inicio +
+									 "<br>Temperatura aire: " + feature.attributes.temp_aire +
+									 "<br>Temperatura superficie: " + feature.attributes.temp_superficie +
+									 "<br>Temperatura fondo: " + feature.attributes.temp_fondo +
+									 "<br>Velocidade vento: " + feature.attributes.velocidade_vento +
 									  "</div>",
                                      null, true, onPopupClose);
             feature.popup = popup;
@@ -96,7 +96,7 @@
 	
 	//bucle do filtro
 	var barcos  = idbarcos.split(';');
-	var tamano  = barcos.length;
+	var tamano  = barcos.length-1;
 	for (var i = 0; i < tamano; i++) {
 		x = new OpenLayers.Filter.Comparison({
 						type: OpenLayers.Filter.Comparison.EQUAL_TO,
@@ -104,7 +104,6 @@
 						value: barcos[i]
 					});
 		filt.filters.push(x);
-		alert(filt.filters[i]);
 	}
 	
 
@@ -115,7 +114,7 @@
 		featureType: "vista_faena_lance",
 		outputFormat: 'json',
 		defaultFilter: filt,
-		maxFeatures: '20',
+		maxFeatures: '100',
 		readFormat: new OpenLayers.Format.GeoJSON()
 	}); 
 
