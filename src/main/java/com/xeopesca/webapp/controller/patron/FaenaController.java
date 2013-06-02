@@ -104,6 +104,12 @@ public class FaenaController {
     
     @RequestMapping("/patron/buscadorFaena")
     public String buscadorFaena(Model model) {
+    	//Recuperamos os datos do Patron
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String loginPatron = auth.getName();
+		Usuario patron = UsuarioServicio.getUsuario(loginPatron);
+    	
+    	
     	//Faena faena = new Faena();
     	FaenaBuscador faenaB = new FaenaBuscador();
     	model.addAttribute("faena",faenaB);
@@ -122,7 +128,8 @@ public class FaenaController {
     	 * */
     	model.addAttribute("artes", ArteServicio.listaDeArtes());
     	model.addAttribute("especies", EspecieServicio.listaDeEspecies());
-    	
+        model.addAttribute("idbarco", patron.getIdbarco());
+
 
         return "buscadorFaena"; 
     }
@@ -137,9 +144,18 @@ public class FaenaController {
  		//Chamamos ao servicio para recuperar o resultado da busqueda
 		List<Faena>  resultado = FaenaServicio.findBuscadorFaena(faena);
 		
+		//Recuperamos os datos do Patron
+				Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+				String loginPatron = auth.getName();
+				Usuario patron = UsuarioServicio.getUsuario(loginPatron);
+		    	
+		
+		
 		//PREPARAMOS OS ELEMENTOS DE SAIDA
 		model.addAttribute("resultado",resultado);
     	model.addAttribute("faena",faenaB);
+        model.addAttribute("idbarco", patron.getIdbarco());
+
     	
     	/*
     	 *  PARAMETRIA e combos

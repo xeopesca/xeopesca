@@ -18,7 +18,45 @@
 	
 <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
 			<script>
-	var selectControl, drawControls
+	var selectControl, drawControls;
+			
+	//FUNCIONS	
+	function onPopupClose(evt) {
+			
+            selectControl.unselect(selectedFeature);
+        };
+        function onFeatureSelect(feature) {
+			
+			var urlFaena = "http://localhost:8080/xeopesca/patron/editarFaena/";
+            selectedFeature = feature;
+            popup = new OpenLayers.Popup.FramedCloud("chicken", 
+                                     feature.geometry.getBounds().getCenterLonLat(),
+                                     null,
+                                     "<div style='font-size:.8em'>"+
+									 "Faena: <a href='"+"patron/editarFaena/"+feature.attributes.id+"'>" + feature.attributes.id+"</a>"+ 
+									 "<br>Lance: <a href='"+"patron/novoLance/"+feature.attributes.id+"'>" + feature.attributes.idlance+"</a>"+ 
+									 
+									 
+									 "<br>Lugar: " + feature.attributes.descripcion +
+									 
+									 
+									 "<br>Fecha: " + feature.attributes.data_inicio.value +
+									  "</div>",
+                                     null, true, onPopupClose);
+            feature.popup = popup;
+            map.addPopup(popup);
+        };
+        
+        function onFeatureUnselect(feature) {
+					
+
+            map.removePopup(feature.popup);
+            feature.popup.destroy();
+            feature.popup = null;
+        }    ;
+   
+	
+	//MAPA
 	var idbarco = document.getElementById('idbarco').value; 
 	var bounds = new OpenLayers.Bounds(308780.2375,4472890.525,833068.2375,4997178.525);
 	var initialbbox = new OpenLayers.Bounds(398396.573996919,4606383.09616855,743451.90103171,4863685.95423634);
