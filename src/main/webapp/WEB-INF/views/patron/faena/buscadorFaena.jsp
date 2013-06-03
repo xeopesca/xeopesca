@@ -145,7 +145,6 @@
         }
         function onFeatureUnselect(feature) {
 					
-
             map.removePopup(feature.popup);
             feature.popup.destroy();
             feature.popup = null;
@@ -202,7 +201,13 @@
 		            property: "idbarco",
 		            value: idbarco
 		        });
-			
+				
+			var filt = new OpenLayers.Filter.Logical({
+						type: OpenLayers.Filter.Logical.AND,
+						filters: [filtroBarco]
+					});
+					
+			//Error
 			var filtroFechaInicio = new OpenLayers.Filter.Comparison({
 	            type: OpenLayers.Filter.Comparison.EQUAL_TO,
 	            property: "data_inicio",
@@ -210,29 +215,47 @@
 	            upperBoundary:dfin
 	        });
 			
-			var filtroLua = new OpenLayers.Filter.Comparison({
+			if (idlua!='')
+			{
+				var filtroLua = new OpenLayers.Filter.Comparison({
 	            type: OpenLayers.Filter.Comparison.EQUAL_TO,
-	            property: "idbarco",
-	            value: idbarco
-	        });
+	            property: "lua",
+	            value: idlua
+				});
 			
-			var filtroMar = new OpenLayers.Filter.Comparison({
-	            type: OpenLayers.Filter.Comparison.EQUAL_TO,
-	            property: "idbarco",
-	            value: idbarco
-	        });
+				filt.filters.push(filtroLua);
+			};
 			
-			var filtroCeo = new OpenLayers.Filter.Comparison({
-	            type: OpenLayers.Filter.Comparison.EQUAL_TO,
-	            property: "idbarco",
-	            value: idbarco
-	        });
-		
-			var filtroVento = new OpenLayers.Filter.Comparison({
-	            type: OpenLayers.Filter.Comparison.EQUAL_TO,
-	            property: "idbarco",
-	            value: idbarco
-	        });
+			if (idmar!=''){
+				
+				var filtroMar = new OpenLayers.Filter.Comparison({
+								type: OpenLayers.Filter.Comparison.EQUAL_TO,
+								property: "estado_mar",
+								value: idmar
+					});
+				filt.filters.push(filtroMar);
+			};
+
+			
+			if (idceo!=''){
+				
+				var filtroCeo = new OpenLayers.Filter.Comparison({
+						type: OpenLayers.Filter.Comparison.EQUAL_TO,
+						property: "estado_ceo",
+						value: idceo
+					});
+				filt.filters.push(filtroCeo);
+			}
+			
+			if (idvento!=''){
+				var filtroVento = new OpenLayers.Filter.Comparison({
+						type: OpenLayers.Filter.Comparison.EQUAL_TO,
+						property: "direccion_vento",
+						value: idvento
+					});
+				filt.filters.push(filtroVento);
+			}
+			
 		//	var filtroFechaFin = new OpenLayers.Filter.Comparison({
 	    //        type: OpenLayers.Filter.Comparison.EQUAL_TO,
 	    //        property: "data_fin",
@@ -240,10 +263,7 @@
 	    //    });
 		//	
 			
-			var filt = new OpenLayers.Filter.Logical({
-		    				type: OpenLayers.Filter.Logical.AND,
-		    				filters: [filtroBarco]
-						});
+		
 		
 			
 			var protocol = new OpenLayers.Protocol.WFS({ 

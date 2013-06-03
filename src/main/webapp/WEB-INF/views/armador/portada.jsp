@@ -32,7 +32,7 @@
                                      feature.geometry.getBounds().getCenterLonLat(),
                                      null,
                                      "<div style='font-size:.8em'>"+
-									 "<br>Barco: " + feature.attributes.idbarco +
+									 "<br>Barco: " + feature.attributes.folio +
 									 "<br>Data: " + feature.attributes.data_fin +
 									 "<br>Lugar: " + feature.attributes.descripcion +
 									 "<br>Hora inicio: " + feature.attributes.hora_inicio +
