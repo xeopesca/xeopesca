@@ -26,7 +26,6 @@
         };
         function onFeatureSelect(feature) {
 			
-			var urlFaena = "http://localhost:8080/xeopesca/patron/editarFaena/";
             selectedFeature = feature;
             popup = new OpenLayers.Popup.FramedCloud("chicken", 
                                      feature.geometry.getBounds().getCenterLonLat(),

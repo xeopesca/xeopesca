@@ -38,9 +38,7 @@
 									 
 									 
 									 "<br>Lugar: " + feature.attributes.descripcion +
-									 
-									 
-									 "<br>Fecha: " + feature.attributes.data_inicio.value +
+									 "<br>Fecha: " + feature.attributes.data_inicio +
 									  "</div>",
                                      null, true, onPopupClose);
             feature.popup = popup;

@@ -130,14 +130,14 @@
                                      feature.geometry.getBounds().getCenterLonLat(),
                                      null,
                                      "<div style='font-size:.8em'>"+
-									 "Faena: <a href='"+"patron/editarFaena/"+feature.attributes.id+"'>" + feature.attributes.id+"</a>"+ 
-									 "<br>Lance: <a href='"+"patron/novoLance/"+feature.attributes.id+"'>" + feature.attributes.idlance+"</a>"+ 
+									 "Faena: <a href='"+"editarFaena/"+feature.attributes.id+"'>" + feature.attributes.id+"</a>"+ 
+									 "<br>Lance: <a href='"+"novoLance/"+feature.attributes.id+"'>" + feature.attributes.idlance+"</a>"+ 
 									 
 									 
 									 "<br>Lugar: " + feature.attributes.descripcion +
 									 
 									 
-									 "<br>Fecha: " + feature.attributes.data_inicio.value +
+									 "<br>Fecha: " + feature.attributes.data_inicio +
 									  "</div>",
                                      null, true, onPopupClose);
             feature.popup = popup;
@@ -206,14 +206,27 @@
 						type: OpenLayers.Filter.Logical.AND,
 						filters: [filtroBarco]
 					});
-					
-			//Error
-			var filtroFechaInicio = new OpenLayers.Filter.Comparison({
-	            type: OpenLayers.Filter.Comparison.EQUAL_TO,
-	            property: "data_inicio",
-	            lowerBoundary: dinicio,
-	            upperBoundary:dfin
-	        });
+			
+
+			if (dinicio!=''){
+				var filtroFechaFin = new OpenLayers.Filter.Comparison({
+					type: OpenLayers.Filter.Comparison.GREATER_THAN_OR_EQUAL_TO,
+					property: "data_inicio",
+					value: dinicio
+				});
+				filt.filters.push(filtroFechaFin);
+			}	
+
+			if (dfin!=''){
+				var filtroFechaFin = new OpenLayers.Filter.Comparison({
+					type: OpenLayers.Filter.Comparison.LESS_THAN_OR_EQUAL_TO,
+					property: "data_inicio",
+					value: dfin
+				});
+				filt.filters.push(filtroFechaFin);
+			}		
+			
+			
 			
 			if (idlua!='')
 			{
@@ -256,15 +269,7 @@
 				filt.filters.push(filtroVento);
 			}
 			
-		//	var filtroFechaFin = new OpenLayers.Filter.Comparison({
-	    //        type: OpenLayers.Filter.Comparison.EQUAL_TO,
-	    //        property: "data_fin",
-	    //        value: dfin
-	    //    });
-		//	
 			
-		
-		
 			
 			var protocol = new OpenLayers.Protocol.WFS({ 
 				url: "http://localhost:8080/geoserver/wfs",

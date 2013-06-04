@@ -36,7 +36,7 @@
 				<td>Arte:</td>
 				
 				<td>
-					<form:select path="arte">
+					<form:select path="arte"  id="idarte">
 					    	<form:option value="" label="Todas" />
 					
 							<form:options items="${artes}" itemValue="id" itemLabel="nome" />
@@ -51,7 +51,7 @@
 			</tr>
 			<tr>
 				<td>Lua:</td>
-				<td><form:select path="lua">
+				<td><form:select path="lua"  id="idlua">
 						<form:option value="" label="Todas" />
 					
 						<form:options items="${lua}" itemValue="id" itemLabel="literal" />
@@ -59,7 +59,7 @@
 					</form:select></td>
 				<td>Estado mar:</td>
 				<td>
-					<form:select path="estadoMar" >
+					<form:select path="estadoMar"  id="idmar" >
 						<form:option value="" label="Todos" />
 						<form:options items="${mar}" itemValue="id" itemLabel="literal" />				
 					</form:select>		
@@ -67,7 +67,7 @@
 				
 				<td>Estado ceo:</td>
 				<td>
-					<form:select path="estadoCeo" >
+					<form:select path="estadoCeo"  id="idceo" >
 						<form:option value="" label="Todos" />
 						<form:options items="${ceo}" itemValue="id" itemLabel="literal" />
 					</form:select>	
@@ -79,7 +79,7 @@
 			<tr>
 				<td>Direccion do vento:</td>
 				<td>
-					<form:select path="direccionVento" >
+					<form:select path="direccionVento"  id="idvento">
 						<form:option value="" label="Todas" />
 						<form:options items="${dirvento}" itemValue="id" itemLabel="literal" />
 					</form:select>	
@@ -111,6 +111,216 @@
 
 <c:if test="${!empty resultado}">
 
+
+<div id="ReportDetails">
+		 <h2>Mapa de resultados </h2>
+	<div id="Map" style="height:325px;width:110ppx;"></div>
+	
+		<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+					<script>
+			//
+			var selectControl, drawControls;
+	//funcions
+	
+	function onPopupClose(evt) {
+			
+            selectControl.unselect(selectedFeature);
+        }
+        function onFeatureSelect(feature) {
+					
+            selectedFeature = feature;
+            popup = new OpenLayers.Popup.FramedCloud("chicken", 
+                    feature.geometry.getBounds().getCenterLonLat(),
+                    null,
+                    "<div style='font-size:.8em'>"+
+					 "<br>Barco: " + feature.attributes.folio +
+					 "<br>Data: " + feature.attributes.data_fin +
+					 "<br>Lugar: " + feature.attributes.descripcion +
+					 "<br>Hora inicio: " + feature.attributes.hora_inicio +
+					 "<br>Temperatura aire: " + feature.attributes.temp_aire +
+					 "<br>Temperatura superficie: " + feature.attributes.temp_superficie +
+					 "<br>Temperatura fondo: " + feature.attributes.temp_fondo +
+					 "<br>Velocidade vento: " + feature.attributes.velocidade_vento +
+					  "</div>",
+                    null, true, onPopupClose);
+feature.popup = popup;
+            map.addPopup(popup);
+        }
+        function onFeatureUnselect(feature) {
+					
+            map.removePopup(feature.popup);
+            feature.popup.destroy();
+            feature.popup = null;
+        }    ;
+   
+	
+			
+			
+			//MAPA
+			var idbarco = document.getElementById('idbarco').value; 
+			var dinicio = document.getElementById('dinicio').value; 
+			var dfin = document.getElementById('dfin').value; 
+			
+			var idlua  	= document.getElementById('idlua').value; 
+			var idmar  	= document.getElementById('idmar').value; 
+			var idceo 	= document.getElementById('idceo').value;  
+			var idvento = document.getElementById('idvento').value; 
+			
+			
+			var bounds = new OpenLayers.Bounds(308780.2375,4472890.525,833068.2375,4997178.525);
+			var initialbbox = new OpenLayers.Bounds(398396.573996919,4606383.09616855,743451.90103171,4863685.95423634);
+			var maxRes = 1024;
+			var lat            = 5302009.63;
+			var lon            = -1160006.63  ;
+			
+			var fromProjection = new OpenLayers.Projection("EPSG:900913");   // Transform from WGS 1984
+			var mapProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+			var position       = new OpenLayers.LonLat(lon, lat).transform( fromProjection, mapProjection);
+			
+			var zoom           = 7;
+			
+			
+			map = new OpenLayers.Map('Map', {
+				units: 'm',
+				controls: [
+					new OpenLayers.Control.Navigation(),
+					new OpenLayers.Control.ScaleLine(),
+					new OpenLayers.Control.MousePosition(),
+					new OpenLayers.Control.LayerSwitcher(),
+					new OpenLayers.Control.Zoom	()
+				],
+				projection: mapProjection,
+			});
+		
+			
+			
+						
+			var mapnik         = new OpenLayers.Layer.OSM();
+			map.addLayer(mapnik);
+			
+			//FILTROS
+			var filtroBarco = new OpenLayers.Filter.Comparison({
+		            type: OpenLayers.Filter.Comparison.EQUAL_TO,
+		            property: "idbarco",
+		            value: idbarco
+		        });
+				
+			var filt = new OpenLayers.Filter.Logical({
+						type: OpenLayers.Filter.Logical.AND,
+						filters: [filtroBarco]
+					});
+			
+
+			if (dinicio!=''){
+				var filtroFechaFin = new OpenLayers.Filter.Comparison({
+					type: OpenLayers.Filter.Comparison.GREATER_THAN_OR_EQUAL_TO,
+					property: "data_inicio",
+					value: dinicio
+				});
+				filt.filters.push(filtroFechaFin);
+			}	
+
+			if (dfin!=''){
+				var filtroFechaFin = new OpenLayers.Filter.Comparison({
+					type: OpenLayers.Filter.Comparison.LESS_THAN_OR_EQUAL_TO,
+					property: "data_inicio",
+					value: dfin
+				});
+				filt.filters.push(filtroFechaFin);
+			}		
+			
+			
+			
+			if (idlua!='')
+			{
+				var filtroLua = new OpenLayers.Filter.Comparison({
+	            type: OpenLayers.Filter.Comparison.EQUAL_TO,
+	            property: "lua",
+	            value: idlua
+				});
+			
+				filt.filters.push(filtroLua);
+			};
+			
+			if (idmar!=''){
+				
+				var filtroMar = new OpenLayers.Filter.Comparison({
+								type: OpenLayers.Filter.Comparison.EQUAL_TO,
+								property: "estado_mar",
+								value: idmar
+					});
+				filt.filters.push(filtroMar);
+			};
+
+			
+			if (idceo!=''){
+				
+				var filtroCeo = new OpenLayers.Filter.Comparison({
+						type: OpenLayers.Filter.Comparison.EQUAL_TO,
+						property: "estado_ceo",
+						value: idceo
+					});
+				filt.filters.push(filtroCeo);
+			}
+			
+			if (idvento!=''){
+				var filtroVento = new OpenLayers.Filter.Comparison({
+						type: OpenLayers.Filter.Comparison.EQUAL_TO,
+						property: "direccion_vento",
+						value: idvento
+					});
+				filt.filters.push(filtroVento);
+			}
+			
+			
+			
+			var protocol = new OpenLayers.Protocol.WFS({ 
+				url: "http://localhost:8080/geoserver/wfs",
+				featureNS: "http://localhost:8080/xeopesca",
+				featureType: "vista_faena_lance",
+				outputFormat: 'json',
+				defaultFilter: filt,
+				maxFeatures: '20',
+				readFormat: new OpenLayers.Format.GeoJSON()
+			}); 
+		
+			var lances = new OpenLayers.Layer.Vector("Lances", { 
+				strategies: [new OpenLayers.Strategy.Fixed()], 
+				protocol: protocol, 
+				
+			});	
+			map.addLayer(lances);
+		 
+		 
+			map.setCenter(position, zoom);
+			
+			
+			//Configuracion popup onclick
+			 selectControl = new OpenLayers.Control.SelectFeature(lances,
+		                {onSelect: onFeatureSelect, onUnselect: onFeatureUnselect});
+		
+			drawControls = {
+		                polygon: new OpenLayers.Control.Geolocate(lances,
+		                            OpenLayers.Handler.Polygon),
+		                select: selectControl
+		            };
+			 for(var key in drawControls) {
+						
+		                map.addControl(drawControls[key]);
+						drawControls[key].activate();
+		            }
+			map.setCenter(position, zoom);
+						
+		</script>
+</div>
+
+
+</div>
+
+
+
+
+
 <div id="ReportDetails">
 	 <h2>Lista de faenas </h2>
 		<c:forEach var="faenas" items="${resultado2}" varStatus="status">
@@ -120,7 +330,7 @@
 						
 						
 		
-		
+		<ul>
 		
 			<li>Arte: ${faenas.arte.nome}  </li>
 		<c:forEach var="lances" items="${faenas.listaLances}" varStatus="status">
@@ -158,7 +368,8 @@
 
 
 		</c:forEach>
-		</table>	
+		</table>
+</ul>		
 		</ul>
 			<!-- bb -->
 		
