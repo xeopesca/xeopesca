@@ -61,7 +61,7 @@ public class EspecieServicio {
 		
 	}
 	
-	public static void updateUsuario(Especie especie){
+	public static void editarEspecie(Especie especie){
 		EspecieDAO especieDao = new EspecieDAO();
 		especieDao.update(especie);
 	}

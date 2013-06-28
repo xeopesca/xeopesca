@@ -243,7 +243,8 @@ public class FaenaController {
 		Usuario patron = UsuarioServicio.getUsuario(patronLogin);
 		if (patron.getIdbarco()==faena.getIdbarco()){
 			faenaVO  =  FaenaBuscador.convertFaenaBuscardorToFaena(faena);
-			FaenaServicio.saveFaena(faenaVO);
+			
+			FaenaServicio.updateFaena(faenaVO);
 			
 		}
 		

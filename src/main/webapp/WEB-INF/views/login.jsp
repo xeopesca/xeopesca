@@ -16,7 +16,7 @@
 	<div class="container">
 		<div class="span7 offset2">
 			<div class="alert">
-				<a class="close" data-dismiss="alert-error">×</a> <strong>Erro!</strong>
+				<a class="close" data-dismiss="alert-error">x</a> <strong>Erro!</strong>
 				Datos de acceso incorrectos comprobe contrasinal e usuario.
 
 			</div>
@@ -29,7 +29,7 @@
 
 	<form class="form-signin" name="f" action="<c:url value='j_spring_security_check'/>"
 		method="POST">
-        <h2 class="form-signin-heading">Identificate</h2>
+        <h2 class="form-signin-heading">Identif&#237cate</h2>
 		
 
 		<input class="input-block-level" placeholder="Conta de usuario" type='text' name='j_username' id="user" value=''/>

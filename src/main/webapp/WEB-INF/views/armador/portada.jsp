@@ -11,7 +11,7 @@
 <div id="ReportDetails">
 	  <h2>Portada armador</h2>
 
-	<div id="Map" style="height:325px;width:110ppx;">
+	<div id="Map" style="height:415px;width:110ppx;">
 		
 	</div>
 	
@@ -87,6 +87,9 @@
 	var mapnik         = new OpenLayers.Layer.OSM();
 	map.addLayer(mapnik);
 	
+	var satellite = new OpenLayers.Layer.Google("Google satélite",
+			{type: google.maps.MapTypeId.SATELLITE});
+map.addLayer(satellite);
 	//AGregamos filtros dos barcos
 	var filt = new OpenLayers.Filter.Logical({
     type: OpenLayers.Filter.Logical.OR,
@@ -108,7 +111,7 @@
 
 	//PROTOCOLO
 	var protocol = new OpenLayers.Protocol.WFS({ 
-		url: "http://localhost:8080/geoserver/wfs",
+		url: "./geoserver/wfs",
 		featureNS: "http://localhost:8080/xeopesca",
 		featureType: "vista_faena_lance",
 		outputFormat: 'json',

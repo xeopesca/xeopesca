@@ -7,7 +7,6 @@ import java.util.List;
 
 import com.xeopesca.webapp.model.dao.FaenaDAO;
 import com.xeopesca.webapp.model.vos.Faena;
-import com.xeopesca.webapp.view.FaenaBuscador;
 
 /**
  * @author belay
@@ -26,6 +25,11 @@ public class FaenaServicio {
 	public static void saveFaena(Faena faena) {
 		FaenaDAO faenaDao = new FaenaDAO();
 		faenaDao.create(faena);
+	}
+
+	public static void updateFaena(Faena faena) {
+		FaenaDAO faenaDao = new FaenaDAO();
+		faenaDao.update(faena);
 	}
 
 	

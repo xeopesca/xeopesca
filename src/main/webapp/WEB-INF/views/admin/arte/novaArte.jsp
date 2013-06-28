@@ -47,10 +47,7 @@
 				<td>Nome :</td>
 				<td><form:input path="nome" /></td>
 			</tr>
-			<tr>
-				<td>Imaxen :</td>
-				<td><form:input path="path" /></td>
-			</tr>
+			
 			<tr>
 				<td>Descripci&#243n:</td>
 				<td><form:textarea path="descripcion" /></td>

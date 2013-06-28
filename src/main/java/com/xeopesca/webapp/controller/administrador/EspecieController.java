@@ -62,7 +62,7 @@ public class EspecieController {
 
 		if (UploaderFileUtil.uploadFile(file, especie, "./src/main/webapp/images/especie/")){
 			especie.setPath("/images/especie/"+especie.getId()+".jpg");
-			EspecieServicio.updateUsuario(especie);
+			EspecieServicio.editarEspecie(especie);
 			return "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
 					+ "/admin/listaEspecies";
 		} 
@@ -75,7 +75,7 @@ public class EspecieController {
 	// --------------------------------
 	// ENTRADA LISTA USUARIOS
 	@RequestMapping("/admin/listaEspecies")
-	public String listaUsuarios(Model model) {
+	public String listaEspecies(Model model) {
 
 		List<Especie> especies = new ArrayList<Especie>();
 		especies = EspecieServicio.listaDeEspecies();
@@ -130,7 +130,7 @@ public class EspecieController {
 		
 		if (UploaderFileUtil.uploadFile(file, especie, "./src/main/webapp/images/especie/")){
 			especie.setPath("/images/especie/"+especie.getId()+".jpg");
-			EspecieServicio.updateUsuario(especie);
+			EspecieServicio.editarEspecie(especie);
 			return "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
 					+ "/admin/listaEspecies";
 		} 

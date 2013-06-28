@@ -39,7 +39,7 @@ public class BarcoController {
 	// -------------------------------------
 	// ENTRADA FORMULARIO -- novoBarco
 	@RequestMapping(value = "/armador/novoBarco", method = RequestMethod.GET)
-	public String novoEspecie(Model model, Barco barco) {
+	public String novoBarco(Model model, Barco barco) {
 		
 		//Recuperamos os datos do Armador
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -56,7 +56,7 @@ public class BarcoController {
 
 	// SAIDA FORMULARIO
 	@RequestMapping(value = "/armador/novoBarco", method = RequestMethod.POST)
-	public String novaEspecie(Barco barco, BindingResult result) {
+	public String novoBarco(Barco barco, BindingResult result) {
 		//Recuperamos os datos do Armador
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String loginArmador = auth.getName();
@@ -97,8 +97,8 @@ public class BarcoController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String loginArmador = auth.getName();
 		Usuario armador = UsuarioServicio.getUsuario(loginArmador);
-		
 		List<Barco> lista = BarcoServicio.buscarBarcoArmador(id,armador.getId());
+		
 		if (lista.size()==0){
 			return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaBarco";
 		}
@@ -201,7 +201,7 @@ public class BarcoController {
 	
 	// BUSCADOR buscadorEspecie - Entrada
 		@RequestMapping(value = "/armador/buscadorBarco", method = RequestMethod.GET)
-		public String buscadorEspecie(Model model, Barco barco) {
+		public String buscadorBarco(Model model, Barco barco) {
 			model.addAttribute("mensaxe", "inicio");
 			model.addAttribute("barco", barco);
 			return "buscadorBarco";
@@ -210,7 +210,7 @@ public class BarcoController {
 		
 		// SAIDA FORMULARIO BUSCADOR 
 		@RequestMapping(value = "/armador/buscadorBarco", method = RequestMethod.POST)
-		public String buscadorBarco(Barco barco,Model model) {
+		public String buscadorBarcoResposta(Barco barco,Model model) {
 			//Recuperamos os datos do Armador
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 			String loginArmador = auth.getName();

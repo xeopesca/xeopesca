@@ -11,7 +11,6 @@ import javax.persistence.PersistenceContext;
 
 import com.xeopesca.util.JPAUtil;
 
-//TODO
 public abstract class GenericDaoHibernate<T> implements GenericDao<T> {
 
     @PersistenceContext
@@ -26,20 +25,7 @@ public abstract class GenericDaoHibernate<T> implements GenericDao<T> {
         type = (Class) pt.getActualTypeArguments()[0];
         em = JPAUtil.createEntityManager();
     }
-/*
-    public long countAll(final Map<String, Object> params) {
 
-        final StringBuffer queryString = new StringBuffer(
-                "SELECT count(o) from ");
-
-        queryString.append(type.getSimpleName()).append(" o ");
-        queryString.append(this.getQueryClauses(params, null));
-
-        final Query query = this.em.createQuery(queryString.toString());
-
-        return (Long) query.getSingleResult();
-
-    }*/
 
     public T create(final T t) {
     	em = JPAUtil.createEntityManager();

@@ -20,7 +20,7 @@ public class PortadaArmadorController {
    
     
     @RequestMapping("/armador")
-    public String helloWorld(Model model) {
+    public String portada(Model model) {
     	
     	//Recuperamos os datos do Armador
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();

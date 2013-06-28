@@ -15,7 +15,7 @@ public class PortadaPatronController {
    
     
     @RequestMapping("/patron")
-    public String helloWorld(Model model) {
+    public String portada(Model model) {
     	//Recuperamos os datos do Patron
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String loginPatron = auth.getName();

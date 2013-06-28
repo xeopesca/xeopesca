@@ -41,8 +41,13 @@ public class FaenaBuscador implements java.io.Serializable {
 	public static Faena convertFaenaBuscardorToFaena(FaenaBuscador faenaB){
 		
 		Faena f = new Faena();
+		if (  faenaB.getId() !=0){
+			f.setId(faenaB.getId());
+		} 
 		if (faenaB.getArte()!=null && !faenaB.getArte().isEmpty()){
-	 		f.setIdarte(new Long (faenaB.getArte()));
+			String idArte = faenaB.getArte();
+			Long idArteLong = new Long(idArte);
+	 		f.setIdarte(idArteLong);
 		}
  		//datainicio
  		if (faenaB.getDataInicio()!= null && faenaB.getDataInicio().length()>0){

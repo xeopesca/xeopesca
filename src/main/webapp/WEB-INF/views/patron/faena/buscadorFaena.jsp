@@ -1,5 +1,5 @@
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -96,6 +96,7 @@
 			<tr>
 				<td></td>
 				<td><input type="submit" value="Enviar" /></td>
+				
 			</tr>
 		</table>
 		
@@ -111,7 +112,7 @@
 
 <div id="ReportDetails">
 		 <h2>Mapa de resultados </h2>
-	<div id="Map" style="height:325px;width:110ppx;"></div>
+	<div id="Map" style="height:415px;width:110ppx;"></div>
 	
 		<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
 					<script>
@@ -194,6 +195,10 @@
 						
 			var mapnik         = new OpenLayers.Layer.OSM();
 			map.addLayer(mapnik);
+			
+			var satellite = new OpenLayers.Layer.Google("Google satélite",
+					{type: google.maps.MapTypeId.SATELLITE});
+map.addLayer(satellite);
 			
 			//FILTROS
 			var filtroBarco = new OpenLayers.Filter.Comparison({

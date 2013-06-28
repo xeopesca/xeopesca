@@ -12,7 +12,7 @@
 <div id="ReportDetails">
 	  <h2>Portada patron</h2>
 
-	<div id="Map" style="height:325px;width:110ppx;">
+	<div id="Map" style="height:415px;width:110ppx;">
 		
 	</div>
 	
@@ -87,6 +87,10 @@
 	var mapnik         = new OpenLayers.Layer.OSM();
 	map.addLayer(mapnik);
 
+	var satellite = new OpenLayers.Layer.Google("Google satélite",
+			{type: google.maps.MapTypeId.SATELLITE});
+map.addLayer(satellite);
+	
 	var filt = new OpenLayers.Filter.Logical({
     type: OpenLayers.Filter.Logical.OR,
     filters: [
