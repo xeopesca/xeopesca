@@ -198,7 +198,7 @@ feature.popup = popup;
 			var mapnik         = new OpenLayers.Layer.OSM();
 			map.addLayer(mapnik);
 			
-			var satellite = new OpenLayers.Layer.Google("Google satélite",
+			var satellite = new OpenLayers.Layer.Google("Google sat&eacutelite",
 					{type: google.maps.MapTypeId.SATELLITE});
             map.addLayer(satellite);
 			

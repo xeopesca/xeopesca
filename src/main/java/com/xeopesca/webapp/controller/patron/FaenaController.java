@@ -97,7 +97,7 @@ public class FaenaController {
  		FaenaServicio.saveFaena(f);
 
  		 		
- 		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/patron/";
+ 		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/patron/listaFaena";
  	}
     
  	

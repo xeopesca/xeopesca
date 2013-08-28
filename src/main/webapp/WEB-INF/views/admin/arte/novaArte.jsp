@@ -19,7 +19,7 @@
 				<td>Actividade :</td>
 				<td>
 					<form:select path="actividade">
-						<form:option value="" label="--- Select ---" />
+						<form:option value="" label="" />
 						<form:option value="Marisqueo" label="Marisqueo" />
 						<form:option value="Pesca" label="Pesca" />
 					</form:select>
@@ -30,9 +30,9 @@
 				<td>Categoria :</td>
 				<td>
 					<form:select path="categoria">
-						<form:option value="" label="--- Select ---" />
+						<form:option value="" label="" />
 						<form:option value="Nasas" label="Nasas" />
-						<form:option value="Embarcaci�n ou vara" label="Embarcaci�n ou vara" />
+						<form:option value="Embarcacion ou vara" label="Embarcaci�n ou vara" />
 						<form:option value="Rastros" label="Rastros" />
 						<form:option value="Anzol" label="Anzol" />
 						<form:option value="En malle" label="En malle" />

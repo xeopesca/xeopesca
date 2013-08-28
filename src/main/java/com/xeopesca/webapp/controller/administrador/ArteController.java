@@ -45,7 +45,8 @@ public class ArteController {
 
 		ArteServicio.saveArte(arte);
 
-		return "novoArte";
+		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/admin/listaArte";
+
 	}
 
 	// ENTRADA LISTA ARTES
