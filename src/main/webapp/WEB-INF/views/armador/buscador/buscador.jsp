@@ -179,7 +179,8 @@ feature.popup = popup;
 			
 			var zoom           = 7;
 			
-			
+			OpenLayers.ProxyHost = "/cgi-bin/proxy.py?url=";	
+
 			map = new OpenLayers.Map('Map', {
 				units: 'm',
 				controls: [
