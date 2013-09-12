@@ -129,7 +129,7 @@ map.addLayer(satellite);
 
 	//PROTOCOLO
 	var protocol = new OpenLayers.Protocol.WFS({ 
-		url: "./geoserver/wfs",
+		url: "http://localhost:8080/geoserver/wfs",
 		featureNS: "http://localhost:8080/xeopesca",
 		featureType: "vista_faena_lance",
 		outputFormat: 'json',
