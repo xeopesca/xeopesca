@@ -205,6 +205,12 @@
 <definition name="buscadorFaena" extends="patronTemplate">
 		<put-attribute name="body" value="/WEB-INF/views/patron/faena/buscadorFaena.jsp" />
 </definition>
+<definition name="buscadorPesca" extends="patronTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/patron/buscador/buscadorPesca.jsp" />
+</definition>
+
+
+
 <definition name="listaFaena" extends="patronTemplate">
 		<put-attribute name="body" value="/WEB-INF/views/patron/faena/listaFaena.jsp" />
 </definition>

@@ -1,5 +1,7 @@
 <!-- 
 /* --------------------------------------------------------------------
+ This file is part of xeoPesca
+
 Copyright (C) 2013 - Pablo Belay Fernández 
 This program is free software: you can redistribute it
 and/or modify it under the terms of the GNU General

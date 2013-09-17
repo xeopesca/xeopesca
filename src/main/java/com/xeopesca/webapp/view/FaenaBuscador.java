@@ -1,4 +1,6 @@
 /* --------------------------------------------------------------------
+ This file is part of xeoPesca
+
 Copyright (C) 2013 - Pablo Belay Fernández 
 This program is free software: you can redistribute it
 and/or modify it under the terms of the GNU General
@@ -50,6 +52,11 @@ public class FaenaBuscador implements java.io.Serializable {
 
 	private String horaFin;
 	private String horaInicio;
+	
+	private String peso;
+	
+
+	
 
 	public FaenaBuscador() {
 	}
@@ -307,6 +314,14 @@ public class FaenaBuscador implements java.io.Serializable {
 
 	public void setIdbarco(Long idbarco) {
 		this.idbarco = idbarco;
+	}
+	
+	public String getPeso() {
+		return peso;
+	}
+
+	public void setPeso(String peso) {
+		this.peso = peso;
 	}
 
 }
