@@ -20,42 +20,36 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 
  -->
 <div class="iconheader">
-	<a href="/xeopesca/patron" > <img src="/images/home.png" /></a>
-	<a href="/xeopesca/patron/editarConta">    <img src="/images/perfil.png" /></a>
-	<a href="j_spring_security_logout" > <img src="/images/on_off.png" /></a>
-	
+	<a href="/xeopesca/patron"> <img src="/images/home.png" /></a> <a
+		href="/xeopesca/patron/editarConta"> <img src="/images/perfil.png" /></a>
+	<a href="j_spring_security_logout"> <img src="/images/on_off.png" /></a>
+
 </div>
 
- 
-
-		
-
-
-		 
-
-
-
-
 <div class="menu">
-<ul class="menu" id="menu">
+	<ul class="menu" id="menu">
 
-	<li><a href="#" class="menulink">Buscador </a>
-		<ul>
-			<li><a href="/xeopesca/patron/buscadorFaena" class="menulink">Buscar faenas</a></li>
-			<li><a href="/xeopesca/armador/buscadorpesca">Buscar pescas</a></li>
-		</ul>
-	</li>
+		<li><a href="#" class="menulink">Buscador </a>
+			<ul>
+				<li><a href="/xeopesca/patron/buscadorFaena" >Buscar
+						faenas</a></li>
+				<li><a href="/xeopesca/armador/buscadorpesca">Buscar pescas</a></li>
+			</ul></li>
 
 
-	<li><a href="/xeopesca/patron/novaFaena" class="menulink">Nova faena</a>
-    <li><a href="/xeopesca/patron/listaFaena" class="menulink">Lista de faenas</a>
+		<li><a href="/xeopesca/patron/novaFaena" class="menulink">Nova
+				faena</a>
+		<li><a href="/xeopesca/patron/listaFaena" class="menulink">Lista
+				de faenas</a>
+	</ul>
+</div>
+<br>
+<br>
 
-	
-	
-</ul>
-</div> <br> <br> 
+<script type="text/javascript" src="/js/script.js"></script>
+<script type="text/javascript" src="/js/tab.js"></script>
 
 <script type="text/javascript">
-	var menu=new menu.dd("menu");
-	menu.init("menu","menuhover");
+	var menu = new menu.dd("menu");
+	menu.init("menu", "menuhover");
 </script>
