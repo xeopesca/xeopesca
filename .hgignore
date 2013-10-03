@@ -1,0 +1,3 @@
+syntax: glob
+*.class
+src/main/webapp/WEB-INF/glassfish-web.xml
