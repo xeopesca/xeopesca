@@ -26,10 +26,17 @@ import com.xeopesca.util.JPAUtil;
 import com.xeopesca.util.dao.GenericDaoHibernate;
 import com.xeopesca.webapp.model.vos.Usuario;
 
+/**
+ * @author belay
+ *
+ */
 public class UsuarioDAO  extends GenericDaoHibernate<Usuario>
 {
 
-	
+	/**Recupera un usuario dado un login
+	 * @param login
+	 * @return Usuario
+	 * */
 	public Usuario finByLogin(String login) {
 		EntityManager em = JPAUtil.createEntityManager();
 		em.getTransaction().begin();
@@ -48,6 +55,11 @@ public class UsuarioDAO  extends GenericDaoHibernate<Usuario>
 		
 	}
 	
+	/**
+	 * Busca usuarios similares a unha cadea dada
+	 * @param String login
+	 * @return List<Usuario>
+	 * */
 	public List<Usuario> finBySimilarLogin(String login) {
 		login = "%"+login+"%";
 		
@@ -69,7 +81,10 @@ public class UsuarioDAO  extends GenericDaoHibernate<Usuario>
 	}
 	
 	
-
+	/**
+	 * Recupera todos os usuarios do sistema
+	 * @return List<Usuario>	
+	 * */
 	@SuppressWarnings("unchecked")
 	public List<Usuario> lista (){
 		EntityManager em = JPAUtil.createEntityManager();
@@ -82,6 +97,11 @@ public class UsuarioDAO  extends GenericDaoHibernate<Usuario>
 		return saida;
 	}
 
+	/**
+	 * Recupera os armadores asociados a un armador
+	 * @param idArmador
+	 * @return List<Usuario>
+	 * */
 	public List<Usuario> findPatronsDunArmador(long idArmador) {
 		
 		EntityManager em = JPAUtil.createEntityManager();
@@ -103,6 +123,12 @@ public class UsuarioDAO  extends GenericDaoHibernate<Usuario>
 		
 	}
 
+	/**
+	 * Busqueda dun armador a traves dunha cadea e  semellantes 
+	 * @param long idarmador 
+	 * @param String login
+	 * @return List<Usuario> 
+	 * **/
 	public List<Usuario> findPatronsDunArmador(long idArmador, String login) {
 		
 		EntityManager em = JPAUtil.createEntityManager();
@@ -125,6 +151,12 @@ public class UsuarioDAO  extends GenericDaoHibernate<Usuario>
 	}
 	
 	
+/**
+ * Busca o patron dun armador
+ * @param idArmador
+ * @param id
+ * @return List<Usuario>
+ * **/
 public List<Usuario> findPatronDunArmador(long idArmador, long id) {
 		
 		EntityManager em = JPAUtil.createEntityManager();

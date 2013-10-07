@@ -25,11 +25,18 @@ import javax.persistence.EntityManager;
 import com.xeopesca.util.JPAUtil;
 import com.xeopesca.util.dao.GenericDaoHibernate;
 import com.xeopesca.webapp.model.vos.Especie;
-
+/**
+ * @author belay
+ *
+ */
 public class EspecieDAO  extends GenericDaoHibernate<Especie>
 {
 
-	
+	/**
+	 * Busca as especies con nome semellante ao pasado
+	 * @param String nomeEspecie
+	 * @return List<Especie> 
+	 * */
 	@SuppressWarnings("unchecked")
 	public List<Especie> finByEspecie(String nome) {
 		EntityManager em = JPAUtil.createEntityManager();
@@ -46,7 +53,10 @@ public class EspecieDAO  extends GenericDaoHibernate<Especie>
 		return saida;
 	}
 	
-
+	/**
+	 * Recupera todas as especies existentes no sistema
+	 * @return List<Especie>
+	 * */
 	@SuppressWarnings("unchecked")
 	public List<Especie> lista (){
 		EntityManager em = JPAUtil.createEntityManager();
