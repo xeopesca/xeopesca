@@ -47,78 +47,87 @@ import com.xeopesca.webapp.model.vos.Faena;
 import com.xeopesca.webapp.model.vos.Parametria;
 import com.xeopesca.webapp.model.vos.Usuario;
 
+/**
+ * @author belay
+ *
+ */
 
 @Controller
 public class BuscadorPescaController {
-  
-	    
-	    
-	 @RequestMapping("/patron/buscadorpesca")
-	    public String buscadorFaena(Model model) {
-	    	//Recuperamos os datos do Patron
-			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-			String loginPatron = auth.getName();
-			Usuario patron = UsuarioServicio.getUsuario(loginPatron);
-	    	
-	    	
-	    	//Faena faena = new Faena();
-	    	FaenaBuscador faenaB = new FaenaBuscador();
-	    	model.addAttribute("faena",faenaB);
-	    	
-	    	/*
-	    	 *  PARAMETRIA
-	    	 */
-	    	model.addAttribute("lua", ParametriaServicio.recuperarParametro("lua") );
-	    	model.addAttribute("mar", ParametriaServicio.recuperarParametro("mar") );
-	    	model.addAttribute("ceo", ParametriaServicio.recuperarParametro("ceo") );
-	    	model.addAttribute("dirvento", ParametriaServicio.recuperarParametro("dir.vento") );
 
-	    	 
-	    	/*
-	    	 * VALORES
-	    	 * */
-	    	model.addAttribute("artes", ArteServicio.listaDeArtes());
-	    	model.addAttribute("especies", EspecieServicio.listaDeEspecies());
-	        model.addAttribute("idbarco", patron.getIdbarco());
+	/**
+	 * Formulario de entrada para o buscador de pescas dun patrón
+	 * 
+	 * @param model
+	 * @return String
+	 */
+	@RequestMapping("/patron/buscadorpesca")
+	public String buscadorFaena(Model model) {
+		// Recuperamos os datos do Patron
+		Authentication auth = SecurityContextHolder.getContext()
+				.getAuthentication();
+		String loginPatron = auth.getName();
+		Usuario patron = UsuarioServicio.getUsuario(loginPatron);
 
+		// Faena faena = new Faena();
+		FaenaBuscador faenaB = new FaenaBuscador();
+		model.addAttribute("faena", faenaB);
 
-	        return "buscadorPesca"; 
-	    }
-	 
-	 @RequestMapping(value = "/patron/buscadorpesca", method = RequestMethod.POST)
-	 	public String buscadorFaena(FaenaBuscador faenaB, Model model) {
-	 		 		
-	 		Faena faena = new Faena();
-	 		faena= FaenaBuscador.convertFaenaBuscardorToFaena(faenaB);
-	 		//Chamamos ao servicio para recuperar o resultado da busqueda
-			List<Faena>  resultado = FaenaServicio.findBuscadorFaena(faena);
-			
-			//Recuperamos os datos do Patron
-					Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-					String loginPatron = auth.getName();
-					Usuario patron = UsuarioServicio.getUsuario(loginPatron);
-			    	
-			/*
-	    	 * VALORES
-	    	 * */
-	    	model.addAttribute("artes", ArteServicio.listaDeArtes());
-	    	model.addAttribute("especies", EspecieServicio.listaDeEspecies());
-	        model.addAttribute("idbarco", patron.getIdbarco());
-	        model.addAttribute("lua", ParametriaServicio.recuperarParametro("lua") );
-	    	model.addAttribute("mar", ParametriaServicio.recuperarParametro("mar") );
-	    	model.addAttribute("ceo", ParametriaServicio.recuperarParametro("ceo") );
-	    	model.addAttribute("dirvento", ParametriaServicio.recuperarParametro("dir.vento") );
-		
-	    	model.addAttribute("faena",faenaB);
-	       
-	    
-			
-			
-	        return "buscadorPesca"; 
-	 	}
-	    
-	    
-    
+		/*
+		 * PARAMETRIA
+		 */
+		model.addAttribute("lua", ParametriaServicio.recuperarParametro("lua"));
+		model.addAttribute("mar", ParametriaServicio.recuperarParametro("mar"));
+		model.addAttribute("ceo", ParametriaServicio.recuperarParametro("ceo"));
+		model.addAttribute("dirvento",
+				ParametriaServicio.recuperarParametro("dir.vento"));
+
+		/*
+		 * VALORES
+		 */
+		model.addAttribute("artes", ArteServicio.listaDeArtes());
+		model.addAttribute("especies", EspecieServicio.listaDeEspecies());
+		model.addAttribute("idbarco", patron.getIdbarco());
+
+		return "buscadorPesca";
+	}
+
+	/**
+	 * Procesamento do buscador de pescas dun patrón
+	 * 
+	 * @param FaenaBuscador
+	 *            , Model
+	 * @return String
+	 */
+	@RequestMapping(value = "/patron/buscadorpesca", method = RequestMethod.POST)
+	public String buscadorFaena(FaenaBuscador faenaB, Model model) {
+
+		Faena faena = new Faena();
+		faena = FaenaBuscador.convertFaenaBuscardorToFaena(faenaB);
+		// Chamamos ao servicio para recuperar o resultado da busqueda
+		List<Faena> resultado = FaenaServicio.findBuscadorFaena(faena);
+
+		// Recuperamos os datos do Patron
+		Authentication auth = SecurityContextHolder.getContext()
+				.getAuthentication();
+		String loginPatron = auth.getName();
+		Usuario patron = UsuarioServicio.getUsuario(loginPatron);
+
+		/*
+		 * VALORES
+		 */
+		model.addAttribute("artes", ArteServicio.listaDeArtes());
+		model.addAttribute("especies", EspecieServicio.listaDeEspecies());
+		model.addAttribute("idbarco", patron.getIdbarco());
+		model.addAttribute("lua", ParametriaServicio.recuperarParametro("lua"));
+		model.addAttribute("mar", ParametriaServicio.recuperarParametro("mar"));
+		model.addAttribute("ceo", ParametriaServicio.recuperarParametro("ceo"));
+		model.addAttribute("dirvento",
+				ParametriaServicio.recuperarParametro("dir.vento"));
+
+		model.addAttribute("faena", faenaB);
+
+		return "buscadorPesca";
+	}
+
 }
-
-

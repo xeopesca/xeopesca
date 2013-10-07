@@ -27,8 +27,16 @@ import com.xeopesca.util.dao.GenericDaoHibernate;
 import com.xeopesca.webapp.model.vos.Arte;
 
 
+/**
+ * @author belay
+ *
+ */
 public class ArteDAO extends GenericDaoHibernate<Arte>{
 
+	/**
+	 * Recupera todas as artes existentes no sistema.
+	 * @return List<Arte>
+	 * */
 	@SuppressWarnings("unchecked")
 	public List<Arte> lista() {
 		EntityManager em = JPAUtil.createEntityManager();
@@ -40,6 +48,11 @@ public class ArteDAO extends GenericDaoHibernate<Arte>{
 		return saida;
 	}
 
+	/**
+	 * Busca unha arte polo seu nome
+	 * @param String nome
+	 * @return List<Arte>
+	 * */
 	public List<Arte> finByArte(String nome) {
 		EntityManager em = JPAUtil.createEntityManager();
 		em.getTransaction().begin();

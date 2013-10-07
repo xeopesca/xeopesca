@@ -18,7 +18,6 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 --------------------------------------------------------------------*/
 package com.xeopesca.webapp.model.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 
@@ -26,9 +25,14 @@ import com.xeopesca.util.JPAUtil;
 import com.xeopesca.util.dao.GenericDaoHibernate;
 import com.xeopesca.webapp.model.vos.Lance;
 
-
+/**
+ * @author belay
+ *
+ */
 public class LanceDAO extends GenericDaoHibernate<Lance>{
-
+	/**
+	 * Recupera todos os lances do sistema
+	 * @return list<Lance>*/
 	@SuppressWarnings("unchecked")
 	public List<Lance> lista() {
 		EntityManager em = JPAUtil.createEntityManager();

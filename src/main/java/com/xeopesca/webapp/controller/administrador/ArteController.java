@@ -51,6 +51,7 @@ public class ArteController {
 	// -------------------------- NOVA ARTE
 	// -------------------------------------
 	// ENTRADA FORMULARIO -- novaArte
+		
 	@RequestMapping(value = "/admin/novoArte", method = RequestMethod.GET)
 	public String novaArte(Model model, Arte arte) {
 		model.addAttribute("arte", arte);

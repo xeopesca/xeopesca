@@ -24,6 +24,10 @@ import com.vividsolutions.jts.io.WKTReader;
 import com.vividsolutions.jts.io.ParseException;
 
 
+/**
+ * @author belay
+ *
+ */
 public class GeometryUtil {
 	
 	private GeometryUtil()

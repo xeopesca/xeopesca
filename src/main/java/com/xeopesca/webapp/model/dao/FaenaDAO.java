@@ -18,11 +18,9 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 --------------------------------------------------------------------*/
 package com.xeopesca.webapp.model.dao;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -32,18 +30,19 @@ import com.xeopesca.util.JPAUtil;
 import com.xeopesca.util.dao.GenericDaoHibernate;
 import com.xeopesca.webapp.model.vos.Faena;
 
-
+/**
+ * @author belay
+ *
+ */
 public class FaenaDAO extends GenericDaoHibernate<Faena>{
 
-	public List<Faena> buscadorAvanzado(long idBarco){
-		List<Faena> saida = new ArrayList<Faena>();
-		EntityManager em = JPAUtil.createEntityManager();		
-		CriteriaBuilder cb = em.getCriteriaBuilder();
-		
-		return saida;
-	}
+
 	
-	
+	/**
+	 * Recupera as faenas asociadas a un barco a través de hql
+	 * @param long idbarco
+	 * @return List<Faena>
+	 * **/
 	@SuppressWarnings("unchecked")
 	public List<Faena> lista(long idBarco) {
 		EntityManager em = JPAUtil.createEntityManager();
@@ -56,6 +55,11 @@ public class FaenaDAO extends GenericDaoHibernate<Faena>{
 		return saida;
 	}
 
+	/**
+	 * Recupera as faenas asociadas a un barco a través de hql
+	 * @param long idbarco
+	 * @return List<Faena>
+	 * **/
 	public  List<Faena> faenasBarco(Long idBarco) {
 		EntityManager em = JPAUtil.createEntityManager();
 		em.getTransaction().begin();
@@ -70,6 +74,11 @@ public class FaenaDAO extends GenericDaoHibernate<Faena>{
 	}
 
 
+	/**
+	 * Buscador avanzado, buscamos polos diferentes campos duha faena
+	 * @param Faena faena
+	 * @return List<Faena>
+	 * */
 	public List<Faena> faenasBuscador(Faena faena) {
 		EntityManager em = JPAUtil.createEntityManager();
 		CriteriaBuilder cb = em.getEntityManagerFactory().getCriteriaBuilder();
@@ -137,6 +146,11 @@ public class FaenaDAO extends GenericDaoHibernate<Faena>{
 		
 	}
 
+	/**
+	 * Buscador avanzado, buscamos polos diferentes campos duha faena
+	 * @param Faena faena
+	 * @return List<Faena>
+	 * */
 	public List<Faena> faenasBuscador(Faena faena,String barcos) {
 		EntityManager em = JPAUtil.createEntityManager();
 		CriteriaBuilder cb = em.getEntityManagerFactory().getCriteriaBuilder();

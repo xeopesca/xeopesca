@@ -26,9 +26,17 @@ import com.xeopesca.util.JPAUtil;
 import com.xeopesca.util.dao.GenericDaoHibernate;
 import com.xeopesca.webapp.model.vos.Nomepopular;
 
-
+/**
+ * @author belay
+ *
+ */
 public class NomepopularDAO extends GenericDaoHibernate<Nomepopular>{
 
+	/**
+	 * Recupera todos os nomes populares do sistema
+	 * @return List<Nomepopular>
+	 * 
+	 * **/
 	@SuppressWarnings("unchecked")
 	public List<Nomepopular> lista() {
 		EntityManager em = JPAUtil.createEntityManager();
@@ -40,6 +48,11 @@ public class NomepopularDAO extends GenericDaoHibernate<Nomepopular>{
 		return saida;
 	}
 
+	/**
+	 * Busqueda de nomes populares semellantes a unha cadea pasada
+	 * @param String nomePopular
+	 * @return List<Nomepopular>
+	 * */
 	@SuppressWarnings("unchecked")
 	public List<Nomepopular> findByNome(String nome) {
 		EntityManager em = JPAUtil.createEntityManager();
