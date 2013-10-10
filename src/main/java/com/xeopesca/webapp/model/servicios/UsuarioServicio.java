@@ -28,8 +28,20 @@ import com.xeopesca.webapp.model.vos.Usuario;
  * @author belay
  *
  */
+/**
+ * @author belay
+ *
+ */
+/**
+ * @author belay
+ *
+ */
 public class UsuarioServicio {
 
+	/**
+	 * Lista de usuarios que existen no sistema
+	 * @return List<Usuario>
+	 */
 	public static List<Usuario> listaDeUsuarios() {
 		UsuarioDAO userDao = new UsuarioDAO();
 		List<Usuario> lista;
@@ -37,11 +49,20 @@ public class UsuarioServicio {
 		return lista;
 	}
 
+	/**
+	 * Da de alta un novo usuario no sistema.
+	 * @param usuario
+	 */
 	public static void saveUsuario(Usuario usuario) {
 		UsuarioDAO userDao = new UsuarioDAO();
 		userDao.create(usuario);
 	}
 
+	/**
+	 * Comproba que un usuario existe no sistema
+	 * @param usuario
+	 * @return boolean
+	 */
 	public static boolean login(Usuario usuario) {
 		UsuarioDAO userDao = new UsuarioDAO();
 		Usuario userRecuperado;
@@ -57,6 +78,11 @@ public class UsuarioServicio {
 
 	}
 	
+	/**
+	 * Recupera un usuario por login
+	 * @param login
+	 * @return Usuario
+	 */
 	public static Usuario getUsuario(String  login) {
 		UsuarioDAO userDao = new UsuarioDAO();
 		Usuario userRecuperado;
@@ -70,16 +96,29 @@ public class UsuarioServicio {
 
 	}
 	
+	/**
+	 * Borrar un usuario por id
+	 * @param id
+	 */
 	public static void removeUser(Long id) {
 		UsuarioDAO userDao = new UsuarioDAO();
 		userDao.delete(id);
 	}
 	
+	/**
+	 * Borrar un usuario
+	 * @param usuario
+	 */
 	public static void removeUser(Usuario usuario) {
 		UsuarioDAO userDao = new UsuarioDAO();
 		userDao.delete(usuario.getId());
 	}
 
+	/**
+	 * Borrar un patron do sistema 
+	 * @param id
+	 * @param idArmador
+	 */
 	public static void removePatron(Long id, Long idArmador) {
 		UsuarioDAO userDao = new UsuarioDAO();
 		Usuario usuarioBorrar = userDao.find(id);
@@ -90,6 +129,11 @@ public class UsuarioServicio {
 		
 	}
 	
+	/**
+	 * Busca un usuario por login
+	 * @param login
+	 * @return List<Usuario>
+	 */
 	public static List<Usuario>  buscarUsuario(String login) {
 		List<Usuario> lista = new ArrayList<Usuario>();
 		UsuarioDAO userDao = new UsuarioDAO();
@@ -103,6 +147,11 @@ public class UsuarioServicio {
 		return lista;
 	}
 	
+	/**
+	 * Busca os patrons dun armador
+	 * @param idArmador
+	 * @return List<Usuario>
+	 */
 	public static List<Usuario>  buscarPatronsDunArmador(long  idArmador) {
 		List<Usuario> lista = new ArrayList<Usuario>();
 		UsuarioDAO userDao = new UsuarioDAO();
@@ -111,6 +160,12 @@ public class UsuarioServicio {
 		return lista;
 	}
 	
+	/**
+	 * Busca os patrons dun armador
+	 * @param idArmador
+	 * @param login
+	 * @return List<Usuario>
+	 */
 	public static List<Usuario>  buscarPatronsDunArmador(long  idArmador, String login) {
 		List<Usuario> lista = new ArrayList<Usuario>();
 		UsuarioDAO userDao = new UsuarioDAO();
@@ -120,6 +175,11 @@ public class UsuarioServicio {
 	}
 	
 	
+	/**
+	 * Busca un usuario por id
+	 * @param id
+	 * @return Usuario
+	 */
 	public static Usuario  buscarUsuario(Long id) {
 		
 		if (id== null) return null;
@@ -135,6 +195,11 @@ public class UsuarioServicio {
 		
 	}
 	
+	/**
+	 * Busca usuarios similares por login
+	 * @param login
+	 * @return List<Usuario>
+	 */
 	public static List<Usuario>  buscarUsuarioSimilarLogin(String login) {
 		List<Usuario> lista = new ArrayList<Usuario>();
 		UsuarioDAO userDao = new UsuarioDAO();
@@ -147,6 +212,10 @@ public class UsuarioServicio {
 		return lista;
 	}
 	
+	/**
+	 * Actualiza a informaci'on dun usuario
+	 * @param usuario
+	 */
 	public static void updateUsuario(Usuario usuario){
 		UsuarioDAO userDao = new UsuarioDAO();
 		userDao.update(usuario);

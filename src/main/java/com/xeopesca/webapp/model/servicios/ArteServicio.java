@@ -30,6 +30,10 @@ import com.xeopesca.webapp.model.vos.Arte;
  */
 public class ArteServicio {
 
+	/**
+	 * Recupera todas as artes do sistema
+	 * @return List<Arte>
+	 * */
 	public static List<Arte> listaDeArtes() {
 		ArteDAO arteDao = new ArteDAO();
 		List<Arte> lista;
@@ -37,23 +41,39 @@ public class ArteServicio {
 		return lista;
 	}
 
+	/**
+	 * Da de alta no sistema unha arte
+	 * @param Arte
+	 * **/
 	public static void saveArte(Arte arte) {
 		ArteDAO arteDao = new ArteDAO();
 		arteDao.create(arte);
 	}
 
 	
-
+	/**
+	 * Elimina unha arte do sistema
+	 * @param Arte
+	 * **/
 	public static void removeArte(Arte arte) {
 		ArteDAO arteDao = new ArteDAO();
 		arteDao.delete(arte.getId());
 	}
 
+	/**
+	 * Elimina unha arte a partir dun id
+	 * @param Long idArte
+	 * **/
 	public static void removeArte(Long id) {
 		ArteDAO arteDao = new ArteDAO();
 		arteDao.delete(id);
 	}
 	
+	/***
+	 * Busa unha arte por un nome semellante
+	 * @param String
+	 * @return List<Arte>
+	 * */
 	public static List<Arte>  buscarArte(String nome) {
 		List<Arte> lista = new ArrayList<Arte>();
 		ArteDAO arteDao = new ArteDAO();
@@ -66,7 +86,11 @@ public class ArteServicio {
 		return lista;
 	}
 	
-	
+	/**
+	 * Elimina unha arte por Id
+	 * @param id
+	 * @return Arte
+	 * */
 	public static Arte  buscarArte(Long id) {
 		ArteDAO arteDao = new ArteDAO();
 		Arte arteRecuperado = arteDao.find(id);
@@ -78,7 +102,10 @@ public class ArteServicio {
 		return arteRecuperado;
 		
 	}
-	
+	/***
+	 * Actualiza unha arte
+	 * @param Arte
+	 * */
 	public static void updateArte(Arte arte){
 		ArteDAO arteDao = new ArteDAO();
 		arteDao.update(arte);

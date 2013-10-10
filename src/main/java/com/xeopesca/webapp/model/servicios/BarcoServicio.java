@@ -26,96 +26,133 @@ import com.xeopesca.webapp.model.vos.Barco;
 
 /**
  * @author belay
- *
+ * 
  */
 public class BarcoServicio {
 
+	/**
+	 * Recupera todos os barcos do sistema
+	 * 
+	 * @return List<Barco>
+	 * */
 	public static List<Barco> listaDeBarcos() {
 		BarcoDAO barcoDao = new BarcoDAO();
 		List<Barco> lista;
-		
+
 		lista = barcoDao.lista();
 		return lista;
 	}
 
+	/***
+	 * Da de alta no sistema un barco
+	 * 
+	 * @param barco
+	 */
 	public static void saveBarco(Barco barco) {
 		BarcoDAO barcoDao = new BarcoDAO();
 		barcoDao.create(barco);
 	}
 
-	
-
+	/**
+	 * Elimina un barco do sistema
+	 * @param barco
+	 */
 	public static void removeBarco(Barco barco) {
 		BarcoDAO barcoDao = new BarcoDAO();
 		barcoDao.delete(barco.getFolio());
 	}
 
+	/**
+	 * Elimina un barco do sistem apor id
+	 * @param id
+	 */
 	public static void removeBarco(long id) {
 		BarcoDAO especieDao = new BarcoDAO();
 		especieDao.delete(id);
 	}
-	
-	public static List<Barco>  buscarBarco(String folio, long id) {
+
+	/***
+	 * Busca un barco no sistema
+	 * @param folio
+	 * @param id
+	 * @return List<Barco>
+	 */
+	public static List<Barco> buscarBarco(String folio, long id) {
 		List<Barco> lista = new ArrayList<Barco>();
 		BarcoDAO barcoDao = new BarcoDAO();
-		
-		
-		lista = barcoDao.fingByFolio("%"+folio+"%", id);
-	
-		if (null == lista || lista.isEmpty() ){
+
+		lista = barcoDao.fingByFolio("%" + folio + "%", id);
+
+		if (null == lista || lista.isEmpty()) {
 			lista = new ArrayList<Barco>();
 		}
-		
+
 		return lista;
 	}
-	
-	public static List<Barco>  buscarBarcoArmador(long idBarco, long idArmador) {
+
+	/***
+	 * Busca os barcos dun armador
+	 * @param idBarco
+	 * @param idArmador
+	 * @return List<Barco>
+	 */
+	public static List<Barco> buscarBarcoArmador(long idBarco, long idArmador) {
 		List<Barco> lista = new ArrayList<Barco>();
 		BarcoDAO barcoDao = new BarcoDAO();
-		
-		
+
 		lista = barcoDao.buscarBarcoArmador(idBarco, idArmador);
-				
-				
-	
-		if (null == lista || lista.isEmpty() ){
+
+		if (null == lista || lista.isEmpty()) {
 			lista = new ArrayList<Barco>();
 		}
-		
+
 		return lista;
 	}
-	
-	public static void updateBarco(Barco barco){
+
+	/**
+	 * Actualiza a información dun barco
+	 * @param barco
+	 */
+	public static void updateBarco(Barco barco) {
 		BarcoDAO barcoDao = new BarcoDAO();
 		barcoDao.update(barco);
 	}
 
+	/***
+	 * Lista de barcos no sistema
+	 * @param id
+	 * @return List<Barco>
+	 */
 	public static List<Barco> listaDeBarcos(long id) {
 		List<Barco> lista = new ArrayList<Barco>();
 		BarcoDAO barcoDao = new BarcoDAO();
 		lista = barcoDao.fingByIdArmador(id);
-	
-		if (null == lista || lista.isEmpty() ){
+
+		if (null == lista || lista.isEmpty()) {
 			lista = new ArrayList<Barco>();
 		}
-		
+
 		return lista;
 	}
-	
+
+	/**
+	 * Recupera un barco por id
+	 * @param id
+	 * @return Barco
+	 */
 	public static Barco findByID(long id) {
 		List<Barco> lista = new ArrayList<Barco>();
 		BarcoDAO barcoDao = new BarcoDAO();
 		lista = barcoDao.fingById(id);
 		Barco saida = null;
-	
-		if (null == lista || lista.isEmpty() ){
+
+		if (null == lista || lista.isEmpty()) {
 			lista = new ArrayList<Barco>();
 			saida = null;
-		}
-		else{
+		} else {
 			saida = lista.get(0);
 		}
-		
+
 		return saida;
 	}
 

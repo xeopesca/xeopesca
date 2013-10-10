@@ -25,6 +25,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+/**
+ * @author belay
+ *
+ */
 public class JPAUtil {
 
     private static  EntityManagerFactory emFactory= Persistence.createEntityManagerFactory("persistencia");
@@ -39,6 +43,9 @@ public class JPAUtil {
     }*/
     
 
+    /**Abre unha conexion coa base de datos
+     * @return SessionFactory
+     */
     public static EntityManager createEntityManager() {
     	
          if(!emFactory.isOpen()){
@@ -48,6 +55,9 @@ public class JPAUtil {
         return emFactory.createEntityManager();
     }
 
+    /**
+     * Cerra a conexion coa base de datos
+     */
     public static void close(){
         emFactory.close();
     }

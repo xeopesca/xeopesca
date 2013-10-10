@@ -61,6 +61,11 @@ public class FaenaBuscador implements java.io.Serializable {
 	public FaenaBuscador() {
 	}
 	
+	/**
+	 * Converte un obxecto FaenaBuscador a Faena
+	 * @param faenaB
+	 * @return Faena
+	 */
 	public static Faena convertFaenaBuscardorToFaena(FaenaBuscador faenaB){
 		
 		Faena f = new Faena();
@@ -119,6 +124,11 @@ public class FaenaBuscador implements java.io.Serializable {
 		return f;
 	}
 	
+	/**
+	 * Converte un obxecto faena a faenaBuscador
+	 * @param faena
+	 * @return Faena
+	 */
 	public static FaenaBuscador convertFaenaToFaenaBuscardor(Faena faena){
 		
 		
@@ -158,6 +168,10 @@ public class FaenaBuscador implements java.io.Serializable {
 		return fb;
 	}
 	
+	/**
+	 * @param lista
+	 * @return List<FaenaBuscador>
+	 */
 	public static List<FaenaBuscador> convertFaenaToListFaenaBuscardor (List<Faena> lista){
 		List<FaenaBuscador>saida =  new  ArrayList<FaenaBuscador>();
 		if (lista != null){

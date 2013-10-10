@@ -21,10 +21,19 @@ package com.xeopesca.webapp.model.servicios;
 import com.xeopesca.webapp.model.dao.PescaDAO;
 import com.xeopesca.webapp.model.vos.Pesca;
 
+/**
+ * @author belay
+ *
+ */
 public class PescaServicio {
 
 	private PescaServicio(){}
 	
+	/**
+	 * Crea unha nova pesca no sistema
+	 * @param pesca
+	 * @return Pesca
+	 */
 	public static Pesca createPesca(Pesca pesca){
 		Pesca saida = null;
 		PescaDAO lanceDao = new PescaDAO();
@@ -32,11 +41,20 @@ public class PescaServicio {
 		return saida;
 	}
 	
+	/**
+	 * Borrar unha pesca do sistema
+	 * @param pesca
+	 */
 	public static void removePesca (Pesca pesca){
 		PescaDAO pescaDao = new PescaDAO();
 		pescaDao.delete(pesca.getId());
 	}
 	
+	/**
+	 * Busca unha pesca
+	 * @param pesca
+	 * @return Pesca
+	 */
 	public static Pesca findById(Pesca pesca){
 		Pesca saida = null;
 		PescaDAO pescaDao = new PescaDAO();
@@ -44,6 +62,11 @@ public class PescaServicio {
 		return saida;
 	}
 	
+	/**
+	 * Busca unha pesca por ID
+	 * @param id
+	 * @return
+	 */
 	public static Pesca findById(Long id){
 		Pesca saida = null;
 		PescaDAO pescaDao = new PescaDAO();
@@ -55,6 +78,11 @@ public class PescaServicio {
 		return saida;
 	}
 
+	/**
+	 * Actualiza a informaci'on dunha pesca
+	 * @param pesca
+	 * @return Pesca
+	 */
 	public static Pesca updatePesca(Pesca pesca) {
 		PescaDAO pescaDao = new PescaDAO();
 		Pesca saida = pescaDao.update(pesca);

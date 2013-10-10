@@ -30,6 +30,10 @@ import com.xeopesca.webapp.model.vos.Nomepopular;
  */
 public class NomepopularServicio {
 
+	/**
+	 * Recupera todos os nomespopulares do sistema
+	 * @return  List<Nomepopular>
+	 */
 	public static List<Nomepopular>listaDeNomesPopulares () {
 		NomepopularDAO nomepopular = new NomepopularDAO();
 		List<Nomepopular> lista;
@@ -37,18 +41,29 @@ public class NomepopularServicio {
 		return lista;
 	}
 
+	/**
+	 * Da de alata un novo nomepopular no sistema
+	 * @param nomepopular
+	 */
 	public static void saveNomePopular(Nomepopular nomepopular) {
 		NomepopularDAO nomepopularDao = new NomepopularDAO();
 		nomepopularDao.create(nomepopular);
 	}
 
-	
+	/***
+	 * Elimina un nome popular por id
+	 * @param id
+	 */
 	public static void removeNomePopular(Long id) {
 		NomepopularDAO nomepopularDao = new NomepopularDAO();
 		nomepopularDao.delete(id);
 	
 	}
 	
+	/**
+	 * Elimina un nome popular 
+	 * @param nomepopular
+	 */
 	public static void removeNomePopular(Nomepopular nomepopular) {
 		NomepopularDAO nomepopularDao = new NomepopularDAO();
 		nomepopularDao.delete(nomepopular.getId());
@@ -56,7 +71,11 @@ public class NomepopularServicio {
 	}
 
 	
-	
+	/**
+	 * 
+	 * @param nome
+	 * @return List<Nomepopular>
+	 */
 	public static List<Nomepopular>  buscarNomePopular(String nome) {
 		List<Nomepopular> lista = new ArrayList<Nomepopular>();
 		NomepopularDAO nomePopularDao = new NomepopularDAO();
@@ -69,7 +88,11 @@ public class NomepopularServicio {
 		return lista;
 	}
 	
-	
+	/**
+	 * 
+	 * @param id
+	 * @return Nomepopular
+	 */
 	public static Nomepopular  buscarNomepopular(Long id) {
 		NomepopularDAO nomepopularDao = new NomepopularDAO();
 		Nomepopular nomepopular = nomepopularDao.find(id);
@@ -82,6 +105,10 @@ public class NomepopularServicio {
 		
 	}
 	
+	/**
+	 * 
+	 * @param nomepopular
+	 */
 	public static void updateNomepopularDao(Nomepopular nomepopular){
 		NomepopularDAO nomepopularDao= new NomepopularDAO();
 		nomepopularDao.update(nomepopular);

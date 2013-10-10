@@ -34,6 +34,14 @@ import com.xeopesca.util.ConstantesUtil;
 import com.xeopesca.webapp.model.servicios.UsuarioServicio;
 import com.xeopesca.webapp.model.vos.Usuario;
 
+/**
+ * @author belay
+ *
+ */
+/**
+ * @author belay
+ *
+ */
 @Controller
 public class LoginController {
 
@@ -44,7 +52,12 @@ public class LoginController {
 		this.validator = validator;
 	}
 
-	// ENTRADA FORMULARIO
+	/**
+	 * Realiza o login na aplicación
+	 * @param model
+	 * @param usuario
+	 * @return String
+	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String novoUsuario(Model model, Usuario usuario) {
 	
@@ -53,7 +66,11 @@ public class LoginController {
 		return "login";
 	}
 
-	// SAIDA FORMULARIO
+	/**
+	 * Procesa se se realiza o login correctamente.
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping(value = "/loginProcess")
 	public String login(Model model) {
 		String saida = "login";
@@ -80,7 +97,11 @@ public class LoginController {
 		return saida;
 	}
 
-	// SAIDA FORMULARIO
+	/**
+	 * Edita a información da conta dun usuario
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping(value = "/editarConta")
 	public String editarConta(Model model) {
 		String saida = "editarConta";
@@ -94,13 +115,16 @@ public class LoginController {
 		return saida;
 	}
 
-	// SAIDA FORMULARIO
+	
+	/**
+	 * Edita a información dun usuario recibia polo formulario 
+	 * @param usuario
+	 * @param result
+	 * @return String
+	 */
 	@RequestMapping(value = "/editarConta", method = RequestMethod.POST)
 	public String updateUsuario(@Valid Usuario usuario, BindingResult result) {
 		String saida = "";
-		
-
-		
 		
 		if (usuario.getTipousuario().equals(ConstantesUtil.ROLE_ADMIN)){
 			

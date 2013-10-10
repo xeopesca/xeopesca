@@ -29,6 +29,11 @@ import com.xeopesca.webapp.model.vos.Parametria;
  */
 public class ParametriaServicio {
 
+	/**
+	 * Recupera un parametro da lista de parametros
+	 * @param claveParametro
+	 * @return List<Parametria> 
+	 */
 	public static List<Parametria> recuperarParametro(String claveParametro) {
 		ParametriaDAO param = new ParametriaDAO();
 		List<Parametria> lista;

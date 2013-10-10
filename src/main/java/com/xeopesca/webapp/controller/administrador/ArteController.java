@@ -48,17 +48,26 @@ public class ArteController {
 		this.validator = validator;
 	}
 
-	// -------------------------- NOVA ARTE
-	// -------------------------------------
-	// ENTRADA FORMULARIO -- novaArte
+
 		
+	/**
+	 * Formulario de entrada para una nova arte 
+	 * @param model
+	 * @param arte
+	 * @return String
+	 */
 	@RequestMapping(value = "/admin/novoArte", method = RequestMethod.GET)
 	public String novaArte(Model model, Arte arte) {
 		model.addAttribute("arte", arte);
 		return "novoArte";
 	}
 
-	// SAIDA FORMULARIO
+	/**
+	 * Formulario de saida de nova arte e salva a informacion na base de datos
+	 * @param arte
+	 * @param result
+	 * @return String
+	 */
 	@RequestMapping(value = "/admin/novoArte", method = RequestMethod.POST)
 	public String novaArte(Arte arte, BindingResult result) {
 
@@ -68,30 +77,49 @@ public class ArteController {
 
 	}
 
-	// ENTRADA LISTA ARTES
+
+	/**
+	 * Recupera a lista das artes 
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("/admin/listaArte")
-	public String listaUsuarios(Model model) {
+	public String listaArtes(Model model) {
 		model.addAttribute("artes", ArteServicio.listaDeArtes());
 		return "listaArte";
 	}
 
-	// SAIDA Eliminar Arte
+	
+	/**
+	 * Borrar unha arte por id
+	 * @param id
+	 * @return String
+	 */
 	@RequestMapping("/admin/deleteArte/{id}")
-	public String borrarUsuario(@PathVariable("id") Long id) {
+	public String borrarArte(@PathVariable("id") Long id) {
 		ArteServicio.removeArte(id);
 
 		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/admin/listaArte";
 	}
 
-	// BUSCADOR USUARIO - Entrada
+	/**
+	 * Entrada no Buscador dunha arte por nome
+	 * @param model
+	 * @param arte
+	 * @return String
+	 */
 	@RequestMapping(value = "/admin/buscadorArte", method = RequestMethod.GET)
-	public String buscadorUsuario(Model model, Arte arte) {
-		model.addAttribute("mensaxe", "inicio");
+	public String buscadorArte(Model model, Arte arte) {
 		model.addAttribute("arte", arte);
 		return "buscadorArte";
 	}
 
-	// SAIDA FORMULARIO BUSCADOR
+	/**
+	 * Procesamento do buscador de arte por arte (POST)
+	 * @param arte
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping(value = "/admin/buscadorArte", method = RequestMethod.POST)
 	public String buscadorUsuario(Arte arte, Model model) {
 		List<Arte> lista = ArteServicio.buscarArte(arte.getNome());
@@ -106,8 +134,13 @@ public class ArteController {
 		return "buscadorArte";
 	}
 
-	// EditarArte
 
+	/**
+	 * Entrada no formulario para edición dunha arte
+	 * @param id
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("/admin/editarArte/{id}")
 	public String editarUsuario(@PathVariable("id") Long id, Model model) {
 
@@ -116,7 +149,12 @@ public class ArteController {
 		return "editarArte";
 	}
 
-	// SAIDA FORMULARIO
+	/**
+	 * Saida do formulario para edición dunha arte, salva os cambios na BD
+	 * @param arte
+	 * @param result
+	 * @return String
+	 */
 	@RequestMapping(value = "/admin/editarArte", method = RequestMethod.POST)
 	public String updateUsuario(@Valid Arte arte, BindingResult result) {
 		if (result.hasErrors()) {

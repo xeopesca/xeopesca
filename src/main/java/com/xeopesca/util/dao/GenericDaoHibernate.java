@@ -29,6 +29,12 @@ import javax.persistence.PersistenceContext;
 
 import com.xeopesca.util.JPAUtil;
 
+/**
+ * @author belay
+ *
+ * @param <T>
+ */
+
 public abstract class GenericDaoHibernate<T> implements GenericDao<T> {
 
     @PersistenceContext
@@ -36,6 +42,9 @@ public abstract class GenericDaoHibernate<T> implements GenericDao<T> {
 
     private Class<T> type;
 
+    /**
+     * Constructor
+     */
     @SuppressWarnings({ "unchecked", "rawtypes" })
 	public GenericDaoHibernate() {
         Type t = getClass().getGenericSuperclass();
@@ -45,6 +54,10 @@ public abstract class GenericDaoHibernate<T> implements GenericDao<T> {
     }
 
 
+    
+    /* (non-Javadoc)
+     * @see com.xeopesca.util.dao.GenericDao#create(java.lang.Object)
+     */
     public T create(final T t) {
     	em = JPAUtil.createEntityManager();
     	em.getTransaction().begin();
@@ -56,6 +69,9 @@ public abstract class GenericDaoHibernate<T> implements GenericDao<T> {
         return t;
     }
 
+    /* (non-Javadoc)
+     * @see com.xeopesca.util.dao.GenericDao#delete(java.lang.Object)
+     */
     public void delete(final Object id) {
     	em = JPAUtil.createEntityManager();
     	em.getTransaction().begin();
@@ -66,6 +82,9 @@ public abstract class GenericDaoHibernate<T> implements GenericDao<T> {
       		em.close();
     }
 
+    /* (non-Javadoc)
+     * @see com.xeopesca.util.dao.GenericDao#find(java.lang.Object)
+     */
     public T find(final Object id) {
         return (T) this.em.find(type, id);
     }
