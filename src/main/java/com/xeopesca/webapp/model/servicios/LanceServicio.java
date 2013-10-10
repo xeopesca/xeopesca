@@ -20,11 +20,19 @@ package com.xeopesca.webapp.model.servicios;
 
 import com.xeopesca.webapp.model.dao.LanceDAO;
 import com.xeopesca.webapp.model.vos.Lance;
-
+/**
+ * 
+ * @author belay
+ *
+ */
 public class LanceServicio {
 
 	private LanceServicio(){}
-	
+	/**
+	 * Crea un lance no sistema
+	 * @param lance
+	 * @return Lance
+	 */
 	public static Lance createLance(Lance lance){
 		Lance saida = null;
 		LanceDAO lanceDao = new LanceDAO();
@@ -32,17 +40,31 @@ public class LanceServicio {
 		return saida;
 	}
 	
+	/**
+	 * Elimina un  lance 
+	 * @param lance
+	 */
 	public static void removeLance (Lance lance){
 		LanceDAO lanceDao = new LanceDAO();
 		lanceDao.delete(lance.getId());
 	}
 
+	/**
+	 * Busca un lance por id
+	 * @param id
+	 * @return Lance
+	 */
 	public static Lance findById(Long id) {
 		LanceDAO lanceDao = new LanceDAO();
 		Lance lance= lanceDao.find(id);
 		return lance;
 	}
 
+	/**
+	 * Actualiza información dun lance
+	 * @param lance
+	 * @return Lance
+	 */
 	public static Lance updateLance(Lance lance) {
 		LanceDAO lanceDao = new LanceDAO();
 		Lance lanceResposta = lanceDao.update(lance);

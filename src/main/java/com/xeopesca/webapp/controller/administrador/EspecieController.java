@@ -18,10 +18,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 --------------------------------------------------------------------*/
 package com.xeopesca.webapp.controller.administrador;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +42,14 @@ import com.xeopesca.util.UploaderFileUtil;
 import com.xeopesca.webapp.model.servicios.EspecieServicio;
 import com.xeopesca.webapp.model.vos.Especie;
 
+/**
+ * @author belay
+ *
+ */
+/**
+ * @author belay
+ *
+ */
 @Controller
 public class EspecieController {
 	List<Especie> especies;
@@ -58,19 +63,27 @@ public class EspecieController {
 		this.validator = validator;
 	}
 
-	// -------------------------- NOVA ESPECIE
-	// -------------------------------------
-	// ENTRADA FORMULARIO -- novaEspecie
+	
+	/**
+	 * Formulario para dar de alta unha nova especie (GET)
+	 * @param model
+	 * @param especie
+	 * @return String
+	 */
 	@RequestMapping(value = "/admin/novaEspecie", method = RequestMethod.GET)
-	public String novoEspecie(Model model, Especie especie) {
+	public String novaEspecie(Model model, Especie especie) {
 		model.addAttribute("especie", especie);
 		return "novaEspecie";
 	}
 
-	// SAIDA FORMULARIO
+	
 	/**
-	 * 
-	 * */
+	 * Saida do formulario para gardar unha especie  (POST)
+	 * @param especie
+	 * @param result
+	 * @param file
+	 * @return String
+	 */
 	@RequestMapping(value = "/admin/novaEspecie", method = RequestMethod.POST)
 	public String novaEspecie(Especie especie, BindingResult result,
 			@RequestParam("file") MultipartFile file) {
@@ -89,9 +102,12 @@ public class EspecieController {
 				+ "/admin/listaEspecies";
 	}
 
-	// -------------------------- LISTADO ESPECIE
-	// --------------------------------
-	// ENTRADA LISTA USUARIOS
+	
+	/**
+	 * Recupera todas as especies do sistema
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("/admin/listaEspecies")
 	public String listaEspecies(Model model) {
 
@@ -103,9 +119,13 @@ public class EspecieController {
 		return "listaEspecies";
 	}
 
-	// SAIDA FORMULARIO -- eliminar especie
+	/**
+	 * Borrar unha especie do sistema por id (GET)
+	 * @param id
+	 * @return String
+	 */
 	@RequestMapping("/admin/deleteEspecie/{id}")
-	public String borrarUsuario(@PathVariable("id") Long id) {
+	public String borrarEspecie(@PathVariable("id") Long id) {
 
 		EspecieServicio.removeEspecie(id);
 
@@ -113,9 +133,13 @@ public class EspecieController {
 				+ "/admin/listaEspecies";
 	}
 
-	// -------------------------- Editar ESPECIE
-
-	// Entrada Formulario editarEspecie
+	
+	/**
+	 * Formulario de entrada para a edición dunha especie (GET)
+	 * @param id
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("/admin/editarEspecie/{id}")
 	public String editarEspecie(@PathVariable("id") Long id, Model model) {
 		Especie especie = EspecieServicio.buscarEspecie(id);
@@ -124,7 +148,7 @@ public class EspecieController {
 	}
 
 	/***
-	 * SAIDA FORMULARIO editar Especie
+	 * SAIDA FORMULARIO editar Especie (POST)
 	 * @param Especie
 	 * @param BindingResult
 	 * @param MultipartFile
@@ -159,9 +183,13 @@ public class EspecieController {
 		
 	}
 
-	// ------------------------ BUSCADOR ESPECIE
-
-	// BUSCADOR buscadorEspecie - Entrada
+	
+	/**
+	 * Formulario de entrada para buscar unha especie por nome (GET)
+	 * @param model
+	 * @param especie
+	 * @return String
+	 */
 	@RequestMapping(value = "/admin/buscadorEspecie", method = RequestMethod.GET)
 	public String buscadorEspecie(Model model, Especie especie) {
 		model.addAttribute("mensaxe", "inicio");
@@ -169,7 +197,13 @@ public class EspecieController {
 		return "buscadorEspecie";
 	}
 
-	// SAIDA FORMULARIO BUSCADOR
+	
+	/**
+	 * Formulario de saida para buscar unha especie  (POST)
+	 * @param especie
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping(value = "/admin/buscadorEspecie", method = RequestMethod.POST)
 	public String buscadorUsuario(Especie especie, Model model) {
 		List<Especie> lista = EspecieServicio.buscarEspecie(especie
@@ -184,6 +218,5 @@ public class EspecieController {
 
 		return "buscadorEspecie";
 	}
-	// --------------------------------------------------------------
 
 }

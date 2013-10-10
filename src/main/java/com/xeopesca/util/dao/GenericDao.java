@@ -18,6 +18,11 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 --------------------------------------------------------------------*/
 package com.xeopesca.util.dao;
 
+/**
+ * @author belay
+ *
+ * @param <T>
+ */
 public interface GenericDao<T> {
 	
 	T create(T t);

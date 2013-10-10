@@ -26,6 +26,10 @@ import org.hibernate.cfg.AnnotationConfiguration;
 import com.xeopesca.webapp.model.vos.Usuario;
 
 
+/**
+ * @author belay
+ *
+ */
 @SuppressWarnings("deprecation")
 public class HibernateUtilSessionFactory {
 
@@ -45,6 +49,9 @@ public class HibernateUtilSessionFactory {
 		}
 	}
 
+	/**
+	 * @return SessionFactory
+	 */
 	@SuppressWarnings("unused")
 	public static SessionFactory getSessionFactory() {
 		Session session = sessionFactory.openSession();

@@ -32,6 +32,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.xeopesca.webapp.model.vos.Especie;
 
 
+/**
+ * Clase de utiler'ia para subir ficheiros ao servidor
+ * @author belay
+ *
+ */
 public class UploaderFileUtil {
 	
 	
@@ -39,6 +44,13 @@ public class UploaderFileUtil {
 		
 	}
 	
+	/**
+	 * Sube un ficheiro ao servidor
+	 * @param file
+	 * @param especie
+	 * @param path
+	 * @return boolean
+	 */
 	public static boolean uploadFile(MultipartFile file,Especie especie, String path)
 	{
 		String  nomeFicheiro;

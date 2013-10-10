@@ -27,6 +27,11 @@ public class HelperDateUtil {
 	private HelperDateUtil (){}
 	
 	
+	/**
+	 * Converte unha cadea en Date
+	 * @param fechaCadena
+	 * @return Date
+	 */
 	public static Date StringToDate (String fechaCadena){
 		///String strFecha = "2007-12-25";
 
@@ -44,6 +49,11 @@ public class HelperDateUtil {
 		return fecha;
 	}
 	
+	/**
+	 * Convirte un string en Date
+	 * @param fechaCadena
+	 * @return Date
+	 */
 	public static Date StringToTime (String fechaCadena){
 		///String strFecha = "2007-12-25";
 
@@ -62,12 +72,21 @@ public class HelperDateUtil {
 	}
 	
 	
+	/**
+	 * @param fecha
+	 * @return String dd-MM-yyyy
+	 */
 	public static String DateToString (Date fecha){
 		SimpleDateFormat formatoDeFecha = new SimpleDateFormat("dd-MM-yyyy");
 		
 		return formatoDeFecha.format(fecha);
 	}
 
+	/**
+	 * Conversor de fecha a String hora HH:mm
+	 * @param fecha
+	 * @return String
+	 */
 	public static String TimeToString (Date fecha){
 		SimpleDateFormat formatoDeFecha = new SimpleDateFormat("HH:mm");
 		

@@ -31,6 +31,10 @@ import com.xeopesca.webapp.model.vos.Especie;
  */
 public class EspecieServicio {
 
+	/**
+	 * Recupera as especies do sistema
+	 * @return List<Especie>
+	 */
 	public static List<Especie> listaDeEspecies() {
 		EspecieDAO especieDao = new EspecieDAO();
 		List<Especie> lista;
@@ -38,23 +42,40 @@ public class EspecieServicio {
 		return lista;
 	}
 
+	/**
+	 * Da de alta no sistema unha nova especie
+	 * @param especie
+	 */
 	public static void saveEspecie(Especie especie) {
 		EspecieDAO especieDao = new EspecieDAO();
 		especieDao.create(especie);
 	}
 
 	
-
+	/**
+	 * Elimina unha especie
+	 * @param especie
+	 */
+	
 	public static void removeEspecie(Especie especie) {
 		EspecieDAO especieDao = new EspecieDAO();
 		especieDao.delete(especie.getId());
 	}
 
+	/**
+	 * Elimina unha especie por id
+	 * @param id
+	 */
 	public static void removeEspecie(Long id) {
 		EspecieDAO especieDao = new EspecieDAO();
 		especieDao.delete(id);
 	}
 	
+	/**
+	 * Busca unha especie por unha cadea no nome
+	 * @param nome
+	 * @return List<Especie>
+	 */
 	public static List<Especie>  buscarEspecie(String nome) {
 		List<Especie> lista = new ArrayList<Especie>();
 		EspecieDAO especieDao = new EspecieDAO();
@@ -67,7 +88,11 @@ public class EspecieServicio {
 		return lista;
 	}
 	
-	
+	/**
+	 * Buscador de especie por id
+	 * @param id
+	 * @return Especie
+	 */
 	public static Especie  buscarEspecie(Long id) {
 		EspecieDAO especieDao = new EspecieDAO();
 		Especie especieRecuperado = especieDao.find(id);
@@ -80,6 +105,10 @@ public class EspecieServicio {
 		
 	}
 	
+	/***
+	 * Edita unha especie
+	 * @param especie
+	 */
 	public static void editarEspecie(Especie especie){
 		EspecieDAO especieDao = new EspecieDAO();
 		especieDao.update(especie);

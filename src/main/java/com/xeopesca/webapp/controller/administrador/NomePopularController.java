@@ -37,6 +37,14 @@ import com.xeopesca.webapp.model.servicios.NomepopularServicio;
 import com.xeopesca.webapp.model.vos.Especie;
 import com.xeopesca.webapp.model.vos.Nomepopular;
 
+/**
+ * @author belay
+ *
+ */
+/**
+ * @author belay
+ *
+ */
 @Controller
 public class NomePopularController {
 
@@ -56,9 +64,12 @@ public class NomePopularController {
 		this.validator = validator;
 	}
 
-	// -------------------------- NOVO NomePopular
-	// -------------------------------------
-	// ENTRADA FORMULARIO -- NomePopular
+	
+	/**
+	 * @param model
+	 * @param nomePopular
+	 * @return
+	 */
 	@RequestMapping(value = "/admin/novoNomePopular", method = RequestMethod.GET)
 	public String novaArte(Model model, Nomepopular nomePopular) {
 
@@ -70,7 +81,11 @@ public class NomePopularController {
 		return "novoNomePopular";
 	}
 
-	// SAIDA FORMULARIO
+	/**
+	 * @param nomePopular
+	 * @param result
+	 * @return
+	 */
 	@RequestMapping(value = "/admin/novoNomePopular", method = RequestMethod.POST)
 	public String novaArte(Nomepopular nomePopular, BindingResult result) {
 

@@ -19,11 +19,9 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 package com.xeopesca.webapp.view;
 
 
-import java.util.List;
 
 
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
+
 
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.Point;
@@ -31,6 +29,10 @@ import com.xeopesca.util.GeometryUtil;
 import com.xeopesca.webapp.model.vos.Lance;
 
 
+/**
+ * @author belay
+ *
+ */
 public class LanceView  implements java.io.Serializable {
 
 	
@@ -41,7 +43,10 @@ public class LanceView  implements java.io.Serializable {
  	 private String punto_inicio;
  	 
 
- 	 public Lance convertToLance(){
+ 	 /** Converte un LanceView a Lance
+ 	 * @return Lance
+ 	 */
+ 	public Lance convertToLance(){
  		 Lance saida = new Lance();
  		 saida.setDescripcion(this.getDescripcion());
  		// saida.setFaena(faena)
