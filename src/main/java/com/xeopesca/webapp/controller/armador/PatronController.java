@@ -33,13 +33,16 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.validation.Valid;
 
 import com.xeopesca.util.ConstantesUtil;
 
 import com.xeopesca.webapp.model.servicios.UsuarioServicio;
 import com.xeopesca.webapp.model.vos.Usuario;
 
+/**
+ * @author belay
+ *
+ */
 @Controller
 public class PatronController {
 	List<Usuario> patrons;
@@ -51,9 +54,13 @@ public class PatronController {
 		this.validator = validator;
 	}
 
-	// -------------------------- NOVO Patron
-	// -------------------------------------
-	// ENTRADA FORMULARIO -- novoPatron
+	
+	/**
+	 * Formulario de entrada para dar de alta un patrón
+	 * @param model
+	 * @param usuario
+	 * @return plantilla tiles a cargar
+	 */
 	@RequestMapping(value = "/armador/novoPatron", method = RequestMethod.GET)
 	public String novoPatron(Model model, Usuario usuario) {
 		//Recuperamos os datos do Armador
@@ -69,7 +76,12 @@ public class PatronController {
 		return "novoPatron";
 	}
 
-	// SAIDA FORMULARIO
+	/**
+	 * Formulario procesado para dar de alta un novo patrón
+	 * @param patron
+	 * @param result
+	 * @return plantilla tiles a cargar
+	 */
 	@RequestMapping(value = "/armador/novoPatron", method = RequestMethod.POST)
 	public String novoPatron(Usuario patron, BindingResult result) {
 		patron.setTipousuario("ROLE_PATRON");
@@ -94,11 +106,14 @@ public class PatronController {
 		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaPatron";
 	}
 
-	// -------------------------- LISTADO PATRONS ASOCIADOS A UN ARMADOR
-	// --------------------------------
-	// ENTRADA LISTA BARCOS
+	
+	/**
+	 * Lista de patróns dun armador
+	 * @param model
+	 * @return plantilla tiles a cargar
+	 */
 	@RequestMapping("/armador/listaPatron")
-	public String listaUsuarios(Model model) {
+	public String listaPatronsDunArmador(Model model) {
 		
 		//Recuperamos os datos do Armador
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -114,9 +129,14 @@ public class PatronController {
 		return "listaPatron";
 	}
 	
-	// SAIDA FORMULARIO -- eliminar patron
+	
+	/**
+	 * Formulario de borrado de un patrón dun armador
+	 * @param id
+	 * @return plantilla tiles a cargar
+	 */
 	@RequestMapping("/armador/deletePatron/{id}")
-	public String borrarUsuario(@PathVariable("id") Long id) {
+	public String borradorPatronDunArmador(@PathVariable("id") Long id) {
 		//Recuperamos os datos do Armador
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String loginArmador = auth.getName();
@@ -127,11 +147,15 @@ public class PatronController {
 		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaPatron";
 	}
 
-	// -------------------------- Editar PATRON
 
-	// Entrada 
+	/**
+	 * Editar patrón dun armador
+	 * @param id
+	 * @param model
+	 * @return plantilla tiles a cargar
+	 */
 	@RequestMapping("/armador/editarPatron/{id}")
-	public String editarEspecie(@PathVariable("id") Long id, Model model) {
+	public String editarPatronDunArmador(@PathVariable("id") Long id, Model model) {
 		 Usuario usuario;
 		 usuario =  UsuarioServicio.buscarUsuario(id);
 		
@@ -140,7 +164,13 @@ public class PatronController {
 	}
 
 	
-	// BUSCADOR PATRON - Entrada
+	
+	/**
+	 * Formulario de entrada para a procura dun patron entre os que pertecen a un armador
+	 * @param model
+	 * @param usuario
+	 * @return plantilla tiles a cargar
+	 */
 	@RequestMapping(value = "/armador/buscadorPatron", method = RequestMethod.GET)
 	public String buscadorUsuario(Model model, Usuario usuario) {
 			model.addAttribute("usuario", usuario);
@@ -148,9 +178,15 @@ public class PatronController {
 	}	
 	
 	
-	// SAIDA FORMULARIO BUSCADOR 
+	
+	/**
+	 * Buscador de patróns dun usuario
+	 * @param patron
+	 * @param model
+	 * @return plantilla tiles a cargar
+	 */
 	@RequestMapping(value = "/armador/buscadorPatron", method = RequestMethod.POST)
-	public String buscadorUsuario(Usuario patron,Model model) {
+	public String buscadorDePatronsDunUsuario(Usuario patron,Model model) {
 			//Recuperamos os datos do Armador
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 			String loginArmador = auth.getName();
@@ -161,10 +197,10 @@ public class PatronController {
 					
 
 			if (lista.isEmpty()){
-				model.addAttribute("mensaxe", "lista vacia");
+				model.addAttribute("mensaxe", "Non hai resultados");
 			}else{
 				model.addAttribute("patrons", lista);
-				model.addAttribute("mensaxe", "lista chea");
+				model.addAttribute("mensaxe", "Hai resultados");
 			}	
 			
 			return "buscadorPatron";

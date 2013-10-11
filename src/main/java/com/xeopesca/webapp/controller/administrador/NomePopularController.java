@@ -30,7 +30,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import com.xeopesca.util.ConstantesUtil;
 import com.xeopesca.webapp.model.servicios.EspecieServicio;
 import com.xeopesca.webapp.model.servicios.NomepopularServicio;
@@ -43,7 +42,7 @@ import com.xeopesca.webapp.model.vos.Nomepopular;
  */
 /**
  * @author belay
- *
+ * 
  */
 @Controller
 public class NomePopularController {
@@ -64,8 +63,9 @@ public class NomePopularController {
 		this.validator = validator;
 	}
 
-	
 	/**
+	 * /admin/novoNomePopular GET
+	 * 
 	 * @param model
 	 * @param nomePopular
 	 * @return
@@ -82,9 +82,11 @@ public class NomePopularController {
 	}
 
 	/**
+	 * /admin/novoNomePopular POST
+	 * 
 	 * @param nomePopular
 	 * @param result
-	 * @return
+	 * @return String
 	 */
 	@RequestMapping(value = "/admin/novoNomePopular", method = RequestMethod.POST)
 	public String novaArte(Nomepopular nomePopular, BindingResult result) {
@@ -94,9 +96,12 @@ public class NomePopularController {
 		return "redirect:/xeopesca/admin/listaNomePopular";
 	}
 
-	// -------------------------- LISTADO de NOMES POPULARES
-	// --------------------------------
-	// ENTRADA LISTA DE NOMES POPULARES
+	/**
+	 * /admin/listaNomePopular GET
+	 * 
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/admin/listaNomePopular")
 	public String listaUsuarios(Model model) {
 
@@ -107,16 +112,28 @@ public class NomePopularController {
 		return "listaNomePopular";
 	}
 
-	// -------------------------- ELIMINAR NOME POPULAR
+	/**
+	 * /admin/deleteNomepopular/{id} GET
+	 * 
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping("/admin/deleteNomepopular/{id}")
 	public String borrarUsuario(@PathVariable("id") Long id) {
 
 		NomepopularServicio.removeNomePopular(id);
 
-		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/admin/listaNomePopular";
+		return "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
+				+ "/admin/listaNomePopular";
 	}
 
-	// -------------------------- EDITAR NOME POPULAR
+	/**
+	 * /admin/editarNomePopular/{id} GET
+	 * 
+	 * @param id
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/admin/editarNomePopular/{id}")
 	public String editarEspecie(@PathVariable("id") Long id, Model model) {
 		Nomepopular nome = NomepopularServicio.buscarNomepopular(id);
@@ -127,42 +144,59 @@ public class NomePopularController {
 		return "editarNomePopular";
 	}
 
-	// SAIDA FORMULARIO editar Especie
+	/**
+	 * /admin/editarNomePopular POST
+	 * 
+	 * @param nomepopular
+	 * @param result
+	 * @return
+	 */
 	@RequestMapping(value = "/admin/editarNomePopular", method = RequestMethod.POST)
 	public String editarEspecie(Nomepopular nomepopular, BindingResult result) {
 
 		NomepopularServicio.updateNomepopularDao(nomepopular);
 
-		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/admin/listaNomePopular";
+		return "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
+				+ "/admin/listaNomePopular";
+	}
+
+	// ------------------------ BUSCADOR ESPECIE
+
+	/**
+	 * /admin/buscadorNomePopular GET
+	 * @param model
+	 * @param nome
+	 * @return
+	 */
+	@RequestMapping(value = "/admin/buscadorNomePopular", method = RequestMethod.GET)
+	public String buscadorEspecie(Model model, Nomepopular nome) {
+		model.addAttribute("nome", nome);
+		return "buscadorNomePopular";
 	}
 
 	
-	//------------------------ BUSCADOR ESPECIE
-	
-		// BUSCADOR buscadorEspecie - Entrada
-			@RequestMapping(value = "/admin/buscadorNomePopular", method = RequestMethod.GET)
-			public String buscadorEspecie(Model model, Nomepopular nome) {
-				model.addAttribute("nome", nome);
-				return "buscadorNomePopular";
-			}
-			
-			
-			// SAIDA FORMULARIO BUSCADOR 
-			@RequestMapping(value = "/admin/buscadorNomePopular", method = RequestMethod.POST)
-			public String buscadorUsuario(Nomepopular nome,Model model) {
-				List<Nomepopular> lista = NomepopularServicio.buscarNomePopular(nome.getNome());
+	/**
+	 * /admin/buscadorNomePopular POST
+	 * @param nome
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/admin/buscadorNomePopular", method = RequestMethod.POST)
+	public String buscadorUsuario(Nomepopular nome, Model model) {
+		List<Nomepopular> lista = NomepopularServicio.buscarNomePopular(nome
+				.getNome());
 
-				if (lista.isEmpty()){
-					lista = new ArrayList<Nomepopular>();
-					model.addAttribute("mensaxe", "lista vacia");
-					model.addAttribute("nome",nome);
-					model.addAttribute("nomes", lista);
-				}else{
-					model.addAttribute("nome",nome);
-					model.addAttribute("nomes", lista);
-					model.addAttribute("mensaxe", "lista chea");
-				}	
-				
-				return "buscadorNomePopular";
-			}
+		if (lista.isEmpty()) {
+			lista = new ArrayList<Nomepopular>();
+			model.addAttribute("mensaxe", "lista vacia");
+			model.addAttribute("nome", nome);
+			model.addAttribute("nomes", lista);
+		} else {
+			model.addAttribute("nome", nome);
+			model.addAttribute("nomes", lista);
+			model.addAttribute("mensaxe", "lista chea");
+		}
+
+		return "buscadorNomePopular";
+	}
 }

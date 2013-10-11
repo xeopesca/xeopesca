@@ -28,10 +28,19 @@ import com.xeopesca.webapp.model.servicios.UsuarioServicio;
 import com.xeopesca.webapp.model.vos.Usuario;
 
 
+/**
+ * @author belay
+ *
+ */
 @Controller
 public class PortadaPatronController {
    
     
+    /**
+     * Paxina de inicio dunn patrón
+     * @param model
+     * @return plantilla tiles a cargar
+     */
     @RequestMapping("/patron")
     public String portada(Model model) {
     	//Recuperamos os datos do Patron

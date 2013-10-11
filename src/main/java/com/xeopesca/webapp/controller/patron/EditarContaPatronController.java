@@ -18,22 +18,22 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 --------------------------------------------------------------------*/
 package com.xeopesca.webapp.controller.patron;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.xeopesca.util.ConstantesUtil;
 import com.xeopesca.webapp.model.servicios.UsuarioServicio;
 import com.xeopesca.webapp.model.vos.Usuario;
 
+/**
+ * @author belay
+ *
+ */
 @Controller
 public class EditarContaPatronController {
 
@@ -44,7 +44,11 @@ public class EditarContaPatronController {
 		this.validator = validator;
 	}
 
-	// Entrada FORMULARIO
+		/**
+		 * Formulario de edición da conta dun patrón
+		 * @param model
+		 * @return plantilla tiles a cargar
+		 */
 		@RequestMapping(value = "/patron/editarConta")
 		public String editarConta(Model model) {
 			String saida = "editarContaPatron";

@@ -51,6 +51,12 @@ import com.xeopesca.webapp.model.vos.Usuario;
 public class PescaController {
    
     
+		/**
+		 * Formulario polo que se engade unha nova pesca
+		 * @param idLance
+		 * @param model
+		 * @return plantilla tiles a cargar
+		 */
 		@RequestMapping("/patron/addPesca/{id}")
 		public String novaPesca(@PathVariable("id") Long idLance, Model model) {
 			//Recuperamos os datos do Patron
@@ -76,6 +82,12 @@ public class PescaController {
 			
 		}
 		
+	/**
+	 * Formulario polo que se procesa unha nova pesca
+	 * @param pesca
+	 * @param result
+	 * @return
+	 */
 	@RequestMapping(value = "/patron/addPesca", method = RequestMethod.POST)
 	public String engadirPesca(Pesca pesca, BindingResult result) {
 		PescaServicio.createPesca(pesca);
@@ -86,6 +98,12 @@ public class PescaController {
 
 	}
 	
+	/**
+	 * Formulario polo que se procesa o borrado dunha pesca
+	 * @param pesca
+	 * @param result
+	 * @return plantilla tiles a cargar
+	 */
 	@RequestMapping(value = "/patron/deletePesca", method = RequestMethod.POST)
 	public String deletePesca(Pesca pesca, BindingResult result) {
 		Pesca pescaBD = PescaServicio.findById(pesca);
@@ -96,6 +114,12 @@ public class PescaController {
 
 	}
 	
+	/**
+	 * Formulario para a   edición dunha pesca
+	 * @param id
+	 * @param model
+	 * @return plantilla tiles a cargar
+	 */
 	@RequestMapping("/patron/editarPesca/{id}")
 	public String editarPesca(@PathVariable("id") Long id, Model model){
 		//Recuperamos os datos do Patron
@@ -117,6 +141,12 @@ public class PescaController {
 	
 	}
 	
+	/**
+	 * Formulario no que se procesa a edición dunha pesca
+	 * @param pesca
+	 * @param result 
+	 * @return plantilla tiles a cargar
+	 */
 	@RequestMapping(value = "/patron/updatePesca", method = RequestMethod.POST)
 	public String updatePesca(Pesca pesca, BindingResult result) {
 		

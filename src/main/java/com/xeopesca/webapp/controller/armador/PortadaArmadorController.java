@@ -27,16 +27,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.vividsolutions.jts.geom.Geometry;
 import com.xeopesca.webapp.model.servicios.BarcoServicio;
 import com.xeopesca.webapp.model.servicios.UsuarioServicio;
 import com.xeopesca.webapp.model.vos.Barco;
 import com.xeopesca.webapp.model.vos.Usuario;
 
+/**
+ * @author belay
+ *
+ */
 @Controller
 public class PortadaArmadorController {
    
     
+    /**
+     * Páxina de inicio dun armador
+     * @param model
+     * @return String plantilla tiles a cargar
+     */
     @RequestMapping("/armador")
     public String portada(Model model) {
     	

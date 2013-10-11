@@ -51,12 +51,21 @@ import com.xeopesca.webapp.model.vos.Parametria;
 import com.xeopesca.webapp.model.vos.Usuario;
 
 
+/**
+ * @author belay
+ *
+ */
 @Controller
 public class LanceController {
    
     
     
-	// Entrada Formulario editarBarco
+	/**
+	 * Formulario para dar de alta un novo Lance
+	 * @param idFaena
+	 * @param model
+	 * @return plantilla tiles a cargar
+	 */
 	@RequestMapping("/patron/novoLance/{id}")
 	public String novoLance(@PathVariable("id") Long idFaena, Model model) {
 		
@@ -99,7 +108,12 @@ public class LanceController {
 		}
 	}
 	
-	// Entrada Formulario editarBarco
+		/**
+		 * Formulario polo que se agregar un novo lance
+		 * @param idFaena
+		 * @param model
+		 * @return plantilla tiles a cargar
+		 */
 		@RequestMapping("/patron/addLance/{id}")
 		public String addLance(@PathVariable("id") Long idFaena, Model model) {
 			
@@ -125,6 +139,11 @@ public class LanceController {
 			}
 		}
 	
+		/**
+		 * @param lance
+		 * @param result
+		 * @return plantilla tiles a cargar
+		 */
 		@RequestMapping(value = "/patron/addLance", method = RequestMethod.POST)
 	 	public String addLance(LanceView lance, BindingResult result) {
 		
@@ -135,6 +154,12 @@ public class LanceController {
 			
 		}
 		
+		/**
+		 * Formulario co que se realiza o borrado dun lance
+		 * @param lance
+		 * @param result
+		 * @return plantilla tiles a cargar
+		 */
 		@RequestMapping(value = "/patron/deleteLance", method = RequestMethod.POST)
 	 	public String deleteLance(Lance lance, BindingResult result) {
 		LanceServicio.removeLance(lance);
@@ -142,6 +167,12 @@ public class LanceController {
 			
 		}
 		
+		/**
+		 * Formulario de edición dun novo lance
+		 * @param id
+		 * @param model
+		 * @return plantilla tiles a cargar
+		 */
 		@RequestMapping("/patron/editarLance/{id}")
 		public String editarLance(@PathVariable("id") Long id, Model model){
 			//Recuperamos os datos do Patron
@@ -162,6 +193,12 @@ public class LanceController {
 			
 		}
 		
+		/**
+		 * Formulario polo que se procesa a edición dun lance
+		 * @param lance
+		 * @param result
+		 * @return plantilla tiles a cargar
+		 */
 		@RequestMapping(value = "/patron/editarLance", method = RequestMethod.POST)
 		public String editarLanceSaida(Lance lance, BindingResult result) {
 			Lance lanceBd = LanceServicio.findById(lance.getId());
