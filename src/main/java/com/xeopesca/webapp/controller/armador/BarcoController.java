@@ -36,12 +36,14 @@ import javax.validation.Valid;
 
 import com.xeopesca.util.ConstantesUtil;
 import com.xeopesca.webapp.model.servicios.BarcoServicio;
-import com.xeopesca.webapp.model.servicios.EspecieServicio;
 import com.xeopesca.webapp.model.servicios.UsuarioServicio;
 import com.xeopesca.webapp.model.vos.Barco;
-import com.xeopesca.webapp.model.vos.Especie;
 import com.xeopesca.webapp.model.vos.Usuario;
 
+/**
+ * @author belay
+ *
+ */
 @Controller
 public class BarcoController {
 	List<Barco> barcos;
@@ -53,9 +55,13 @@ public class BarcoController {
 		this.validator = validator;
 	}
 
-	// -------------------------- NOVO BARCO
-	// -------------------------------------
-	// ENTRADA FORMULARIO -- novoBarco
+	
+	/**
+	 * Formulario de entrada para dar de alta un novo barco
+	 * @param model
+	 * @param barco
+	 * @return plantilla tiles a cargar
+	 */
 	@RequestMapping(value = "/armador/novoBarco", method = RequestMethod.GET)
 	public String novoBarco(Model model, Barco barco) {
 		
@@ -72,7 +78,13 @@ public class BarcoController {
 		return "novoBarco";
 	}
 
-	// SAIDA FORMULARIO
+	
+	/**
+	 * Formulario de procesamento dunha nova alta de barco
+	 * @param barco
+	 * @param result
+	 * @return plantilla tiles a cargar
+	 */
 	@RequestMapping(value = "/armador/novoBarco", method = RequestMethod.POST)
 	public String novoBarco(Barco barco, BindingResult result) {
 		//Recuperamos os datos do Armador
@@ -87,11 +99,14 @@ public class BarcoController {
 		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaBarco";
 	}
 
-	// -------------------------- LISTADO BARCOS
-	// --------------------------------
-	// ENTRADA LISTA BARCOS
+	
+	/**
+	 * Formulario que devolve a lista de barcos dun armador
+	 * @param model
+	 * @return plantilla tiles a cargar
+	 */
 	@RequestMapping("/armador/listaBarco")
-	public String listaUsuarios(Model model) {
+	public String listaDeBarcosDunArmador(Model model) {
 		
 		//Recuperamos os datos do Armador
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -107,9 +122,13 @@ public class BarcoController {
 		return "listaBarco";
 	}
 
-	// SAIDA FORMULARIO -- eliminar barco
+	/**
+	 * Formulario para o borrado dun barco
+	 * @param id
+	 * @return plantilla tiles a cargar
+	 */
 	@RequestMapping("/armador/deleteBarco/{id}")
-	public String borrarUsuario(@PathVariable("id") Long id) {
+	public String borrarBarco(@PathVariable("id") Long id) {
 		
 		//Recuperamos os datos do Armador
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -127,9 +146,13 @@ public class BarcoController {
 		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaBarco";
 	}
 
-	// -------------------------- Editar BARCO
 
-	// Entrada Formulario editarBarco
+	/**
+	 * Formulario para a edición dun Barco
+	 * @param idBarco
+	 * @param model
+	 * @return plantilla tiles a cargar
+	 */
 	@RequestMapping("/armador/editarBarco/{id}")
 	public String editarBarco(@PathVariable("id") Long idBarco, Model model) {
 		 Barco barco;
@@ -155,6 +178,10 @@ public class BarcoController {
 	
 	
 	
+	/**
+	 * Metodo auxiliar para realizar o cambio entre patrons e barcos
+	 * @param b1
+	 */
 	private void porNuloBarcoPatronRelacionPaso1(Barco b1){
 		if (b1 != null){
 			
@@ -173,6 +200,10 @@ public class BarcoController {
 	}
 	
 	
+	/**
+	 * Metodo auxiliar para intermcabiar barcos e patróns
+	 * @param p1
+	 */
 	private void porNuloBarcoPatronRelacionPaso2(Usuario p1){
 		if (p1 != null){
 			
@@ -192,7 +223,13 @@ public class BarcoController {
 		
 	}
 
-	// SAIDA FORMULARIO editar Barco
+	
+	/**
+	 * Formulario para o procesamento da edición dos atributos dun barco
+	 * @param barcoNew
+	 * @param result
+	 * @return plantilla tiles a cargar
+	 */
 	@RequestMapping(value = "/armador/editarBarco", method = RequestMethod.POST)
 	public String editarBarco(@Valid Barco barcoNew, BindingResult result) {
 		if (result.hasErrors()) {
@@ -215,18 +252,27 @@ public class BarcoController {
 		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/armador/listaBarco";
 	}
 	
-	//------------------------ BUSCADOR ESPECIE
-	
-	// BUSCADOR buscadorEspecie - Entrada
+
+		/**
+		 * Formulario de entrada para buscar barcos dun armador
+		 * @param model
+		 * @param barco
+		 * @return plantilla tiles a cargar
+		 */
 		@RequestMapping(value = "/armador/buscadorBarco", method = RequestMethod.GET)
-		public String buscadorBarco(Model model, Barco barco) {
+		public String buscadorBarcosDunArmador(Model model, Barco barco) {
 			model.addAttribute("mensaxe", "inicio");
 			model.addAttribute("barco", barco);
 			return "buscadorBarco";
 		}
 		
 		
-		// SAIDA FORMULARIO BUSCADOR 
+		/**
+		 * Formulario de procesamento da busqueda de barcos dun armador
+		 * @param barco
+		 * @param model
+		 * @return plantilla tiles a cargar
+		 */
 		@RequestMapping(value = "/armador/buscadorBarco", method = RequestMethod.POST)
 		public String buscadorBarcoResposta(Barco barco,Model model) {
 			//Recuperamos os datos do Armador

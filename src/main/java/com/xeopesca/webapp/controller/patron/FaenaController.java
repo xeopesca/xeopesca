@@ -52,6 +52,11 @@ import com.xeopesca.webapp.model.vos.Usuario;
 public class FaenaController {
    
     
+    /**
+     * Formulario de entrada para dar de alta unha nova faena
+     * @param model
+     * @return plantilla tiles a cargar
+     */
     @RequestMapping("/patron/novaFaena")
     public String novaFaena(Model model) {
     	FaenaBuscador faena = new FaenaBuscador();
@@ -87,7 +92,12 @@ public class FaenaController {
         return "novaFaena"; 
     }
     
- // SAIDA FORMULARIO
+ 	/**
+ 	 * Formulario de saida para dar de alta unha faena
+ 	 * @param faena
+ 	 * @param result
+ 	 * @return plantilla tiles a cargar
+ 	 */
  	@RequestMapping(value = "/patron/novaFaena", method = RequestMethod.POST)
  	public String novaFaena(FaenaBuscador faena, BindingResult result) {
  		 		
@@ -120,6 +130,11 @@ public class FaenaController {
     
  	
     
+    /**
+     * Formulario de entrada para buscar unha faena
+     * @param model
+     * @return plantilla tiles a cargar
+     */
     @RequestMapping("/patron/buscadorFaena")
     public String buscadorFaena(Model model) {
     	//Recuperamos os datos do Patron
@@ -154,6 +169,12 @@ public class FaenaController {
     
   
 	
+    /**
+     * Formulario de saida para buscar unha faena
+     * @param faenaB
+     * @param model
+     * @return plantilla tiles a cargar
+     */
     @RequestMapping(value = "/patron/buscadorFaena", method = RequestMethod.POST)
  	public String buscadorFaena(FaenaBuscador faenaB, Model model) {
  		 		
@@ -193,11 +214,12 @@ public class FaenaController {
     
     
     
-    /**
-     * 	lista de faenas
-     * 
-     * */
-    // ENTRADA de faenas
+  
+ 	/**
+ 	 * Listado de faenas realizadas por un patrón
+ 	 * @param model
+ 	 * @return plantilla tiles a cargar
+ 	 */
  	@RequestMapping("/patron/listaFaena")
  	public String listaFaenas(Model model) {
  		
@@ -214,7 +236,12 @@ public class FaenaController {
  	}
  	
 
-	// Entrada Formulario editarFaena
+	/**
+	 * Formulario de edición dunha faena
+	 * @param idFaena
+	 * @param model
+	 * @return plantilla tiles a cargar
+	 */
 	@RequestMapping("/patron/editarFaena/{id}")
 	public String editarFaena(@PathVariable("id") Long idFaena, Model model) {
 		
@@ -248,6 +275,12 @@ public class FaenaController {
 		}
 	}
 	
+	/**
+	 * Formulario de procesamento da edición dunha faena
+	 * @param faena
+	 * @param result
+	 * @return plantilla tiles a cargar
+	 */
 	@RequestMapping(value = "/patron/editarFaena", method = RequestMethod.POST)
 	public String editarFaena(@Valid FaenaBuscador faena, BindingResult result) {
 		Faena faenaVO = new Faena();
@@ -271,6 +304,12 @@ public class FaenaController {
 		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/patron/listaFaena";
 	}
 	
+	/**
+	 * Borrado dunha faena
+	 * @param idFaena
+	 * @param model
+	 * @return plantilla tiles a cargar
+	 */
 	@RequestMapping("/patron/deleteFaena/{id}")
 	public String borrarFaena(@PathVariable("id") Long idFaena, Model model) {
 		//Recuperamos os datos do Patron

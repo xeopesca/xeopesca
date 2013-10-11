@@ -47,30 +47,46 @@ public class UsuarioController {
 		this.validator = validator;
 	}
 
-	
-	
-	// ENTRADA FORMULARIO  -- NovoUsuario
+	/**
+	 * /admin/novoUsuario
+	 * 
+	 * @param model
+	 * @param usuario
+	 * @return
+	 */
 	@RequestMapping(value = "/admin/novoUsuario", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
 	public String novoUsuario(Model model, Usuario usuario) {
 		model.addAttribute("usuario", usuario);
 		return "novoUsuario";
 	}
 
-	// SAIDA FORMULARIO
+	/**
+	 * /admin/novoUsuario2
+	 * 
+	 * @param usuario
+	 * @param result
+	 * @return
+	 */
 	@RequestMapping(value = "/admin/novoUsuario2", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	public String novoUsuario(@Valid Usuario usuario, BindingResult result) {
-		
+
 		if (result.hasErrors()) {
 			return "novoUsuario";
 		}
 
 		UsuarioServicio.saveUsuario(usuario);
-		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/admin/listaUsuarios";
+		return "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
+				+ "/admin/listaUsuarios";
 	}
 
-	// ENTRADA LISTA USUARIOS
+	/**
+	 * /admin/listaUsuarios
+	 * 
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("/admin/listaUsuarios")
-	public String listaUsuarios(Model model) {		
+	public String listaUsuarios(Model model) {
 
 		users = UsuarioServicio.listaDeUsuarios();
 		model.addAttribute("users", users);
@@ -78,18 +94,28 @@ public class UsuarioController {
 		return "listaUsuarios";
 	}
 
-	// SAIDA FORMULARIO -- eliminar
+	/**
+	 * /admin/delete/{id}
+	 * 
+	 * @param id
+	 * @return String
+	 */
 	@RequestMapping("/admin/delete/{id}")
 	public String borrarUsuario(@PathVariable("id") Long id) {
 
 		UsuarioServicio.removeUser(id);
 
-		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/admin/listaUsuarios";
+		return "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
+				+ "/admin/listaUsuarios";
 	}
 
-	// ------------------------------------------------------------------------------
-
-	// BUSCADOR USUARIO - Entrada
+	/**
+	 * /admin/buscadorUsuario
+	 * 
+	 * @param model
+	 * @param usuario
+	 * @return String plantilla tiles
+	 */
 	@RequestMapping(value = "/admin/buscadorUsuario", method = RequestMethod.GET)
 	public String buscadorUsuario(Model model, Usuario usuario) {
 		model.addAttribute("mensaxe", "inicio");
@@ -97,43 +123,58 @@ public class UsuarioController {
 		return "buscadorUsuario";
 	}
 
-	// SAIDA FORMULARIO BUSCADOR
+	/**
+	 * /admin/buscadorUsuario
+	 * 
+	 * @param usuario
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping(value = "/admin/buscadorUsuario", method = RequestMethod.POST)
-	public String buscadorUsuario(Usuario usuario,Model model) {
-		List<Usuario> lista  = UsuarioServicio.buscarUsuarioSimilarLogin(usuario.getLogin()) ;
+	public String buscadorUsuario(Usuario usuario, Model model) {
+		List<Usuario> lista = UsuarioServicio.buscarUsuarioSimilarLogin(usuario
+				.getLogin());
 
-		if (lista.isEmpty()){
+		if (lista.isEmpty()) {
 			model.addAttribute("mensaxe", "lista vacia");
-		}else{
+		} else {
 			model.addAttribute("users", lista);
 			model.addAttribute("mensaxe", "lista chea");
-		}	
-		
+		}
+
 		return "buscadorUsuario";
 	}
-	//--------------------------------------------------------------
-	
-	//editarUsuario
-	
-	@RequestMapping("/admin/editarUsuario/{id}")
-	public String editarUsuario(@PathVariable("id") Long id,Model model) {
 
-        Usuario usuario = UsuarioServicio.buscarUsuario(id);
+	/**
+	 * /admin/editarUsuario/{id}
+	 * 
+	 * @param id
+	 * @param model
+	 * @return String
+	 */
+	@RequestMapping("/admin/editarUsuario/{id}")
+	public String editarUsuario(@PathVariable("id") Long id, Model model) {
+
+		Usuario usuario = UsuarioServicio.buscarUsuario(id);
 		model.addAttribute("usuario", usuario);
-        return "editarUsuario";
+		return "editarUsuario";
 	}
-	
-	// SAIDA FORMULARIO
-		@RequestMapping(value = "/admin/updateUsuario", method = RequestMethod.POST )
-		public String updateUsuario(@Valid Usuario usuario, BindingResult result) {
-			if (result.hasErrors()) {
-				return "editarUsuario";
-			}
-			
-			UsuarioServicio.updateUsuario(usuario);
-			return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/admin/listaUsuarios";
+
+	/**
+	 * /admin/updateUsuario
+	 * @param usuario
+	 * @param result
+	 * @return String
+	 */
+	@RequestMapping(value = "/admin/updateUsuario", method = RequestMethod.POST)
+	public String updateUsuario(@Valid Usuario usuario, BindingResult result) {
+		if (result.hasErrors()) {
+			return "editarUsuario";
 		}
-	
-	
+
+		UsuarioServicio.updateUsuario(usuario);
+		return "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
+				+ "/admin/listaUsuarios";
+	}
 
 }
