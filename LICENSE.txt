@@ -174,5 +174,25 @@ permanent authorization for you to choose that version for the
 Library.
 
 ----------------------------------------------------------------
-
+This program includes works under other copyright notices and distributed according to the terms of the General Public License or a compatible license, including
+* OpenLayers: Combination licenses ,Apache 2.0 , BSD e Mit
+* jsDatePick: GPL v3
+* Jetty: Apache License 2.0 e Eclipse Public License 1.0.
+* OpenProj: Common Public Attribution License
+* ArgoUML: Eclipse Public License
+* Eclipse: Eclipse Public License
+* Tiles: GPL v2
+* JSTL: GPL v2
+* DIA: GPL v2
+* OpenJDK 1.6 : GPL v2
+* Postgis 1.5: GPL v2
+* GeoServer: GPL v2
+* Geoserver: GPL v2
+* Hibernate Spatial: GPL V2.1
+* Tomcat 7: Apache License 2.0
+* Spring Framework: Apache License 2.0
+* BootStrap: Apache License 2.0
+* Maven: Apache License 2.0
+* Postgresql: PostgreSQL
+* PgAdmin: PostgreSQL
 
