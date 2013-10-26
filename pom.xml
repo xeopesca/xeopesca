@@ -95,13 +95,6 @@
 			<artifactId>logback-classic</artifactId>
 			<version>0.9.18</version>
 		</dependency>
-
-
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-		</dependency>
 		<dependency>
 			<groupId>displaytag</groupId>
 			<artifactId>displaytag</artifactId>

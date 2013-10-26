@@ -28,157 +28,158 @@ import com.xeopesca.webapp.model.vos.Usuario;
 
 /**
  * @author belay
- *
+ * 
  */
-public class UsuarioDAO  extends GenericDaoHibernate<Usuario>
-{
+public class UsuarioDAO extends GenericDaoHibernate<Usuario> {
 
-	/**Recupera un usuario dado un login
+	/**
+	 * Recupera un usuario dado un login
+	 * 
 	 * @param login
 	 * @return Usuario
 	 * */
 	public Usuario finByLogin(String login) {
 		EntityManager em = JPAUtil.createEntityManager();
 		em.getTransaction().begin();
-		String queryStri=" FROM Usuario u  " +
-						" WHERE (u.login like :login)";
-		
+		String queryStri = " FROM Usuario u  " + " WHERE (u.login like :login)";
+
 		@SuppressWarnings("unchecked")
-		List<Usuario> saida = em.createQuery(queryStri).setParameter("login", login).getResultList();
-		
-		
-		if (saida.isEmpty()){
+		List<Usuario> saida = em.createQuery(queryStri)
+				.setParameter("login", login).getResultList();
+
+		if (saida.isEmpty()) {
 			return null;
-		}else{
-		   return (Usuario) saida.get(0);
+		} else {
+			return (Usuario) saida.get(0);
 		}
-		
+
 	}
-	
+
 	/**
 	 * Busca usuarios similares a unha cadea dada
-	 * @param String login
+	 * 
+	 * @param String
+	 *            login
 	 * @return List<Usuario>
 	 * */
 	public List<Usuario> finBySimilarLogin(String login) {
-		login = "%"+login+"%";
-		
+		login = "%" + login + "%";
+
 		EntityManager em = JPAUtil.createEntityManager();
 		em.getTransaction().begin();
-		String queryStri=" FROM Usuario u  " +
-						" WHERE (u.login like :login)";
-		
+		String queryStri = " FROM Usuario u  " + " WHERE (u.login like :login)";
+
 		@SuppressWarnings("unchecked")
-		List<Usuario> saida = em.createQuery(queryStri).setParameter("login", login).getResultList();
-		
-		
-		if (null == saida ||saida.isEmpty() ){
+		List<Usuario> saida = em.createQuery(queryStri)
+				.setParameter("login", login).getResultList();
+
+		if (null == saida || saida.isEmpty()) {
 			return null;
-		}else{
-		   return saida;
+		} else {
+			return saida;
 		}
-		
+
 	}
-	
-	
+
 	/**
 	 * Recupera todos os usuarios do sistema
-	 * @return List<Usuario>	
+	 * 
+	 * @return List<Usuario>
 	 * */
 	@SuppressWarnings("unchecked")
-	public List<Usuario> lista (){
+	public List<Usuario> lista() {
 		EntityManager em = JPAUtil.createEntityManager();
 		em.getTransaction().begin();
-		String queryStri=" FROM Usuario u " +
-				         " ORDER by u.login ASC" ;
+		String queryStri = " FROM Usuario u " + " ORDER by u.login ASC";
 
 		List<Usuario> saida = em.createQuery(queryStri).getResultList();
-		
+
 		return saida;
 	}
 
 	/**
 	 * Recupera os armadores asociados a un armador
+	 * 
 	 * @param idArmador
 	 * @return List<Usuario>
 	 * */
 	public List<Usuario> findPatronsDunArmador(long idArmador) {
-		
+
 		EntityManager em = JPAUtil.createEntityManager();
-		
+
 		em.getTransaction().begin();
-		String queryStri=" FROM Usuario u  " +
-						 " WHERE (u.patron_autoriza = :patron_autoriza)";
-		
+		String queryStri = " FROM Usuario u  "
+				+ " WHERE (u.patron_autoriza = :patron_autoriza)";
+
 		@SuppressWarnings("unchecked")
-		List<Usuario> saida = em.createQuery(queryStri).setParameter("patron_autoriza", idArmador).getResultList();
-		
-		
-		if (null == saida ||saida.isEmpty() ){
+		List<Usuario> saida = em.createQuery(queryStri)
+				.setParameter("patron_autoriza", idArmador).getResultList();
+
+		if (null == saida || saida.isEmpty()) {
 			return null;
-		}else{
-		   return saida;
+		} else {
+			return saida;
 		}
-		
-		
+
 	}
 
 	/**
-	 * Busqueda dun armador a traves dunha cadea e  semellantes 
-	 * @param long idarmador 
-	 * @param String login
-	 * @return List<Usuario> 
+	 * Busqueda dun armador a traves dunha cadea e semellantes
+	 * 
+	 * @param long idarmador
+	 * @param String
+	 *            login
+	 * @return List<Usuario>
 	 * **/
 	public List<Usuario> findPatronsDunArmador(long idArmador, String login) {
-		
+
 		EntityManager em = JPAUtil.createEntityManager();
-		
+
 		em.getTransaction().begin();
-		String queryStri=" FROM Usuario u  " +
-						 " WHERE (u.patron_autoriza = :patron_autoriza) " +
-						 " AND ( u.login like :login) ";
-		
+		String queryStri = " FROM Usuario u  "
+				+ " WHERE (u.patron_autoriza = :patron_autoriza) "
+				+ " AND ( u.login like :login) ";
+
 		@SuppressWarnings("unchecked")
-		List<Usuario> saida = em.createQuery(queryStri).setParameter("patron_autoriza", idArmador).setParameter("login", "%"+login+"%").getResultList();
-		
-		
-		if (null == saida ||saida.isEmpty() ){
+		List<Usuario> saida = em.createQuery(queryStri)
+				.setParameter("patron_autoriza", idArmador)
+				.setParameter("login", "%" + login + "%").getResultList();
+
+		if (null == saida || saida.isEmpty()) {
 			return null;
-		}else{
-		   return saida;
+		} else {
+			return saida;
 		}
-		
+
 	}
-	
-	
-/**
- * Busca o patron dun armador
- * @param idArmador
- * @param id
- * @return List<Usuario>
- * **/
-public List<Usuario> findPatronDunArmador(long idArmador, long id) {
-		
+
+	/**
+	 * Busca o patron dun armador
+	 * 
+	 * @param idArmador
+	 * @param id
+	 * @return List<Usuario>
+	 * **/
+	public List<Usuario> findPatronDunArmador(long idArmador, long id) {
+
 		EntityManager em = JPAUtil.createEntityManager();
-		
+
 		em.getTransaction().begin();
-		String queryStri=" FROM Usuario u  " +
-						 " WHERE (u.patron_autoriza = :patron_autoriza) " +
-						 " AND ( u.id like = :id) ";
-		
+		String queryStri = " FROM Usuario u  "
+				+ " WHERE (u.patron_autoriza = :patron_autoriza) "
+				+ " AND ( u.id like = :id) ";
+
 		@SuppressWarnings("unchecked")
-		List<Usuario> saida = em.createQuery(queryStri).setParameter("patron_autoriza", idArmador).setParameter("id", id).getResultList();
-		
-		
-		if (null == saida ||saida.isEmpty() ){
+		List<Usuario> saida = em.createQuery(queryStri)
+				.setParameter("patron_autoriza", idArmador)
+				.setParameter("id", id).getResultList();
+
+		if (null == saida || saida.isEmpty()) {
 			return null;
-		}else{
-		   return saida;
+		} else {
+			return saida;
 		}
-		
+
 	}
-	
-	
 
 }
-
