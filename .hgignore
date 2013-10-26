@@ -1,3 +1,5 @@
 syntax: glob
 *.class
+.git
+.git*
 src/main/webapp/WEB-INF/glassfish-web.xml
