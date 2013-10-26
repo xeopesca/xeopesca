@@ -26,23 +26,22 @@ import com.xeopesca.util.JPAUtil;
 import com.xeopesca.util.dao.GenericDaoHibernate;
 import com.xeopesca.webapp.model.vos.Arte;
 
-
 /**
  * @author belay
- *
+ * 
  */
-public class ArteDAO extends GenericDaoHibernate<Arte>{
+public class ArteDAO extends GenericDaoHibernate<Arte> {
 
 	/**
 	 * Recupera todas as artes existentes no sistema.
+	 * 
 	 * @return List<Arte>
 	 * */
 	@SuppressWarnings("unchecked")
 	public List<Arte> lista() {
 		EntityManager em = JPAUtil.createEntityManager();
 		em.getTransaction().begin();
-		String queryStri = " FROM Arte a " 
-						 + " ORDER by a.nome  ASC";
+		String queryStri = " FROM Arte a " + " ORDER by a.nome  ASC";
 		List<Arte> saida = em.createQuery(queryStri).getResultList();
 
 		return saida;
@@ -50,22 +49,24 @@ public class ArteDAO extends GenericDaoHibernate<Arte>{
 
 	/**
 	 * Busca unha arte polo seu nome
-	 * @param String nome
+	 * 
+	 * @param String
+	 *            nome
 	 * @return List<Arte>
 	 * */
 	public List<Arte> finByArte(String nome) {
 		EntityManager em = JPAUtil.createEntityManager();
 		em.getTransaction().begin();
-		String queryStri=" FROM Arte a  " +
-						" WHERE (a.nome like :nome)";
-		
+		String queryStri = " FROM Arte a  " + " WHERE (a.nome like :nome)";
+
 		@SuppressWarnings("unchecked")
-		List<Arte> saida = em.createQuery(queryStri).setParameter("nome", nome).getResultList();
-		
-		if (null==saida || saida.isEmpty()){
+		List<Arte> saida = em.createQuery(queryStri).setParameter("nome", nome)
+				.getResultList();
+
+		if (null == saida || saida.isEmpty()) {
 			saida = new ArrayList<Arte>();
 		}
-		
+
 		return saida;
 	}
 
