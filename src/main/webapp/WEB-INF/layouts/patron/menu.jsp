@@ -33,7 +33,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 			<ul>
 				<li><a href="/xeopesca/patron/buscadorFaena" >Buscar
 						faenas</a></li>
-				<li><a href="/xeopesca/armador/buscadorpesca">Buscar pescas</a></li>
+				<li><a href="/xeopesca/patron/buscadorpesca">Buscar pescas</a></li>
 			</ul></li>
 
 
