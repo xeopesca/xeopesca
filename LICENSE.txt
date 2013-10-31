@@ -1,4 +1,4 @@
-LICENSE.txt for xeoPesca
+﻿LICENSE.txt for xeoPesca
 
 xeoPesca:aplicación web para a xeolocalización de pesca de baixura.
 
@@ -175,24 +175,25 @@ Library.
 
 ----------------------------------------------------------------
 This program includes works under other copyright notices and distributed according to the terms of the General Public License or a compatible license, including
-* OpenLayers: Combination licenses ,Apache 2.0 , BSD e Mit
-* jsDatePick: GPL v3
-* Jetty: Apache License 2.0 e Eclipse Public License 1.0.
-* OpenProj: Common Public Attribution License
-* ArgoUML: Eclipse Public License
-* Eclipse: Eclipse Public License
-* Tiles: GPL v2
-* JSTL: GPL v2
-* DIA: GPL v2
-* OpenJDK 1.6 : GPL v2
-* Postgis 1.5: GPL v2
-* GeoServer: GPL v2
-* Geoserver: GPL v2
-* Hibernate Spatial: GPL V2.1
-* Tomcat 7: Apache License 2.0
-* Spring Framework: Apache License 2.0
-* BootStrap: Apache License 2.0
-* Maven: Apache License 2.0
-* Postgresql: PostgreSQL
-* PgAdmin: PostgreSQL
+* OpenLayers -->  FreeBSD, Apache 2.0 e Mit
+* jsDatePick  --> GPLv3
+* Tiles -->  Apache 2.0
+* JSTL-->  GPLv2
+* OpenJDK 1.6 -->  GPLv2
+* Hibernate Spatial-->  GPLv2.1
+* Spring Framework -->  Apache 2.0
+* BootStrap -->  Apache 2.0
+* Maven --> Apache 2.0
+* Commons digester -->  Apache 2.0
+* Commons fileupload --> Apache 2.0
+* Hibernate core -->  LGPLv2.1
+* Hibernate validator annotation processor -->  LGPLv2.1
+* Hibernate entitymanager -->  LGPLv2.1
+* Slf4j -->  X11
+* JDBC postgresql-->  Postgresql
+* Postgis-jdbc--> GPLv2
+* Javax.validation-->  Apache 2.0
+* Commons-dbcp-->  Apache 2.0
+* Commons-jcs --> Apache 2.0
+* Commons-io --> Apache 2.0
 

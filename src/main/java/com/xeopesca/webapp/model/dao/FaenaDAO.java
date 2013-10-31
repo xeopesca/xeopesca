@@ -32,13 +32,14 @@ import com.xeopesca.webapp.model.vos.Faena;
 
 /**
  * @author belay
- * 
+ *
  */
-public class FaenaDAO extends GenericDaoHibernate<Faena> {
+public class FaenaDAO extends GenericDaoHibernate<Faena>{
 
+
+	
 	/**
 	 * Recupera as faenas asociadas a un barco a través de hql
-	 * 
 	 * @param long idbarco
 	 * @return List<Faena>
 	 * **/
@@ -46,8 +47,9 @@ public class FaenaDAO extends GenericDaoHibernate<Faena> {
 	public List<Faena> lista(long idBarco) {
 		EntityManager em = JPAUtil.createEntityManager();
 		em.getTransaction().begin();
-		String queryStri = " FROM  Faena f " + " WHERE (f.idBarco = :idBarco) "
-				+ " ORDER by f.id  ASC";
+		String queryStri = " FROM  Faena f " +
+				           " WHERE (f.idBarco = :idBarco) " 
+						 + " ORDER by f.id  ASC";
 		List<Faena> saida = em.createQuery(queryStri).getResultList();
 
 		return saida;
@@ -55,199 +57,166 @@ public class FaenaDAO extends GenericDaoHibernate<Faena> {
 
 	/**
 	 * Recupera as faenas asociadas a un barco a través de hql
-	 * 
 	 * @param long idbarco
 	 * @return List<Faena>
 	 * **/
-	public List<Faena> faenasBarco(Long idBarco) {
+	public  List<Faena> faenasBarco(Long idBarco) {
 		EntityManager em = JPAUtil.createEntityManager();
 		em.getTransaction().begin();
-		String queryStri = " FROM Faena f " + " WHERE (f.idbarco = :idbarco) "
-				+ " ORDER by f.id  DESC ";
+		String queryStri = " FROM Faena f " +
+						   " WHERE (f.idbarco = :idbarco) " 
+						 + " ORDER by f.id  DESC ";
 
 		@SuppressWarnings("unchecked")
-		List<Faena> saida = em.createQuery(queryStri)
-				.setParameter("idbarco", idBarco).getResultList();
-
+		List<Faena> saida = em.createQuery(queryStri).setParameter("idbarco", idBarco).getResultList();
+		
 		return saida;
 	}
 
+
 	/**
 	 * Buscador avanzado, buscamos polos diferentes campos duha faena
-	 * 
-	 * @param Faena
-	 *            faena
+	 * @param Faena faena
 	 * @return List<Faena>
 	 * */
 	public List<Faena> faenasBuscador(Faena faena) {
 		EntityManager em = JPAUtil.createEntityManager();
 		CriteriaBuilder cb = em.getEntityManagerFactory().getCriteriaBuilder();
 
-		CriteriaQuery<Faena> criteriaQuery = cb.createQuery(Faena.class);
+	    CriteriaQuery<Faena> criteriaQuery = cb.createQuery(Faena.class);
 
-		// Indicamos la entidad sobre la cual necesitamos crear la consulta
-		Root<Faena> faenaER = criteriaQuery.from(Faena.class);
-		// Creamos un predicado conjunction, que vienen a ser un tipo de
-		// restriccion en el query
-		Predicate conjunction = cb.conjunction();
+	    //Indicamos la entidad sobre la cual necesitamos crear la consulta
+	    Root<Faena> faenaER = criteriaQuery.from(Faena.class);	
+	    //Creamos un predicado conjunction, que vienen a ser un tipo de restriccion en el query
+        Predicate conjunction = cb.conjunction();
+    
+        /**
+         * APLICAMOS OS FILTROS DA BUSQUEDA
+         * 
+         * **/
+        
+       // agregamos una expresion al conjunction, greater than
+       if (faena.getIdbarco() != 0){ 
+    	   conjunction.getExpressions().add(cb.equal(faenaER.get("idbarco").as(Integer.class), faena.getIdbarco()));
+       }
+       
+       if (faena.getIdarte() != null){ 
+    	   conjunction.getExpressions().add(cb.equal(faenaER.get("idarte").as(Integer.class), faena.getIdarte()));
+       }
+       if (faena.getEstado_ceo() != null){ 
+    	   conjunction.getExpressions().add(cb.equal(faenaER.get("estado_ceo").as(Integer.class), faena.getEstado_ceo() ));
+       }
+       
+       if (faena.getEstado_mar()!= null){ 
+    	   conjunction.getExpressions().add(cb.equal(faenaER.get("estado_mar").as(Integer.class), faena.getEstado_mar() ));
+       }
+       
+       if (faena.getLua()!= null){ 
+    	   conjunction.getExpressions().add(cb.equal(faenaER.get("lua").as(Integer.class), faena.getLua()));
+       }
+       
+       if (faena.getDireccion_vento()!= null){ 
+    	   conjunction.getExpressions().add(cb.equal(faenaER.get("direccion_vento").as(Integer.class), faena.getDireccion_vento()));
+       }
+       //Entre estas datas de incio
+       if (faena.getData_inicio()!=null){
+    	   Predicate predicado = cb.greaterThanOrEqualTo(faenaER.get("data_inicio").as(Date.class), faena.getData_inicio());
+    	  conjunction.getExpressions().add(predicado);
 
-		/**
-		 * APLICAMOS OS FILTROS DA BUSQUEDA
-		 * 
-		 * **/
-
-		// agregamos una expresion al conjunction, greater than
-		if (faena.getIdbarco() != 0) {
-			conjunction.getExpressions().add(
-					cb.equal(faenaER.get("idbarco").as(Integer.class),
-							faena.getIdbarco()));
-		}
-
-		if (faena.getIdarte() != null) {
-			conjunction.getExpressions().add(
-					cb.equal(faenaER.get("idarte").as(Integer.class),
-							faena.getIdarte()));
-		}
-		if (faena.getEstado_ceo() != null) {
-			conjunction.getExpressions().add(
-					cb.equal(faenaER.get("estado_ceo").as(Integer.class),
-							faena.getEstado_ceo()));
-		}
-
-		if (faena.getEstado_mar() != null) {
-			conjunction.getExpressions().add(
-					cb.equal(faenaER.get("estado_mar").as(Integer.class),
-							faena.getEstado_mar()));
-		}
-
-		if (faena.getLua() != null) {
-			conjunction.getExpressions().add(
-					cb.equal(faenaER.get("lua").as(Integer.class),
-							faena.getLua()));
-		}
-
-		if (faena.getDireccion_vento() != null) {
-			conjunction.getExpressions().add(
-					cb.equal(faenaER.get("direccion_vento").as(Integer.class),
-							faena.getDireccion_vento()));
-		}
-		// Entre estas datas de incio
-		if (faena.getData_inicio() != null) {
-			Predicate predicado = cb.greaterThanOrEqualTo(
-					faenaER.get("data_inicio").as(Date.class),
-					faena.getData_inicio());
-			conjunction.getExpressions().add(predicado);
-
-		}
-		if (faena.getData_fin() != null) {
-			Predicate predicado2 = cb.lessThanOrEqualTo(
-					faenaER.get("data_inicio").as(Date.class),
-					faena.getData_fin());
-			conjunction.getExpressions().add(predicado2);
-		}
-
-		// si el conjunction posee mas de cero expresiones, entonces las
-		// agregamos al query con el metodo where
-		// SpatialRestrictions.
-
-		if (conjunction.getExpressions().size() > 0) {
-			criteriaQuery.where(conjunction);
-		}
-
-		// retornamos una lista de la entidad especificada
-		List<Faena> saida = em.createQuery(criteriaQuery).getResultList();
-
+       }
+       if (faena.getData_fin()!=null){
+           Predicate predicado2 = cb.lessThanOrEqualTo(faenaER.get("data_inicio").as(Date.class), faena.getData_fin());
+    	   conjunction.getExpressions().add(predicado2);
+       }
+       
+       
+	   
+       // si el conjunction posee mas de cero expresiones, entonces las agregamos al query con el metodo where
+     //  SpatialRestrictions.
+       
+       if (conjunction.getExpressions().size() > 0) {
+           criteriaQuery.where(conjunction);
+       }
+       
+	   // retornamos una lista de la entidad especificada
+	     List<Faena> saida = em.createQuery(criteriaQuery).getResultList();
+	  
 		return saida;
-
+		
+		
 	}
 
 	/**
 	 * Buscador avanzado, buscamos polos diferentes campos duha faena
-	 * 
-	 * @param Faena
-	 *            faena
+	 * @param Faena faena
 	 * @return List<Faena>
 	 * */
-	public List<Faena> faenasBuscador(Faena faena, String barcos) {
+	public List<Faena> faenasBuscador(Faena faena,String barcos) {
 		EntityManager em = JPAUtil.createEntityManager();
 		CriteriaBuilder cb = em.getEntityManagerFactory().getCriteriaBuilder();
 
-		CriteriaQuery<Faena> criteriaQuery = cb.createQuery(Faena.class);
+	    CriteriaQuery<Faena> criteriaQuery = cb.createQuery(Faena.class);
 
-		// Indicamos la entidad sobre la cual necesitamos crear la consulta
-		Root<Faena> faenaER = criteriaQuery.from(Faena.class);
-		// Creamos un predicado conjunction, que vienen a ser un tipo de
-		// restriccion en el query
-		Predicate conjunction = cb.conjunction();
+	    //Indicamos la entidad sobre la cual necesitamos crear la consulta
+	    Root<Faena> faenaER = criteriaQuery.from(Faena.class);	
+	    //Creamos un predicado conjunction, que vienen a ser un tipo de restriccion en el query
+        Predicate conjunction = cb.conjunction();
+    
+        /**
+         * APLICAMOS OS FILTROS DA BUSQUEDA
+         * 
+         * **/
+       
+        
+       // agregamos una expresion al conjunction, greater than
+       if (faena.getIdbarco() != 0){ 
+    	   conjunction.getExpressions().add(cb.equal(faenaER.get("idbarco").as(Integer.class), faena.getIdbarco()));
+       }
+       
+       if (faena.getIdarte() != null){ 
+    	   conjunction.getExpressions().add(cb.equal(faenaER.get("idarte").as(Integer.class), faena.getIdarte()));
+       }
+       if (faena.getEstado_ceo() != null){ 
+    	   conjunction.getExpressions().add(cb.equal(faenaER.get("estado_ceo").as(Integer.class), faena.getEstado_ceo() ));
+       }
+       
+       if (faena.getEstado_mar()!= null){ 
+    	   conjunction.getExpressions().add(cb.equal(faenaER.get("estado_mar").as(Integer.class), faena.getEstado_mar() ));
+       }
+       
+       if (faena.getLua()!= null){ 
+    	   conjunction.getExpressions().add(cb.equal(faenaER.get("lua").as(Integer.class), faena.getLua()));
+       }
+       
+       if (faena.getDireccion_vento()!= null){ 
+    	   conjunction.getExpressions().add(cb.equal(faenaER.get("direccion_vento").as(Integer.class), faena.getDireccion_vento()));
+       }
+       //Entre estas datas de incio
+       if (faena.getData_inicio()!=null){
+    	   Predicate predicado = cb.greaterThanOrEqualTo(faenaER.get("data_inicio").as(Date.class), faena.getData_inicio());
+    	  conjunction.getExpressions().add(predicado);
 
-		/**
-		 * APLICAMOS OS FILTROS DA BUSQUEDA
-		 * 
-		 * **/
-
-		// agregamos una expresion al conjunction, greater than
-		if (faena.getIdbarco() != 0) {
-			conjunction.getExpressions().add(
-					cb.equal(faenaER.get("idbarco").as(Integer.class),
-							faena.getIdbarco()));
-		}
-
-		if (faena.getIdarte() != null) {
-			conjunction.getExpressions().add(
-					cb.equal(faenaER.get("idarte").as(Integer.class),
-							faena.getIdarte()));
-		}
-		if (faena.getEstado_ceo() != null) {
-			conjunction.getExpressions().add(
-					cb.equal(faenaER.get("estado_ceo").as(Integer.class),
-							faena.getEstado_ceo()));
-		}
-
-		if (faena.getEstado_mar() != null) {
-			conjunction.getExpressions().add(
-					cb.equal(faenaER.get("estado_mar").as(Integer.class),
-							faena.getEstado_mar()));
-		}
-
-		if (faena.getLua() != null) {
-			conjunction.getExpressions().add(
-					cb.equal(faenaER.get("lua").as(Integer.class),
-							faena.getLua()));
-		}
-
-		if (faena.getDireccion_vento() != null) {
-			conjunction.getExpressions().add(
-					cb.equal(faenaER.get("direccion_vento").as(Integer.class),
-							faena.getDireccion_vento()));
-		}
-		// Entre estas datas de incio
-		if (faena.getData_inicio() != null) {
-			Predicate predicado = cb.greaterThanOrEqualTo(
-					faenaER.get("data_inicio").as(Date.class),
-					faena.getData_inicio());
-			conjunction.getExpressions().add(predicado);
-
-		}
-		if (faena.getData_fin() != null) {
-			Predicate predicado2 = cb.lessThanOrEqualTo(
-					faenaER.get("data_inicio").as(Date.class),
-					faena.getData_fin());
-			conjunction.getExpressions().add(predicado2);
-		}
-
-		// si el conjunction posee mas de cero expresiones, entonces las
-		// agregamos al query con el metodo where
-		// SpatialRestrictions.
-
-		if (conjunction.getExpressions().size() > 0) {
-			criteriaQuery.where(conjunction);
-		}
-
-		// retornamos una lista de la entidad especificada
-		List<Faena> saida = em.createQuery(criteriaQuery).getResultList();
-
+       }
+       if (faena.getData_fin()!=null){
+           Predicate predicado2 = cb.lessThanOrEqualTo(faenaER.get("data_inicio").as(Date.class), faena.getData_fin());
+    	   conjunction.getExpressions().add(predicado2);
+       }
+       
+       
+	   
+       // si el conjunction posee mas de cero expresiones, entonces las agregamos al query con el metodo where
+     //  SpatialRestrictions.
+       
+       if (conjunction.getExpressions().size() > 0) {
+           criteriaQuery.where(conjunction);
+       }
+       
+	   // retornamos una lista de la entidad especificada
+	     List<Faena> saida = em.createQuery(criteriaQuery).getResultList();
+	  
 		return saida;
-
+		
+		
 	}
 
 }

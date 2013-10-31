@@ -25,52 +25,52 @@ import javax.persistence.EntityManager;
 import com.xeopesca.util.JPAUtil;
 import com.xeopesca.util.dao.GenericDaoHibernate;
 import com.xeopesca.webapp.model.vos.Especie;
-
 /**
  * @author belay
- * 
+ *
  */
-public class EspecieDAO extends GenericDaoHibernate<Especie> {
+public class EspecieDAO  extends GenericDaoHibernate<Especie>
+{
 
 	/**
 	 * Busca as especies con nome semellante ao pasado
-	 * 
-	 * @param String
-	 *            nomeEspecie
-	 * @return List<Especie>
+	 * @param String nomeEspecie
+	 * @return List<Especie> 
 	 * */
 	@SuppressWarnings("unchecked")
 	public List<Especie> finByEspecie(String nome) {
 		EntityManager em = JPAUtil.createEntityManager();
 		em.getTransaction().begin();
-		String queryStri = " FROM Especie e  "
-				+ " WHERE (e.nomecientifico like :nome)";
-
-		List<Especie> saida = em.createQuery(queryStri)
-				.setParameter("nome", nome).getResultList();
-
-		if (null == saida || saida.isEmpty()) {
+		String queryStri=" FROM Especie e  " +
+						" WHERE (e.nomecientifico like :nome)";
+		
+		List<Especie> saida = em.createQuery(queryStri).setParameter("nome", nome).getResultList();
+		
+		if (null==saida || saida.isEmpty()){
 			saida = new ArrayList<Especie>();
 		}
-
+		
 		return saida;
 	}
-
+	
 	/**
 	 * Recupera todas as especies existentes no sistema
-	 * 
 	 * @return List<Especie>
 	 * */
 	@SuppressWarnings("unchecked")
-	public List<Especie> lista() {
+	public List<Especie> lista (){
 		EntityManager em = JPAUtil.createEntityManager();
 		em.getTransaction().begin();
-		String queryStri = " FROM Especie e "
-				+ " ORDER by e.nomecientifico  ASC";
+		String queryStri=" FROM Especie e " +
+				         " ORDER by e.nomecientifico  ASC" ;
 
 		List<Especie> saida = em.createQuery(queryStri).getResultList();
-
-		return saida;
+		
+			return saida;
 	}
+	
+	
+	
 
 }
+
