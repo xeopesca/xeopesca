@@ -25,115 +25,109 @@ import javax.persistence.EntityManager;
 import com.xeopesca.util.JPAUtil;
 import com.xeopesca.util.dao.GenericDaoHibernate;
 import com.xeopesca.webapp.model.vos.Barco;
-
 /**
  * @author belay
- * 
+ *
  */
-public class BarcoDAO extends GenericDaoHibernate<Barco> {
+public class BarcoDAO  extends GenericDaoHibernate<Barco>
+{
 
-	/**
-	 * Recupera o conxunto de barcos dun armador dado o seu folio
-	 * 
-	 * @param String
-	 *            folio
+	/**Recupera o conxunto de barcos dun armador dado o seu folio
+	 * @param String folio
 	 * @param long idarmador
 	 * @return List<Barco>
 	 * */
 	@SuppressWarnings("unchecked")
-	public List<Barco> fingByFolio(String folio, long idarmador) {
+	public List<Barco> fingByFolio(String folio, long idarmador ) {
 		EntityManager em = JPAUtil.createEntityManager();
 		em.getTransaction().begin();
-		String queryStri = " FROM Barco e  " + " WHERE (e.folio like :folio) "
-				+ " AND e.idarmador = :idarmador ";
-
-		List<Barco> saida = em.createQuery(queryStri)
-				.setParameter("folio", folio)
-				.setParameter("idarmador", idarmador).getResultList();
-
-		if (null == saida || saida.isEmpty()) {
+		String queryStri=" FROM Barco e  " +
+						" WHERE (e.folio like :folio) " +
+						" AND e.idarmador = :idarmador ";
+		
+		List<Barco> saida = em.createQuery(queryStri).setParameter("folio", folio).setParameter("idarmador", idarmador).getResultList();
+		
+		if (null==saida || saida.isEmpty()){
 			saida = new ArrayList<Barco>();
 		}
-
+		
 		return saida;
 	}
-
-	/**
-	 * Recupera o barco dun armador
-	 * 
-	 * @param long idbarco
-	 * @param long idarmador
-	 * */
+	
+   /**Recupera o barco dun armador
+    * @param long idbarco
+    * @param long idarmador
+    * */
 	@SuppressWarnings("unchecked")
-	public List<Barco> buscarBarcoArmador(long id, long idarmador) {
+	public List<Barco> buscarBarcoArmador(long id, long idarmador ) {
 		EntityManager em = JPAUtil.createEntityManager();
 		em.getTransaction().begin();
-		String queryStri = " FROM Barco e  " + " WHERE (e.id = :id) "
-				+ " AND e.idarmador = :idarmador ";
-
-		List<Barco> saida = em.createQuery(queryStri).setParameter("id", id)
-				.setParameter("idarmador", idarmador).getResultList();
-
-		if (null == saida || saida.isEmpty()) {
+		String queryStri=" FROM Barco e  " +
+						" WHERE (e.id = :id) " +
+						" AND e.idarmador = :idarmador ";
+		
+		List<Barco> saida = em.createQuery(queryStri).setParameter("id", id).setParameter("idarmador", idarmador).getResultList();
+		
+		if (null==saida || saida.isEmpty()){
 			saida = new ArrayList<Barco>();
 		}
-
+		
 		return saida;
 	}
-
+	
 	/**
 	 * Recupera todos os barcos existentes no sistema
-	 * 
-	 * @return List<Barco>
+	 * @return List<Barco> 
 	 * **/
 	@SuppressWarnings("unchecked")
-	public List<Barco> lista() {
+	public List<Barco> lista (){
 		EntityManager em = JPAUtil.createEntityManager();
 		em.getTransaction().begin();
-		String queryStri = " FROM Barco e " + " ORDER by e.folio  ASC";
+		String queryStri=" FROM Barco e " +
+				         " ORDER by e.folio  ASC" ;
 
 		List<Barco> saida = em.createQuery(queryStri).getResultList();
-
-		return saida;
+		
+			return saida;
 	}
 
 	/**
 	 * Recupera os barcos dun armador
-	 * 
 	 * @param long idarmador
 	 * @return List<Barco>
 	 * */
 	public List<Barco> fingByIdArmador(long idarmador) {
 		EntityManager em = JPAUtil.createEntityManager();
 		em.getTransaction().begin();
-		String queryStri = " FROM Barco e "
-				+ " WHERE e.idarmador = :idarmador " + " ORDER by e.folio  ASC";
+		String queryStri=" FROM Barco e " +
+						 " WHERE e.idarmador = :idarmador " +
+				         " ORDER by e.folio  ASC" ;
 
 		@SuppressWarnings("unchecked")
-		List<Barco> saida = em.createQuery(queryStri)
-				.setParameter("idarmador", idarmador).getResultList();
-
-		return saida;
-
+		List<Barco> saida = em.createQuery(queryStri).setParameter("idarmador", idarmador).getResultList();
+		
+			return saida;
+			
 	}
-
-	/**
-	 * Recupera un barco dado un id
-	 * 
+	/**Recupera un barco dado un id
 	 * @param long id
-	 * @return List<Barco>
+	 * @return  List<Barco> 
 	 * */
 	public List<Barco> fingById(long id) {
 		EntityManager em = JPAUtil.createEntityManager();
 		em.getTransaction().begin();
-		String queryStri = " FROM Barco e " + " WHERE e.id = :id "
-				+ " ORDER by e.folio  ASC";
+		String queryStri=" FROM Barco e " +
+						 " WHERE e.id = :id " +
+				         " ORDER by e.folio  ASC" ;
 
 		@SuppressWarnings("unchecked")
-		List<Barco> saida = em.createQuery(queryStri).setParameter("id", id)
-				.getResultList();
-
-		return saida;
+		List<Barco> saida = em.createQuery(queryStri).setParameter("id", id).getResultList();
+		
+			return saida;
 	}
+	
+	
+	
 
 }
+

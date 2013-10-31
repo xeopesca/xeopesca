@@ -28,34 +28,44 @@ import com.xeopesca.webapp.model.vos.Parametria;
 
 /**
  * @author belay
- * 
+ *
  */
-public class ParametriaDAO extends GenericDaoHibernate<Parametria> {
+public class ParametriaDAO  extends GenericDaoHibernate<Parametria>
+{
 
+	
+	
+	
 	/**
 	 * Recupera un parametro
-	 * 
 	 * @param parametro
 	 * @return Lista de parametros asociados a esa clave
 	 */
 	public List<Parametria> findParametria(String parametro) {
-
+		
+		
 		EntityManager em = JPAUtil.createEntityManager();
 		em.getTransaction().begin();
-		String queryStri = " FROM Parametria u  "
-				+ " WHERE (u.parametro like :parametro) "
-				+ " ORDER BY u.literal  DESC";
-
+		String queryStri=" FROM Parametria u  " +
+						" WHERE (u.parametro like :parametro) " +
+						" ORDER BY u.literal  DESC";
+		
+		
 		@SuppressWarnings("unchecked")
-		List<Parametria> saida = em.createQuery(queryStri)
-				.setParameter("parametro", parametro).getResultList();
-
-		if (null == saida || saida.isEmpty()) {
+		List<Parametria> saida = em.createQuery(queryStri).setParameter("parametro", parametro).getResultList();
+		
+		
+		if (null == saida ||saida.isEmpty() ){
 			return null;
-		} else {
-			return saida;
+		}else{
+		   return saida;
 		}
-
+		
 	}
+	
+	
+
+	
 
 }
+
