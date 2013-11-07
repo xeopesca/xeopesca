@@ -31,8 +31,9 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 	<table>
 		<tr>
 			<th class="ReportTableHeaderCell">Id</th>
-			<th class="ReportTableHeaderCell">Nome cient�fico</th>
+			<th class="ReportTableHeaderCell">Nome científico</th>
 			<th class="ReportTableHeaderCell">Detalle</th>
+			<th class="ReportTableHeaderCell">Engadir Nome popular</th>
 			<th class="ReportTableHeaderCell">Borrar</th>
 		</tr>
 		<c:forEach var="especies" items="${especies}" varStatus="status">
@@ -43,6 +44,11 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 				<td class="ReportTableValueCell">
 					<center>
 						<a href="editarEspecie/${especies.id}"> <img src="/images/detalle.gif" /></a>
+					</center>
+				</td>
+				<td class="ReportTableValueCell">
+					<center>
+						<a href="novoNomePopular/${especies.id}"> <img src="/images/add.png" /></a>
 					</center>
 				</td>
 				<td class="ReportTableValueCell">

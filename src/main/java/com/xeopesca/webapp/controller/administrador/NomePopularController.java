@@ -80,6 +80,26 @@ public class NomePopularController {
 
 		return "novoNomePopular";
 	}
+	
+	/**
+	 * /admin/novoNomePopular/{PathVariable=idEspecie} GET
+	 * 
+	 * @param model
+	 * @param nomePopular
+	 * @return
+	 */
+	@RequestMapping(value = "/admin/novoNomePopular/{idEspecie}", method = RequestMethod.GET)
+	public String novaArte( @PathVariable("idEspecie")Long idEspecie  ,Model model, Nomepopular nomePopular) {
+		Especie especie = EspecieServicio.buscarEspecie(idEspecie);
+		List<Especie> listaEspecie = new ArrayList();
+		listaEspecie.add(especie);
+		
+		model.addAttribute("listaEspecie", listaEspecie);
+		model.addAttribute("NomePopular", nomePopular);
+
+		return "novoNomePopular";
+	}
+	
 
 	/**
 	 * /admin/novoNomePopular POST
