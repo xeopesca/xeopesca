@@ -27,7 +27,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 
 <div id="ReportDetails">
 	<h2>Novo nome popular</h2>
-	<form:form method="POST" action="novoNomePopular"
+	<form:form method="POST" action="/xeopesca/admin/novoNomePopular"
 		commandName="NomePopular">
 
 		<div style="color: #FF0000;"></div>
@@ -40,10 +40,26 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 			<tr>
 				<td>Especie :</td>
 				<td>
-				<form:select path="idespecie">
-				<form:option value="" label="" />
-				<form:options items="${listaEspecie}" itemValue="id" itemLabel="nomecientifico" />
-				</form:select>
+					<c:choose>
+						<c:when test="${listaEspecie.size()==1}">
+							<form:select path="idespecie">
+								<form:options items="${listaEspecie}" itemValue="id"
+									itemLabel="nomecientifico" />
+							</form:select>
+						</c:when>
+						
+						<c:otherwise>
+							<form:select path="idespecie">
+								<form:option value="" label="" />
+								<form:options items="${listaEspecie}" itemValue="id"
+									itemLabel="nomecientifico" />
+							</form:select>
+						</c:otherwise>
+					</c:choose>
+				
+				
+				
+				
 				</td>
 			</tr>
 

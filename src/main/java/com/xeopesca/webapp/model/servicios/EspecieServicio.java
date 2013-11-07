@@ -46,9 +46,11 @@ public class EspecieServicio {
 	 * Da de alta no sistema unha nova especie
 	 * @param especie
 	 */
-	public static void saveEspecie(Especie especie) {
+	public static Especie saveEspecie(Especie especie) {
 		EspecieDAO especieDao = new EspecieDAO();
-		especieDao.create(especie);
+		Especie especieOut = especieDao.create(especie);
+		
+		return especieOut;
 	}
 
 	

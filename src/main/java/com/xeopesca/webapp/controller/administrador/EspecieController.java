@@ -46,10 +46,7 @@ import com.xeopesca.webapp.model.vos.Especie;
  * @author belay
  *
  */
-/**
- * @author belay
- *
- */
+
 @Controller
 public class EspecieController {
 	List<Especie> especies;
@@ -89,17 +86,20 @@ public class EspecieController {
 			@RequestParam("file") MultipartFile file) {
 
 		String direcotrio = request.getSession().getServletContext().getRealPath("/");
-		EspecieServicio.saveEspecie(especie);
-
+		Especie especieOut = EspecieServicio.saveEspecie(especie);
+			especie.setPath("/images/especie/"+especieOut.getId()+".jpg");
+			
 		if (UploaderFileUtil.uploadFile(file, especie, "./src/main/webapp/images/especie/")){
-			especie.setPath("/images/especie/"+especie.getId()+".jpg");
 			EspecieServicio.editarEspecie(especie);
+			
+			
 			return "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
-					+ "/admin/listaEspecies";
+					+ "/admin/novoNomePopular/"+especieOut.getId();
 		} 
 		
 		return "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
-				+ "/admin/listaEspecies";
+				+ "/admin/novoNomePopular/"+especieOut.getId();
+		
 	}
 
 	
