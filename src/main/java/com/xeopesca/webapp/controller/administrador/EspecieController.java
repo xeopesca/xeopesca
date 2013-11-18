@@ -49,6 +49,8 @@ import com.xeopesca.webapp.model.vos.Especie;
 
 @Controller
 public class EspecieController {
+	private static final String PATH_IMAGES = "/var/lib/tomcat7/webapps/ROOT/images/especie/";
+
 	List<Especie> especies;
 
 	@Autowired
@@ -85,20 +87,21 @@ public class EspecieController {
 	public String novaEspecie(Especie especie, BindingResult result,
 			@RequestParam("file") MultipartFile file) {
 
-		String direcotrio = request.getSession().getServletContext().getRealPath("/");
+		String directorio = request.getSession().getServletContext().getRealPath("/");
+		especie.setPath("/images/especie/");
+		
 		Especie especieOut = EspecieServicio.saveEspecie(especie);
-			especie.setPath("/images/especie/"+especieOut.getId()+".jpg");
+		especie.setPath(especie.getPath()+especieOut.getId()+".jpg");
 			
-		if (UploaderFileUtil.uploadFile(file, especie, "./src/main/webapp/images/especie/")){
+		if (UploaderFileUtil.uploadFile(file, PATH_IMAGES ,especie)){
 			EspecieServicio.editarEspecie(especie);
-			
 			
 			return "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
 					+ "/admin/novoNomePopular/"+especieOut.getId();
 		} 
 		
 		return "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
-				+ "/admin/novoNomePopular/"+especieOut.getId();
+				+ "/admin/novoNomePopular/";
 		
 	}
 
@@ -170,7 +173,7 @@ public class EspecieController {
 			return "editarEspecie";
 		}
 		
-		if (UploaderFileUtil.uploadFile(file, especie, "./src/main/webapp/images/especie/")){
+		if (UploaderFileUtil.uploadFile(file, PATH_IMAGES, especie)){
 			especie.setPath("/images/especie/"+especie.getId()+".jpg");
 			EspecieServicio.editarEspecie(especie);
 			return "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
