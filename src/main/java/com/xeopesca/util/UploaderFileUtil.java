@@ -18,7 +18,9 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 --------------------------------------------------------------------*/
 package com.xeopesca.util;
 
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -31,76 +33,53 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.xeopesca.webapp.model.vos.Especie;
 
-
 /**
  * Clase de utiler'ia para subir ficheiros ao servidor
+ * 
  * @author belay
- *
+ * 
  */
 public class UploaderFileUtil {
-	
-	
-	private UploaderFileUtil(){
-		
+
+	private UploaderFileUtil() {
+
 	}
-	
+
 	/**
 	 * Sube un ficheiro ao servidor
+	 * 
 	 * @param file
+	 * @param directorio 
 	 * @param especie
 	 * @param path
 	 * @return boolean
 	 */
-	public static boolean uploadFile(MultipartFile file,Especie especie, String path)
-	{
-		String  nomeFicheiro;
-		
+	public static boolean uploadFile(MultipartFile file, String directorio, Especie especie) {
+
+		String nomeFicheiro = String.valueOf(especie.getId()) + ".jpg";
+		String pathFicheiro = directorio + nomeFicheiro;
+
 		try {
-			if (!file.isEmpty()) {
+			//if (!file.isEmpty()) {
 
 				byte[] data = file.getBytes();
-				
-				OutputStream out = null;
-				nomeFicheiro = String.valueOf(especie.getId())+".jpg";
-				
-				//Validamos
-				File dir = new File (path+nomeFicheiro);
-			    if (dir.exists()) {
-			    	if (dir.length() == file.getSize())
-			    	{
-			    		return true;
-			    	}else {
-			    		//dir.renameTo(new File (path+nomeFicheiro+"borrar"));
-			    		if (!dir.delete())
-			    			{
-			    				//return false;
-			    			}
-			    		//return true;
-			    	}
-			    }
-			    	
-			    	
-			    	
-				
-				dir.deleteOnExit();
+				File ficheiro = new File(pathFicheiro);
+				// Borramos se o ficheiro existe
+				ficheiro.deleteOnExit();
 
-				FileOutputStream fo = new FileOutputStream(dir) ;
-				fo.flush();
-				out = fo;
-				out.flush();
-				out.write(data);
+				FileOutputStream fos = new FileOutputStream(ficheiro);
+				DataOutputStream dos = new DataOutputStream(fos);
+				dos.write(data);
+				dos.flush();
+				dos.close();
 
-		
 				return true;
-			} else {
-				return false;
-
-			}
-		}
-		catch (IOException e) {
+			//}
+		} catch (IOException e) {
 			e.printStackTrace();
-			return false;
+			// return false;
 		}
+		return false;
 	}
-		
+
 }
