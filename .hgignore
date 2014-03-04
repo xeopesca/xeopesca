@@ -3,3 +3,4 @@ syntax: glob
 .git
 .git*
 src/main/webapp/WEB-INF/glassfish-web.xml
+target/*
