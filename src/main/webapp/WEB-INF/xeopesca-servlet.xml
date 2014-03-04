@@ -41,11 +41,21 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-	<!-- Validador -->
-	<bean class="org.springframework.context.support.ResourceBundleMessageSource"
-		id="messageSource">
-		<property name="basename" value="mensaxes" />
+	<!-- Validador  - I11N -->
+	<bean id="messageSource"  class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="messages" />
 	</bean>
+	<!-- Declare the Interceptor -->
+	<mvc:interceptors>    
+	    <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"
+	          p:paramName="locale" />
+	</mvc:interceptors>
+	
+<!-- Declare the Resolver -->
+<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
+                
+            
+	
 	
 <!-- UPLOADER FILE --> 
 <bean id="multipartResolver"

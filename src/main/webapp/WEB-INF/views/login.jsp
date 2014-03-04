@@ -17,9 +17,10 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 --------------------------------------------------------------------*/
 
  -->
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
 <!-- novas -->
@@ -57,8 +58,6 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 	<button class="btn btn-large btn-primary" type="submit">Entrar</button>
 </form>
 </div>
-
-
 
 
 	<script src="/bootstrap/js/bootstrap-alert.js"></script> 
