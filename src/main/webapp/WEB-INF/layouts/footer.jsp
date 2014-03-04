@@ -17,5 +17,9 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 --------------------------------------------------------------------*/
 
  -->
-<div id="ReportFooter">
-xeopesca (c)</div>
+ <%@ page language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+ 
+<div id="ReportFooter"><fmt:message key="site.footer"/> </div>
