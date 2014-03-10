@@ -21,7 +21,6 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
@@ -43,7 +42,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 </script>
 
 <div id="ReportDetails">
-	 <h2>Buscador faena </h2>
+	 <h2><fmt:message key="patron.buscadorFaena.title"/></h2>
 	
 	<form:form  action="/xeopesca/patron/buscadorFaena" method="POST" commandName="faena">
 		<input id="idbarco" name="idbarco" type="hidden" value="${idbarco}"/>
@@ -52,7 +51,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 		<table>
 		
 			<tr>
-				<td>Arte:</td>
+				<td><fmt:message key="patron.buscadorFaena.arte"/></td>
 				
 				<td>
 					<form:select  path="arte">
@@ -61,22 +60,22 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 							<form:options items="${artes}" itemValue="id" itemLabel="nome" />
 					</form:select>
 				</td>
-			<td>Per&#237odo inicio:</td>
+			<td><fmt:message key="patron.buscadorFaena.peri"/></td>
 				<td><form:input path="dataInicio" readonly="true" id="dinicio" /></td>
-			<td>Per&#237odo fin:</td>
+			<td><fmt:message key="patron.buscadorFaena.perf"/></td>
 				<td><form:input  path="dataFin" readonly="true" id="dfin"/></td>
 			
 				
 			</tr>
 			<tr>
-				<td>Lua:</td>
+				<td><fmt:message key="patron.buscadorFaena.lua"/></td>
 				<td><form:select path="lua" id="idlua">
 						<form:option value="" label="Todas" />
 					
 						<form:options items="${lua}" itemValue="id" itemLabel="literal" />
 						
 					</form:select></td>
-			<td>Estado mar:</td>
+			<td><fmt:message key="patron.buscadorFaena.estadorMar"/></td>
 				<td>
 					<form:select path="estadoMar" id="idmar" >
 						<form:option value="" label="Todos" />
@@ -84,7 +83,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 					</form:select>		
 				</td>
 				
-			<td>Estado ceo:</td>
+			<td><fmt:message key="patron.buscadorFaena.estadoCeo"/></td>
 				<td>
 					<form:select path="estadoCeo" id="idceo" >
 						<form:option value="" label="Todos" />
@@ -96,7 +95,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 			
 			
 			<tr>
-				<td>Direcci&#243n vento:</td>
+				<td><fmt:message key="patron.buscadorFaena.dirv"/></td>
 				<td>
 					<form:select path="direccionVento" id="idvento" >
 						<form:option value="" label="Todas" />
@@ -113,7 +112,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 			
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Enviar" /></td>
+				<td><input type="submit" value='<fmt:message key="patron.buscadorFaena.button.gardar"/>' /></td>
 				
 			</tr>
 		</table>

@@ -20,13 +20,13 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
 
 <div id="ReportDetails">
-	 <h2>Editar lance </h2>
+	 <h2><fmt:message key="patron.editarLance.title"/> </h2>
 	
 	<form:form  action="/xeopesca/patron/editarLance"  commandName="lance">
 		<input id="idfaena" name="idfaena" type="hidden" value="${lance.idfaena}"/>
@@ -36,11 +36,11 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 	
 		<table>
 		<tr>
-			<td>Coordenadas:</td>
+			<td><fmt:message key="patron.editarLance.coor"/></td>
 			<td>
 			    <form:input  path="punto_inicio" />
 			</td>
-			<td>Descripcion:</td>
+			<td><fmt:message key="patron.editarLance.desc"/></td>
 			<td>
 				<form:input  path="descripcion" />
 				
@@ -49,7 +49,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 		</tr>
 		<tr>
 				<td></td>
-				<td><input type="submit" value="Enviar" /></td>
+				<td><input type="submit" value='<fmt:message key="patron.editarLance.gardar"/>' /></td>
 		</tr>
 		
 		</table>

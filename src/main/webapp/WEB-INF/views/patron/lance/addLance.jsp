@@ -20,13 +20,13 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
 
 <div id="ReportDetails">
-	 <h2>Engadir lance </h2>
+	 <h2><fmt:message key="patron.addLance.title"/></h2>
 	
 	<form:form  action="/xeopesca/patron/addLance"  commandName="lance">
 		<input id="idfaena" name="idfaena" type="hidden" value="${lance.idfaena}"/>
@@ -35,14 +35,14 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 	
 		<table>
 		<tr>
-			<td>Descripcion:</td>
+			<td><fmt:message key="patron.addLance.desc"/></td>
 			<td>
 				<form:input  path="descripcion" />
 				
 			</td>
 		</tr>
 		<tr>
-			<td>Coordenadas:</td>
+			<td><fmt:message key="patron.addLance.coor"/></td>
 			<td>
 			    <form:input  id="punto" path="punto_inicio" />
 			</td>

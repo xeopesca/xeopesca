@@ -20,7 +20,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <script type="text/javascript">
@@ -44,7 +44,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 
 
 <div id="ReportDetails">
-	 <h2>Editar faena </h2>
+	 <h2><fmt:message key="patron.editarFaena.title"/></h2>
 	<br>
 	<form:form  action="/xeopesca/patron/editarFaena" method="POST" commandName="faena">
 		<input id="idbarco" name="idbarco" type="hidden" value="${faena.idbarco}"/>
@@ -52,54 +52,54 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 		<table>
 		
 			<tr>
-				<td>Arte:</td>
+				<td><fmt:message key="patron.editarFaena.arte"/></td>
 				
 				<td>
 					<form:select path="arte">
 							<form:options items="${artes}" itemValue="id" itemLabel="nome" />
 					</form:select>
 				</td>
-			<td>Data inicio:</td>
+			<td><fmt:message key="patron.editarFaena.datai"/></td>
 				<td><form:input path="dataInicio" readonly="true" id="dinicio" /></td>
-				<td>Hora inicio:</td>
+				<td><fmt:message key="patron.editarFaena.horai"/></td>
 				<td><form:input path="horaInicio" /> </td>
 				
 			</tr>
 			<tr>
-				<td>Lua:</td>
+				<td><fmt:message key="patron.editarFaena.lua"/></td>
 				<td><form:select path="lua">
 						<form:options items="${lua}" itemValue="id" itemLabel="literal" />
 						
 					</form:select></td>
 				
-				<td>Data fin:</td>
+				<td><fmt:message key="patron.editarFaena.dataf"/></td>
 				<td><form:input  path="dataFin" readonly="true" id="dfin"/></td>
 				
-				<td>Hora fin:</td>
+				<td><fmt:message key="patron.editarFaena.horaf"/></td>
 				<td><form:input path="horaFin"  /></td>
 				
 			
 			</tr>
 			<tr>
-				<td>Temp. Aire:</td>
+				<td><fmt:message key="patron.editarFaena.tempAire"/></td>
 				<td><form:input path="tempAire" /></td>
 				
-				<td>Temp. Superficie:</td>
+				<td><fmt:message key="patron.editarFaena.tempSup"/></td>
 				<td><form:input path="tempSuperficie" /></td>
 				
-				<td>Temp. Fondo:</td>
+				<td><fmt:message key="patron.editarFaena.tempFondo"/></td>
 				<td><form:input path="tempFondo" /></td>
 			
 			</tr>
 			<tr>
-				<td>Estado mar:</td>
+				<td><fmt:message key="patron.editarFaena.estadoMar"/></td>
 				<td>
 					<form:select path="estadoMar" >
 						<form:options items="${mar}" itemValue="id" itemLabel="literal" />				
 					</form:select>		
 				</td>
 				
-				<td>Estado ceo:</td>
+				<td><fmt:message key="patron.editarFaena.estadoCeo"/></td>
 				<td>
 					<form:select path="estadoCeo" >
 						<form:options items="${ceo}" itemValue="id" itemLabel="literal" />
@@ -107,7 +107,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 				</td>
 			</tr>
 			<tr>
-				<td>Direcci�n vento:</td>
+				<td><fmt:message key="patron.editarFaena.dirv"/></td>
 				<td>
 					<form:select path="direccionVento" >
 						<form:options items="${dirvento}" itemValue="id" itemLabel="literal" />
@@ -115,7 +115,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 					
 				</td>
 				
-				<td>Velocidade vento:</td>
+				<td><fmt:message key="patron.editarFaena.velVento"/></td>
 				<td>
 					<form:input path="velocidadeVento" />
 				</td>
@@ -125,7 +125,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 			
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Enviar" /></td>
+				<td><input type="submit" value='<fmt:message key="patron.editarFaena.gardar"/>' /></td>
 			</tr>
 		</table>
 		

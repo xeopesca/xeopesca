@@ -20,12 +20,12 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
 <div id="ReportDetails">
-	 <h2>Lances dunha faena </h2>
+	 <h2><fmt:message key="patron.novoLance.title"/> </h2>
 	
 	<form:form  action="#"  commandName="faena">
 		<input id="idbarco" name="idbarco" type="hidden" value="${faena.idbarco}"/>
@@ -33,54 +33,54 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 		<table>
 		
 			<tr>
-				<td>Arte:</td>
+				<td><fmt:message key="patron.novoLance.arte"/></td>
 				
 				<td>
 					<form:select disabled="true" path="arte">
 							<form:options  items="${artes}" itemValue="id" itemLabel="nome" disabled="true" />
 					</form:select>
 				</td>
-			<td>Data inicio:</td>
+			<td><fmt:message key="patron.novoLance.di"/></td>
 				<td><form:input disabled="true" path="dataInicio" readonly="true" id="dinicio" /></td>
-				<td>Hora inicio:</td>
+				<td><fmt:message key="patron.novoLance.hi"/></td>
 				<td><form:input disabled="true" path="horaInicio" /> </td>
 				
 			</tr>
 			<tr>
-				<td>Lua:</td>
+				<td><fmt:message key="patron.novoLance.lua"/></td>
 				<td><form:select disabled="true" path="lua">
 						<form:options items="${lua}" itemValue="id" itemLabel="literal" />
 						
 					</form:select></td>
 				
-				<td>Data fin:</td>
+				<td><fmt:message key="patron.novoLance.df"/></td>
 				<td><form:input disabled="true"  path="dataFin" readonly="true" id="dfin"/></td>
 				
-				<td>Hora fin:</td>
+				<td><fmt:message key="patron.novoLance.hf"/></td>
 				<td><form:input disabled="true" path="horaFin"  /></td>
 				
 			
 			</tr>
 			<tr>
-				<td>Temp. Aire:</td>
+				<td><fmt:message key="patron.novoLance.ta"/></td>
 				<td><form:input disabled="true" path="tempAire" /></td>
 				
-				<td>Temp. Superficie:</td>
+				<td><fmt:message key="patron.novoLance.ts"/></td>
 				<td><form:input disabled="true" path="tempSuperficie" /></td>
 				
-				<td>Temp. Fondo:</td>
+				<td><fmt:message key="patron.novoLance.tf"/></td>
 				<td><form:input disabled="true" path="tempFondo" /></td>
 			
 			</tr>
 			<tr>
-				<td>Estado mar:</td>
+				<td><fmt:message key="patron.novoLance.em"/></td>
 				<td>
 					<form:select disabled="true" path="estadoMar" >
 						<form:options items="${mar}" itemValue="id" itemLabel="literal" />				
 					</form:select>		
 				</td>
 				
-				<td>Estado ceo:</td>
+				<td><fmt:message key="patron.novoLance.ec"/></td>
 				<td>
 					<form:select disabled="true" path="estadoCeo" >
 						<form:options disabled="true" items="${ceo}" itemValue="id" itemLabel="literal" />
@@ -88,7 +88,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 				</td>
 			</tr>
 			<tr>
-				<td>Direcci�n vento:</td>
+				<td><fmt:message key="patron.novoLance.dv"/></td>
 				<td>
 					<form:select disabled="true" path="direccionVento" >
 						<form:options items="${dirvento}" itemValue="id" itemLabel="literal" />
@@ -96,7 +96,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 					
 				</td>
 				
-				<td>Velocidade vento:</td>
+				<td><fmt:message key="patron.novoLance.vv"/></td>
 				<td>
 					<form:input disabled="true"  path="velocidadeVento" />
 				</td>
@@ -109,21 +109,21 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 				
 			</tr>
 		</table>
-		 <h2>Lances </h2>
+		 <h2><fmt:message key="patron.novoLance.title.lances"/> </h2>
 		
 	
 	</form:form>
 
 	<table>
 		<tr>
-			<th class="ReportTableHeaderCell">Id</th>
+			<th class="ReportTableHeaderCell"><fmt:message key="patron.novoLance.title.table.id"/></th>
 			
-			<th class="ReportTableHeaderCell">Lugar del lance</th>
-			<th class="ReportTableHeaderCell">Especie</th>
-			<th class="ReportTableHeaderCell">Peso</th>
-			<th class="ReportTableHeaderCell">Peso descarte</th>
-			<th class="ReportTableHeaderCell">Ud </th>
-			<th class="ReportTableHeaderCell">Ud descarte</th>
+			<th class="ReportTableHeaderCell"><fmt:message key="patron.novoLance.title.table.lugar"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="patron.novoLance.title.table.especie"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="patron.novoLance.title.table.peso"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="patron.novoLance.title.table.pesod"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="patron.novoLance.title.table.ud"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="patron.novoLance.title.table.udd"/></th>
 			<th class="ReportTableHeaderCell"></th>
 			<th class="ReportTableHeaderCell"></th>
 			<th class="ReportTableHeaderCell"></th>

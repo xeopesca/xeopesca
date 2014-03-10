@@ -21,12 +21,12 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
 <div id="ReportDetails">
-	<h2>Editar Especie</h2>
+	<h2><fmt:message key="admin.editarEspecie.title"/></h2>
 
 	<form:form action="/xeopesca/admin/updateEspecie" commandName="especie" enctype="multipart/form-data">
 	    <input id="id" name="id" type="hidden" value="${especie.id}"/>
@@ -37,12 +37,12 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 		</div>
 		<table>
 			<tr>
-				<td>Nome :</td>
+				<td><fmt:message key="admin.editarEspecie.nome"/></td>
 				<td><form:input path="nomecientifico" /></td>
 				
 			</tr>
 			<tr>
-				<td>Imaxen :</td>
+				<td><fmt:message key="admin.editarEspecie.imaxen"/></td>
 				<td>
 			
 					<c:if test="${especie.path ==''}">
@@ -66,7 +66,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Enviar" /></td>
+				<td><input type="submit" value='<fmt:message key="admin.editarEspecie.button.gardar"/>' /></td>
 			</tr>
 
 		</table>

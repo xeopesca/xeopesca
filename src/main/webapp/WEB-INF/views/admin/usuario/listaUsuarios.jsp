@@ -22,19 +22,21 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 
 
 <div id="ReportDetails">
-	<h2>Listado usuarios</h2>
+	<h2><fmt:message key="admin.listaUsuarios.title"/></h2>
 
 	<table>
 		<tr>
-			<th class="ReportTableHeaderCell">Login</th>
-			<th class="ReportTableHeaderCell">Nome</th>
-			<th class="ReportTableHeaderCell">Apelidos</th>
-			<th class="ReportTableHeaderCell">Perfil</th>
-			<th class="ReportTableHeaderCell">Detalle</th>
-			<th class="ReportTableHeaderCell">Borrar</th>
+			<th class="ReportTableHeaderCell"><fmt:message key="admin.listaUsuarios.tableHead.login"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="admin.listaUsuarios.tableHead.nome"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="admin.listaUsuarios.tableHead.apelidos"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="admin.listaUsuarios.tableHead.perfilUser"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="admin.listaUsuarios.tableHead.detalle"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="admin.listaUsuarios.tableHead.borrar"/></th>
 		</tr>
 		<c:forEach var="users" items="${users}" varStatus="status">
 			<c:set var="idUsuario" value="${users.id}" />

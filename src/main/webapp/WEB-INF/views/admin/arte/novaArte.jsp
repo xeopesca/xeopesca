@@ -23,10 +23,10 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <div id="ReportDetails">
-	<h2>Nova arte</h2>
+	<h2><fmt:message key="admin.novaArte.title"/></h2>
 
 	<form:form action="novoArte" commandName="arte">
 
@@ -35,7 +35,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 		</div>
 		<table>
 			<tr>
-				<td>Actividade :</td>
+				<td><fmt:message key="admin.novaArte.actividade"/></td>
 				<td>
 					<form:select path="actividade">
 						<form:option value="" label="" />
@@ -46,7 +46,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 				</td>
 			</tr>
 			<tr>
-				<td>Categoria :</td>
+				<td><fmt:message key="admin.novaArte.categoria"/></td>
 				<td>
 					<form:select path="categoria">
 						<form:option value="" label="" />
@@ -63,12 +63,12 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 				</td>
 			</tr>
 			<tr>
-				<td>Nome :</td>
+				<td><fmt:message key="admin.novaArte.nome"/></td>
 				<td><form:input path="nome" /></td>
 			</tr>
 			
 			<tr>
-				<td>Descripci&#243n:</td>
+				<td><fmt:message key="admin.novaArte.descripcion"/></td>
 				<td><form:textarea path="descripcion" /></td>
 				</td>
 			</tr>
@@ -77,7 +77,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Enviar" /></td>
+				<td><input type="submit" value='<fmt:message key="admin.novaArte.button.gardar"/>' /></td>
 			</tr>
 
 		</table>

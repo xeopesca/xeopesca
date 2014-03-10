@@ -20,12 +20,12 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
 <div id="ReportDetails">
-	<h2>Nova Especie</h2>
+	<h2><fmt:message key="admin.novaEspecie.title"/></h2>
 	<!--<c:out value="${message}" /> -->
 
 	<form:form action="novaEspecie" commandName="especie" enctype="multipart/form-data">
@@ -36,11 +36,11 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 		</div>
 		<table>
 			<tr>
-				<td>Nome :</td>
+				<td><fmt:message key="admin.novaEspecie.nome"/></td>
 				<td><form:input path="nomecientifico" /></td>
 			</tr>
 			<tr>
-				<td>Imaxen :</td>
+				<td><fmt:message key="admin.novaEspecie.imaxen"/></td>
 				<td><form:input path="path" />  <input type="file" name="file"/>
 				
 				</td>
@@ -49,7 +49,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Enviar" /></td>
+				<td><input type="submit" value='<fmt:message key="admin.novaEspecie.button.gardar"/>' /></td>
 			</tr>
 
 		</table>

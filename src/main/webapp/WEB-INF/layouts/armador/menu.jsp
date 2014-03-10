@@ -17,6 +17,10 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 --------------------------------------------------------------------*/
 
  -->
+ 
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+ 
+ 
 <div class="iconheader">
 	<a href="/xeopesca/armador" > <img src="/images/home.png" /></a>
 	<a href="/xeopesca/armador/editarConta">    <img src="/images/perfil.png" /></a>

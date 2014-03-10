@@ -27,16 +27,16 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 
 
 <div id="ReportDetails">
-	 <h2>Lista de faenas </h2>
+	 <h2><fmt:message key="patron.listaFaena.title"/> </h2>
 	<br>
 	<table>
 		<tr>
-			<th class="ReportTableHeaderCell">Id</th>
-			<th class="ReportTableHeaderCell">Data de Inicio</th>
-			<th class="ReportTableHeaderCell">Arte empregada</th>
-			<th class="ReportTableHeaderCell">Agregar Lance</th>
-			<th class="ReportTableHeaderCell">Editar</th>
-			<th class="ReportTableHeaderCell">Borrar</th>
+			<th class="ReportTableHeaderCell"><fmt:message key="patron.listaFaena.id"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="patron.listaFaena.datai"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="patron.listaFaena.arte"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="patron.listaFaena.agregarLance"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="patron.listaFaena.editar"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="patron.listaFaena.borrar"/></th>
 		</tr>
 		<c:forEach var="faenas" items="${faenas}" varStatus="status">
 			
