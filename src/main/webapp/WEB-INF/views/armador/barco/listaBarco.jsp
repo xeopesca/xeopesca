@@ -20,23 +20,23 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
 <div id="ReportDetails">
-	<h2>Listado de barcos</h2>
+	<h2><fmt:message key="armador.listaBarco.title"/></h2>
 
 	<table>
 		<tr>
-			<th class="ReportTableHeaderCell">Folio</th>
-			<th class="ReportTableHeaderCell">Nome </th>
-			<th class="ReportTableHeaderCell">Eslora </th>
-			<th class="ReportTableHeaderCell">Porto </th>
-			<th class="ReportTableHeaderCell">Patron asignado </th>
+			<th class="ReportTableHeaderCell"><fmt:message key="armador.listaBarco.folio"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="armador.listaBarco.nome"/> </th>
+			<th class="ReportTableHeaderCell"><fmt:message key="armador.listaBarco.eslora"/> </th>
+			<th class="ReportTableHeaderCell"><fmt:message key="armador.listaBarco.porto"/> </th>
+			<th class="ReportTableHeaderCell"><fmt:message key="armador.listaBarco.patron"/></th>
 			
-			<th class="ReportTableHeaderCell">Detalle</th>
-			<th class="ReportTableHeaderCell">Borrar</th>
+			<th class="ReportTableHeaderCell"><fmt:message key="armador.listaBarco.detalle"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="armador.listaBarco.borrar"/></th>
 			
 		</tr>
 		<c:forEach var="barcos" items="${barcos}" varStatus="status">
