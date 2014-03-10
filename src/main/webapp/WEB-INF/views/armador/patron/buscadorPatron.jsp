@@ -20,12 +20,12 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
 <div id="ReportDetails">
-	<h2>Buscar patr�n</h2>
+	<h2><fmt:message key="armador.buscadorPatron.title"/></h2>
     
 
 	<form:form method="POST" action="/xeopesca/armador/buscadorPatron"
@@ -35,7 +35,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 		<table>
 			
 			<tr>
-				<td>Login :</td>
+				<td><fmt:message key="armador.buscadorPatron.login"/></td>
 				<td><form:input path="login" /></td>
 				
 			</tr>
@@ -43,7 +43,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Enviar" /></td>
+				<td><input type="submit" value='<fmt:message key="armador.buscadorPatron.buscar"/>' /></td>
 			</tr>
 
 		</table>
@@ -54,12 +54,12 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 
 <table>
 		<tr>
-			<th class="ReportTableHeaderCell">Login</th>
-			<th class="ReportTableHeaderCell">Nome</th>
-			<th class="ReportTableHeaderCell">Apelidos</th>
-			<th class="ReportTableHeaderCell">Perfil</th>
-			<th class="ReportTableHeaderCell">Detalle</th>
-			<th class="ReportTableHeaderCell">Borrar</th>		</tr>
+			<th class="ReportTableHeaderCell"><fmt:message key="armador.buscadorPatron.th.login"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="armador.buscadorPatron.th.nome"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="armador.buscadorPatron.th.apelidos"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="armador.buscadorPatron.th.perfil"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="armador.buscadorPatron.th.detalle"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="armador.buscadorPatron.th.borrar"/></th>		</tr>
 		<c:forEach var="users" items="${patrons}" varStatus="status">
 			<c:set var="idUsuario" value="${users.id}" />
 

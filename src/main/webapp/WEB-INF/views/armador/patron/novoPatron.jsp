@@ -20,12 +20,12 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
 <div id="ReportDetails">
-	<h2>Novo Patron</h2>
+	<h2><fmt:message key="armador.novoPatron.title"/></h2>
 
 	<form:form method="POST" action="/xeopesca/armador/novoPatron" commandName="usuario">
 
@@ -38,27 +38,27 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 		</div>
 		<table >
 			<tr>
-				<td>Login :</td>
+				<td><fmt:message key="armador.novoPatron.login"/></td>
 				<td><form:input path="login" /></td>
 			</tr>
 		
 
 			<tr>
-				<td>Nome :</td>
+				<td><fmt:message key="armador.novoPatron.nome"/></td>
 				<td><form:input path="nome" /></td>
 			</tr>
 
 			<tr>
-				<td>Apelidos :</td>
+				<td><fmt:message key="armador.novoPatron.apelidos"/></td>
 				<td><form:input path="apelidos" /></td>
 			</tr>
 			<tr>
-				<td>Contrasinal :</td>
+				<td><fmt:message key="armador.novoPatron.contrasinal"/></td>
 				<td><form:input path="contrasinal" /></td>
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Enviar" /></td>
+				<td><input type="submit" value='<fmt:message key="armador.novoPatron.gardar"/>' /></td>
 			</tr>
 
 		</table>

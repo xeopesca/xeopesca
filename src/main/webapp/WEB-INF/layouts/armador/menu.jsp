@@ -30,21 +30,21 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 
 <div class="menu">
 <ul class="menu" id="menu">
-	<li><a href="/xeopesca/armador/buscador" class="menulink">Buscar faenas</a>
+	<li><a href="/xeopesca/armador/buscador" class="menulink"><fmt:message key="armador.menu.bfaena"/></a>
 	</li>
 	<!-- -->
-	<li><a href="#" class="menulink">Xestionar barco</a>
+	<li><a href="#" class="menulink"><fmt:message key="armador.menu.xbarco"/></a>
 	<ul>
-			<li><a href="/xeopesca/armador/novoBarco">Novo barco</a></li>
-			<li><a href="/xeopesca/armador/listaBarco">Lista de barcos</a></li>
-			<li><a href="/xeopesca/armador/buscadorBarco">Buscador de barcos</a></li>
+			<li><a href="/xeopesca/armador/novoBarco"><fmt:message key="armador.menu.nbarco"/></a></li>
+			<li><a href="/xeopesca/armador/listaBarco"><fmt:message key="armador.menu.lbarco"/></a></li>
+			<li><a href="/xeopesca/armador/buscadorBarco"><fmt:message key="armador.menu.bbarco"/></a></li>
 		</ul>
 	</li>
-	<li><a href="#" class="menulink">Xestionar patr&#243n</a>
+	<li><a href="#" class="menulink"><fmt:message key="armador.menu.xpatron"/></a>
 	<ul>
-			<li><a href="/xeopesca/armador/novoPatron">Novo patr&#243n</a></li>
-			<li><a href="/xeopesca/armador/listaPatron">Lista de patr&#243ns</a></li>
-			<li><a href="/xeopesca/armador/buscadorPatron">Buscar  patr&#243ns</a></li>
+			<li><a href="/xeopesca/armador/novoPatron"><fmt:message key="armador.menu.npatron"/></a></li>
+			<li><a href="/xeopesca/armador/listaPatron"><fmt:message key="armador.menu.lpatron"/></a></li>
+			<li><a href="/xeopesca/armador/buscadorPatron"><fmt:message key="armador.menu.bpatron"/></a></li>
 		</ul>
 	</li>
 	

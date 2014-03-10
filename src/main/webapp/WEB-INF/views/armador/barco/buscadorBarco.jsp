@@ -20,12 +20,12 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
 <div id="ReportDetails">
-	<h2>Buscar barco</h2>
+	<h2><fmt:message key="armador.buscadorBarco.title"/></h2>
     
 
 	<form:form method="POST" action="/xeopesca/armador/buscadorBarco"
@@ -35,7 +35,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 		<table>
 			
 			<tr>
-				<td>Nome :</td>
+				<td><fmt:message key="armador.buscadorBarco.nome"/></td>
 				<td><form:input path="nome" /></td>
 				
 			</tr>
@@ -43,7 +43,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Enviar" /></td>
+				<td><input type="submit" value='<fmt:message key="armador.buscadorBarco.buscar"/>' /></td>
 			</tr>
 
 		</table>
@@ -54,13 +54,13 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 	<c:if test="${!empty barcos}">
 		<table>
 		<tr>
-			<th class="ReportTableHeaderCell">Folio</th>
-			<th class="ReportTableHeaderCell">nome </th>
-			<th class="ReportTableHeaderCell">eslora </th>
-			<th class="ReportTableHeaderCell">porto </th>
+			<th class="ReportTableHeaderCell"><fmt:message key="armador.buscadorBarco.th.folio"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="armador.buscadorBarco.th.nome"/> </th>
+			<th class="ReportTableHeaderCell"><fmt:message key="armador.buscadorBarco.th.eslora"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="armador.buscadorBarco.th.porto"/></th>
 			
-			<th class="ReportTableHeaderCell">Detalle</th>
-			<th class="ReportTableHeaderCell">Borrar</th>
+			<th class="ReportTableHeaderCell"><fmt:message key="armador.buscadorBarco.th.detalle"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="armador.buscadorBarco.th.borrar"/></th>
 			
 		</tr>
 		<c:forEach var="barcos" items="${barcos}" varStatus="status">

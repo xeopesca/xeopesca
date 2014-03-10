@@ -21,7 +21,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
@@ -43,7 +43,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 </script>
 
 <div id="ReportDetails">
-	 <h2>Buscador faena </h2>
+	 <h2><fmt:message key="armador.buscador.title"/></h2>
 	
 	<form:form  action="/xeopesca/armador/buscador" method="POST" commandName="faena">
 		<input id="id" name="id" type="hidden" value="${faena.id}"/>
@@ -51,7 +51,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 		<table>
 		
 			<tr>
-				<td>Arte:</td>
+				<td><fmt:message key="armador.buscador.arte"/></td>
 				
 				<td>
 					<form:select path="arte"  id="idarte">
@@ -60,22 +60,22 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 							<form:options items="${artes}" itemValue="id" itemLabel="nome" />
 					</form:select>
 				</td>
-			<td>Periodio inicio:</td>
+			<td><fmt:message key="armador.buscador.peri"/></td>
 				<td><form:input path="dataInicio" readonly="true" id="dinicio" /></td>
-			<td>Periodo fin:</td>
+			<td><fmt:message key="armador.buscador.perf"/></td>
 				<td><form:input  path="dataFin" readonly="true" id="dfin"/></td>
 			
 				
 			</tr>
 			<tr>
-				<td>Lua:</td>
+				<td><fmt:message key="armador.buscador.lua"/></td>
 				<td><form:select path="lua"  id="idlua">
 						<form:option value="" label="Todas" />
 					
 						<form:options items="${lua}" itemValue="id" itemLabel="literal" />
 						
 					</form:select></td>
-				<td>Estado mar:</td>
+				<td><fmt:message key="armador.buscador.estadoMar"/></td>
 				<td>
 					<form:select path="estadoMar"  id="idmar" >
 						<form:option value="" label="Todos" />
@@ -83,7 +83,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 					</form:select>		
 				</td>
 				
-				<td>Estado ceo:</td>
+				<td><fmt:message key="armador.buscador.estadoCeo"/></td>
 				<td>
 					<form:select path="estadoCeo"  id="idceo" >
 						<form:option value="" label="Todos" />
@@ -95,7 +95,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 			
 			
 			<tr>
-				<td>Direccion do vento:</td>
+				<td><fmt:message key="armador.buscador.dirv"/></td>
 				<td>
 					<form:select path="direccionVento"  id="idvento">
 						<form:option value="" label="Todas" />
@@ -103,7 +103,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 					</form:select>	
 					
 				</td>
-				<td>Barco:</td>
+				<td><fmt:message key="armador.buscador.barco"/></td>
 				<td>
 					
 					<form:select path="idbarco" >
@@ -117,7 +117,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 			
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Enviar" /></td>
+				<td><input type="submit" value='<fmt:message key="armador.buscador.buscar"/>' /></td>
 			</tr>
 		</table>
 		
@@ -131,7 +131,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 
 
 <div id="ReportDetails">
-		 <h2>Mapa de resultados </h2>
+		 <h2><fmt:message key="armador.buscador.titleMap"/> </h2>
 	<div id="Map" style="height:415px;width:110ppx;"></div>
 	
 		<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
@@ -344,31 +344,31 @@ feature.popup = popup;
 
 
 <div id="ReportDetails">
-	 <h2>Lista de faenas </h2>
+	 <h2><fmt:message key="armador.buscador.titleResult"/></h2>
 		<c:forEach var="faenas" items="${resultado2}" varStatus="status">
-		<h4> Faena do 						<fmt:formatDate type="Date" pattern="yyyy-MM-dd"  value="${faenas.data_inicio}"/>  
-		 - Arte: ${faenas.arte.nome}   </h4>
+		<h4> <fmt:message key="armador.buscador.faena"/>					<fmt:formatDate type="Date" pattern="yyyy-MM-dd"  value="${faenas.data_inicio}"/>  
+		 - <fmt:message key="armador.buscador.arte"/> ${faenas.arte.nome}   </h4>
 						
 						
 						
 		
 		<ul>
 		
-			<li>Arte: ${faenas.arte.nome}  </li>
+			<li><fmt:message key="armador.buscador.arte"/> ${faenas.arte.nome}  </li>
 		<c:forEach var="lances" items="${faenas.listaLances}" varStatus="status">
 		
 		<ul>
-			<li>Lugar: ${lances.descripcion} </li>
+			<li><fmt:message key="armador.buscador.lugar"/> ${lances.descripcion} </li>
 		
 			<!-- aa -->
 		<table>
 		<tr>
-			<th class="ReportTableHeaderCell">Id pesca</th>
-			<th class="ReportTableHeaderCell">Nome cientifico</th>
-			<th class="ReportTableHeaderCell">Pesp</th>
-			<th class="ReportTableHeaderCell">Peso descarte</th>
-			<th class="ReportTableHeaderCell">Ud.</th>
-			<th class="ReportTableHeaderCell">Ud. descarte</th>
+			<th class="ReportTableHeaderCell"><fmt:message key="armador.buscador.id"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="armador.buscador.nc"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="armador.buscador.peso"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="armador.buscador.pesod"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="armador.buscador.ud"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="armador.buscador.udd"/></th>
 		</tr>
 		<c:forEach var="pesca" items="${lances.listaPesca}" varStatus="status">
 	
