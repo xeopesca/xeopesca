@@ -47,7 +47,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 </script>
 
 <div id="ReportDetails">
-	 <h2>Buscador faena </h2>
+	 <h2> <fmt:message key="patron.buscadorPesca.title"/></h2>
 	
 	<form:form  action="/xeopesca/patron/buscadorpesca" method="POST" commandName="faena">
 		<input id="idbarco" name="idbarco" type="hidden" value="${idbarco}"/>
@@ -56,7 +56,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 		<table>
 		
 			<tr>
-				<td>Especie :</td>
+				<td><fmt:message key="patron.buscadorPesca.especie"/></td>
 				<td>
 					<form:select path="especies" id="idespecie" >
 						<form:option value="" label="Todas" />
@@ -67,22 +67,22 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 				
 				
 				
-			<td>Per&#237odo inicio:</td>
+			<td><fmt:message key="patron.buscadorPesca.peri"/></td>
 				<td><form:input path="dataInicio" readonly="true" id="dinicio" /></td>
-			<td>Per&#237odo fin:</td>
+			<td><fmt:message key="patron.buscadorPesca.perf"/></td>
 				<td><form:input  path="dataFin" readonly="true" id="dfin"/></td>
 			
 				
 			</tr>
 			<tr>
-				<td>Lua:</td>
+				<td><fmt:message key="patron.buscadorPesca.lua"/></td>
 				<td><form:select path="lua" id="idlua">
 						<form:option value="" label="Todas" />
 					
 						<form:options items="${lua}" itemValue="id" itemLabel="literal" />
 						
 					</form:select></td>
-			<td>Estado mar:</td>
+			<td><fmt:message key="patron.buscadorPesca.estadomar"/></td>
 				<td>
 					<form:select path="estadoMar" id="idmar" >
 						<form:option value="" label="Todos" />
@@ -90,7 +90,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 					</form:select>		
 				</td>
 				
-			<td>Estado ceo:</td>
+			<td><fmt:message key="patron.buscadorPesca.estadoceo"/></td>
 				<td>
 					<form:select path="estadoCeo" id="idceo" >
 						<form:option value="" label="Todos" />
@@ -102,7 +102,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 			
 			
 			<tr>
-				<td>Direcci&#243n vento:</td>
+				<td><fmt:message key="patron.buscadorPesca.dirv"/></td>
 				<td>
 					<form:select path="direccionVento" id="idvento" >
 						<form:option value="" label="Todas" />
@@ -110,7 +110,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 					</form:select>	
 					
 				</td>
-				<td>Peso Capturas >= </td>
+				<td><fmt:message key="patron.buscadorPesca.pesocapturas"/></td>
 				<td>
 									<form:input  path="peso"  id="idpeso"/>
 
@@ -123,7 +123,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 			
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Enviar" /></td>
+				<td><input type="submit" value='<fmt:message key="patron.buscadorPesca.gardar"/>' /></td>
 				
 			</tr>
 		</table>

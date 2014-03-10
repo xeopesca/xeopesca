@@ -20,12 +20,12 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
 <div id="ReportDetails">
-	<h2>Editar usuario patron</h2>
+	<h2><fmt:message key="patron.editarConta.title"/></h2>
 
 	<form:form action="/xeopesca/editarConta" commandName="usuario">
 
@@ -42,31 +42,31 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 		<input id="idbarco" name="idbarco" type="hidden" value="${usuario.idbarco}"/>
 		<table>
 			<tr>
-				<td>Login :</td>
+				<td><fmt:message key="patron.editarConta.login"/></td>
 				<td><form:input path="login" readonly="true" /></td>
 			</tr>
 			<tr>
-				<td>Perfil:</td>
+				<td><fmt:message key="patron.editarConta.perfil"/></td>
 				<td><form:input path="tipousuario" readonly="true" /></td>
 				
 			</tr>
 
 			<tr>
-				<td>Nome :</td>
+				<td><fmt:message key="patron.editarConta.nome"/></td>
 				<td><form:input path="nome" /></td>
 			</tr>
 
 			<tr>
-				<td>Apelidos :</td>
+				<td><fmt:message key="patron.editarConta.apelidos"/></td>
 				<td><form:input path="apelidos" /></td>
 			</tr>
 			<tr>
-				<td>Contrasinal :</td>
+				<td><fmt:message key="patron.editarConta.contrasinal"/></td>
 				<td><form:password path="contrasinal" /></td>
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Enviar" /></td>
+				<td><input type="submit" value='<fmt:message key="patron.editarConta.button.gardar"/>' /></td>
 			</tr>
 
 		</table>
@@ -76,7 +76,4 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 
 
 </div>
-
-
-
 

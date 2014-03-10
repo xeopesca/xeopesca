@@ -21,20 +21,20 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
 <div id="ReportDetails">
-	<h2>Listado especies</h2>
+	<h2><fmt:message key="admin.listaEspecies.title"/></h2>
 
 	<table>
 		<tr>
-			<th class="ReportTableHeaderCell">Id</th>
-			<th class="ReportTableHeaderCell">Nome científico</th>
-			<th class="ReportTableHeaderCell">Detalle</th>
-			<th class="ReportTableHeaderCell">Engadir Nome popular</th>
-			<th class="ReportTableHeaderCell">Borrar</th>
+			<th class="ReportTableHeaderCell"><fmt:message key="admin.listaEspecies.id"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="admin.listaEspecies.nomeCientifico"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="admin.listaEspecies.detalle"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="admin.listaEspecies.addNamePop"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="admin.listaEspecies.borrar"/></th>
 		</tr>
 		<c:forEach var="especies" items="${especies}" varStatus="status">
 		

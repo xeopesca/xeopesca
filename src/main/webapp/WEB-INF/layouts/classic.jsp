@@ -23,6 +23,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="display" uri="http://displaytag.sf.net" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -30,7 +31,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 
-<title>Administrador</title>
+<title><fmt:message key="site.title"/></title>
 <link rel="stylesheet" href="/css/estilo.css" type="text/css" />
 <script type="text/javascript" src="/js/script.js"></script>
 </head>
@@ -38,8 +39,8 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 
 
 <div id="ReportHeader">
-	<h1>xeoPesca 
-	
+	<h1> 
+		<fmt:message key="site.header"/> 
 	</h1>	
 
 	<tiles:insertAttribute name="menu" />

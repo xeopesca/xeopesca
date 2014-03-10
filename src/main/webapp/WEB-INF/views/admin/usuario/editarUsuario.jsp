@@ -19,14 +19,13 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
  -->
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ page contentType="text/html;charset=UTF-8" %>
-
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 
 <div id="ReportDetails">
-	<h2>Editar usuario</h2>
+	<h2><fmt:message key="admin.editarUsuario.title"/></h2>
 
 	<form:form action="/xeopesca/admin/updateUsuario" commandName="usuario">
 
@@ -42,11 +41,11 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 		
 		<table>
 			<tr>
-				<td>Login :</td>
+				<td><fmt:message key="admin.editarUsuario.login"/></td>
 				<td><form:input path="login" readonly="true" /></td>
 			</tr>
 			<tr>
-				<td>Perfil:</td>
+				<td><fmt:message key="admin.editarUsuario.perfil"/></td>
 				<td><form:select path="tipousuario" >
 						<form:option value="ROLE_ADMIN" label="Admin" />
 						<form:option value="ROLE_ARMADOR" label="Armador" />
@@ -57,21 +56,21 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 			</tr>
 
 			<tr>
-				<td>Nome :</td>
+				<td><fmt:message key="admin.editarUsuario.nome"/></td>
 				<td><form:input path="nome" /></td>
 			</tr>
 
 			<tr>
-				<td>Apelidos :</td>
+				<td><fmt:message key="admin.editarUsuario.apelidos"/></td>
 				<td><form:input path="apelidos" /></td>
 			</tr>
 			<tr>
-				<td>Contrasinal :</td>
+				<td><fmt:message key="admin.editarUsuario.contrasinal"/></td>
 				<td><form:input path="contrasinal" /></td>
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Enviar" /></td>
+				<td><input type="submit" value='<fmt:message key="admin.editarUsuario.button.gardar"/>' /></td>
 			</tr>
 
 		</table>

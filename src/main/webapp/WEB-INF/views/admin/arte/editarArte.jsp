@@ -23,10 +23,10 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <div id="ReportDetails">
-	<h2>Editar arte</h2>
+	<h2><fmt:message key="admin.editarArte.title"/></h2>
 
 	<form:form action="/xeopesca/admin/updateEspecie" commandName="arte">
 	    <input id="id" name="id" type="hidden" value="${arte.id}"/>
@@ -36,7 +36,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 		</div>
 		<table>
 			<tr>
-				<td>Actividade :</td>
+				<td><fmt:message key="admin.editarArte.actividade"/></td>
 				<td>
 					<form:select path="actividade">
 						<form:option value="" label="--- Select ---" />
@@ -47,12 +47,12 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 				</td>
 			</tr>
 			<tr>
-				<td>Categoria :</td>
+				<td><fmt:message key="admin.editarArte.categoria"/></td>
 				<td>
 					<form:select path="categoria">
 						<form:option value="" label="--- Select ---" />
 						<form:option value="Nasas" label="Nasas" />
-						<form:option value="Embarcaci�n ou vara" label="Embarcaci�n ou vara" />
+						<form:option value="Embarcación ou vara" label="Embarcaci�n ou vara" />
 						<form:option value="Rastros" label="Rastros" />
 						<form:option value="Anzol" label="Anzol" />
 						<form:option value="En malle" label="En malle" />
@@ -64,12 +64,12 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 				</td>
 			</tr>
 			<tr>
-				<td>Nome :</td>
+				<td><fmt:message key="admin.editarArte.nome"/></td>
 				<td><form:input path="nome" /></td>
 			</tr>
 			
 			<tr>
-				<td>Descripcion: :</td>
+				<td><fmt:message key="admin.editarArte.descripcion"/></td>
 				<td><form:textarea path="descripcion" /></td>
 				</td>
 			</tr>
@@ -78,7 +78,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Enviar" /></td>
+				<td><input type="submit" value='<fmt:message key="admin.editarArte.button.gardar"/>' /></td>
 			</tr>
 
 		</table>

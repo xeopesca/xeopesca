@@ -19,10 +19,12 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
  -->
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <div class="iconheader">
-	<a href="/xeopesca/admin/listaUsuarios" > <img src="/images/home.png" /></a>
-	<a href="/xeopesca/editarConta">    <img src="/images/perfil.png" /></a>
-	<a href="<c:url value="j_spring_security_logout"/>" > <img src="/images/on_off.png" /></a>
+	<a href="/xeopesca/admin/listaUsuarios" > <img src="/images/home.png" title='<fmt:message key="admin.menu.button.sair"/>' /></a>
+	<a href="/xeopesca/editarConta">    <img src="/images/perfil.png" title='<fmt:message key="admin.menu.button.conta"/>' /></a>
+	<a href="<c:url value="j_spring_security_logout"/>" > <img src="/images/on_off.png" title='<fmt:message key="admin.menu.button.sair"/>' /></a>
 	
 </div>
 
@@ -30,32 +32,32 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <div class="menu">
 <ul class="menu" id="menu">
 		
-	<li><a href="#" class="menulink">Xestionar Usuarios</a>
+	<li><a href="#" class="menulink"><fmt:message key="admin.menu.xestionarUsuario"/></a>
 		<ul>
-			<li><a href="/xeopesca/admin/novoUsuario">Novo Usuario</a></li>
-			<li><a href="/xeopesca/admin/buscadorUsuario">Buscar Usuario</a></li>
-			<li><a href="/xeopesca/admin/listaUsuarios">Lista Usuarios</a></li>
+			<li><a href="/xeopesca/admin/novoUsuario"><fmt:message key="admin.menu.xestionarUsuario.novo"/></a></li>
+			<li><a href="/xeopesca/admin/buscadorUsuario"><fmt:message key="admin.menu.xestionarUsuario.buscar"/></a></li>
+			<li><a href="/xeopesca/admin/listaUsuarios"><fmt:message key="admin.menu.xestionarUsuario.lista"/></a></li>
 		</ul>
 	</li>
 	<!-- -->
-	<li><a href="#" class="menulink">Xestionar Especies</a>
+	<li><a href="#" class="menulink"><fmt:message key="admin.menu.xestionarEspecies"/></a>
 	<ul>
-			<li><a href="/xeopesca/admin/novaEspecie">Nova Especie</a></li>
-			<li><a href="/xeopesca/admin/buscadorEspecie">Buscar Especies	</a></li>
-			<li><a href="/xeopesca/admin/listaEspecies">Lista Especies</a></li>
-			<li><a href="/xeopesca/admin/novoNomePopular">Novo nome popular</a></li>
-			<li><a href="/xeopesca/admin/listaNomePopular">Lista nome popular</a></li>
-			<li><a href="/xeopesca/admin/buscadorNomePopular">Buscar nome popular</a></li>
+			<li><a href="/xeopesca/admin/novaEspecie"><fmt:message key="admin.menu.xestionarEspecies.nova"/></a></li>
+			<li><a href="/xeopesca/admin/buscadorEspecie"><fmt:message key="admin.menu.xestionarEspecies.buscar"/></a></li>
+			<li><a href="/xeopesca/admin/listaEspecies"><fmt:message key="admin.menu.xestionarEspecies.lista"/></a></li>
+			<li><a href="/xeopesca/admin/novoNomePopular"><fmt:message key="admin.menu.xestionarEspecies.popular.novo"/></a></li>
+			<li><a href="/xeopesca/admin/listaNomePopular"><fmt:message key="admin.menu.xestionarEspecies.popular.lista"/></a></li>
+			<li><a href="/xeopesca/admin/buscadorNomePopular"><fmt:message key="admin.menu.xestionarEspecies.popular.buscar"/></a></li>
 			
 			
 			
 		</ul>
 	</li>
-	<li><a href="#" class="menulink">Xestionar Artes</a>
+	<li><a href="#" class="menulink"><fmt:message key="admin.menu.xestionarArtes"/></a>
 	<ul>
-			<li><a href="/xeopesca/admin/novoArte">Novo Arte</a></li>
-			<li><a href="/xeopesca/admin/buscadorArte">Buscar Arte</a></li>
-			<li><a href="/xeopesca/admin/listaArte">Lista Artes</a></li>
+			<li><a href="/xeopesca/admin/novoArte"><fmt:message key="admin.menu.xestionarArtes.nova"/></a></li>
+			<li><a href="/xeopesca/admin/buscadorArte"><fmt:message key="admin.menu.xestionarArtes.buscar"/></a></li>
+			<li><a href="/xeopesca/admin/listaArte"><fmt:message key="admin.menu.xestionarArtes.lista"/></a></li>
 		</ul>
 	</li>
 	

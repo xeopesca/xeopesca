@@ -20,19 +20,19 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
 <div id="ReportDetails">
-	<h2>Listado de nomes populares</h2>
+	<h2><fmt:message key="admin.listadoNomePopular.title"/></h2>
 
 	<table>
 		<tr>
-			<th class="ReportTableHeaderCell">Nome popular</th>
-			<th class="ReportTableHeaderCell">Nome cientifico</th>
-			<th class="ReportTableHeaderCell">Detalle</th>
-			<th class="ReportTableHeaderCell">Borrar</th>
+			<th class="ReportTableHeaderCell"><fmt:message key="admin.listadoNomePopular.nomep"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="admin.listadoNomePopular.nomec"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="admin.listadoNomePopular.detalle"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="admin.listadoNomePopular.borrar"/></th>
 			
 		</tr>
 		<c:forEach var="nomes" items="${nomes}" varStatus="status">

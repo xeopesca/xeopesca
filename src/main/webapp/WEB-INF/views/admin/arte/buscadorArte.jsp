@@ -23,10 +23,10 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <div id="ReportDetails">
-	<h2>Buscar arte</h2>
+	<h2><fmt:message key="admin.buscarArte.title"/></h2>
     
 
 	<form:form action="buscadorArte" commandName="arte">
@@ -36,13 +36,13 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 		</div>
 		<table>
 			<tr>
-				<td>Nome :</td>
+				<td> <fmt:message key="admin.buscarArte.nome"/> </td>
 				<td><form:input path="nome" /></td>
 			</tr>
 
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Buscar" /></td>
+				<td><input type="submit" value='<fmt:message key="admin.buscarArte.button.buscar"/>' /></td>
 			</tr>
 
 		</table>
@@ -53,11 +53,11 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <c:if test="${!empty artes}">
 <table>
 		<tr>
-			<th class="ReportTableHeaderCell">Id</th>
-			<th class="ReportTableHeaderCell">Categoria </th>
-			<th class="ReportTableHeaderCell">Nome </th>
-			<th class="ReportTableHeaderCell">Detalle</th>
-			<th class="ReportTableHeaderCell">Borrar</th>
+			<th class="ReportTableHeaderCell"> <fmt:message key="admin.buscarArte.id"/></th>
+			<th class="ReportTableHeaderCell"> <fmt:message key="admin.buscarArte.categoria"/> </th>
+			<th class="ReportTableHeaderCell"> <fmt:message key="admin.buscarArte.nome2"/> </th>
+			<th class="ReportTableHeaderCell"> <fmt:message key="admin.buscarArte.detalle"/></th>
+			<th class="ReportTableHeaderCell"> <fmt:message key="admin.buscarArte.borrar"/></th>
 		</tr>
 		<c:forEach var="arte" items="${artes}" varStatus="status">
 		

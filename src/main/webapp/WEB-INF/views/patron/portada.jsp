@@ -20,7 +20,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 	 
 	 
@@ -28,7 +28,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 
 
 <div id="ReportDetails">
-	  <h2>Portada patron</h2>
+	  <h2><fmt:message key="patron.portada.title"/></h2>
 
 	<div id="Map" style="height:415px;width:110ppx;">
 		

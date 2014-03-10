@@ -22,10 +22,10 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <div id="ReportDetails">
-	<h2>Buscar especie</h2>
+	<h2><fmt:message key="admin.buscadorEspecie.title"/></h2>
     
 	<form:form action="buscadorEspecie" commandName="especie">
 
@@ -34,13 +34,13 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 		</div>
 		<table>
 			<tr>
-				<td>Nome cientifico :</td>
+				<td><fmt:message key="admin.buscadorEspecie.nomeCientifico"/></td>
 				<td><form:input path="nomecientifico" /></td>
 			</tr>
 
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Buscar" /></td>
+				<td><input type="submit" value='<fmt:message key="admin.buscadorEspecie.button.buscar"/>' /></td>
 			</tr>
 
 		</table>
@@ -51,10 +51,10 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 	
 		<table>
 		<tr>
-			<th class="ReportTableHeaderCell">Id</th>
-			<th class="ReportTableHeaderCell">Nome cient�fico</th>
-			<th class="ReportTableHeaderCell">Detalle</th>
-			<th class="ReportTableHeaderCell">Borrar</th>
+			<th class="ReportTableHeaderCell"><fmt:message key="admin.buscadorEspecie.id"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="admin.buscadorEspecie.nomeCientifico"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="admin.buscadorEspecie.detalle"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="admin.buscadorEspecie.borrar"/></th>
 		</tr>
 		<c:forEach var="especies" items="${especies}" varStatus="status">
 		

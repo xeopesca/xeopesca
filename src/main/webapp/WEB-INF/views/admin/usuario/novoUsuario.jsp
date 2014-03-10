@@ -22,11 +22,11 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <div id="ReportDetails">
-	<h2>Novo usuario</h2>
-	<!--<c:out value="${message}" /> -->
+	<h2><fmt:message key="admin.novoUsuario.title"/></h2>
+
 
 	<form:form action="novoUsuario2" commandName="usuario">
 
@@ -39,11 +39,11 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 		</div>
 		<table >
 			<tr>
-				<td>Login :</td>
+				<td><fmt:message key="admin.novoUsuario.nome"/> </td>
 				<td><form:input path="login" /></td>
 			</tr>
 			<tr>
-				<td>Perfil:</td>
+				<td><fmt:message key="admin.novoUsuario.perfil"/> </td>
 				<td><form:select path="tipousuario">
 						<form:option value="" label="--- Select ---" />
 						<form:option value="ROLE_ADMIN" label="Admin" />
@@ -55,21 +55,21 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 			</tr>
 
 			<tr>
-				<td>Nome :</td>
+				<td><fmt:message key="admin.novoUsuario.nome"/>  </td>
 				<td><form:input path="nome" /></td>
 			</tr>
 
 			<tr>
-				<td>Apelidos :</td>
+				<td><fmt:message key="admin.novoUsuario.apelidos"/> </td>
 				<td><form:input path="apelidos" /></td>
 			</tr>
 			<tr>
-				<td>Contrasinal :</td>
+				<td><fmt:message key="admin.novoUsuario.contrasinal"/> </td>
 				<td><form:input path="contrasinal" /></td>
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Enviar" /></td>
+				<td><input type="submit" value='<fmt:message key="admin.novoUsuario.button.gardar"/> ' /></td>
 			</tr>
 
 		</table>

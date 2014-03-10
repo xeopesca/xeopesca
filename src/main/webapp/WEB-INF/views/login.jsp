@@ -27,6 +27,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 
@@ -35,8 +36,8 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 	<div class="container">
 		<div class="span7 offset2">
 			<div class="alert">
-				<a class="close" data-dismiss="alert-error">x</a> <strong>Erro!</strong>
-				Datos de acceso incorrectos comprobe contrasinal e usuario.
+				<a class="close" data-dismiss="alert-error">x</a> <strong><fmt:message key="site.error.message"/></strong>
+				<fmt:message key="login.error.notvalid"/>
 
 			</div>
 		</div>
@@ -48,14 +49,14 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 
 	<form class="form-signin" name="f" action="<c:url value='j_spring_security_check'/>"
 		method="POST">
-        <h2 class="form-signin-heading">Identif&#237cate</h2>
+        <h2 class="form-signin-heading"><fmt:message key="login.title.identi"/></h2>
 		
 
-		<input class="input-block-level" placeholder="Conta de usuario" type='text' name='j_username' id="user" value=''/>
-		 <input class="input-block-level" placeholder="Contrasinal" type='password' name='j_password' id="pass">
+		<input class="input-block-level" placeholder='<fmt:message key="login.input.user"/>' type='text' name='j_username' id="user" value=''/>
+		 <input class="input-block-level" placeholder='<fmt:message key="login.input.pwd"/>' type='password' name='j_password' id="pass">
 
 	
-	<button class="btn btn-large btn-primary" type="submit">Entrar</button>
+	<button class="btn btn-large btn-primary" type="submit"><fmt:message key="login.button.entrar"/></button>
 </form>
 </div>
 
