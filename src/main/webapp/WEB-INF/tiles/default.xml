@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+      "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+      "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+	<definition name="mainTemplate" template="/WEB-INF/layouts/classic.jsp">
+		<put-attribute name="header" value="" />
+		<put-attribute name="menu" value="/WEB-INF/layouts/menu.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
+	</definition>
+
+	<definition name="armadorTemplate" template="/WEB-INF/layouts/armador/plantilla.jsp">
+		<put-attribute name="header" value="" />
+		<put-attribute name="menu" value="/WEB-INF/layouts/armador/menu.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
+	</definition>
+	
+	<definition name="patronTemplate" template="/WEB-INF/layouts/patron/plantilla.jsp">
+		<put-attribute name="header" value="" />
+		<put-attribute name="menu" value="/WEB-INF/layouts/patron/menu.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
+	</definition>
+
+	<definition name="loginTemplate" template="/WEB-INF/layouts/login/templateLogin.jsp">
+		<put-attribute name="header" value="" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
+	</definition>
+
+	<!-- Login -->
+	<definition name="login" extends="loginTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/login.jsp" />
+	</definition>
+
+	<definition name="editarConta" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/comun/editarConta.jsp" />
+	</definition>
+	
+	
+
+	<definition name="helloWorld" extends="mainTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/helloWorld.jsp" />
+	</definition>
+	<!-- ********************* Administrador *************************** -->
+	<!-- Usuario -->
+	<definition name="novoUsuario" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/usuario/novoUsuario.jsp" />
+	</definition>
+	<definition name="listaUsuarios" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/usuario/listaUsuarios.jsp" />
+	</definition>
+
+	<definition name="buscadorUsuario" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/usuario/buscadorUsuario.jsp" />
+	</definition>
+
+	<definition name="editarUsuario" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/usuario/editarUsuario.jsp" />
+	</definition>
+
+	<!-- Especie -->
+	<definition name="novaEspecie" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/especie/novaEspecie.jsp" />
+	</definition>
+
+	<definition name="listaEspecies" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/especie/listaEspecies.jsp" />
+	</definition>
+
+	<definition name="editarEspecie" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/especie/editarEspecie.jsp" />
+	</definition>
+
+	<definition name="buscadorEspecie" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/especie/buscadorEspecie.jsp" />
+	</definition>
+
+	<!-- Arte -->
+	<definition name="novoArte" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/arte/novaArte.jsp" />
+	</definition>
+
+	<definition name="listaArte" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/arte/listaArte.jsp" />
+	</definition>
+
+	<definition name="editarArte" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/arte/editarArte.jsp" />
+	</definition>
+	<definition name="buscadorArte" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/arte/buscadorArte.jsp" />
+	</definition>
+
+	<!-- NomePopular -->
+	<definition name="novoNomePopular" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/nomepopular/novoNomePopular.jsp" />
+	</definition>
+
+	<definition name="listaNomePopular" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/nomepopular/listaNomePopular.jsp" />
+	</definition>
+
+	<definition name="editarNomePopular" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/nomepopular/editarNomePopular.jsp" />
+	</definition>
+	<definition name="buscadorNomePopular" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/nomepopular/buscadorNomePopular.jsp" />
+	</definition>
+	
+
+	<!-- ********************* Armador *************************** -->
+	<definition name="indexArmador" extends="armadorTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/armador/portada.jsp" />
+	</definition>
+	
+	<definition name="editarContaArmador" extends="armadorTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/armador/editarConta.jsp" />
+	</definition>
+	
+	<!-- Barco  -->
+	<definition name="novoBarco" extends="armadorTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/armador/barco/novoBarco.jsp" />
+	</definition>
+
+	<definition name="listaBarco" extends="armadorTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/armador/barco/listaBarco.jsp" />
+	</definition>
+
+	<definition name="editarBarco" extends="armadorTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/armador/barco/editarBarco.jsp" />
+	</definition>
+	<definition name="buscadorBarco" extends="armadorTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/armador/barco/buscadorBarco.jsp" />
+	</definition>
+	
+	<!-- Patrón -->
+	<definition name="novoPatron" extends="armadorTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/armador/patron/novoPatron.jsp" />
+	</definition>
+
+	<definition name="listaPatron" extends="armadorTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/armador/patron/listaPatron.jsp" />
+	</definition>
+
+	<definition name="editarPatron" extends="armadorTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/armador/patron/editarPatron.jsp" />
+	</definition>
+	<definition name="buscadorPatron" extends="armadorTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/armador/patron/buscadorPatron.jsp" />
+	</definition>
+	
+	<definition name="buscadorArmador" extends="armadorTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/armador/buscador/buscador.jsp" />
+	</definition>
+
+<!-- ********************* Patrón *************************** -->
+<definition name="indexPatron" extends="patronTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/patron/portada.jsp" />
+</definition>
+
+<definition name="editarContaPatron" extends="patronTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/patron/editarConta.jsp" />
+	</definition>
+<!-- Faena  -->
+<definition name="novaFaena" extends="patronTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/patron/faena/novaFaena.jsp" />
+</definition>
+
+<definition name="editarFaena" extends="patronTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/patron/faena/editarFaena.jsp" />
+</definition>
+
+<definition name="buscadorFaena" extends="patronTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/patron/faena/buscadorFaena.jsp" />
+</definition>
+<definition name="buscadorPesca" extends="patronTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/patron/buscador/buscadorPesca.jsp" />
+</definition>
+
+
+
+<definition name="listaFaena" extends="patronTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/patron/faena/listaFaena.jsp" />
+</definition>
+
+<!-- Lance  -->
+<definition name="novoLance" extends="patronTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/patron/lance/novoLance.jsp" />
+</definition>
+<definition name="addLance" extends="patronTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/patron/lance/addLance.jsp" />
+</definition>
+<definition name="editarLance" extends="patronTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/patron/lance/editarLance.jsp" />
+</definition>
+
+<!-- Pesca  -->
+
+<definition name="addPesca" extends="patronTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/patron/pesca/addPesca.jsp" />
+</definition>
+<definition name="editarPesca" extends="patronTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/patron/pesca/editarPesca.jsp" />
+</definition>
+
+
+</tiles-definitions>
+

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+
+
+
+   <http pattern = "/xeopesca/login" security = "none"/>
+   <http pattern = "/css/**" security = "none"/>
+   <http pattern = "/images/**" security = "none"/>
+   
+   
+    <http>
+    		<!-- <intercept-url pattern="/**" access="permitAll" /> -->  
+            
+            <intercept-url pattern="/xeopesca/admin/**"   access="ROLE_ADMIN" /> 
+            <intercept-url pattern="/xeopesca/armador/**" access="ROLE_ARMADOR" /> 
+            <intercept-url pattern="/xeopesca/patron/**"  access="ROLE_PATRON" /> 
+            
+            
+            <form-login login-page='/xeopesca/login' default-target-url='/xeopesca/loginProcess' authentication-failure-url='/xeopesca/login?error=true'
+            always-use-default-target='true' />
+            <anonymous />
+            <http-basic />
+            <logout logout-success-url="/index.jsp" />      
+    </http>
+ 
+ 
+<authentication-manager> 
+      <authentication-provider user-service-ref="userService" />   
+ </authentication-manager>  
+ 
+<beans:bean id="userService"
+		class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
+		<beans:property name="dataSource" ref="seguridadDataSource" />
+		<beans:property name="usersByUsernameQuery">
+			<beans:value>
+				SELECT login as username, contrasinal as password, 1 as
+				enabled 
+				FROM usuario
+				 WHERE login = ?
+			</beans:value>
+		</beans:property>
+		<beans:property name="authoritiesByUsernameQuery">
+			<beans:value>
+				SELECT login as username, tipousuario as privilege 
+				FROM
+				usuario
+				WHERE login = ?
+			</beans:value>
+		</beans:property>
+	</beans:bean>
+
+
+ 
+
+    
+     <beans:bean id="seguridadDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
+                p:driverClassName="org.postgresql.Driver" p:url="jdbc:postgresql://localhost:5433/xeopesca"
+                p:username="postgres" p:password="1234"/>
+   
+</beans:beans>

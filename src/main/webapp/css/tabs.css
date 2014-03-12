@@ -1,0 +1,91 @@
+/* --------------------------------------------------------------------
+ This file is part of xeoPesca
+
+Copyright (C) 2013 - Pablo Belay Fernández 
+This program is free software: you can redistribute it
+and/or modify it under the terms of the GNU General
+Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your
+option) any later version.
+This program is distributed in the hope that it will be
+useful, but WITHOUT ANY WARRANTY; without even the
+implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU General Public License
+for more details.
+You should have received a copy of the GNU General Public
+License along with this program. If not, see
+http://www.gnu.org/licenses/gpl-3.0-standalone.html
+--------------------------------------------------------------------*/
+
+
+/* tama�o y forma del panel principal */
+#panel {
+	position: relative;
+	width:300px;
+	height: 300px;
+	margin: 0px 0px 0px 30px;
+}
+
+/* configuracion de las pesta�as */
+#tabs {
+	position:absolute;
+	left: 0px;
+	top: 0px;
+	margin:0;
+	padding:0;
+	width: 100%;
+	overflow: hidden;
+	z-index: 20;
+}
+	#tabs li {
+		float:left;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-khtml-user-select: none;
+		user-select: none;
+		list-style: none;
+		margin: 1px 1px 0px 0px;
+		display: block;
+		height: 21px;
+		line-height: 21px;
+		padding: 0px 8px;
+		outline: 0px none;
+		font-family: arial;
+		font-size: 14px;
+		text-decoration: none;
+		color: #000;
+		border: 1px solid #91A7B4;
+		border-bottom-width: 0px;
+		background: #fff;
+		border-radius: 4px 4px 0px 0px;
+		cursor: pointer;
+	}
+	#tabs li.active {
+		margin-top: 0px;
+		height: 21px;
+		line-height: 19px;
+		border-top: 3px solid #324A62;
+		cursor: default;	
+	}
+
+/* Configuraci�n de los paneles */
+#panel #paneles {
+	position:absolute;
+	left: 0px;
+	top: 23px;
+	width: 800px; 
+	height: 500px;
+	border: 1px solid #91a7b4;
+	border-radius: 0px 4px 4px 4px;
+	background: #fff;
+	overflow: hidden;
+}
+	#panel #paneles > div{
+		margin:10px;
+	
+		font-family: arial;
+		font-size: 12px;
+		text-decoration: none;
+		color: #000;
+		overflow: auto;
+	}
