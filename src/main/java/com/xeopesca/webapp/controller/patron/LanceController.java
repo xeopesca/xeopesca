@@ -81,8 +81,7 @@ public class LanceController {
     	model.addAttribute("ceo", ParametriaServicio.recuperarParametro("ceo") );
     	model.addAttribute("dirvento", ParametriaServicio.recuperarParametro("dir.vento") );
     	
-    	/*
-    	 * VALORES
+    	/*    	 * VALORES
     	 * */
     	model.addAttribute("artes", ArteServicio.listaDeArtes());
     	model.addAttribute("especies", EspecieServicio.listaDeEspecies());
