@@ -4,6 +4,12 @@
       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
 
+
+
+<definition name="jsonTemplate" template="/WEB-INF/views/public/template_json.jsp">
+		<put-attribute name="body" value="" />
+</definition>
+
 	<definition name="mainTemplate" template="/WEB-INF/layouts/classic.jsp">
 		<put-attribute name="header" value="" />
 		<put-attribute name="menu" value="/WEB-INF/layouts/menu.jsp" />
@@ -235,6 +241,10 @@
 		<put-attribute name="body" value="/WEB-INF/views/patron/pesca/editarPesca.jsp" />
 </definition>
 
+
+<definition name="json" extends="jsonTemplate">
+	<put-attribute name="body" value="/WEB-INF/views/public/json.jsp" />
+</definition>
 
 </tiles-definitions>
 

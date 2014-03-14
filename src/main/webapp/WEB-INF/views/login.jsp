@@ -17,17 +17,22 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 --------------------------------------------------------------------*/
 
  -->
+<%@ page import="java.util.Locale "%>
+
+<%@ page import="org.springframework.context.i18n.LocaleContextHolder"%>
+
+
+
+
+ 
 <%@ page language="java" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-
-<!-- novas -->
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 
@@ -61,8 +66,17 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 </div>
 
 
-	<script src="/bootstrap/js/bootstrap-alert.js"></script> 
-	<script src="/bootstrap/js/jquery.js"></script> 
+<script src="/bootstrap/js/jquery.js"></script> 
+<script src="/bootstrap/js/bootstrap-alert.js"></script> 
+<script src="/js/i18n/routeri18n.js"></script> 
+<script type="text/javascript">
+  alert(determineLocale());
+  var AAA = determineLocale();
+</script>
+
+<script src='/js/i18n/${locale}.js'></script> 
+
+
     
 
 

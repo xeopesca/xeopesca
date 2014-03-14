@@ -44,7 +44,7 @@ public class Arte implements java.io.Serializable {
 	private long id;
 	@NotBlank ( message = "A actividade non pode estar valeira")
 	private String actividade;
-	@NotBlank ( message = "A categor�a  non pode estar valeira")
+	@NotBlank ( message = "A categoría  non pode estar valeira")
 	private String categoria;
 	@NotBlank ( message = "O nome non pode estar valeiro")
 	private String nome;

@@ -50,6 +50,8 @@ import org.hibernate.validator.constraints.NotBlank;
 @Table(name = "usuario")
 public class Usuario implements java.io.Serializable {
 
+	
+
 	@Id
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
@@ -189,6 +191,27 @@ public class Usuario implements java.io.Serializable {
 	}
 	*/
 
-	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Usuario [id=");
+		builder.append(id);
+		builder.append(", login=");
+		builder.append(login);
+		builder.append(", nome=");
+		builder.append(nome);
+		builder.append(", apelidos=");
+		builder.append(apelidos);
+		builder.append(", contrasinal=");
+		builder.append(contrasinal);
+		builder.append(", tipousuario=");
+		builder.append(tipousuario);
+		builder.append(", patron_autoriza=");
+		builder.append(patron_autoriza);
+		builder.append(", idbarco=");
+		builder.append(idbarco);
+		builder.append("]");
+		return builder.toString();
+	}
 
 }
