@@ -62,7 +62,7 @@ public class LoginController {
 	public String novoUsuario(Model model, Usuario usuario) {
 	
 		model.addAttribute("usuario", usuario);
-
+		model.addAttribute("locale","gl");
 		return "login";
 	}
 

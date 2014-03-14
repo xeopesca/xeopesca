@@ -21,23 +21,24 @@ package com.xeopesca.webapp.model.servicios;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.xeopesca.webapp.model.dao.UsuarioDAO;
 import com.xeopesca.webapp.model.vos.Usuario;
 
+
 /**
  * @author belay
  *
  */
-/**
- * @author belay
- *
- */
-/**
- * @author belay
- *
- */
+@Service
 public class UsuarioServicio {
 
+
+	@Autowired
+	private static UsuarioDAO usuarioDao = new UsuarioDAO();
+	
 	/**
 	 * Lista de usuarios que existen no sistema
 	 * @return List<Usuario>
@@ -46,6 +47,9 @@ public class UsuarioServicio {
 		UsuarioDAO userDao = new UsuarioDAO();
 		List<Usuario> lista;
 		lista = userDao.lista();
+		
+		lista = usuarioDao.lista();
+		
 		return lista;
 	}
 
@@ -221,4 +225,11 @@ public class UsuarioServicio {
 		userDao.update(usuario);
 	}
 
+	public UsuarioDAO getUsuarioDao() {
+		return usuarioDao;
+	}
+
+	public void setUsuarioDao(UsuarioDAO usuarioDao) {
+		this.usuarioDao = usuarioDao;
+	}
 }

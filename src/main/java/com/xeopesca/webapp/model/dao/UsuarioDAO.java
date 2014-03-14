@@ -22,6 +22,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import org.springframework.stereotype.Repository;
+
 import com.xeopesca.util.JPAUtil;
 import com.xeopesca.util.dao.GenericDaoHibernate;
 import com.xeopesca.webapp.model.vos.Usuario;
@@ -30,6 +32,7 @@ import com.xeopesca.webapp.model.vos.Usuario;
  * @author belay
  *
  */
+@Repository("usuarioDao")
 public class UsuarioDAO  extends GenericDaoHibernate<Usuario>
 {
 
