@@ -64,17 +64,17 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 				<td><form:input path="dataInicio" readonly="true" id="dinicio" /></td>
 			<td><fmt:message key="patron.buscadorFaena.perf"/></td>
 				<td><form:input  path="dataFin" readonly="true" id="dfin"/></td>
-			
-				
 			</tr>
 			<tr>
 				<td><fmt:message key="patron.buscadorFaena.lua"/></td>
-				<td><form:select path="lua" id="idlua">
+				<td>
+					<form:select path="lua" id="idlua">
 						<form:option value="" label="Todas" />
 					
 						<form:options items="${lua}" itemValue="id" itemLabel="literal" />
 						
-					</form:select></td>
+					</form:select>
+				</td>
 			<td><fmt:message key="patron.buscadorFaena.estadorMar"/></td>
 				<td>
 					<form:select path="estadoMar" id="idmar" >
@@ -90,9 +90,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 						<form:options items="${ceo}" itemValue="id" itemLabel="literal" />
 					</form:select>	
 				</td>	
-				
 			</tr>
-			
 			
 			<tr>
 				<td><fmt:message key="patron.buscadorFaena.dirv"/></td>
@@ -101,18 +99,12 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 						<form:option value="" label="Todas" />
 						<form:options items="${dirvento}" itemValue="id" itemLabel="literal" />
 					</form:select>	
-					
 				</td>
-				
-				
-				
 			</tr>
-			
-			
 			
 			<tr>
 				<td></td>
-				<td><input type="submit" value='<fmt:message key="patron.buscadorFaena.button.gardar"/>' /></td>
+				<td><input type="submit" value='<fmt:message key="patron.buscadorFaena.button.buscar"/>' /></td>
 				
 			</tr>
 		</table>
