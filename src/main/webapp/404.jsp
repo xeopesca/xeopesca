@@ -15,43 +15,39 @@ You should have received a copy of the GNU General Public
 License along with this program. If not, see
 http://www.gnu.org/licenses/gpl-3.0-standalone.html
 --------------------------------------------------------------------*/
+
  -->
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<div id="ReportDetails">
-	<h2>
-		<fmt:message key="patron.addLance.title" />
-	</h2>
-	<p id="aviso"><fmt:message key="patron.addLance.aviso" /></p>
-	<form:form action="/xeopesca/patron/addLance" commandName="lance">
-		<input id="idfaena" name="idfaena" type="hidden"
-			value="${lance.idfaena}" />
-		<table>
-			<tr>
-				<td><fmt:message key="patron.addLance.desc" /></td>
-				<td><form:input path="descripcion" /></td>
-			</tr>
-			<tr>
-				<td><fmt:message key="patron.addLance.coor" /></td>
-				<td><form:input id="punto" path="punto_inicio" readonly="True" /></td>
-			</tr>
-		</table>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title><fmt:message key="error.page.404"/></title>
+<link rel="stylesheet" href="/css/estilo.css" type="text/css" />
+</head>
+<body>
 
-		<div id="Map" style="height: 225px; width: 425px;""></div>
+<div class="ReportHeader" id="ReportHeader">
+	<h1><fmt:message key="site.title"/> </h1>	
+</div>
 
-		<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
-		<script src="/js/patron/addLance.js" type="text/javascript"></script>
-				
-	<input type="submit" value="Enviar" />
-	</form:form>
+<div id="container">
+
+        <h2 class="form-signin-heading"><fmt:message key="error.page.404"/></h2>
+		
+		<p><fmt:message key="error.page.404.message"/>  <button class="btn btn-large btn-primary" type="submit">	<fmt:message key="error.page.404.button.home"/> 
+		</button></p>
+	
 </div>
 
 
 
-
-
-
+<div id="ReportFooter"><fmt:message key="site.footer"/>  </div>
+</body>
+</html>

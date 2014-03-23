@@ -116,14 +116,14 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 
 	<table>
 		<tr>
-			<th class="ReportTableHeaderCell"><fmt:message key="patron.novoLance.title.table.id"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="patron.novoLance.table.id"/></th>
 			
-			<th class="ReportTableHeaderCell"><fmt:message key="patron.novoLance.title.table.lugar"/></th>
-			<th class="ReportTableHeaderCell"><fmt:message key="patron.novoLance.title.table.especie"/></th>
-			<th class="ReportTableHeaderCell"><fmt:message key="patron.novoLance.title.table.peso"/></th>
-			<th class="ReportTableHeaderCell"><fmt:message key="patron.novoLance.title.table.pesod"/></th>
-			<th class="ReportTableHeaderCell"><fmt:message key="patron.novoLance.title.table.ud"/></th>
-			<th class="ReportTableHeaderCell"><fmt:message key="patron.novoLance.title.table.udd"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="patron.novoLance.table.lugar"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="patron.novoLance.table.especie"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="patron.novoLance.table.peso"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="patron.novoLance.table.pesod"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="patron.novoLance.table.ud"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="patron.novoLance.table.udd"/></th>
 			<th class="ReportTableHeaderCell"></th>
 			<th class="ReportTableHeaderCell"></th>
 			<th class="ReportTableHeaderCell"></th>
