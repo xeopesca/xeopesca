@@ -69,10 +69,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <script src="/bootstrap/js/jquery.js"></script> 
 <script src="/bootstrap/js/bootstrap-alert.js"></script> 
 <script src="/js/i18n/routeri18n.js"></script> 
-<script type="text/javascript">
-  alert(determineLocale());
-  var AAA = determineLocale();
-</script>
+
 
 <script src='/js/i18n/${locale}.js'></script> 
 
