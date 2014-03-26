@@ -34,6 +34,12 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <title><fmt:message key="site.title"/></title>
 <link rel="stylesheet" href="/css/estilo.css" type="text/css" />
 <script type="text/javascript" src="/js/script.js"></script>
+
+
+<script src="/bootstrap/js/jquery.js"></script>  
+<script src="/bootstrap/js/bootstrap-alert.js"></script>  
+
+
 </head>
 <body>
 

@@ -260,3 +260,60 @@ div.menu {
 	color:#FF0000;
 	font-size: 10px;
 }
+
+/**Adaptación para mensaxe "Non atopado" Buscar especie, Buscar Nome popular */
+
+.container {
+ width: auto;
+ text-align:left;
+ padding-top: 20px;
+ position: absolute;
+ margin-top: 0px;
+ margin-bottom: 65px;
+  
+}
+
+.span7 {
+  width: 260px;
+  
+  /* width: 400px; */
+}
+
+.offset2 {
+  margin-left: 20px;
+}
+
+.alert-success {
+  color: #468847;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.close {
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 20px;
+  color: #000000;
+  text-shadow: 0 1px 0 #ffffff;
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+  margin-left:10px;
+}
+
+.close:hover,
+.close:focus {
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+}
+
+ 
+ #Table div {
+ 	display:inline-block;
+}
+
+/****fin adaptación*********************/
+
