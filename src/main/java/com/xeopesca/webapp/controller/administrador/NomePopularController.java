@@ -127,7 +127,13 @@ public class NomePopularController {
 
 		List<Nomepopular> nomes = new ArrayList<Nomepopular>();
 		nomes = NomepopularServicio.listaDeNomesPopulares();
-		model.addAttribute("nomes", nomes);
+		
+		if (nomes.isEmpty()) {
+			model.addAttribute("mensaxe", "lista vacia");
+		} else {
+			model.addAttribute("nomes", nomes);
+			model.addAttribute("mensaxe", "lista chea");
+		}
 
 		return "listaNomePopular";
 	}
