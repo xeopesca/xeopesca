@@ -26,35 +26,46 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 
 <div id="ReportDetails">
 	<h2><fmt:message key="admin.listadoNomePopular.title"/></h2>
-
-	<table>
-		<tr>
-			<th class="ReportTableHeaderCell"><fmt:message key="admin.listadoNomePopular.nomep"/></th>
-			<th class="ReportTableHeaderCell"><fmt:message key="admin.listadoNomePopular.nomec"/></th>
-			<th class="ReportTableHeaderCell"><fmt:message key="admin.listadoNomePopular.detalle"/></th>
-			<th class="ReportTableHeaderCell"><fmt:message key="admin.listadoNomePopular.borrar"/></th>
-			
-		</tr>
-		<c:forEach var="nomes" items="${nomes}" varStatus="status">
-		
-			<tr class="ReportDetailsEvenDataRow">
-				<td class="ReportTableValueCell">${nomes.nome}</td>
-				<td class="ReportTableValueCell">${nomes.especie.nomecientifico}</td>
-				<td class="ReportTableValueCell">
-					<center>
-						<a href="editarNomePopular/${nomes.id}"> <img src="/images/detalle.gif" /></a>
-					</center>
-				</td>
-				<td class="ReportTableValueCell">
-					<center>
-						<a href="deleteNomepopular/${nomes.id}"> <img src="/images/papelera.gif" /></a>
-					</center>
-				</td>
+	<div id="Table">
+		<div>
+			<table>
+				<tr>
+					<th class="ReportTableHeaderCell"><fmt:message key="admin.listadoNomePopular.nomep"/></th>
+					<th class="ReportTableHeaderCell"><fmt:message key="admin.listadoNomePopular.nomec"/></th>
+					<th class="ReportTableHeaderCell"><fmt:message key="admin.listadoNomePopular.detalle"/></th>
+					<th class="ReportTableHeaderCell"><fmt:message key="admin.listadoNomePopular.borrar"/></th>
+					
+				</tr>
+				<c:forEach var="nomes" items="${nomes}" varStatus="status">
 				
-			</tr>
-		</c:forEach>
-
-	</table>
+					<tr class="ReportDetailsEvenDataRow">
+						<td class="ReportTableValueCell">${nomes.nome}</td>
+						<td class="ReportTableValueCell">${nomes.especie.nomecientifico}</td>
+						<td class="ReportTableValueCell">
+							<center>
+								<a href="editarNomePopular/${nomes.id}"> <img src="/images/detalle.gif" /></a>
+							</center>
+						</td>
+						<td class="ReportTableValueCell">
+							<center>
+								<a href="deleteNomepopular/${nomes.id}"> <img src="/images/papelera.gif" /></a>
+							</center>
+						</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+		<c:if test="${mensaxe == 'lista vacia'}">
+				<div class="container">
+						<div class="span7 offset2">
+							<div class="alert-success">
+							<a class="close" data-dismiss="alert">x</a>
+							<fmt:message key="admin.listadoNomePopular.valeira"/>
+							</div>
+						</div>
+				</div>	 
+		</c:if>
+	</div>
 </div>
 
 
