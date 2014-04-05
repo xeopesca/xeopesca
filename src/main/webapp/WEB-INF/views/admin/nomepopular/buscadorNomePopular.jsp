@@ -26,26 +26,37 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 
 <div id="ReportDetails">
 	<h2><fmt:message key="admin.buscadorNomePopular.title"/></h2>
-    
 
 	<form:form action="buscadorNomePopular" commandName="nome">
 
 		<div style="color: #FF0000;">
 			<form:errors path="nome" />
 		</div>
-		<table>
-			<tr>
-				<td><fmt:message key="admin.buscadorNomePopular.nome"/></td>
-				<td><form:input path="nome" /></td>
-			</tr>
-
-			<tr>
-				<td></td>
-				<td><input type="submit" value='<fmt:message key="admin.buscadorNomePopular.button.buscar"/>' /></td>
-			</tr>
-
-		</table>
-
+		
+		<div id="Table">
+			<div>
+				<table>
+					<tr>
+						<td><fmt:message key="admin.buscadorNomePopular.nome"/></td>
+						<td><form:input path="nome" /></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="submit" value='<fmt:message key="admin.buscadorNomePopular.button.buscar"/>' /></td>
+					</tr>
+				</table>
+			</div>
+			<c:if test="${mensaxe == 'lista vacia'}">
+				<div class="container">
+						<div class="span7 offset2">
+							<div class="alert-success">
+							<a class="close" data-dismiss="alert">x</a>
+							<fmt:message key="admin.buscadorNomePopular.nonAtopado"/>
+							</div>
+						</div>
+				</div>	 
+			</c:if>
+		</div>
 	</form:form>
 	
 	

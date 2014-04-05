@@ -20,14 +20,13 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
 <div id="ReportDetails">
-	<h2>Buscar Usuario</h2>
-  <!-- 
-    <c:out value="${mensaxe}" /> -->  
+	
+	<h2><fmt:message key="admin.buscarUsuario.title"/></h2>
 
 	<form:form action="buscadorUsuario" commandName="usuario">
 
@@ -36,30 +35,52 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 			<form:errors path="nome" />
 			<form:errors path="contrasinal" />
 		</div>
-		<table>
-			<tr>
-				<td>Login :</td>
-				<td><form:input path="login" /></td>
-			</tr>
-
-			<tr>
-				<td></td>
-				<td><input type="submit" value="Buscar" /></td>
-			</tr>
-
-		</table>
+		
+		
+		<div id="Table">
+			<div>
+				<table>
+					<tr>
+						<td><fmt:message key="admin.buscarUsuario.login"/></td>
+						<td><form:input path="login" /></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="submit" value='<fmt:message key="admin.buscarUsuario.button.buscar"/>' /></td>
+					</tr>
+				</table>
+			</div>
+			<!-- O código js do cal depende esta condicionalidade está enlazado desde /layout/classic.jsp , 
+			<script src="/bootstrap/js/jquery.js"></script>  
+			<script src="/bootstrap/js/bootstrap-alert.js"></script> 
+			No  referente ao código CSS, atópase en /css/estilo.css referenciado como: ** Adaptación para mensaxe "Non atopado"... ** -->
+			<c:if test="${mensaxe == 'lista vacia'}">
+				<div class="container">
+						<div class="span7 offset2">
+							<div class="alert-success">
+							<a class="close" data-dismiss="alert">x</a>
+							<fmt:message key="admin.buscarUsuario.nonAtopado"/>
+							</div>
+						</div>
+				</div>	 
+			</c:if>
+			
+			
+			
+		</div>
 
 	</form:form>
 
 <c:if test="${!empty users}">
 <table>
 		<tr>
-			<th class="ReportTableHeaderCell">Login</th>
-			<th class="ReportTableHeaderCell">Nome</th>
-			<th class="ReportTableHeaderCell">Apelidos</th>
-			<th class="ReportTableHeaderCell">Perfil</th>
-			<th class="ReportTableHeaderCell">Detalle</th>
-			<th class="ReportTableHeaderCell">Borrar</th>		</tr>
+			<th class="ReportTableHeaderCell"><fmt:message key="admin.listaUsuarios.tableHead.login"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="admin.listaUsuarios.tableHead.nome"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="admin.listaUsuarios.tableHead.apelidos"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="admin.listaUsuarios.tableHead.perfilUser"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="admin.listaUsuarios.tableHead.detalle"/></th>
+			<th class="ReportTableHeaderCell"><fmt:message key="admin.listaUsuarios.tableHead.borrar"/></th>
+		</tr>
 		<c:forEach var="users" items="${users}" varStatus="status">
 			<c:set var="idUsuario" value="${users.id}" />
 
