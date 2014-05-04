@@ -23,7 +23,6 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-
 <div id="ReportDetails">
 	<h2><fmt:message key="admin.novaEspecie.title"/></h2>
 	<!--<c:out value="${message}" /> -->
@@ -37,14 +36,17 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 		<table>
 			<tr>
 				<td><fmt:message key="admin.novaEspecie.nome"/></td>
-				<td><form:input path="nomecientifico" /></td>
+				<%-- <td><form:input path="nomecientifico" /></td> --%>  
+				<td><input id="nomecientifico" name="nomecientifico" required="required"/></td> 
 			</tr>
 			<tr>
 				<td><fmt:message key="admin.novaEspecie.imaxen"/></td>
-				<td><form:input path="path" />  <input type="file" name="file"/>
-				
+				<td>
+				  <%-- <form:input path="path" /> --%>
+				  <input id="path" name="path" hidden="true"/>	
+				  				
+				  <input name="file" type="file" />
 				</td>
-				
 			</tr>
 
 			<tr>
@@ -53,11 +55,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 			</tr>
 
 		</table>
-
 	</form:form>
-
-
-
 </div>
 
 
