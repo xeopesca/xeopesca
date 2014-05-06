@@ -52,25 +52,14 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 	<form class="form-signin" name="f" action="<c:url value='j_spring_security_check'/>"
 		method="POST">
         <h2 class="form-signin-heading"><fmt:message key="login.title.identi"/></h2>
-		
-
 		<input class="input-block-level" placeholder='<fmt:message key="login.input.user"/>' type='text' name='j_username' id="user" value=''/>
-		 <input class="input-block-level" placeholder='<fmt:message key="login.input.pwd"/>' type='password' name='j_password' id="pass">
-
-	
-	<button class="btn btn-large btn-primary" type="submit"><fmt:message key="login.button.entrar"/></button>
-</form>
+		<input class="input-block-level" placeholder='<fmt:message key="login.input.pwd"/>' type='password' name='j_password' id="pass">
+		<button class="btn btn-large btn-primary" type="submit"><fmt:message key="login.button.entrar"/></button>
+	</form>
 </div>
 
 
 <script src="/bootstrap/js/jquery.js"></script> 
 <script src="/bootstrap/js/bootstrap-alert.js"></script> 
 <script src="/js/i18n/routeri18n.js"></script> 
-
-
-<script src='/js/i18n/${locale}.js'></script> 
-
-
-    
-
 

@@ -34,10 +34,7 @@ import com.xeopesca.util.ConstantesUtil;
 import com.xeopesca.webapp.model.servicios.UsuarioServicio;
 import com.xeopesca.webapp.model.vos.Usuario;
 
-/**
- * @author belay
- *
- */
+
 /**
  * @author belay
  *
@@ -62,7 +59,6 @@ public class LoginController {
 	public String novoUsuario(Model model, Usuario usuario) {
 	
 		model.addAttribute("usuario", usuario);
-		model.addAttribute("locale","gl");
 		return "login";
 	}
 
