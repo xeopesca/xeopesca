@@ -60,13 +60,11 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
         };
         
         function onFeatureUnselect(feature) {
-					
-
             map.removePopup(feature.popup);
             feature.popup.destroy();
             feature.popup = null;
         }    ;
-   
+  
 	
 	//MAPA
 	var idbarco = document.getElementById('idbarco').value; 
