@@ -47,9 +47,7 @@ public class PortadaPatronController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String loginPatron = auth.getName();
 		Usuario patron = UsuarioServicio.getUsuario(loginPatron);
-		
-        model.addAttribute("message", "Hello World!");
-        model.addAttribute("idbarco", patron.getIdbarco());
+		model.addAttribute("idbarco", patron.getIdbarco());
         return "indexPatron"; 
     }
 }
