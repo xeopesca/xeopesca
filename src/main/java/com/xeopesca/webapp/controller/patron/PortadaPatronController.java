@@ -24,6 +24,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.xeopesca.webapp.controller.commons.LocaleResolverXeopesca;
 import com.xeopesca.webapp.model.servicios.UsuarioServicio;
 import com.xeopesca.webapp.model.vos.Usuario;
 
@@ -48,6 +49,7 @@ public class PortadaPatronController {
 		String loginPatron = auth.getName();
 		Usuario patron = UsuarioServicio.getUsuario(loginPatron);
 		model.addAttribute("idbarco", patron.getIdbarco());
+		model.addAttribute("locale",LocaleResolverXeopesca.getIdiom());
         return "indexPatron"; 
     }
 }

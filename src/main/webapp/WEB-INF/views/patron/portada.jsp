@@ -20,21 +20,19 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 	 
-	 
- <input id="idbarco" type="hidden" value="${idbarco}"/>
 
+<input id="idbarco" type="hidden" value="${idbarco}"/>
 
 <div id="ReportDetails">
-	  <h2><fmt:message key="patron.portada.title"/></h2>
-
+	<h2><fmt:message key="patron.portada.title"/></h2>
 	<div id="Map" style="height:415px;width:110ppx;">
-		
-	</div>
+</div>
 	
 <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+<script src="/js/i18n/${locale}.js"></script>
 			<script>
 	var selectControl, drawControls;
 			
@@ -51,12 +49,10 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
                                      feature.geometry.getBounds().getCenterLonLat(),
                                      null,
                                      "<div style='font-size:.8em'>"+
-									 "Faena: <a href='"+"patron/editarFaena/"+feature.attributes.id+"'>" + feature.attributes.id+"</a>"+ 
-									 "<br>Lance: <a href='"+"patron/novoLance/"+feature.attributes.id+"'>" + feature.attributes.idlance+"</a>"+ 
-									 
-									 
-									 "<br>Lugar: " + feature.attributes.descripcion +
-									 "<br>Fecha: " + feature.attributes.data_inicio +
+                                     i18n_msg.faena+": <a href='"+"patron/editarFaena/"+feature.attributes.id+"'>" + feature.attributes.id+"</a>"+ 
+									 "<br>"+i18n_msg.lance+": <a href='"+"patron/novoLance/"+feature.attributes.id+"'>" + feature.attributes.idlance+"</a>"+ 
+									 "<br>"+i18n_msg.lugar+": " + feature.attributes.descripcion +
+									 "<br>"+i18n_msg.fecha+": " + feature.attributes.data_inicio +
 									  "</div>",
                                      null, true, onPopupClose);
             feature.popup = popup;

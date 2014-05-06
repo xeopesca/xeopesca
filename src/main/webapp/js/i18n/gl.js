@@ -17,7 +17,10 @@ License along with this program. If not, see
 http://www.gnu.org/licenses/gpl-3.0-standalone.html
 --------------------------------------------------------------------*/
 var i18n_msg = {
-	'si' : 'Si',
-	'non' : 'Non',	
+	'faena' : 'Faena',
+	'lance' : 'Lance',	
+	'lugar' : 'Lugar',
+	'fecha' : 'Fecha',
+
 };
 
