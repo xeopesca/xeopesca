@@ -1,0 +1,9 @@
+com.xeopesca.util
+com.xeopesca.util.dao
+com.xeopesca.webapp.controller.administrador
+com.xeopesca.webapp.controller.armador
+com.xeopesca.webapp.controller.patron
+com.xeopesca.webapp.model.dao
+com.xeopesca.webapp.model.servicios
+com.xeopesca.webapp.model.vos
+com.xeopesca.webapp.view
