@@ -50,6 +50,7 @@ import com.xeopesca.webapp.model.vos.Especie;
 @Controller
 public class EspecieController {
 	private static final String PATH_IMAGES = "/var/lib/tomcat7/webapps/ROOT/images/especie/";
+	//private static final String PATH_IMAGES= "/home/josecho/workspace/webapp/src/main/webapp/images/especie/";
 
 	List<Especie> especies;
 
@@ -84,8 +85,17 @@ public class EspecieController {
 	 * @return String
 	 */
 	@RequestMapping(value = "/admin/novaEspecie", method = RequestMethod.POST)
-	public String novaEspecie(Especie especie, BindingResult result,
+	public String novaEspecie(@Valid Especie especie, BindingResult result,
 			@RequestParam("file") MultipartFile file) {
+		
+		//Validacion erros
+		if (result.hasErrors()) {
+			for (ObjectError error : result.getAllErrors()) {
+				System.err.println("Error!!: " + error.getCode() + " - "
+								+ error.getDefaultMessage());
+				}
+			return "novaEspecie";
+		}
 
 		String directorio = request.getSession().getServletContext().getRealPath("/");
 		especie.setPath("/images/especie/");
