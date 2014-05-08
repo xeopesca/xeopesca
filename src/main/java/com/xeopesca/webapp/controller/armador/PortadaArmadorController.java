@@ -21,12 +21,14 @@ package com.xeopesca.webapp.controller.armador;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.xeopesca.webapp.controller.commons.LocaleResolverXeopesca;
 import com.xeopesca.webapp.model.servicios.BarcoServicio;
 import com.xeopesca.webapp.model.servicios.UsuarioServicio;
 import com.xeopesca.webapp.model.vos.Barco;
@@ -39,7 +41,8 @@ import com.xeopesca.webapp.model.vos.Usuario;
 @Controller
 public class PortadaArmadorController {
    
-    
+	@Autowired
+	private LocaleResolverXeopesca localeResolverXeopesca;
     /**
      * Páxina de inicio dun armador
      * @param model
@@ -63,6 +66,9 @@ public class PortadaArmadorController {
 		}
 
     	model.addAttribute("idbarcos", idBarcos);
+    	/* Locale */
+		model.addAttribute("locale", localeResolverXeopesca.getIdiom());
+
     	
         return "indexArmador"; 
     }
