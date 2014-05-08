@@ -21,6 +21,12 @@ var i18n_msg = {
 	'lance' : 'Number fishing',	
 	'lugar' : 'Place',
 	'fecha' : 'Date',
+	'barco' : 'Boat',
+	'horai' : 'Start time',
+	'temp_aire': 'Air temperature',
+	'temp_supe':'Surface temperature',
+	'temp_fondo':'Depth temperature',
+	'velo_vento':'Wind speed',
 
 };
 

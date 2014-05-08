@@ -1,13 +1,15 @@
 package com.xeopesca.webapp.controller.commons;
 
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.stereotype.Component;
 
+@Component (value="localeResolverXeopesca")
 public class LocaleResolverXeopesca {
 
-	private LocaleResolverXeopesca() {
+	public LocaleResolverXeopesca() {
 	};
 
-	public static String getIdiom() {
+	public  String getIdiom() {
 		String idiom = LocaleContextHolder.getLocale().getLanguage()
 				.toLowerCase();
 		String output = "gl";
@@ -22,7 +24,7 @@ public class LocaleResolverXeopesca {
 		} else{
 			output ="gl";
 		}
-		return idiom;
+		return output;
 
 	}
 

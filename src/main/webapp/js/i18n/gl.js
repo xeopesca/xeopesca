@@ -20,7 +20,14 @@ var i18n_msg = {
 	'faena' : 'Faena',
 	'lance' : 'Lance',	
 	'lugar' : 'Lugar',
-	'fecha' : 'Fecha',
+	'fecha' : 'Data',
+	'barco' : 'Barco',
+	'horai' : 'Hora inicio',
+	'temp_aire': 'Temperatura aire',
+	'temp_supe':'Temperatura superficie',
+	'temp_fondo':'Temperatura fondo',
+	'velo_vento':'Velocidade vento',
+	
 
 };
 

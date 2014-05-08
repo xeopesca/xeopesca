@@ -21,6 +21,11 @@ var i18n_msg = {
 	'lance' : 'Lance',	
 	'lugar' : 'Lugar',
 	'fecha' : 'Fecha',
-
+	'barco' : 'Barco',
+	'horai' : 'Hora de inicio',
+	'temp_aire': 'Temperatura aire',
+	'temp_supe':'Temperatura superficie',
+	'temp_fondo':'Temperatura fondo',
+	'velo_vento':'Velocidad viento',
 };
 

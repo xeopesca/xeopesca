@@ -33,7 +33,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 	
 <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
 <script src="/js/i18n/${locale}.js"></script>
-			<script>
+<script>
 	var selectControl, drawControls;
 			
 	//FUNCIONS	

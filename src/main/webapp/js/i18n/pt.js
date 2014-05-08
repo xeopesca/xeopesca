@@ -21,5 +21,10 @@ var i18n_msg = {
 	'lance' : 'Jogar',	
 	'lugar' : 'Lugar',
 	'fecha' : 'Data',
+	'horai' : 'Date start',
+	'temp_aire': 'Temperatura do ar',
+	'temp_supe':'Temperatura superficie',
+	'temp_fondo':'Temperatura de fundo',
+	'velo_vento':'Velocidade do vento',
 };
 

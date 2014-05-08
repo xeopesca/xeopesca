@@ -21,6 +21,7 @@ package com.xeopesca.webapp.controller.armador;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -29,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.xeopesca.webapp.view.FaenaBuscador;
+import com.xeopesca.webapp.controller.commons.LocaleResolverXeopesca;
 import com.xeopesca.webapp.model.servicios.ArteServicio;
 import com.xeopesca.webapp.model.servicios.BarcoServicio;
 import com.xeopesca.webapp.model.servicios.EspecieServicio;
@@ -45,7 +47,11 @@ import com.xeopesca.webapp.model.vos.Usuario;
  */
 @Controller
 public class BuscadorController {
+	
 
+	@Autowired
+	private LocaleResolverXeopesca localeResolverXeopesca;
+	
 	/**
 	 * BuscadorDeFaenas
 	 * 
@@ -83,6 +89,10 @@ public class BuscadorController {
 		model.addAttribute("artes", ArteServicio.listaDeArtes());
 		model.addAttribute("especies", EspecieServicio.listaDeEspecies());
 		model.addAttribute("barcos", barcos);
+
+		
+		/* Locale */
+		model.addAttribute("locale", localeResolverXeopesca.getIdiom());
 
 		return "buscadorArmador";
 	}

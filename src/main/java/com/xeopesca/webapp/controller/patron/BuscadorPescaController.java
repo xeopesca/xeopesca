@@ -18,31 +18,26 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 --------------------------------------------------------------------*/
 package com.xeopesca.webapp.controller.patron;
 
-import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 
-import javax.validation.Valid;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.xeopesca.util.ConstantesUtil;
 import com.xeopesca.util.HelperDateUtil;
 import com.xeopesca.webapp.view.FaenaBuscador;
+import com.xeopesca.webapp.controller.commons.LocaleResolverXeopesca;
 import com.xeopesca.webapp.model.servicios.ArteServicio;
-import com.xeopesca.webapp.model.servicios.BarcoServicio;
 import com.xeopesca.webapp.model.servicios.EspecieServicio;
 import com.xeopesca.webapp.model.servicios.FaenaServicio;
 import com.xeopesca.webapp.model.servicios.ParametriaServicio;
 import com.xeopesca.webapp.model.servicios.UsuarioServicio;
-import com.xeopesca.webapp.model.vos.Barco;
 import com.xeopesca.webapp.model.vos.Faena;
 import com.xeopesca.webapp.model.vos.Parametria;
 import com.xeopesca.webapp.model.vos.Usuario;
@@ -55,6 +50,9 @@ import com.xeopesca.webapp.model.vos.Usuario;
 @Controller
 public class BuscadorPescaController {
 
+	@Autowired
+	private LocaleResolverXeopesca localeResolverXeopesca;
+	
 	/**
 	 * Formulario de entrada para o buscador de pescas dun patrón
 	 * 
@@ -89,6 +87,9 @@ public class BuscadorPescaController {
 		model.addAttribute("especies", EspecieServicio.listaDeEspecies());
 		model.addAttribute("idbarco", patron.getIdbarco());
 
+		/* Locale */
+		model.addAttribute("locale", localeResolverXeopesca.getIdiom());
+		
 		return "buscadorPesca";
 	}
 
@@ -126,6 +127,8 @@ public class BuscadorPescaController {
 				ParametriaServicio.recuperarParametro("dir.vento"));
 
 		model.addAttribute("faena", faenaB);
+		
+		model.addAttribute("locale", localeResolverXeopesca.getIdiom());
 
 		return "buscadorPesca";
 	}
