@@ -18,6 +18,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 --------------------------------------------------------------------*/
 package com.xeopesca.webapp.controller.patron;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -36,7 +37,9 @@ import com.xeopesca.webapp.model.vos.Usuario;
 @Controller
 public class PortadaPatronController {
    
-    
+	@Autowired
+	private LocaleResolverXeopesca localeResolverXeopesca;
+	
     /**
      * Paxina de inicio dunn patrón
      * @param model
@@ -49,7 +52,7 @@ public class PortadaPatronController {
 		String loginPatron = auth.getName();
 		Usuario patron = UsuarioServicio.getUsuario(loginPatron);
 		model.addAttribute("idbarco", patron.getIdbarco());
-		model.addAttribute("locale",LocaleResolverXeopesca.getIdiom());
+		model.addAttribute("locale",localeResolverXeopesca.getIdiom());
         return "indexPatron"; 
     }
 }

@@ -134,8 +134,9 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 		 <h2><fmt:message key="armador.buscador.titleMap"/> </h2>
 	<div id="Map" style="height:415px;width:110ppx;"></div>
 	
-		<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
-					<script>
+	<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+	<script src="/js/i18n/${locale}.js"></script>
+	<script>
 			//
 			var selectControl, drawControls;
 	//funcions
@@ -151,14 +152,14 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
                     feature.geometry.getBounds().getCenterLonLat(),
                     null,
                     "<div style='font-size:.8em'>"+
-					 "<br>Barco: " + feature.attributes.folio +
-					 "<br>Data: " + feature.attributes.data_fin +
-					 "<br>Lugar: " + feature.attributes.descripcion +
-					 "<br>Hora inicio: " + feature.attributes.hora_inicio +
-					 "<br>Temperatura aire: " + feature.attributes.temp_aire +
-					 "<br>Temperatura superficie: " + feature.attributes.temp_superficie +
-					 "<br>Temperatura fondo: " + feature.attributes.temp_fondo +
-					 "<br>Velocidade vento: " + feature.attributes.velocidade_vento +
+					 "<br>"+ i18n_msg.barco+": " + feature.attributes.folio +
+					 "<br>"+i18n_msg.fecha+": " + feature.attributes.data_fin +
+					 "<br>"+i18n_msg.lugar+": " + feature.attributes.descripcion +
+					 "<br>"+i18n_msg.horai+": " + feature.attributes.hora_inicio +
+					 "<br>"+i18n_msg.temp_aire+": " + feature.attributes.temp_aire +
+					 "<br>"+i18n_msg.temp_supe+": " + feature.attributes.temp_superficie +
+					 "<br>"+i18n_msg.temp_fondo+": " + feature.attributes.temp_fondo +
+					 "<br>"+i18n_msg.velo_vento+": " + feature.attributes.velocidade_vento +
 					  "</div>",
                     null, true, onPopupClose);
 feature.popup = popup;
