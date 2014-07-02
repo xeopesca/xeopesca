@@ -23,6 +23,13 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ page import="javax.servlet.jsp.JspException" %>
+<%@page isErrorPage="true" %>
+<%@ page import="org.slf4j.Logger,org.slf4j.LoggerFactory" %>
+<%! static final Logger LOGGER = LoggerFactory.getLogger("404.jsp"); %>
+<% LOGGER.info("404 Throw for URI: {}", pageContext.getErrorData().getRequestURI()); %>
+<% LOGGER.info("Código de erro: {}", pageContext.getErrorData().getStatusCode()); %>
+
 
 <fmt:setBundle basename="messages" />
 

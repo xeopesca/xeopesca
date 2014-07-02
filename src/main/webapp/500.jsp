@@ -19,10 +19,19 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
  -->
 
 
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ page import="javax.servlet.jsp.JspException" %>
+<%@page isErrorPage="true" %>
+<%@ page import="org.slf4j.Logger,org.slf4j.LoggerFactory" %>
+<%! static final Logger LOGGER = LoggerFactory.getLogger("500.jsp"); %>
+<% LOGGER.error("Exception caught in view layer for URI: {}", pageContext.getErrorData().getRequestURI()); %>
+<% LOGGER.error("http status code: {}", pageContext.getErrorData().getStatusCode()); %>
+<% LOGGER.error("Exception cause: {}", pageContext.getException().getCause()); %>
+
 
 <fmt:setBundle basename="messages" />
 
@@ -51,6 +60,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 			</a>
 			
 		</p>
+		
 	
 </div>	
 
