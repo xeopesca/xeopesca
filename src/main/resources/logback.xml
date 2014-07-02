@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+	<!-- En producción eliminar ConsoleAppender -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} %-5level %logger{36} - %msg%n
+			</Pattern>
+		</encoder>
+	</appender> 
+
+	<appender name="dailyRollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>/log/xeopesca.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <FileNamePattern>/log/xeopesca.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <!-- keep 30 days' worth of history -->
+            <maxHistory>30</maxHistory>            
+        </rollingPolicy>
+ 
+        <encoder>
+            <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n</Pattern>
+        </encoder>         
+      </appender>
+	
+	<logger name="org.hibernate.type" level="ALL" />
+	<logger name="org.hibernate" level="DEBUG" /> 
+
+	<root level="INFO"> 
+		<appender-ref ref="dailyRollingFileAppender" />
+		<appender-ref ref="STDOUT" />
+	</root>
+
+</configuration>
