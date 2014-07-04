@@ -34,9 +34,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 
 <div id="container">
 <div class="well">
-
-
-	<h1> Termos de uso</h1>
+	<h1>Termos de uso</h1>
 	<h2>Condicións de uso</h2>
 	
 	<p>O uso do sitio web.xeopesca.com réxese polas normas establecidas no presente aviso legal. Coa súa utilización, vostede acepta todas as condicións de uso. www.xeopesca.com reservase o dereito a modificar unilateralmente a web é os servizos ofrecidos incluíndo as modificacións das condicións de uso. O usuario debe utilizar a web en conformidade cos usos autorizados. Queda expresamente prohibida a utilización da web ou de calquera dos seus servizos con fins ou efectos ilícitos, contrarios a boa fe, á orde pública ou ó establecido nas condicións de uso. Queda igualmente prohibido calquer uso lesivo de dereitos ou intereses de terceiros ou de calquer forma, dificulten a utilizacion por parte de outros usuarios o uso normal da web e/ou os seus servizos.
@@ -78,4 +76,3 @@ As condicións de uso e os servizos ofrecidos na web rexense pola lei española.
 
 <script src="/bootstrap/js/jquery.js"></script> 
 <script src="/bootstrap/js/bootstrap-alert.js"></script> 
-
