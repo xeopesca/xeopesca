@@ -123,7 +123,7 @@ map.addLayer(satellite);
 		featureType: "vista_faena_lance",
 		outputFormat: 'json',
 		defaultFilter: filt,
-		maxFeatures: '20',
+		maxFeatures: MAX_FEATURE,
 		readFormat: new OpenLayers.Format.GeoJSON()
 	}); 
 
