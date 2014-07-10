@@ -136,6 +136,8 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 	
 	<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
 	<script src="/js/i18n/${locale}.js"></script>
+	<script src="/js/config.js"></script>
+	
 	<script>
 			//
 			var selectControl, drawControls;
@@ -298,8 +300,8 @@ feature.popup = popup;
 			
 			
 			var protocol = new OpenLayers.Protocol.WFS({ 
-				url: "http://localhost:8080/geoserver/wfs",
-				featureNS: "http://localhost:8080/xeopesca",
+				url: URL_GEOSERVER ,
+				featureNS: FEATURE_NS,
 				featureType: "vista_faena_lance",
 				outputFormat: 'json',
 				defaultFilter: filt,

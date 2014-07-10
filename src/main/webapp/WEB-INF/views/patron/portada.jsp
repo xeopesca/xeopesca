@@ -33,6 +33,8 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 	
 <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
 <script src="/js/i18n/${locale}.js"></script>
+<script src="/js/config.js"></script>
+
 <script>
 	var selectControl, drawControls;
 			
@@ -49,8 +51,8 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
                                      feature.geometry.getBounds().getCenterLonLat(),
                                      null,
                                      "<div style='font-size:.8em'>"+
-                                     i18n_msg.faena+": <a href='"+"patron/editarFaena/"+feature.attributes.id+"'>" + feature.attributes.id+"</a>"+ 
-									 "<br>"+i18n_msg.lance+": <a href='"+"patron/novoLance/"+feature.attributes.id+"'>" + feature.attributes.idlance+"</a>"+ 
+                                     i18n_msg.faena+": <a href='"+"/xeopesca/patron/editarFaena/"+feature.attributes.id+"'>" + feature.attributes.id+"</a>"+ 
+									 "<br>"+i18n_msg.lance+": <a href='"+"/xeopesca/patron/novoLance/"+feature.attributes.id+"'>" + feature.attributes.idlance+"</a>"+ 
 									 "<br>"+i18n_msg.lugar+": " + feature.attributes.descripcion +
 									 "<br>"+i18n_msg.fecha+": " + feature.attributes.data_inicio +
 									  "</div>",
@@ -116,8 +118,8 @@ map.addLayer(satellite);
 
 	
 	var protocol = new OpenLayers.Protocol.WFS({ 
-		url: "http://localhost:8080/geoserver/wfs",
-		featureNS: "http://localhost:8080/xeopesca",
+		url: URL_GEOSERVER,
+		featureNS: FEATURE_NS ,
 		featureType: "vista_faena_lance",
 		outputFormat: 'json',
 		defaultFilter: filt,
