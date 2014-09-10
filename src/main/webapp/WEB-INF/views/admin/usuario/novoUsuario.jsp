@@ -15,7 +15,6 @@ You should have received a copy of the GNU General Public
 License along with this program. If not, see
 http://www.gnu.org/licenses/gpl-3.0-standalone.html
 --------------------------------------------------------------------*/
-
  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -27,56 +26,54 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <div id="ReportDetails">
 	<h2><fmt:message key="admin.novoUsuario.title"/></h2>
 
-
 	<form:form action="novoUsuario2" commandName="usuario">
 
 		<div style="color: #FF0000;">
 			<form:errors path="login" />
 			<form:errors path="nome" />
+			<form:errors path="apelidos" />
 			<form:errors path="tipousuario" />
 			<form:errors path="contrasinal" />
-
 		</div>
+
 		<table >
 			<tr>
-				<td><fmt:message key="admin.novoUsuario.nome"/> </td>
-				<td><form:input path="login" /></td>
+				<td><fmt:message key="admin.novoUsuario.login"/> </td>
+				<td><form:input path="login" id="login" name="login" required="required" pattern=".{4,10}" maxlength="10" title="min. 4- max. 10"/></td>
 			</tr>
 			<tr>
 				<td><fmt:message key="admin.novoUsuario.perfil"/> </td>
-				<td><form:select path="tipousuario">
+				<td>
+					<form:select path="tipousuario" name="tipousuario" required="required">
 						<form:option value="" label="--- Select ---" />
 						<form:option value="ROLE_ADMIN" label="Admin" />
 						<form:option value="ROLE_ARMADOR" label="Armador" />
 						<form:option value="ROLE_PATRON" label="Patrón" />
-						<form:option value="ROLE_ADMINISTRACION" label="Administración" />
+						<form:option value="ROLE_ADMINISTRACION" label="Administración" /> 
 						
-					</form:select></td>
+					</form:select>	
+					</td>
 			</tr>
-
 			<tr>
 				<td><fmt:message key="admin.novoUsuario.nome"/>  </td>
-				<td><form:input path="nome" /></td>
+				<td><form:input path="nome" id="nome" name="nome" required="required"/></td>
 			</tr>
 
 			<tr>
 				<td><fmt:message key="admin.novoUsuario.apelidos"/> </td>
-				<td><form:input path="apelidos" /></td>
+				<td><form:input path="apelidos" id="apelidos" name="apelidos" required="required"/></td>
 			</tr>
 			<tr>
 				<td><fmt:message key="admin.novoUsuario.contrasinal"/> </td>
-				<td><form:input path="contrasinal" /></td>
+				<td><form:input path="contrasinal" id="contrasinal" name="contrasinal" required="required"  pattern=".{5,}" title="min. 5"/></td>
 			</tr>
 			<tr>
 				<td></td>
 				<td><input type="submit" value='<fmt:message key="admin.novoUsuario.button.gardar"/> ' /></td>
 			</tr>
-
 		</table>
 
 	</form:form>
-
-
 
 </div>
 

@@ -20,26 +20,11 @@ package com.xeopesca.webapp.model.vos;
 
 // Generated 05-oct-2012 22:49:11 by Hibernate Tools 3.2.1.GA
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -50,8 +35,6 @@ import org.hibernate.validator.constraints.NotBlank;
 @Table(name = "usuario")
 public class Usuario implements java.io.Serializable {
 
-	
-
 	@Id
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
@@ -59,21 +42,15 @@ public class Usuario implements java.io.Serializable {
 	
 	// @ Type(type = "com.xeopesca.webapp.model.vos.Barco")
    //private Barco barco;
-	
-	@NotBlank ( message = "O login non pode estar valeiro")
-    @Length(min=4,max = 10, message = "O login ten que estar entre 4 e 10 caracteres") 
+		 
 	private String login;
-	
-	@NotBlank  ( message = "Introduzca un nome de Usuario")
+		
 	private String nome;
 	
-	@NotBlank  ( message = "Introduzca os apelidos do usuario")
 	private String apelidos;
 	
-	@NotBlank  ( message = "A contrasinal non pode estar vacia")
 	private String contrasinal;
 	
-	@NotBlank ( message = "Ten que seleccionar un tipo de usuario")
 	private String tipousuario;
 	
 	private Long patron_autoriza;
@@ -91,8 +68,6 @@ public class Usuario implements java.io.Serializable {
      private Barco barcoPatron;
 */
 
-	
-
 	public Usuario() {
 	}
 
@@ -106,8 +81,6 @@ public class Usuario implements java.io.Serializable {
 		this.tipousuario = tipousuario;
 	}
 
-	
-
 	public long getId() {
 		return this.id;
 	}
@@ -116,7 +89,12 @@ public class Usuario implements java.io.Serializable {
 		this.id = id;
 	}
 
+//	Para mostrar mensaxe de validación empregamos unha definición de mensaxe creada por defecto polo propio framework
+//	que non é necesario indicar aquí, definimos a mensaxe para internacionalización no properties:
+//	exemplo: NoBlank.usuario.login, Length.usuario.login, etc....
 	
+	@NotBlank
+	@Length(min=4,max=10)  
 	public String getLogin() {
 		return this.login;
 	}
@@ -125,6 +103,7 @@ public class Usuario implements java.io.Serializable {
 		this.login = login;
 	}
 
+	@NotBlank
 	public String getNome() {
 		return this.nome;
 	}
@@ -133,6 +112,7 @@ public class Usuario implements java.io.Serializable {
 		this.nome = nome;
 	}
 
+	@NotBlank 
 	public String getApelidos() {
 		return this.apelidos;
 	}
@@ -141,6 +121,8 @@ public class Usuario implements java.io.Serializable {
 		this.apelidos = apelidos;
 	}
 
+	@NotBlank
+	@Length(min=5)
 	public String getContrasinal() {
 		return this.contrasinal;
 	}
@@ -149,6 +131,7 @@ public class Usuario implements java.io.Serializable {
 		this.contrasinal = contrasinal;
 	}
 
+	@NotBlank 
 	public String getTipousuario() {
 		return this.tipousuario;
 	}
@@ -213,5 +196,4 @@ public class Usuario implements java.io.Serializable {
 		builder.append("]");
 		return builder.toString();
 	}
-
 }
