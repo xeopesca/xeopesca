@@ -39,7 +39,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 		<table >
 			<tr>
 				<td><fmt:message key="admin.novoUsuario.login"/> </td>
-				<td><form:input path="login" id="login" name="login" required="required" pattern=".{4,10}" maxlength="10" title="min. 4- max. 10"/></td>
+				<td><form:input path="login" id="login" name="login" required="required" pattern=".{4,10}" maxlength="10" placeholder="min. 4- max. 10" title="min. 4- max. 10"/></td>
 			</tr>
 			<tr>
 				<td><fmt:message key="admin.novoUsuario.perfil"/> </td>
@@ -65,7 +65,7 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 			</tr>
 			<tr>
 				<td><fmt:message key="admin.novoUsuario.contrasinal"/> </td>
-				<td><form:input path="contrasinal" id="contrasinal" name="contrasinal" required="required"  pattern=".{5,}" title="min. 5"/></td>
+				<td><form:input path="contrasinal" id="contrasinal" name="contrasinal" required="required"  pattern=".{5,}" placeholder="min. 5" title="min. 5"/></td>
 			</tr>
 			<tr>
 				<td></td>
