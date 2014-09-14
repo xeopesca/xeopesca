@@ -47,7 +47,6 @@ public class Especie implements java.io.Serializable {
     //--@ Length(max = 255, message = "O path non pode ser maior a 255 caracteres") 
 	private String path;
    
-	// private Set nomepopulars = new HashSet(0);
 
 	public Especie() {
 	}

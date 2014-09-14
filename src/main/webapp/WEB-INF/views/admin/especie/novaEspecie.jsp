@@ -36,24 +36,19 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 		<table>
 			<tr>
 				<td><fmt:message key="admin.novaEspecie.nome"/></td>
-				<%-- <td><form:input path="nomecientifico" /></td> --%>  
-				<td><input id="nomecientifico" name="nomecientifico" required="required"/></td> 
+				<td><form:input path="nomecientifico" id="nomecientifico" name="nomecientifico" required="required"/></td> 
 			</tr>
 			<tr>
 				<td><fmt:message key="admin.novaEspecie.imaxen"/></td>
 				<td>
-				  <%-- <form:input path="path" /> --%>
-				  <input id="path" name="path" hidden="true"/>	
-				  				
+				  <form:input id="path" path="path" name="path" hidden="true" pattern=".{,256}" title="max. 256"/>	
 				  <input name="file" type="file" />
 				</td>
 			</tr>
-
 			<tr>
 				<td></td>
 				<td><input type="submit" value='<fmt:message key="admin.novaEspecie.button.gardar"/>' /></td>
 			</tr>
-
 		</table>
 	</form:form>
 </div>
