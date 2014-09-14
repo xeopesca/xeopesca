@@ -69,12 +69,13 @@ public class ArteController {
 	 * @return String
 	 */
 	@RequestMapping(value = "/admin/novoArte", method = RequestMethod.POST)
-	public String novaArte(Arte arte, BindingResult result) {
+	public String novaArte(@Valid Arte arte, BindingResult result) {
 
+		if (result.hasErrors()) {
+			return "novoArte";
+		}
 		ArteServicio.saveArte(arte);
-
 		return "redirect:/"+ConstantesUtil.SERVLET_XEOPESCA+"/admin/listaArte";
-
 	}
 
 
