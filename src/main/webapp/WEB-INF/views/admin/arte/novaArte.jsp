@@ -15,9 +15,7 @@ You should have received a copy of the GNU General Public
 License along with this program. If not, see
 http://www.gnu.org/licenses/gpl-3.0-standalone.html
 --------------------------------------------------------------------*/
-
  -->
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -28,15 +26,16 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 	<h2><fmt:message key="admin.novaArte.title"/></h2>
 
 	<form:form action="novoArte" commandName="arte">
-
 		<div style="color: #FF0000;">
 			<form:errors path="actividade" />
+			<form:errors path="categoria" />
+			<form:errors path="nome" />
 		</div>
 		<table>
 			<tr>
 				<td><fmt:message key="admin.novaArte.actividade"/></td>
 				<td>
-					<form:select path="actividade">
+					<form:select path="actividade" required="required">
 						<form:option value="" label="" />
 						<form:option value="Marisqueo" label="Marisqueo" />
 						<form:option value="Pesca" label="Pesca" />
@@ -47,10 +46,10 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 			<tr>
 				<td><fmt:message key="admin.novaArte.categoria"/></td>
 				<td>
-					<form:select path="categoria">
+					<form:select path="categoria" required="required">
 						<form:option value="" label="" />
 						<form:option value="Nasas" label="Nasas" />
-						<form:option value="Embarcacion ou vara" label="Embarcaci�n ou vara" />
+						<form:option value="Embarcacion ou vara" label="Embarcacion ou vara" />
 						<form:option value="Rastros" label="Rastros" />
 						<form:option value="Anzol" label="Anzol" />
 						<form:option value="En malle" label="En malle" />
@@ -63,28 +62,19 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 			</tr>
 			<tr>
 				<td><fmt:message key="admin.novaArte.nome"/></td>
-				<td><form:input path="nome" /></td>
+				<td><form:input path="nome" required="required"/></td>
 			</tr>
 			
 			<tr>
 				<td><fmt:message key="admin.novaArte.descripcion"/></td>
 				<td><form:textarea path="descripcion" /></td>
-				</td>
 			</tr>
-
-
-
 			<tr>
 				<td></td>
 				<td><input type="submit" value='<fmt:message key="admin.novaArte.button.gardar"/>' /></td>
 			</tr>
-
 		</table>
-
 	</form:form>
-
-
-
 </div>
 
 

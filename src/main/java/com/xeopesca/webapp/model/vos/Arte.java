@@ -42,11 +42,9 @@ public class Arte implements java.io.Serializable {
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
 	private long id;
-	@NotBlank ( message = "A actividade non pode estar valeira")
+	
 	private String actividade;
-	@NotBlank ( message = "A categoría  non pode estar valeira")
 	private String categoria;
-	@NotBlank ( message = "O nome non pode estar valeiro")
 	private String nome;
 	private String path;
 	private String descripcion;
@@ -81,7 +79,13 @@ public class Arte implements java.io.Serializable {
 	public void setId(long id) {
 		this.id = id;
 	}
+	
+//	Para mostrar mensaxe de validación empregamos unha definición de mensaxe creada por defecto polo propio framework
+//	que non é necesario indicar aquí, definimos a mensaxe para internacionalización no properties:
+//	exemplo: NoBlank.arte.actividade, etc....
+	
 
+	@NotBlank 
 	public String getActividade() {
 		return this.actividade;
 	}
@@ -89,7 +93,8 @@ public class Arte implements java.io.Serializable {
 	public void setActividade(String actividade) {
 		this.actividade = actividade;
 	}
-
+	
+	@NotBlank 
 	public String getCategoria() {
 		return this.categoria;
 	}
@@ -98,6 +103,7 @@ public class Arte implements java.io.Serializable {
 		this.categoria = categoria;
 	}
 
+	@NotBlank
 	public String getNome() {
 		return this.nome;
 	}
