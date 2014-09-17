@@ -34,8 +34,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import com.xeopesca.util.ConstantesUtil;
 
+import javax.validation.Valid;
+
+import com.xeopesca.util.ConstantesUtil;
 import com.xeopesca.webapp.model.servicios.UsuarioServicio;
 import com.xeopesca.webapp.model.vos.Usuario;
 
@@ -67,12 +69,7 @@ public class PatronController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String loginArmador = auth.getName();
 		Usuario armador = UsuarioServicio.getUsuario(loginArmador);
-		
-		
-		
-		
 		model.addAttribute("usuario", usuario);
-
 		return "novoPatron";
 	}
 
@@ -83,11 +80,12 @@ public class PatronController {
 	 * @return plantilla tiles a cargar
 	 */
 	@RequestMapping(value = "/armador/novoPatron", method = RequestMethod.POST)
-	public String novoPatron(Usuario patron, BindingResult result) {
-		patron.setTipousuario("ROLE_PATRON");
-		//
+	public String novoPatron(@Valid Usuario patron, BindingResult result) {
+				
+		if (result.hasErrors()) {
+			return "novoPatron";
+		}
 		byte ap[] =patron.getApelidos().getBytes();
-
 		try {
 			patron.setApelidos(new String(ap,"UTF-8"));
 		} catch (UnsupportedEncodingException e) {
