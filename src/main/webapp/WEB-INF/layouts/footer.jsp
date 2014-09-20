@@ -25,6 +25,10 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <div id="ReportFooter"> 	
 	<a href="/xeopesca/public/termos" > <fmt:message key="site.terms"/>  </a>
 	<b style="color:#E229A7"> | </b>
+	<a href="/xeopesca/public/licenza" > <fmt:message key="site.license"/>  </a>
+	<b style="color:#E229A7"> | </b>
+	<a href="/xeopesca/public/sobreNos" > <fmt:message key="site.sobreNos"/>  </a>
+	<b style="color:#E229A7"> | </b>
 	<a href="http://www.xeopesca.com" > <fmt:message key="site.footer"/>  </a>
 	 
 </div>
