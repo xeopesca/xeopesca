@@ -45,7 +45,14 @@
 	<definition name="termos" extends="publicTemplate">
 		<put-attribute name="body" value="/WEB-INF/views/public/termos.jsp" />
 	</definition>
-	
+	<!-- Licenza  -->
+	<definition name="licenza" extends="publicTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/public/licenza.jsp" />
+	</definition>
+	<!-- Sobre Nós  -->
+	<definition name="sobreNos" extends="publicTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/public/sobreNos.jsp" />
+	</definition>
 	
 	<definition name="editarConta" extends="mainTemplate">
 		<put-attribute name="body"

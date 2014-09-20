@@ -317,3 +317,55 @@ div.menu {
 
 /****fin adaptación*********************/
 
+
+/* Licenza e Sobre Nos*/
+
+#licSobre {
+	text-align:left;
+	padding-left:32%;
+	padding-right: 32%
+}
+
+#licSobretitulo {
+	background-color: white;
+	padding:10px;
+	border: 1px solid white;
+	border-radius:12px;
+	
+}
+
+#licSobretitulo > p {
+	background: #009ACE;
+	color: white;
+	text-align: center;
+	border: 0 solid white;
+	border-radius:8px;
+}
+#licenzaTexto {
+	height:30em;
+	overflow: scroll;
+}
+#colaboradores {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    width: 100%;
+    border-collapse: collapse;
+}
+#colaboradores td, #colaboradores th {
+    font-size: 1em;
+    border: 0 solid #009ACE;
+    padding: 3px 7px 2px 7px;
+}
+#colaboradores th {
+    font-size: 1.1em;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    color: #ffffff;
+}
+
+#colaboradores tr.alt td {
+    color: #000000;
+    background-color: #CCFFFF;
+    
+}
+
