@@ -29,6 +29,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.xeopesca.util.ConstantesUtil;
 import com.xeopesca.webapp.model.servicios.UsuarioServicio;
@@ -40,6 +41,7 @@ import com.xeopesca.webapp.model.vos.Usuario;
  *
  */
 @Controller
+@SessionAttributes("idArmador")
 public class LoginController {
 
 	@Autowired
@@ -80,6 +82,8 @@ public class LoginController {
 			saida = "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
 					+ "/admin/listaUsuarios";
 		} else if (user.getTipousuario().equals("ROLE_ARMADOR")) {
+			//Cargamos en sesion o id do Armador para poder ser validado
+			model.addAttribute("idArmador",user.getId());
 			saida = "redirect:/" + ConstantesUtil.SERVLET_XEOPESCA
 					+ "/armador";
 		} else if (user.getTipousuario().equals("ROLE_PATRON")) {

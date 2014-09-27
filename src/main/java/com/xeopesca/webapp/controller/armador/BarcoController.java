@@ -23,6 +23,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -86,7 +87,15 @@ public class BarcoController {
 	 * @return plantilla tiles a cargar
 	 */
 	@RequestMapping(value = "/armador/novoBarco", method = RequestMethod.POST)
-	public String novoBarco(Barco barco, BindingResult result) {
+	public String novoBarco(ModelMap modelo, @Valid Barco barco, BindingResult result) {
+		
+		//Validación lado servidor Barco.java
+		if (result.hasErrors()) {
+			return "novoBarco";
+		}
+		//borramos de sesion o id de armador
+		modelo.remove("idArmador");
+				 
 		//Recuperamos os datos do Armador
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String loginArmador = auth.getName();
