@@ -15,7 +15,6 @@ You should have received a copy of the GNU General Public
 License along with this program. If not, see
 http://www.gnu.org/licenses/gpl-3.0-standalone.html
 --------------------------------------------------------------------*/
-
  -->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -23,47 +22,40 @@ http://www.gnu.org/licenses/gpl-3.0-standalone.html
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-
 <div id="ReportDetails">
 	<h2><fmt:message key="armador.novoBarco.title"/></h2>
 	<form:form method="POST" action="/xeopesca/armador/novoBarco"
 		commandName="barco">
-
-		<div style="color: #FF0000;"></div>
-
+		<div style="color: #FF0000;">
+			<form:errors path="folio" />
+			<form:errors path="nome" />
+			<form:errors path="eslora" />
+			<form:errors path="idarmador" />
+		</div>
 		<table>
 			<tr>
 				<td><fmt:message key="armador.novoBarco.folio"/></td>
-				<td><form:input path="folio" /></td>
+				<td><form:input path="folio" required="required" /></td>
 			</tr>
 			<tr>
 				<td><fmt:message key="armador.novoBarco.nome"/></td>
-				<td><form:input path="nome" /></td>
-				
+				<td><form:input path="nome" required="required"/></td>
 			</tr>
 			<tr>
 				<td><fmt:message key="armador.novoBarco.eslora"/></td>
-				<td><form:input path="eslora" /></td>
+				<td><form:input path="eslora" type="number" pattern="\d{1,3}"
+				 min="1" max="999" placeholder="min.1 - max. 999" title="min. 1- max. 999" required="required" /></td>
 				
 			</tr>
 			<tr>
 				<td><fmt:message key="armador.novoBarco.porto"/></td>
 				<td><form:input path="porto" /></td>
-				
+				<td><form:input path="idarmador" value="${idArmador}" type="hidden"/></td>
 			</tr>
-
 			<tr>
 				<td></td>
 				<td><input type="submit" value='<fmt:message key="armador.novoBarco.gardar"/>' /></td>
 			</tr>
-
 		</table>
-
 	</form:form>
-
-
 </div>
-
-
-
-
