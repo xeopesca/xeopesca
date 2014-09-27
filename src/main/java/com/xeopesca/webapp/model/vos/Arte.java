@@ -20,14 +20,11 @@ package com.xeopesca.webapp.model.vos;
 
 // Generated 05-oct-2012 22:49:11 by Hibernate Tools 3.2.1.GA
 
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -49,9 +46,6 @@ public class Arte implements java.io.Serializable {
 	private String path;
 	private String descripcion;
 
-	// private Set faenas = new HashSet(0);
-	// private Set barcos = new HashSet(0);
-
 	public Arte() {
 	}
 
@@ -61,15 +55,13 @@ public class Arte implements java.io.Serializable {
 	}
 
 	public Arte(long id, String actividade, String categoria, String nome,
-			String path, String descripcion, Set faenas, Set barcos) {
+			String path, String descripcion) {
 		this.id = id;
 		this.actividade = actividade;
 		this.categoria = categoria;
 		this.nome = nome;
 		this.path = path;
 		this.descripcion = descripcion;
-		// this.faenas = faenas;
-		// this.barcos = barcos;
 	}
 
 	public long getId() {
@@ -127,13 +119,5 @@ public class Arte implements java.io.Serializable {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	/*
-	 * public Set getFaenas() { return this.faenas; }
-	 * 
-	 * public void setFaenas(Set faenas) { this.faenas = faenas; } public Set
-	 * getBarcos() { return this.barcos; }
-	 * 
-	 * public void setBarcos(Set barcos) { this.barcos = barcos; }
-	 */
-
+	
 }
