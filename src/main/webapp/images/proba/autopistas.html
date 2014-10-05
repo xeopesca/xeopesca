@@ -1,0 +1,91 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <style type="text/css">
+        #map {
+            width: 100%;
+            height: 99%;
+            border: 1px solid black;
+        }
+		body {
+		  padding:0px; 
+		  margin:2px
+		}
+    </style>
+    <script src="http://openlayers.org/api/OpenLayers.js"></script>
+    <script type="text/javascript">
+        <!--
+		
+	function init() {
+		var bounds = new OpenLayers.Bounds(308780.2375,4472890.525,833068.2375,4997178.525);
+		var initialbbox = new OpenLayers.Bounds(398396.573996919,4606383.09616855,743451.90103171,4863685.95423634);
+		var maxRes = 1024;
+		var lat            = 43.50;
+		var lon            = -8.25;
+		var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
+		var mapProjection   = new OpenLayers.Projection("EPSG:25829"); // to Spherical Mercator Projection
+		var position       = new OpenLayers.LonLat(lon, lat).transform( fromProjection, mapProjection);
+	
+		var map = new OpenLayers.Map('map', {
+			units: 'm',
+			controls: [
+				new OpenLayers.Control.Navigation(),
+				new OpenLayers.Control.ScaleLine(),
+				new OpenLayers.Control.MousePosition(),
+				new OpenLayers.Control.LayerSwitcher()
+			],
+			projection: mapProjection,
+		});
+
+        var ortofoto56 = new OpenLayers.Layer.WMS(
+			"ortofoto56", 
+			"http://ideg.xunta.es/wms_orto_1956-57/request.aspx", 
+			{layers: 'Ortofoto_1956_57', format: 'image/png'}, 
+			{isBaseLayer: true, projection: mapProjection, units: 'm', maxExtent: bounds, maxResolution: maxRes});
+		map.addLayer(ortofoto56);
+		var pnoa = new OpenLayers.Layer.WMS(
+			"pnoa", 
+			"http://www.idee.es/wms/PNOA-MR/PNOA-MR", 
+			{layers: 'PNOA-MR', format: 'image/png'}, 
+			{isBaseLayer: true, projection: mapProjection, units: 'm', maxExtent: bounds, maxResolution: maxRes});
+		map.addLayer(pnoa);
+	
+		var markers = new OpenLayers.Layer.Markers( "Markers" );
+		markers.addMarker(new OpenLayers.Marker(position));
+		map.addLayer(markers);
+
+		var protocol = new OpenLayers.Protocol.WFS({ 
+			url: "http://eiel.lbd.org.es/eiel/wfs",
+			featureNS: "http://eiel.lbd.org.es/eiel",
+			featureType: "autopista",
+			outputFormat: 'json',
+			readFormat: new OpenLayers.Format.GeoJSON()
+		}); 
+ 
+		var autopistas = new OpenLayers.Layer.Vector("Autopistas", { 
+			strategies: [new OpenLayers.Strategy.Fixed()], 
+			protocol: protocol, 
+		});	
+		map.addLayer(autopistas);
+		
+		var selection = new OpenLayers.Control.SelectFeature(
+			autopistas, {
+				clickout: false, toggle: false,
+				multiple: false, hover: false,
+				toggleKey: "ctrlKey", // ctrl key removes from selection
+				multipleKey: "shiftKey", // shift key adds to selection
+				box: true
+			}
+		);				
+		map.addControl(selection);
+		
+		map.zoomToMaxExtent();
+	}
+        // -->
+    </script>
+  </head>
+  <body onload="init()">
+    <div id="map">
+    </div>
+  </body>
+</html>
