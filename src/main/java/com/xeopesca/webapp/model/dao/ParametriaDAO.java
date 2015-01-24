@@ -52,7 +52,7 @@ public class ParametriaDAO  extends GenericDaoHibernate<Parametria>
 		
 		
 		@SuppressWarnings("unchecked")
-		List<Parametria> saida = em.createQuery(queryStri).setParameter("parametro", parametro).getResultList();
+		List<Parametria> saida = em.createQuery(queryStri).setParameter("parametro", "%"+parametro+"%").getResultList();
 		
 		
 		if (null == saida ||saida.isEmpty() ){
