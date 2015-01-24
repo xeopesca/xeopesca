@@ -43,13 +43,13 @@ import com.xeopesca.util.ConstantesUtil;
 import com.xeopesca.webapp.model.servicios.FaenaServicio;
 import com.xeopesca.webapp.model.servicios.LanceServicio;
 import com.xeopesca.webapp.model.servicios.UsuarioServicio;
+import com.xeopesca.webapp.model.vos.Barco;
 import com.xeopesca.webapp.model.vos.Faena;
 import com.xeopesca.webapp.model.vos.Lance;
 import com.xeopesca.webapp.model.vos.Usuario;
 
 @Controller
 public class PublicController {
- 	UsuarioServicio usuarioServ;
 	List<Usuario> users;
 
 	@Autowired
@@ -59,24 +59,15 @@ public class PublicController {
 		this.validator = validator;
 	}
 
-	
 
 
-	@RequestMapping("/public/listaUsuarios")
-	public String listaUsuarios(Model model) {
-
-		users = UsuarioServicio.listaDeUsuarios();
-		model.addAttribute("users", users);
-
-		return "listaUsuarios";
-	}
-
-	@RequestMapping("/public/json")
+	@RequestMapping("/public/test/json")
 	public ModelAndView json(Model model) {
     //TODO In Spring 4 MappingJacksonJsonView is deprecated. 
 	//TODO You might want to upgrade to MappingJackson2JsonView
-		users = UsuarioServicio.listaDeUsuarios();
+		users = getVirtualUsers();
 		model.addAttribute("users", users);
+		model.addAttribute("outrosUsers", users);
 		ModelAndView re = new ModelAndView();
 		re.setViewName("listaUsuarios");
 		re.setView(new MappingJacksonJsonView());
@@ -84,24 +75,27 @@ public class PublicController {
 	}
 	
 	
-	@RequestMapping("/public/json2")
+	@RequestMapping("/public/test/json2")
 	public MappingJacksonJsonView json2(Model model) {
-		users = UsuarioServicio.listaDeUsuarios();
-		model.addAttribute("users", users.toString());
-		MappingJacksonJsonView a = new MappingJacksonJsonView();
-		a.addStaticAttribute("osuusarios", users);
-		return a;
+		users =getVirtualUsers();
+		MappingJacksonJsonView mappingJson = new MappingJacksonJsonView();
+		mappingJson.addStaticAttribute("osuusarios", users);
+		mappingJson.addStaticAttribute("outrosUsuarios", users);
+		return mappingJson;
 	}
 	
 	
-	@RequestMapping("/public/json3")
+	@RequestMapping("/public/test/json3")
 	public @ResponseBody List<Usuario> json3(Model model) {
-		users = UsuarioServicio.listaDeUsuarios();
-		model.addAttribute("users", users.toString());
+		users = getVirtualUsers();
 		return users;
 	}
 	
-	@RequestMapping("/public/json4")
+	
+
+
+
+	@RequestMapping("/public/test/json4")
 	public @ResponseBody Faena json4(Model model) {
 		Faena f = new Faena();
 		List<Lance> listaLances = new ArrayList();
@@ -115,4 +109,15 @@ public class PublicController {
 		f.setListaLances(listaLances );
 		return f;
 	}
+	
+	
+	private List<Usuario> getVirtualUsers() {
+		ArrayList<Usuario> lu = new ArrayList<Usuario> ();
+		Usuario u1 = new  Usuario(1, new Barco(), "login", "nombre", "apellidos", "contraseña", "ROLE_USER");
+		Usuario u2 = new  Usuario(2, new Barco(), "login2", "nombre2", "apellidos2", "contraseña2", "ROLE_USER");
+		lu.add(u1);
+		lu.add(u2);
+		return lu;
+	}
+
 }
