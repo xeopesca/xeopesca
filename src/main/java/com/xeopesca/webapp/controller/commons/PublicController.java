@@ -36,9 +36,14 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.lowagie.text.pdf.codec.postscript.ParseException;
 import com.vividsolutions.jts.geom.Coordinate;
+import com.vividsolutions.jts.geom.CoordinateSequence;
+import com.vividsolutions.jts.geom.Geometry;
+import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.geom.PrecisionModel;
+import com.vividsolutions.jts.io.WKTReader;
 import com.xeopesca.util.ConstantesUtil;
 import com.xeopesca.webapp.model.servicios.FaenaServicio;
 import com.xeopesca.webapp.model.servicios.LanceServicio;
@@ -100,16 +105,35 @@ public class PublicController {
 		Faena f = new Faena();
 		List<Lance> listaLances = new ArrayList();
 		Lance  l = new Lance();
-		Coordinate coordinate = new Coordinate(8, 45);
-		PrecisionModel precisionModel = new PrecisionModel();
-		     
-		Point punto_fin = null;
-		l.setPunto_fin(punto_fin );
+		 
+		Geometry punto_fin = wktToGeometry("POINT(10 5)");
+		
+		l.setPunto_fin((Point)punto_fin );
 		listaLances.add(l);
 		f.setListaLances(listaLances );
 		return f;
 	}
 	
+	 private Geometry wktToGeometry(String wktPoint) {
+	        WKTReader fromText = new WKTReader();
+	        Geometry geom = null;
+	    
+	            try {
+					geom = fromText.read(wktPoint);
+				} catch (com.vividsolutions.jts.io.ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	         
+	        return geom;
+	    }
+	
+	
+	@RequestMapping("/public/test/json5")
+	public @ResponseBody Lance json5(Model model) {
+		Lance lance = LanceServicio.findById(new Long(1));
+		return lance;
+	}
 	
 	private List<Usuario> getVirtualUsers() {
 		ArrayList<Usuario> lu = new ArrayList<Usuario> ();
